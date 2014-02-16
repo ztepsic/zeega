@@ -236,6 +236,28 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_MasterLayout.cshtml" />
     <Content Include="Views\Game\GameInfo.cshtml" />
+    <Content Include="Views\Shared\Header.cshtml" />
+    <Content Include="Views\Shared\Footer.cshtml" />
+    <Content Include="Views\Game\Play.cshtml" />
+    <Content Include="Views\Shared\AdUnits\MediumRectangle_300x250.cshtml" />
+    <Content Include="Views\Shared\AdUnits\LargeRectangle_336x280.cshtml" />
+    <Content Include="Views\Shared\AdUnits\Leaderboard_728x90.cshtml" />
+    <Content Include="Views\Shared\AdUnits\WideSkyscraper_160x600.cshtml" />
+    <Content Include="Views\Shared\AdUnits\LargeLeaderboard_970x90.cshtml" />
+    <Content Include="Views\Shared\AdUnits\Banner_468x60.cshtml" />
+    <Content Include="Views\Shared\AdUnits\HalfBanner_234x60.cshtml" />
+    <Content Include="Views\Shared\AdUnits\Skyscraper_120x600.cshtml" />
+    <Content Include="Views\Shared\AdUnits\VerticalBanner_120x240.cshtml" />
+    <Content Include="Views\Shared\AdUnits\LargeSkyscraper_300x600.cshtml" />
+    <Content Include="Views\Shared\AdUnits\Square_250x250.cshtml" />
+    <Content Include="Views\Shared\AdUnits\SmallSquare_200x200.cshtml" />
+    <Content Include="Views\Shared\AdUnits\Button_125x125.cshtml" />
+    <Content Include="Views\Shared\AdUnits\Displays4Links_728x15.cshtml" />
+    <Content Include="Views\Shared\AdUnits\Displays4Links_468x15.cshtml" />
+    <Content Include="Views\Shared\AdUnits\Displays3Links_200x90.cshtml" />
+    <Content Include="Views\Shared\AdUnits\Displays3Links_180x90.cshtml" />
+    <Content Include="Views\Shared\AdUnits\Displays3Links_160x90.cshtml" />
+    <Content Include="Views\Shared\AdUnits\Displays3Links_120x90.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

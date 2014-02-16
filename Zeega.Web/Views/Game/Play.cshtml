@@ -1,0 +1,62 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+@section Scripts {
+<script>
+    $(function () {
+        $('#myTab a').click(function (e) {
+            e.preventDefault()
+            $(this).tab('show')
+        })
+    })
+</script>
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="text-center">
+                @RenderPage("../Shared/AdUnits/Leaderboard_728x90.cshtml")
+            </div>
+        </div>        
+    </div>
+    
+    <div class="row">
+        <div class="col-md-8">
+            <div class="page-header">
+                <h1>ALIEN ABDUCTOR <small>Subtext for header</small></h1>
+            </div>
+            
+            <object type="application/x-shockwave-flash" data="http://games.mochimedia.com/c/g/alien-abductor/alien.swf?mochiad_options=" width="550" height="500" id="flashcontent" style="visibility: visible;"></object>
+                        
+            <ul id="myTab" class="nav nav-tabs">
+                <li class="active"><a href="#home" data-toggle="tab">Game Info</a></li>
+                <li class=""><a href="#profile" data-toggle="tab">Leaderboard</a></li>
+            </ul>
+                <div id="myTabContent" class="tab-content">
+                    <div class="tab-pane fade active in" id="home">
+                        <img src="http://thumbs2.mochiads.com/c/g/alien-abductor/_thumb_100x100.gif" />
+                        <p>
+                            DESCRIPTION
+                            Humans; the trading cattle of the galaxy. You're a bounty hunter in search of humans to sell on the inter-galactic human market place. You receive a bounty for each kidnapped human, which can then be used to buy upgrades for your ship, or save to earn interest. Kidnap the minimum number of humans required to complete the level in the allocated time period. You must move above the humans (within a set distance) to beam them up to the ship. The speed of beaming is affected by the upgrades you buy during the game. Avoid detection from radar stations and avoid being hit my missiles (guided and non-guided). Don't fly too close to the planet surface, unless you like to crash. If you are seriously damaged by missile attack, you can fly to your mothership (outer-space area) to recharge your shield… if you have time! Good luck, and good hunting.
+                        </p>
+                        <p>
+                            Developed By: freeworldgroup
+                            Category: Shooting
+                            Tags: kidnapping alien abduction action shooting
+                        </p>
+                    </div>
+                    <div class="tab-pane fade" id="profile">
+                        <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+                    </div>
+                </div>
+            
+        </div>
+        <div class="col-md-4">
+            @RenderPage("../Shared/AdUnits/MediumRectangle_300x250.cshtml")
+        </div>
+    </div>
+
+</div>
