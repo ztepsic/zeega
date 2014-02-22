@@ -6,11 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Zeega - The best online games</title>
         
-        <!-- Bootstrap -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        
-        @Styles.Render("~/Content/css")
-        @Scripts.Render("~/bundles/modernizr")
+        @Styles.Render("~/assets/css")
+        @Scripts.Render("~/assets/js/modernizr")
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -30,8 +27,8 @@
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="js/bootstrap.min.js"></script>
         
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/assets/js/jquery")
+        @Scripts.Render("~/assets/js/bootstrap")
         @RenderSection("scripts", required: false)
     </body>
 </html>
