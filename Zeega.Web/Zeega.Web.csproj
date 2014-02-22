@@ -183,16 +183,17 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\css\bootstrap.css" />
     <Content Include="assets\css\style.css" />
-    <Content Include="assets\css\style2.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="assets\css\Site.css" />
-    <None Include="assets\css\less\style2.less" />
+    <None Include="assets\css\less\_variables.less" />
+    <None Include="assets\css\less\style.less" />
+    <None Include="assets\css\less\bootstrap.less" />
     <None Include="assets\js\jquery-2.1.0.intellisense.js" />
     <Content Include="assets\js\jquery-2.1.0.js" />
     <Content Include="assets\js\jquery-2.1.0.min.js" />
-    <Content Include="assets\js\jquery-2.1.0.min.map" />
     <None Include="assets\js\jquery.validate-vsdoc.js" />
     <Content Include="assets\js\jquery.validate.js" />
     <Content Include="assets\js\jquery.validate.min.js" />

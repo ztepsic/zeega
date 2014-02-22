@@ -1,29 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <webessentials version="1.9">
   <settings>
+    <AllMessagesToOutputWindow>false</AllMessagesToOutputWindow>
     <BrowserLink_ShowMenu>True</BrowserLink_ShowMenu>
     <CoffeeScriptCompileToLocation />
     <CoffeeScriptGenerateJsFile>True</CoffeeScriptGenerateJsFile>
     <CoffeeScriptMinify>True</CoffeeScriptMinify>
     <CoffeeScriptShowPreviewWindow>True</CoffeeScriptShowPreviewWindow>
     <CoffeeScriptWrapClosure>True</CoffeeScriptWrapClosure>
-    <CssEnableMinification>True</CssEnableMinification>
+    <CssEnableGzipping>false</CssEnableGzipping>
+    <CssEnableMinification>true</CssEnableMinification>
     <CssErrorLocation>1</CssErrorLocation>
-    <CssShowBrowserTooltip>True</CssShowBrowserTooltip>
-    <CssShowUnsupported>True</CssShowUnsupported>
-    <CssSyncVendorValues>True</CssSyncVendorValues>
+    <CssPreserveRelativePathsOnMinify>false</CssPreserveRelativePathsOnMinify>
+    <CssShowBrowserTooltip>true</CssShowBrowserTooltip>
+    <CssShowInitialInherit>false</CssShowInitialInherit>
+    <CssShowUnsupported>true</CssShowUnsupported>
+    <CssSyncVendorValues>true</CssSyncVendorValues>
+    <CSSValidateOverQualifiedSelector>false</CSSValidateOverQualifiedSelector>
+    <CssValidateStarSelector>false</CssValidateStarSelector>
+    <CssValidateZeroUnit>false</CssValidateZeroUnit>
     <EnableAngularValidation>True</EnableAngularValidation>
     <EnableBrowserLinkMenu>True</EnableBrowserLinkMenu>
     <EnableEnterFormat>True</EnableEnterFormat>
     <HtmlEnableMinification>True</HtmlEnableMinification>
-    <JavaScriptCamelCaseClassNames>False</JavaScriptCamelCaseClassNames>
-    <JavaScriptCamelCasePropertyNames>False</JavaScriptCamelCasePropertyNames>
+    <JavaScriptCamelCaseClassNames>false</JavaScriptCamelCaseClassNames>
+    <JavaScriptCamelCasePropertyNames>false</JavaScriptCamelCasePropertyNames>
     <JavaScriptCommentCompletion>True</JavaScriptCommentCompletion>
     <JavaScriptEnableMinification>True</JavaScriptEnableMinification>
     <JavaScriptGenerateSourceMaps>True</JavaScriptGenerateSourceMaps>
     <JsHintEnable>True</JsHintEnable>
     <JsHintErrorLocation>2</JsHintErrorLocation>
-    <LessCompileOnBuild>false</LessCompileOnBuild>
+    <KeepImportantComments>false</KeepImportantComments>
+    <LessCompileOnBuild>true</LessCompileOnBuild>
     <LessCompileToLocation>../</LessCompileToLocation>
     <LessGenerateCssFile>true</LessGenerateCssFile>
     <LessMinify>true</LessMinify>
@@ -42,11 +50,12 @@
     <SassGenerateCssFile>True</SassGenerateCssFile>
     <SassMinify>True</SassMinify>
     <SassShowPreviewWindow>True</SassShowPreviewWindow>
-    <SvgShowPreviewWindow>True</SvgShowPreviewWindow>
+    <SvgShowPreviewWindow>true</SvgShowPreviewWindow>
     <TsLintEnable>True</TsLintEnable>
     <TsLintErrorLocation>2</TsLintErrorLocation>
     <TypeScriptBraceCompletion>True</TypeScriptBraceCompletion>
     <TypeScriptShowPreviewWindow>True</TypeScriptShowPreviewWindow>
     <UnusedCss_IgnorePatterns>bootstrap*; reset.css; normalize.css; jquery*; toastr*; foundation*; animate*; inuit*; elements*; ratchet*; hint*; flat-ui*; 960*; skeleton*</UnusedCss_IgnorePatterns>
+    <ValidateVendorSpecifics>false</ValidateVendorSpecifics>
   </settings>
 </webessentials>

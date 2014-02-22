@@ -1,0 +1,3 @@
+[submodule "external_projects/bootstrap"]
+	path = external_projects/bootstrap
+	url = git@github.com:ztepsic/bootstrap.git
