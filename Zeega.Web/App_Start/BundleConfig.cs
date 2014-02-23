@@ -1,13 +1,10 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace Zeega.Web
-{
-    public class BundleConfig
-    {
+namespace Zeega.Web {
+    public class BundleConfig {
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
-        public static void RegisterBundles(BundleCollection bundles)
-        {
+        public static void RegisterBundles(BundleCollection bundles) {
             bundles.Add(new ScriptBundle("~/assets/js/jquery").Include(
                         "~/assets/js/jquery-{version}.js"));
 

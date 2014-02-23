@@ -31,7 +31,7 @@
     <JsHintEnable>True</JsHintEnable>
     <JsHintErrorLocation>2</JsHintErrorLocation>
     <KeepImportantComments>false</KeepImportantComments>
-    <LessCompileOnBuild>true</LessCompileOnBuild>
+    <LessCompileOnBuild>false</LessCompileOnBuild>
     <LessCompileToLocation>../</LessCompileToLocation>
     <LessGenerateCssFile>true</LessGenerateCssFile>
     <LessMinify>true</LessMinify>
