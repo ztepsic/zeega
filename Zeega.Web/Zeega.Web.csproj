@@ -187,6 +187,12 @@
     <Content Include="assets\css\bootstrap.min.css">
       <DependentUpon>bootstrap.css</DependentUpon>
     </Content>
+    <Content Include="assets\css\less\bootstrap.min.css">
+      <DependentUpon>bootstrap.less</DependentUpon>
+    </Content>
+    <Content Include="assets\css\less\style.min.css">
+      <DependentUpon>style.less</DependentUpon>
+    </Content>
     <Content Include="assets\css\style.css" />
     <Content Include="assets\css\style.min.css">
       <DependentUpon>style.css</DependentUpon>
