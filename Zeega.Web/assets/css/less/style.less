@@ -9,6 +9,76 @@
 //
 // General
 // --------------------------------------------------
+body {
+    margin-top: @navbar-height + @padding-large-vertical; // beacause of main navbar fixed top
+}
+
+
+//
+// Header
+// --------------------------------------------------
+#main-navbar form#search {
+    width: 50%;
+}
+
+
+#main-navbar form#search .form-group {
+    display: block;
+}
+
+#main-navbar  ul.navbar-nav li.mega-menu {
+    position: static !important;
+}
+
+#main-navbar .dropdown-menu {
+    border: none;
+    border-bottom: 5px solid @navbar-default-bg;
+}
+
+@media (max-width: @grid-float-breakpoint-max) {
+    // Dropdowns get custom display when collapsed
+    #main-navbar .open .dropdown-menu {
+        background-color: @dropdown-bg;
+
+        > li > a {
+            color: @dropdown-link-color;
+
+            &:hover,
+            &:focus {
+                color: @dropdown-link-color;
+                background-color: @dropdown-link-hover-bg;
+            }
+        }
+    }
+}
+
+#main-navbar li.mega-menu .dropdown-menu {
+    right: 0;
+    border-radius: 0;
+}
+
+#main-navbar li.mega-menu .dropdown-menu ul {
+    list-style-type: none;
+    margin-top: @padding-large-vertical;
+    padding: 0px;
+}
+
+#main-navbar li.mega-menu .dropdown-menu ul dl dt {
+    border-bottom: 2px solid @dropdown-divider-bg;
+    color: @gray;
+    padding-bottom: 5px;
+}
+#main-navbar li.mega-menu .dropdown-menu ul dl dd {
+    margin: 0px;
+    padding: 0px;
+}
+
+
+ #main-navbar ul#categories {
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+} 
 
 
 //
@@ -16,10 +86,25 @@
 // --------------------------------------------------
 
 footer {
-    background: #282E28;
+    background: @gray-darker;
     min-height: 100px;
-    color: #ffffff;
-    padding: 20px 0 0px 0;
+    color: @gray;
+    padding: 40px 0 0px 0;
+    border-top: 1px solid @gray;
+}
+
+footer hr {
+    border-top: #101010 1px solid;
+    border-bottom: #333333 1px solid;
+}
+
+footer a {
+    color: @gray-light;
+    &:hover,
+    &:focus {
+        color: @gray-lighter;
+        text-decoration: none;
+    }
 }
 
 footer ul li {
@@ -27,7 +112,7 @@ footer ul li {
 }
 
 #footer-nav {
-    border-top: 1px solid #eee;
+    border-top: 1px solid @gray-dark;
     margin-top: 20px;
     padding-top: 20px;
 }
