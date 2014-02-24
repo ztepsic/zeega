@@ -1,5 +1,40 @@
-body {
+﻿body {
   margin-top: 60px;
+}
+#breadcrumb-holder {
+  border-bottom: 1px solid #eeeeee;
+}
+.breadcrumb {
+  padding: 8px 0px;
+  margin: 0px;
+  font-size: 12px;
+  /*
+    // Change breacrumb separator
+    > li {
+        + li:before {
+            content: "\e080"; // Code from Glyphicons // Unicode space added since inline-block means non-collapsing white-space
+            padding: 0 5px;
+            color: @breadcrumb-color;
+            position: relative;
+            top: 1px;
+            display: inline-block;
+            font-family: 'Glyphicons Halflings';
+            font-style: normal;
+            font-weight: normal;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    }
+
+    */
+}
+.content {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  border: 1px solid #eeeeee;
+  border-radius: 6px 6px;
 }
 #main-navbar form#search {
   width: 50%;
@@ -51,10 +86,11 @@ body {
   -moz-columns: 2;
 }
 footer {
+  margin-top: 10px;
+  padding: 40px 0 0px 0;
   background: #222222;
   min-height: 100px;
   color: #555555;
-  padding: 40px 0 0px 0;
   border-top: 1px solid #555555;
 }
 footer hr {
@@ -76,4 +112,7 @@ footer ul li {
   border-top: 1px solid #333333;
   margin-top: 20px;
   padding-top: 20px;
+}
+#game-menu {
+  margin-top: 50px;
 }
