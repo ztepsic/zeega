@@ -45,12 +45,6 @@ body {
     */
 }
 
-
-// Catchall baseclass
-.glyphicon {
-
-}
-
 //.content [class^=col-] {
 .content {
     margin-top: @padding-large-vertical;
@@ -60,13 +54,37 @@ body {
     border-radius: @border-radius-large @border-radius-large;
 }
 
+
+.make-ul-columns(@number-of-columns){
+    columns: @number-of-columns;
+    -webkit-columns: @number-of-columns;
+    -moz-columns: @number-of-columns;
+}
+
+ul.two-columns {
+    .make-ul-columns(2);
+} 
+
+ul.three-columns {
+    .make-ul-columns(3);
+}
+
 //
 // Header
 // --------------------------------------------------
-#main-navbar form#search {
-    width: 50%;
+
+@media (min-width: @screen-sm-min) {
+    #main-navbar form#search.navbar-form {
+        width: 45%;
+    }
 }
 
+@media (min-width: @screen-lg) {
+    #main-navbar form#search.navbar-form {
+        width: 50%;
+    }
+}
+ 
 
 #main-navbar form#search .form-group {
     display: block;
@@ -114,17 +132,11 @@ body {
     color: @gray;
     padding-bottom: 5px;
 }
+
 #main-navbar li.mega-menu .dropdown-menu ul dl dd {
     margin: 0px;
     padding: 0px;
 }
-
-
- #main-navbar ul#categories {
-    columns: 2;
-    -webkit-columns: 2;
-    -moz-columns: 2;
-} 
 
 
 //
@@ -170,6 +182,21 @@ footer ul li {
 // --------------------------------------------------
 
 #game-menu {
-    margin-top: 50px;
-    //border: 1px solid @gray;
+    margin-top: @padding-large-vertical;
+    border-left: 1px solid @gray-lighter;
+    min-height: 150px;
+}
+
+#game-menu ul li {
+    margin-bottom: 3px;
+}
+
+#game-holder {
+    margin: @padding-large-vertical 0;
+    background-color: @gray-darker;
+    border-radius: @border-radius-large @border-radius-large;
+}
+
+#game-title h2 {
+    margin-bottom: 0;
 }
