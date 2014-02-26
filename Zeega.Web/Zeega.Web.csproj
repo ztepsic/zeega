@@ -195,6 +195,10 @@
     <Content Include="assets\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="assets\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="assets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="assets\js\respond.js" />
+    <Content Include="assets\js\respond.matchmedia.addListener.js" />
+    <Content Include="assets\js\respond.matchmedia.addListener.min.js" />
+    <Content Include="assets\js\respond.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="assets\css\Site.css" />
@@ -210,8 +214,6 @@
     <Content Include="assets\js\jquery.validate.unobtrusive.js" />
     <Content Include="assets\js\jquery.validate.unobtrusive.min.js" />
     <Content Include="assets\js\modernizr-2.7.1.js" />
-    <Content Include="assets\js\respond.js" />
-    <Content Include="assets\js\respond.min.js" />
     <Content Include="assets\js\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
