@@ -21,7 +21,7 @@ namespace Zeega.Web {
             //          "~/assets/js/respond.js" // it is  already defined through CDN network
             ));
 
-            bundles.Add(new StyleBundle("~/assets/css/style").Include(
+            bundles.Add(new StyleBundle("~/css/style").Include(
                       "~/assets/css/bootstrap.css",
                       "~/assets/css/style.css"));
         }
