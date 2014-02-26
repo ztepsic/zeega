@@ -17,10 +17,11 @@ namespace Zeega.Web {
                         "~/assets/js/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/assets/js/bootstrap").Include(
-                      "~/assets/js/bootstrap.js",
-                      "~/assets/js/respond.js"));
+                      "~/assets/js/bootstrap.js"
+            //          "~/assets/js/respond.js" // it is  already defined through CDN network
+            ));
 
-            bundles.Add(new StyleBundle("~/assets/css").Include(
+            bundles.Add(new StyleBundle("~/assets/css/style").Include(
                       "~/assets/css/bootstrap.css",
                       "~/assets/css/style.css"));
         }
