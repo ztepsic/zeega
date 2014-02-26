@@ -187,22 +187,14 @@
     <Content Include="assets\css\bootstrap.min.css">
       <DependentUpon>bootstrap.css</DependentUpon>
     </Content>
-    <Content Include="assets\css\less\bootstrap.min.css">
-      <DependentUpon>bootstrap.less</DependentUpon>
-    </Content>
-    <Content Include="assets\css\less\style.min.css">
-      <DependentUpon>style.less</DependentUpon>
-    </Content>
     <Content Include="assets\css\style.css" />
     <Content Include="assets\css\style.min.css">
       <DependentUpon>style.css</DependentUpon>
     </Content>
     <Content Include="assets\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="assets\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="assets\fonts\glyphicons-halflings-regular.svg.txt" />
     <Content Include="assets\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="assets\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="assets\test\glyphicons-halflings-regular.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="assets\css\Site.css" />
