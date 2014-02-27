@@ -195,6 +195,8 @@
     <Content Include="assets\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="assets\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="assets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="assets\js\bootstrap.js" />
+    <Content Include="assets\js\bootstrap.min.js" />
     <Content Include="assets\js\respond.js" />
     <Content Include="assets\js\respond.matchmedia.addListener.js" />
     <Content Include="assets\js\respond.matchmedia.addListener.min.js" />

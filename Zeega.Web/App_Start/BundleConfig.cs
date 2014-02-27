@@ -25,7 +25,6 @@ namespace Zeega.Web {
                       "~/assets/css/bootstrap.css",
                       "~/assets/css/style.css"));
 
-            BundleTable.EnableOptimizations = true;
         }
     }
 }
