@@ -1,14 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Zeega.Web.Models;
 
 namespace Zeega.Web.Controllers {
     /// <summary>
     /// Game controler
     /// </summary>
     public class GameController : Controller {
+
+        [HttpPost]
+        public ActionResult Bridge(MochiPlayerScoreData playerScoreData) {
+            var res = Request;
+            return null;
+        }
+
         //
         // GET: /Game/
         public ActionResult Index() {

@@ -42,8 +42,54 @@
     </div> <!-- .row -->
     <div class="row">
         <div class="col-sm-11 col-md-7">
-            <div id="game-holder" class="text-center">
-                <object type="application/x-shockwave-flash" data="http://games.mochimedia.com/c/g/alien-abductor/alien.swf?mochiad_options=" width="550" height="500" id="flashcontent" style="visibility: visible;"></object>
+            <div id="game-holders" class="text-center">
+                <embed src="http://games.mochiads.com/c/g/electric-box-2/ElectricBox2.swf" menu="false" quality="high" width="720" height="480" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+                <script src="http://xs.mochiads.com/static/pub/swf/leaderboard.js" type="text/javascript"></script>
+                <script type="text/javascript">
+                    // Mochi Bridge
+                    var options = { partnerID: "e55f42d35d4b606e", id: "leaderboard_bridge" };
+                    options.userID = "29281";
+                    options.username = "rockstar";
+                    // optional
+                    options.sessionID = "sf908uw098urerjw3948";
+                    // optional
+                    options.gateway = "http://localhost:19880/game/bridge";
+                    // optional
+                    options.profileURL = "http://www.zeega.me/profile/${name}";
+                    // optional
+                    options.logoURL = "http://thumbs2.mochiads.com/c/g/alien-abductor/_thumb_100x100.gif";
+                    // optional
+                    options.siteURL = "http://www.zeega.me";
+                    // optional
+                    options.siteName = "Zeega.me";
+                    // optional
+                    options.callback = function (params) { alert(params.name + " (" + params.username + ") just scored " + params.score + "!"); }
+
+                    // optional - A valid URL to play this game on your site. Defaults to location.href. Normally this default is fine unless you keep sessions in the URL or your games are played in an IFRAME (such as with Facebook apps). 
+                    options.pageURL = "http://localhost:19880/game/123/fads";
+                    
+                    // optional - This parameter will allow the bridge to post back information regarding medals received by the player. This parameter defaults to false. 
+                    options.postMedals = true;
+                    
+                    options.thumbURL = "http://thumbs2.mochiads.com/c/g/alien-abductor/_thumb_100x100.gif";
+                    
+                    
+                    // uncomment this to display global scores
+                    // options.globalScores = "true";
+
+                    // optional
+                     //options.denyScores = "Login to Example to submit scores!";
+
+                    // optional
+                    // options.denyFriends = "true";
+                    
+                    // uncomment this block for debug mode
+                    options.width = 320;
+                    options.height = 240;
+                    options.debug = "true";
+                    
+                    Mochi.addLeaderboardIntegration(options);
+                </script>
             </div>
         </div>
         <div class="col-sm-1 hidden-xs" id="game-menu">
@@ -75,6 +121,7 @@
             </ul>
             <div id="myTabContent" class="tab-content">
                 <div class="tab-pane fade active in" id="home">
+                    <div id="leaderboard_bridge"></div>
                     <img src="http://thumbs2.mochiads.com/c/g/alien-abductor/_thumb_100x100.gif" />
                     <p>
                         DESCRIPTION

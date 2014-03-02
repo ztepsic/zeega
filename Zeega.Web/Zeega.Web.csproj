@@ -179,6 +179,10 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\MochiLeaderboardMetadata.cs" />
+    <Compile Include="Models\MochiPlayerAwardsData.cs" />
+    <Compile Include="Models\MochiPlayerScoreData.cs" />
+    <Compile Include="Models\MochiScoreInformation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -201,6 +205,7 @@
     <Content Include="assets\js\respond.matchmedia.addListener.js" />
     <Content Include="assets\js\respond.matchmedia.addListener.min.js" />
     <Content Include="assets\js\respond.min.js" />
+    <Content Include="crossdomain.xml" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="assets\css\Site.css" />
