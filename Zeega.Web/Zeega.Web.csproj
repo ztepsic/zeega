@@ -273,6 +273,16 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Zeega.Domain\Zeega.Domain.csproj">
+      <Project>{a8e3ff82-4cd4-484d-9fcd-ab83eef6930a}</Project>
+      <Name>Zeega.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zeega.Infrastructure\Zeega.Infrastructure.csproj">
+      <Project>{987ec2b2-647d-4018-a334-9e8178228b61}</Project>
+      <Name>Zeega.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
