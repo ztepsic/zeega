@@ -7,7 +7,13 @@ using System.Web.Optimization;
 using System.Web.Routing;
 
 namespace Zeega.Web {
+    /// <summary>
+    /// MVC application
+    /// </summary>
     public class MvcApplication : System.Web.HttpApplication {
+        /// <summary>
+        /// Application start
+        /// </summary>
         protected void Application_Start() {
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

@@ -9,6 +9,10 @@ namespace Zeega.Web.Controllers {
     /// Home controller
     /// </summary>
     public class HomeController : Controller {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Index() {
             return View();
         }
