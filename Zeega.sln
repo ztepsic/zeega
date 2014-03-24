@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeega.Infrastructure", "Zee
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeega.Infrastructure.Tests", "Zeega.Infrastructure.Tests\Zeega.Infrastructure.Tests.csproj", "{DFD6BDF4-55D6-4016-834C-24DC5D01FA40}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeega.BackOffice.Web", "Zeega.BackOffice.Web\Zeega.BackOffice.Web.csproj", "{358F4751-6D37-4B73-B7D4-ACED66F83C14}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{DFD6BDF4-55D6-4016-834C-24DC5D01FA40}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFD6BDF4-55D6-4016-834C-24DC5D01FA40}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DFD6BDF4-55D6-4016-834C-24DC5D01FA40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{358F4751-6D37-4B73-B7D4-ACED66F83C14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{358F4751-6D37-4B73-B7D4-ACED66F83C14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{358F4751-6D37-4B73-B7D4-ACED66F83C14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{358F4751-6D37-4B73-B7D4-ACED66F83C14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
