@@ -44,10 +44,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppTenant.cs" />
-    <Compile Include="Game\Game.cs" />
-    <Compile Include="Game\GameCategory.cs" />
-    <Compile Include="Game\MochiGame.cs" />
+    <Compile Include="Audit.cs" />
+    <Compile Include="GameModel\DeviceType.cs" />
+    <Compile Include="GameModel\Game.cs" />
+    <Compile Include="GameModel\GameCategory.cs" />
+    <Compile Include="GameModel\GameSrcType.cs" />
+    <Compile Include="GameModel\MediaRes.cs" />
+    <Compile Include="GameModel\MochiGame.cs" />
+    <Compile Include="GameModel\GameSrc.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tag.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="GameModel\Game.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

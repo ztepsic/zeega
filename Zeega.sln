@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F02CDDC5-602B-4C32-9075-3979BA1D59E6}"
 	ProjectSection(SolutionItems) = preProject
 		WE2013-settings.xml = WE2013-settings.xml
+		WebEssentials-Settings.json = WebEssentials-Settings.json
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeega.Domain", "Zeega.Domain\Zeega.Domain.csproj", "{A8E3FF82-4CD4-484D-9FCD-AB83EEF6930A}"

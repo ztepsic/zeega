@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NUnit.Framework;
-using Zeega.Domain.Game;
+using Zeega.Domain.GameModel;
 
-namespace Zeega.Domain.Tests.Game {
+namespace Zeega.Domain.Tests.GameModel {
     [TestFixture]
     public class GameCategoryTests {
 
@@ -25,11 +21,33 @@ namespace Zeega.Domain.Tests.Game {
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [ExpectedException(typeof(ArgumentException))]
         public void Slug_NullString_ExceptionThrown() {
             // Arrange
             string gameName = "Adventure & RPG";
             string gameSlug = null;
+
+            // Act
+            GameCategory gameCategory = new GameCategory(gameName, gameSlug);
+        }
+
+        [Test]
+        [ExpectedException(typeof(ArgumentException))]
+        public void Slug_WhiteSpaceString_ExceptionThrown() {
+            // Arrange
+            string gameName = "Adventure & RPG";
+            string gameSlug = "     ";
+
+            // Act
+            GameCategory gameCategory = new GameCategory(gameName, gameSlug);
+        }
+
+        [Test]
+        [ExpectedException(typeof(ArgumentException))]
+        public void Slug_EmptyString_ExceptionThrown() {
+            // Arrange
+            string gameName = "Adventure & RPG";
+            string gameSlug = string.Empty;
 
             // Act
             GameCategory gameCategory = new GameCategory(gameName, gameSlug);

@@ -1,7 +1,7 @@
 ﻿using System;
 using Zed.Core.Utilities;
 
-namespace Zeega.Domain.Game {
+namespace Zeega.Domain.GameModel {
     /// <summary>
     /// Represents game category entity
     /// </summary>
@@ -20,27 +20,22 @@ namespace Zeega.Domain.Game {
         public virtual string Name {
             get { return name; }
             set {
-                if (value == null) throw new ArgumentNullException();
+                if (String.IsNullOrWhiteSpace(value)) throw new ArgumentException("Game category name must contain some value.");
 
                 name = value;
             }
         }
 
         /// <summary>
-        /// Game category slug
+        /// Game category slugValue
         /// </summary>
         private string slug;
 
         /// <summary>
-        /// Gets or Sets game category slug
+        /// Gets game category slugValue
         /// </summary>
         public virtual string Slug {
             get { return slug; }
-            set {
-                if(value == null) throw new ArgumentNullException();
-
-                slug = value.ToSlug();
-            }
         }
 
         /// <summary>
@@ -66,28 +61,36 @@ namespace Zeega.Domain.Game {
 
         /// <summary>
         /// Creates the instance of the GameCategory class with provided game category name
-        /// and automatticaly creates game category slug
+        /// and automatticaly creates game category slugValue
         /// </summary>
         /// <param name="name">Game category name</param>
         public GameCategory(string name) : this(name, name) { }
 
         /// <summary>
         /// Creates the instance of the GameCategory class with provided game category name
-        /// and slug.
+        /// and slugValue.
         /// </summary>
         /// <param name="name">Game category name</param>
-        /// <param name="slug">Game category slug</param>
+        /// <param name="slug">Game category slugValue</param>
         public GameCategory(string name, string slug) {
-            if (name == null) throw new ArgumentNullException();
-            if (slug == null) throw new ArgumentNullException();
-
-            this.name = name;
-            this.slug = slug.ToSlug();
+            Name = name;
+            SetSlug(slug);
         }
 
         #endregion
 
         #region Methods
+
+        /// <summary>
+        /// Sets provided argument to slug. If necessary provided argument is transformed
+        /// to slug form.
+        /// </summary>
+        /// <param name="slugValue">Slug value</param>
+        public void SetSlug(string slugValue) {
+            if (String.IsNullOrWhiteSpace(slugValue)) throw new ArgumentException("Game category slugValue must contain some value.");
+
+            slug = slugValue.ToSlug();
+        }
 
         #endregion
 

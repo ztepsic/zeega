@@ -1,0 +1,28 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using NUnit.Framework;
+
+namespace Zeega.Domain.Tests {
+    [TestFixture]
+    public class AppTenantTests {
+
+        #region Tests
+
+        [Test]
+        public void Ctr_WithParams_CreatedInstanceOfAppTenant() {
+            // Arrange
+            const string name = "Zeega";
+
+            // Act
+            var appTenant = new AppTenant();
+
+            // Assert
+        }
+
+        #endregion
+
+    }
+}
