@@ -12,7 +12,7 @@ namespace Zeega.Domain.Tests.GameModel {
         [Test]
         public void Ctor_WithParams_CreatesGame() {
             // Arrange
-            var appTenant = new AppTenant("Zeega", "en");
+            var appTenant = new AppTenant("Zeega", new LanguageCode("en"));
             const string gameName = "Angry birds";
 
             // Act
@@ -28,7 +28,7 @@ namespace Zeega.Domain.Tests.GameModel {
         [ExpectedException(typeof(ArgumentException))]
         public void SetShortDescription_InvalidNumberOfChars_ExceptionTrown() {
             // Arrange
-            var appTenant = new AppTenant("Zeega", "en");
+            var appTenant = new AppTenant("Zeega", new LanguageCode("en"));
             var game = new Game(appTenant, "Angry brids");
             const string shortDescription = @"Second installment of Freedom Tower - The Invasion with 6 new worlds, 
                 different weapons, allied troops, powerful bosses and much more. Our planet faces danger once more.
@@ -44,8 +44,8 @@ namespace Zeega.Domain.Tests.GameModel {
         [Test]
         public void AddTag_NewTag_NewTagAddedToTagList() {
             // Arrange
-            var tag = new Tag("Tower defence");
-            var appTenant = new AppTenant("Zeega", "en");
+            var appTenant = new AppTenant("Zeega", new LanguageCode("en"), true);
+            var tag = Tag.CreateTag("Tower defense", appTenant);
             var game = new Game(appTenant, "Angry birds");
 
             // Act
@@ -57,13 +57,29 @@ namespace Zeega.Domain.Tests.GameModel {
         }
 
         [Test]
+        [ExpectedException(typeof (ArgumentException))]
+        public void AddTag_NewTagWithDifferentLanguageCodeAsOfAppTenant_ArgumentExceptionThrown() {
+            // Arrange
+            var appTenantPrimary = new AppTenant("Zeega", new LanguageCode("en"), true);
+            var baseTag = Tag.CreateTag("Football", appTenantPrimary);
+            var appTenant = new AppTenant("ZeegaHR", new LanguageCode("hr"));
+            var tag = Tag.CreateTag("Nogomet", new LanguageCode("es"), baseTag);
+            var game = new Game(appTenant, "Angry birds");
+
+            // Act
+            game.AddTag(tag);
+
+            // Assert
+        }
+
+        [Test]
         public void RemoveTag_TagToBeRemoved_RemovedTagFromTagList() {
             // Arrange
-            var appTenant = new AppTenant("Zeega", "en");
+            var appTenant = new AppTenant("Zeega", new LanguageCode("en"), true);
             var game = new Game(appTenant, "Angry birds");
-            var tag1 = new Tag("Tower defence");
-            var tag2 = new Tag("Multiplayer");
-            var tag3 = new Tag("strategy");
+            var tag1 = Tag.CreateTag("Tower defense", appTenant);
+            var tag2 = Tag.CreateTag("Multiplayer", appTenant);
+            var tag3 = Tag.CreateTag("strategy", appTenant);
             game.AddTag(tag1);
             game.AddTag(tag2);
             game.AddTag(tag3);
@@ -81,7 +97,7 @@ namespace Zeega.Domain.Tests.GameModel {
         [ExpectedException(typeof(ArgumentException))]
         public void Height_InvalidHeight_ExceptionTrown() {
             // Arrange
-            var appTenant = new AppTenant("Zeega", "en");
+            var appTenant = new AppTenant("Zeega", new LanguageCode("en"));
 
             // Act
             var game = new Game(appTenant, "Angry birds");
@@ -93,7 +109,7 @@ namespace Zeega.Domain.Tests.GameModel {
         [ExpectedException(typeof(ArgumentException))]
         public void Width_InvalidWidth_ExceptionTrown() {
             // Arrange
-            var appTenant = new AppTenant("Zeega", "en");
+            var appTenant = new AppTenant("Zeega", new LanguageCode("en"));
 
             // Act
             var game = new Game(appTenant, "Angry birds");

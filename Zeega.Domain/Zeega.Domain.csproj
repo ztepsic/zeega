@@ -31,6 +31,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\packages\Iesi.Collections.3.2.0.1001\lib\Net35\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\packages\NHibernate.3.3.3.4001\lib\Net35\NHibernate.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,18 +51,23 @@
   <ItemGroup>
     <Compile Include="AppTenant.cs" />
     <Compile Include="Audit.cs" />
-    <Compile Include="GameModel\DeviceType.cs" />
+    <Compile Include="GameModel\DeviceTypeSupport.cs" />
     <Compile Include="GameModel\Game.cs" />
     <Compile Include="GameModel\GameCategory.cs" />
     <Compile Include="GameModel\GameSrcType.cs" />
     <Compile Include="GameModel\MediaRes.cs" />
     <Compile Include="GameModel\MochiGame.cs" />
     <Compile Include="GameModel\GameSrc.cs" />
+    <Compile Include="LanguageCode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tag.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GameModel\Game.cd" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AppTenant.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

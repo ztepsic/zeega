@@ -8,15 +8,6 @@ namespace Zeega.Domain {
     /// </summary>
     public class AppTenant : Entity {
 
-        #region Constants
-
-        /// <summary>
-        /// Two letter language code (ISO 639-1) pattern
-        /// </summary>
-        private const string TWO_LETTER_LANGUAGE_CODE_PATTERN = "^[a-zA-Z]{2}$";
-
-        #endregion
-
         #region Fields and Properties
 
         /// <summary>
@@ -40,27 +31,22 @@ namespace Zeega.Domain {
         /// Two letter language code (ISO 639-1) of the application tenant
         /// E.g. en, de, hr
         /// </summary>
-        private string languageCode;
+        private readonly LanguageCode languageCode;
 
         /// <summary>
-        /// Gets or Sets two letter language code (ISO 639-1) of the application tenant
+        /// Gets two letter language code (ISO 639-1) of the application tenant
         /// </summary>
-        public string LanguageCode {
-            get { return languageCode; }
-            set {
-                if(String.IsNullOrWhiteSpace(value)) throw new ArgumentException("Language code must contain some value.");
-                if (!new Regex(TWO_LETTER_LANGUAGE_CODE_PATTERN).IsMatch(value)) {
-                    throw new ArgumentException("Language code must be two letters code (ISO 639-1).");
-                }
-
-                languageCode = value.ToLower();
-            }
-        }
+        public LanguageCode LanguageCode { get { return languageCode; } }
 
         /// <summary>
-        /// Gets or Sets value that indicates the primary application tenant
+        /// Value that indicates the primary application tenant
         /// </summary>
-        public bool IsPrimary { get; set; }
+        private readonly bool isPrimary;
+
+        /// <summary>
+        /// Gets value that indicates the primary application tenant
+        /// </summary>
+        public bool IsPrimary { get { return isPrimary; } }
 
         /// <summary>
         /// Gets or Sets application tenant description
@@ -76,9 +62,22 @@ namespace Zeega.Domain {
         /// </summary>
         /// <param name="name">Tenant name</param>
         /// <param name="languageCode">Language code of the application tenatn</param>
-        public AppTenant(string name, string languageCode) {
+        public AppTenant(string name, LanguageCode languageCode) : this(name, languageCode, false) { }
+
+        /// <summary>
+        /// Creates a new instance of AppTenant class for the specified tenant name
+        /// </summary>
+        /// <param name="name">Tenant name</param>
+        /// <param name="languageCode">Language code of the application tenatn</param>
+        /// <param name="isPrimary">Value that indicates the primary application tenant</param>
+        public AppTenant(string name, LanguageCode languageCode, bool isPrimary) {
             Name = name;
-            LanguageCode = languageCode;
+
+            if (languageCode == null) throw new ArgumentNullException("languageCode", "LanguageCode must have some value");
+            this.languageCode = languageCode;
+
+            this.isPrimary = isPrimary;
+
         }
 
         #endregion

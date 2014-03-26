@@ -13,27 +13,12 @@ namespace Zeega.Domain.Tests {
             const string languageCode = "en";
 
             // Act
-            var appTenant = new AppTenant(name, languageCode);
+            var appTenant = new AppTenant(name, new LanguageCode(languageCode));
 
             // Assert
             Assert.IsNotNull(appTenant);
             Assert.AreEqual(name, appTenant.Name);
-            Assert.AreEqual(languageCode, appTenant.LanguageCode);
-        }
-
-        [Test]
-        public void LanguageCode_WithAllUpperCharacters_LanguageCodeWithAllLowerCharacters() {
-            // Arrange
-            const string name = "Zeega";
-            const string languageCode = "EN";
-
-            // Act
-            var appTenant = new AppTenant(name, languageCode);
-
-            // Assert
-            Assert.IsNotNull(appTenant);
-            Assert.AreEqual(name, appTenant.Name);
-            Assert.AreEqual(languageCode.ToLower(), appTenant.LanguageCode);
+            Assert.AreEqual(languageCode, appTenant.LanguageCode.Value);
         }
 
         #endregion

@@ -42,7 +42,7 @@ namespace Zeega.Domain.GameModel {
         public string Name {
             get { return name; }
             set {
-                if (String.IsNullOrWhiteSpace(value)) throw new ArgumentException("Game name must contain some value.");
+                if (String.IsNullOrWhiteSpace(value)) throw new ArgumentNullException("value", "Game name must contain some value.");
 
                 name = value;
             }
@@ -160,9 +160,9 @@ namespace Zeega.Domain.GameModel {
         public bool IsOnline { get; set; }
 
         /// <summary>
-        /// Gets or Sets device type
+        /// Gets or Sets device type support
         /// </summary>
-        public DeviceType DeviceType { get; set; }
+        public DeviceTypeSupport DeviceTypeSupport { get; set; }
 
         #endregion
 
@@ -193,7 +193,7 @@ namespace Zeega.Domain.GameModel {
         /// </summary>
         /// <param name="slugValue">Slug value</param>
         public void SetSlug(string slugValue) {
-            if (String.IsNullOrWhiteSpace(slugValue)) throw new ArgumentException("Game slug must contain some value.", "slugValue");
+            if (String.IsNullOrWhiteSpace(slugValue)) throw new ArgumentNullException("slugValue", "Game slug must contain some value.");
 
             slug = slugValue.ToSlug();
         }
@@ -204,6 +204,7 @@ namespace Zeega.Domain.GameModel {
         /// <param name="tag">Tag to be added</param>
         public void AddTag(Tag tag) {
             if(tag == null) throw new ArgumentNullException("tag");
+            if(!tag.LanguageCode.Equals(appTenant.LanguageCode)) throw new ArgumentException("Tag's language code is different from application tenant language code.");
 
             tags.Add(tag);
         }
