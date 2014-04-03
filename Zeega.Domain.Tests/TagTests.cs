@@ -7,26 +7,24 @@ namespace Zeega.Domain.Tests {
     public class TagTests {
 
         [Test]
-        public void CreateTag_WithPrimaryAppTenant_CreatedTag() {
+        public void CreateTag_WithDefaultLanguageCode_CreatedBaseTag() {
             // Arrange
-            var appTenant = new AppTenant("Zeega", new LanguageCode("en"), true);
             const string NAME = "Tower Defense";
 
             // Act
-            var tag = Tag.CreateTag(NAME, appTenant);
+            var tag = Tag.CreateBaseTag(NAME);
 
             // Assert
             Assert.IsNotNull(tag);
             Assert.AreEqual(NAME, tag.Name);
             Assert.AreEqual(NAME.ToSlug(), tag.Slug);
-            Assert.AreEqual(appTenant.LanguageCode, tag.LanguageCode);
+            Assert.AreEqual(LanguageCode.ENGLISH_TWO_LETTER_CODE, tag.LanguageCode);
         }
 
         [Test]
         public void CreateTag_WithBaseTag_CreatedTag() {
             // Arrange
-            var appTenant = new AppTenant("Zeega", new LanguageCode("en"), true);
-            var baseTag = Tag.CreateTag("Football", appTenant);
+            var baseTag = Tag.CreateBaseTag("Football");
             const string NAME = "Nogomet";
 
             // Act
@@ -44,8 +42,7 @@ namespace Zeega.Domain.Tests {
         [ExpectedException(typeof(ArgumentException))]
         public void CreateTag_WithFakeBaseTag_ArgumentExceptionThrown() {
             // Arrange
-            var appTenant = new AppTenant("Zeega", new LanguageCode("en"), true);
-            var baseTag = Tag.CreateTag("Football", appTenant);
+            var baseTag = Tag.CreateBaseTag("Football");
             const string NAME = "Nogomet";
             var fakeBasetag = Tag.CreateTag(NAME, new LanguageCode("hr"), baseTag);
 

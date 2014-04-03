@@ -1,79 +1,152 @@
-﻿using Zed.Core.Domain;
-using Zed.Core.Objects;
+﻿using System;
+using Zed.Core.Domain;
 
 namespace Zeega.Domain.GameModel {
     /// <summary>
-    /// Represents media resources like thubmnail, screenshots and video
+    /// Represents media resources like thubmnail, screenshots and video.
     /// </summary>
-    public class MediaRes {
+    public class MediaRes : Entity {
+
+        #region Constants
+
+        /// <summary>
+        /// Default order sequence
+        /// </summary>
+        public const short DEFAULT_ORDER_SEQUENCE = 1;
+
+        /// <summary>
+        /// Min width in pixels
+        /// </summary>
+        public const int MIN_WIDTH = 50;
+
+        /// <summary>
+        /// Min height in pixels
+        /// </summary>
+        public const int MIN_HEIGHT = 50;
+
+        #endregion
 
         #region Fields and Properties
 
         /// <summary>
-        /// Path to game's 100x100 thumbnail
+        /// Media resource type
         /// </summary>
-        public string ThumbnailUrl { get; set; }
+        private readonly MediaResType type;
 
         /// <summary>
-        /// Path to game's 200x200 thumbnail
+        /// Gets media resource type
         /// </summary>
-        public string ThumbnailLargeUrl { get; set; }
+        public MediaResType Type { get { return type; } }
 
         /// <summary>
-        /// Path to game's screenshot thumbnails 1. Clamped to 350px in width.
+        /// Thumbnail of media resource URI
         /// </summary>
-        public string Screenshoot1Thumbnail { get; set; }
+        private string thumbSrcUri;
 
         /// <summary>
-        /// Path to game's screenshots 1. No standard size.
+        /// Gets thubmnail of media resource URI
         /// </summary>
-        public string Screenshoot1Url { get; set; }
+        public string ThumbSrcUri {
+            get { return thumbSrcUri; }
+            set {
+                if (string.IsNullOrEmpty(value)) throw new ArgumentNullException("value", "Thumbnail of media resource URI can't be null or emtpy.");
+                if(srcUri.Equals(value) && type == MediaResType.Video) throw new ArgumentException("Thmubnail URI can't be equal to media resource URI in the case of Video type.");
+                thumbSrcUri = value;
+            }
+        }
 
         /// <summary>
-        /// Path to game's screenshot thumbnails 2. Clamped to 350px in width.
+        /// Thumbnail of media resource width in pixels
         /// </summary>
-        public string Screenshoot2Thumbnail { get; set; }
+        private int thumbSrcWidth;
 
         /// <summary>
-        /// Path to game's screenshots 2. No standard size.
+        /// Gets thumbnail of media resource width in pixels
         /// </summary>
-        public string Screenshoot2Url { get; set; }
+        public int ThumbSrcWidth {
+            get { return thumbSrcWidth; }
+            set {
+                if (value < MIN_WIDTH) throw new ArgumentException(String.Format("Thumbnail of media resource width must be greater or equal to {0} px.", MIN_WIDTH), "value");
+                thumbSrcWidth = value;
+            }
+        }
 
         /// <summary>
-        /// Path to game's screenshot thumbnails 3. Clamped to 350px in width.
+        /// Thumbnail media resource height in pixels
         /// </summary>
-        public string Screenshoot3Thumbnail { get; set; }
+        private int thumbSrcHeight;
 
         /// <summary>
-        /// Path to game's screenshots 3. No standard size.
+        /// Gets thumbnail media resource height in pixels
         /// </summary>
-        public string Screenshoot3Url { get; set; }
+        public int ThumbSrcHeight {
+            get { return thumbSrcHeight; }
+            set {
+                if (value < MIN_HEIGHT) throw new ArgumentException(String.Format("Media resource height must be greater or equal to {0} px.", MIN_HEIGHT), "value");
+                thumbSrcHeight = value;
+            }
+        }
 
         /// <summary>
-        /// Path to game's screenshot thumbnails 4. Clamped to 350px in width.
+        /// Media resource URI
         /// </summary>
-        public string Screenshoot4Thumbnail { get; set; }
+        private readonly string srcUri;
 
         /// <summary>
-        /// Path to game's screenshots 4. No standard size.
+        /// Gets media resource URI
         /// </summary>
-        public string Screenshoot4Url { get; set; }
+        public string SrcUri { get { return srcUri; } }
 
         /// <summary>
-        /// Path to game's gameplay video. Hosted on Vimeo, YouTube or WeGame.
+        /// Media resource width in pixels
         /// </summary>
-        public string VideoUrl { get; set; }
+        private readonly int srcWidth;
+
+        /// <summary>
+        /// Gets media resource width in pixels
+        /// </summary>
+        public int SrcWidth { get { return srcWidth; } }
+
+        /// <summary>
+        /// Media resource height in pixels
+        /// </summary>
+        private readonly int srcHeight;
+
+        /// <summary>
+        /// Gets media resource height in pixels
+        /// </summary>
+        public int SrcHeight { get { return srcHeight; } }
+
+        /// <summary>
+        /// MediaRes order sequence
+        /// </summary>
+        public short Sequence { get; set; }
 
         #endregion
 
         #region Constructors and Init
 
         /// <summary>
-        /// Creates instance of MediRes class with provided game thumbnail url
+        /// Creates instance of MediRes class with provided paremeters whare
+        /// sequence order is set to default value.
         /// </summary>
-        /// <param name="thumbnailUrl">Game thumbnail URL</param>
-        public MediaRes(string thumbnailUrl) {
-            ThumbnailUrl = thumbnailUrl;
+        /// <param name="srcUri">Media resource URI</param>
+        /// <param name="srcWidth">Media resource width</param>
+        /// /// <param name="srcHeight">Media resource height</param>
+        /// <param name="type">Media resource type</param>
+        public MediaRes(string srcUri, int srcWidth, int srcHeight, MediaResType type) {
+            if(string.IsNullOrEmpty(srcUri)) throw new ArgumentNullException("srcUri", "Media resource URI can't be null or emtpy.");
+            this.srcUri = srcUri;
+
+            if(srcWidth < MIN_WIDTH) throw new ArgumentException(String.Format("Media resource width must be greater or equal to {0} px.", MIN_WIDTH), "srcWidth");
+            this.srcWidth = srcWidth;
+
+            if (srcHeight < MIN_HEIGHT) throw new ArgumentException(String.Format("Media resource height must be greater or equal to {0} px.", MIN_HEIGHT), "srcHeight");
+            this.srcHeight = srcHeight;
+
+            this.type = type;
+
+            Sequence = DEFAULT_ORDER_SEQUENCE;
         }
 
         #endregion

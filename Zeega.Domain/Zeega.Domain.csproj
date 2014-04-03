@@ -54,8 +54,11 @@
     <Compile Include="GameModel\DeviceTypeSupport.cs" />
     <Compile Include="GameModel\Game.cs" />
     <Compile Include="GameModel\GameCategory.cs" />
+    <Compile Include="GameModel\GameCategoryMapping.cs" />
+    <Compile Include="GameModel\GameInstance.cs" />
     <Compile Include="GameModel\GameSrcType.cs" />
     <Compile Include="GameModel\MediaRes.cs" />
+    <Compile Include="GameModel\MediaResType.cs" />
     <Compile Include="GameModel\MochiGame.cs" />
     <Compile Include="GameModel\GameSrc.cs" />
     <Compile Include="LanguageCode.cs" />

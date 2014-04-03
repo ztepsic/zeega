@@ -61,6 +61,10 @@ namespace Zeega.Domain {
 
         #region Methods
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override string ToString() { return value; }
 
         #endregion

@@ -1,6 +1,14 @@
 use Zeega;
 go
 
+if(exists(select table_name
+		  from INFORMATION_SCHEMA.TABLES
+		  where TABLE_SCHEMA = 'App'
+		  and	TABLE_NAME = 'AppTenants')
+)
+	drop table App.AppTenants;
+go
+
 create table App.AppTenants (
 	Id int identity(1, 1)
 		constraint PK_AppTenant_Id primary key

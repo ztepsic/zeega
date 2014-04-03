@@ -1,6 +1,14 @@
 use Zeega;
 go
 
+if(exists(select table_name
+		  from INFORMATION_SCHEMA.TABLES
+		  where TABLE_SCHEMA = 'Game'
+		  and	TABLE_NAME = 'GameCategories')
+)
+	drop table Game.GameCategories;
+go
+
 create table Game.GameCategories (
 	Id int identity(1, 1) 
 		constraint PK_GameCat_Id primary key

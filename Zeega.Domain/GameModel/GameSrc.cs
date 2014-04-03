@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Zed.Core.Domain;
 
 namespace Zeega.Domain.GameModel {
     /// <summary>
-    /// GameSrc is a entity that represents game source
+    /// GameSrc class that represents a game source
     /// </summary>
     public class GameSrc : Entity {
 
@@ -55,6 +57,27 @@ namespace Zeega.Domain.GameModel {
         /// </summary>
         public string SrcUri { get { return srcUri; } }
 
+        /// <summary>
+        /// Gets or Sets the indicator if game source is online/live (true) or offline (false)
+        /// </summary>
+        public bool IsSrcOnline { get; set; }
+
+        /// <summary>
+        /// List of media resources
+        /// </summary>
+        private readonly IList<MediaRes> mediaResources;
+
+        /// <summary>
+        /// Gets list of media resources
+        /// </summary>
+        public IList<MediaRes> SesondaryCategories {
+            get { return new ReadOnlyCollection<MediaRes>(mediaResources); }
+        }
+
+        /// <summary>
+        /// Gets or Sets device type support
+        /// </summary>
+        public DeviceTypeSupport DeviceTypeSupport { get; set; }
 
         /// <summary>
         /// Game source type
@@ -68,12 +91,6 @@ namespace Zeega.Domain.GameModel {
             get { return srcType; }
         }
 
-
-        /// <summary>
-        /// Gets or Sets indication if game source is live
-        /// </summary>
-        public bool IsLive { get; internal set; }
-
         #endregion
 
         #region Constructors and Init
@@ -81,10 +98,10 @@ namespace Zeega.Domain.GameModel {
         /// <summary>
         /// Creates swf resource based on provided parameters.
         /// </summary>
-        /// <param name="width">width of the swf resource</param>
-        /// <param name="height">height of the swf resource</param>
-        /// <param name="srcUri">swf resource uri</param>
-        /// <param name="srcType">game source type</param>
+        /// <param name="width">Width of the swf resource</param>
+        /// <param name="height">Height of the swf resource</param>
+        /// <param name="srcUri">Game resource uri</param>
+        /// <param name="srcType">Game source type</param>
         public GameSrc(int width, int height, string srcUri, GameSrcType srcType) {
             if (width < MIN_WIDTH) { throw new ArgumentException(String.Format("Provided width is to small. Minimum allowed swf width is {0}", MIN_WIDTH)); }
             if (height < MIN_HEIGHT) { throw new ArgumentException(String.Format("Provided height is to small. Minimum allowed swf height is {0}", MIN_HEIGHT)); }
@@ -92,11 +109,34 @@ namespace Zeega.Domain.GameModel {
             this.height = height;
             this.srcUri = srcUri;
             this.srcType = srcType;
+
+            mediaResources = new List<MediaRes>();
         }
 
         #endregion
 
         #region Methods
+
+        /// <summary>
+        /// Adds media resource
+        /// </summary>
+        /// <param name="mediaRes">Media resource to be added</param>
+        public void AddMediaRes(MediaRes mediaRes) {
+            if (mediaRes == null) throw new ArgumentNullException("mediaRes", "Media resource can't be null.");
+            if (mediaResources.Contains(mediaRes)) throw new ArgumentException("Media resource is already added.", "mediaRes");
+
+            mediaResources.Add(mediaRes);
+        }
+
+        /// <summary>
+        /// Removes media resource
+        /// </summary>
+        /// <param name="mediaRes">Media resource to be removed</param>
+        /// <returns>true if removal was successful, otherwise false</returns>
+        public bool RemoveTag(MediaRes mediaRes) {
+            return mediaResources.Remove(mediaRes);
+        }
+
         #endregion
 
     }

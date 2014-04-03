@@ -48,7 +48,9 @@
   <ItemGroup>
     <Compile Include="AppTenantTests.cs" />
     <Compile Include="GameModel\GameCategoryTests.cs" />
+    <Compile Include="GameModel\GameInstanceTests.cs" />
     <Compile Include="GameModel\GameTests.cs" />
+    <Compile Include="GameModel\MediaResTests.cs" />
     <Compile Include="LanguageCodeTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TagTests.cs" />

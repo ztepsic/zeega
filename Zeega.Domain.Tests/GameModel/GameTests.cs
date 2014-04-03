@@ -12,95 +12,23 @@ namespace Zeega.Domain.Tests.GameModel {
         [Test]
         public void Ctor_WithParams_CreatesGame() {
             // Arrange
-            var appTenant = new AppTenant("Zeega", new LanguageCode("en"));
             const string gameName = "Angry birds";
 
             // Act
-            var game = new Game(appTenant, gameName);
+            var game = new Game(gameName);
 
             // Assert
             Assert.AreEqual(gameName, game.Name);
-            Assert.AreEqual("angry-birds", game.Slug);
 
-        }
-
-        [Test]
-        [ExpectedException(typeof(ArgumentException))]
-        public void SetShortDescription_InvalidNumberOfChars_ExceptionTrown() {
-            // Arrange
-            var appTenant = new AppTenant("Zeega", new LanguageCode("en"));
-            var game = new Game(appTenant, "Angry brids");
-            const string shortDescription = @"Second installment of Freedom Tower - The Invasion with 6 new worlds, 
-                different weapons, allied troops, powerful bosses and much more. Our planet faces danger once more.
-                Second installment of Freedom Tower - The Invasion with 6 new worlds, 
-                different weapons, allied troops, powerful bosses and much more. Our planet faces danger once more.";
-
-            // Act
-            game.ShortDescription = shortDescription;
-
-            // Assert
-        }
-
-        [Test]
-        public void AddTag_NewTag_NewTagAddedToTagList() {
-            // Arrange
-            var appTenant = new AppTenant("Zeega", new LanguageCode("en"), true);
-            var tag = Tag.CreateTag("Tower defense", appTenant);
-            var game = new Game(appTenant, "Angry birds");
-
-            // Act
-            game.AddTag(tag);
-
-            // Assert
-            Assert.AreEqual(1, game.Tags.Count());
-            Assert.AreEqual(tag, game.Tags[0]);
-        }
-
-        [Test]
-        [ExpectedException(typeof (ArgumentException))]
-        public void AddTag_NewTagWithDifferentLanguageCodeAsOfAppTenant_ArgumentExceptionThrown() {
-            // Arrange
-            var appTenantPrimary = new AppTenant("Zeega", new LanguageCode("en"), true);
-            var baseTag = Tag.CreateTag("Football", appTenantPrimary);
-            var appTenant = new AppTenant("ZeegaHR", new LanguageCode("hr"));
-            var tag = Tag.CreateTag("Nogomet", new LanguageCode("es"), baseTag);
-            var game = new Game(appTenant, "Angry birds");
-
-            // Act
-            game.AddTag(tag);
-
-            // Assert
-        }
-
-        [Test]
-        public void RemoveTag_TagToBeRemoved_RemovedTagFromTagList() {
-            // Arrange
-            var appTenant = new AppTenant("Zeega", new LanguageCode("en"), true);
-            var game = new Game(appTenant, "Angry birds");
-            var tag1 = Tag.CreateTag("Tower defense", appTenant);
-            var tag2 = Tag.CreateTag("Multiplayer", appTenant);
-            var tag3 = Tag.CreateTag("strategy", appTenant);
-            game.AddTag(tag1);
-            game.AddTag(tag2);
-            game.AddTag(tag3);
-
-            // Act
-            var isTagRemoved = game.RemoveTag(tag2);
-            
-            // Assert
-            Assert.AreEqual(2, game.Tags.Count());
-            Assert.IsTrue(isTagRemoved);
-            Assert.IsFalse(game.Tags.Contains(tag2));
         }
 
         [Test]
         [ExpectedException(typeof(ArgumentException))]
         public void Height_InvalidHeight_ExceptionTrown() {
             // Arrange
-            var appTenant = new AppTenant("Zeega", new LanguageCode("en"));
 
             // Act
-            var game = new Game(appTenant, "Angry birds");
+            var game = new Game("Angry birds");
 
             // Assert
         }
@@ -109,10 +37,9 @@ namespace Zeega.Domain.Tests.GameModel {
         [ExpectedException(typeof(ArgumentException))]
         public void Width_InvalidWidth_ExceptionTrown() {
             // Arrange
-            var appTenant = new AppTenant("Zeega", new LanguageCode("en"));
 
             // Act
-            var game = new Game(appTenant, "Angry birds");
+            var game = new Game("Angry birds");
 
             // Assert
         }

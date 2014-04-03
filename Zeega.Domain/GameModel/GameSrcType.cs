@@ -6,11 +6,11 @@
         /// <summary>
         /// Flash game source type
         /// </summary>
-        Swf,
+        Swf = 1,
 
         /// <summary>
         /// Html5 game source type
         /// </summary>
-        Html5
+        Html5 = 2
     }
 }

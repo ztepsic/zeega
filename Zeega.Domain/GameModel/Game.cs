@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using Zed.Core.Domain;
-using Zed.Core.Utilities;
 
 namespace Zeega.Domain.GameModel {
     /// <summary>
@@ -10,26 +7,7 @@ namespace Zeega.Domain.GameModel {
     /// </summary>
     public class Game : Entity {
 
-        #region Constants
-
-        /// <summary>
-        /// Maximum number of charecters for short description
-        /// </summary>
-        public const int MAX_CHARS_FOR_SHORT_DESCRIPTION = 300;
-
-        #endregion
-
         #region Fields and Properties
-
-        /// <summary>
-        /// Application tenant that owns this game instance
-        /// </summary>
-        private readonly AppTenant appTenant;
-
-        /// <summary>
-        /// Gets application tenant that owns this game instance
-        /// </summary>
-        public AppTenant AppTenant { get { return appTenant; } }
 
         /// <summary>
         /// Game's name
@@ -49,19 +27,14 @@ namespace Zeega.Domain.GameModel {
         }
 
         /// <summary>
-        /// Unique text slug
+        /// Gets or Sets game external/original Id
         /// </summary>
-        private string slug;
+        public string ExternalId { get; set; }
 
         /// <summary>
-        /// Gets unique text slug
+        /// Game categories
         /// </summary>
-        public string Slug { get { return slug; } }
-
-        /// <summary>
-        /// Primary game category
-        /// </summary>
-        public GameCategory Category { get; set; }
+        public string Categories { get; set; }
 
         /// <summary>
         /// Gets or Sets the full text description of the game
@@ -69,25 +42,9 @@ namespace Zeega.Domain.GameModel {
         public string Description { get; set; }
 
         /// <summary>
-        /// Short text description of the game
-        /// Includes up to 300 characters.
-        /// </summary>
-        private string shortDescription;
-
-        /// <summary>
         /// Gets or Sets short text description of game.
-        /// Includes up to 300 characters.
         /// </summary>
-        public string ShortDescription {
-            get { return shortDescription; }
-            set {
-                if (value != null && value.Length > MAX_CHARS_FOR_SHORT_DESCRIPTION) {
-                    throw new ArgumentException(String.Format("Short description must have total lenght up to {0} characters.", MAX_CHARS_FOR_SHORT_DESCRIPTION));
-                }
-
-                shortDescription = value;
-            }
-        }
+        public string ShortDescription { get; set; }
 
         /// <summary>
         /// Gets or Sets game instructions
@@ -95,10 +52,14 @@ namespace Zeega.Domain.GameModel {
         public string Instructions { get; set; }
 
         /// <summary>
-        /// JSON encoded key-value mapping of the games controls
-        /// TODO - create better controls mapping
+        /// Game controls
         /// </summary>
         public string Controls { get; set; }
+
+        /// <summary>
+        /// Gets list of game tags/keywords
+        /// </summary>
+        public string Tags { get; set; }
 
         /// <summary>
         /// Gets or Sets media resources of the game
@@ -112,27 +73,19 @@ namespace Zeega.Domain.GameModel {
         public GameSrc GameSrc { get; set; }
 
         /// <summary>
-        /// List of game tags/keywords
+        /// Game's provider
         /// </summary>
-        private readonly IList<Tag> tags;
+        public string Provider { get; set; }
 
         /// <summary>
-        /// Gets list of game tags/keywords
+        /// Game's provider URL
         /// </summary>
-        public IList<Tag> Tags {
-            get { return new ReadOnlyCollection<Tag>(tags); }
-        }
+        public string ProviderUrl { get; set; }
 
         /// <summary>
         /// A URL where the game is located (the developer's or provider's site)
         /// </summary>
         public string ProviderGameUrl { get; set; }
-
-        /// <summary>
-        /// Gets or sets flag that indicates relative path usage
-        /// for media files
-        /// </summary>
-        public bool UseRelativePath { get; set; }
 
         /// <summary>
         /// Game author
@@ -145,24 +98,19 @@ namespace Zeega.Domain.GameModel {
         public string AuthorUrl { get; set; }
 
         /// <summary>
+        /// URL of a zip package containing the thumb, game SWF, and meta data
+        /// </summary>
+        public string ZipUrl { get; set; }
+
+        /// <summary>
+        /// Gets or Sets the indicator that indicates whether the zip archive was downloaded
+        /// </summary>
+        public bool IsZipDownloaded { get; set; }
+
+        /// <summary>
         /// Game audit
         /// </summary>
         public Audit Audit { get; set; }
-
-        /// <summary>
-        /// Indicates if game is published (true) or not (false)
-        /// </summary>
-        public bool IsPublished { get; set; }
-
-        /// <summary>
-        /// Indicates if game is online/working (true) or not (false)
-        /// </summary>
-        public bool IsOnline { get; set; }
-
-        /// <summary>
-        /// Gets or Sets device type support
-        /// </summary>
-        public DeviceTypeSupport DeviceTypeSupport { get; set; }
 
         #endregion
 
@@ -171,52 +119,14 @@ namespace Zeega.Domain.GameModel {
         /// <summary>
         /// Creates instance of Game class with provded paramaters.
         /// </summary>
-        /// <param name="appTenant">Application tenant that owns this game</param>
         /// <param name="name">Game name</param>
-        public Game(AppTenant appTenant, string name) {
-            if (appTenant == null) throw new ArgumentNullException("appTenant", "Application tenant can't be null.");
-
-            this.appTenant = appTenant;
+        public Game(string name) {
             Name = name;
-            SetSlug(Name);
-
-            tags = new List<Tag>();
         }
 
         #endregion
 
         #region Methods
-
-        /// <summary>
-        /// Sets provided argument to slug. If necessary provided argument is transformed
-        /// to slug form.
-        /// </summary>
-        /// <param name="slugValue">Slug value</param>
-        public void SetSlug(string slugValue) {
-            if (String.IsNullOrWhiteSpace(slugValue)) throw new ArgumentNullException("slugValue", "Game slug must contain some value.");
-
-            slug = slugValue.ToSlug();
-        }
-
-        /// <summary>
-        /// Adds tag to game tags
-        /// </summary>
-        /// <param name="tag">Tag to be added</param>
-        public void AddTag(Tag tag) {
-            if(tag == null) throw new ArgumentNullException("tag");
-            if(!tag.LanguageCode.Equals(appTenant.LanguageCode)) throw new ArgumentException("Tag's language code is different from application tenant language code.");
-
-            tags.Add(tag);
-        }
-
-        /// <summary>
-        /// Removes tag from game tags
-        /// </summary>
-        /// <param name="tag">Tag to be removed</param>
-        /// <returns>true if removal was successful, otherwise false</returns>
-        public bool RemoveTag(Tag tag) {
-            return tags.Remove(tag);
-        }
 
         #endregion
 

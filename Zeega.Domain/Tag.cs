@@ -58,20 +58,12 @@ namespace Zeega.Domain {
         #region Constructors and Init
 
         /// <summary>
-        /// Creates instance of Tag class with provided tag name.
-        /// Slug is automatticaly generated based on tag name.
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="languageCode">two letter language code (ISO 639-1) of the tag</param>
-        internal Tag(string name, LanguageCode languageCode) : this(name, name, languageCode) { }
-
-        /// <summary>
         /// Creates instance of Tag class with provided tag name and slug
         /// </summary>
         /// <param name="name">Tag name</param>
         /// <param name="slug">Tag slug</param>
         /// <param name="languageCode">two letter language code (ISO 639-1) of the tag</param>
-        internal Tag(string name, string slug, LanguageCode languageCode) {
+        private Tag(string name, string slug, LanguageCode languageCode) {
             Name = name;
             SetSlug(slug);
 
@@ -116,27 +108,22 @@ namespace Zeega.Domain {
         }
 
         /// <summary>
-        /// Creates tag based on primary application tenant.
-        /// Tag will have language code as the primary application tenat has.
+        /// Creates instance of Tag class with provided tag name on English language.
+        /// Slug is automatically generated based on tag name.
         /// </summary>
-        /// <param name="name">Tag name</param>
-        /// <param name="slug">Tag slug</param>
-        /// <param name="appTenant">Primary application tenant</param>
-        /// <returns>Created tag</returns>
-        public static Tag CreateTag(string name, string slug, AppTenant appTenant) {
-            if(!appTenant.IsPrimary) throw new ArgumentException("AppTenant must be primary");
-            return new Tag(name, slug, appTenant.LanguageCode);
+        /// <param name="name">Tag name on English.</param>
+        public static Tag CreateBaseTag(string name) {
+            return new Tag(name, name, new LanguageCode(LanguageCode.ENGLISH_TWO_LETTER_CODE));
         }
 
         /// <summary>
-        /// Creates tag based on primary application tenant.
-        /// Tag will have language code as the primary application tenat has.
+        /// Creates instance of Tag class with provided tag name and slug on English.
         /// </summary>
-        /// <param name="name">Tag name</param>
-        /// <param name="appTenant">Primary application tenant</param>
-        /// <returns>Created tag</returns>
-        public static Tag CreateTag(string name, AppTenant appTenant) { return CreateTag(name, name, appTenant); }
-
+        /// <param name="name">Tag name on English</param>
+        /// <param name="slug">Tag slug</param>
+        public static Tag CreateBaseTag(string name, string slug) {
+            return new Tag(name, slug, new LanguageCode(LanguageCode.ENGLISH_TWO_LETTER_CODE));
+        } 
 
         /// <summary>
         /// Creates tag with reference to base tag.
@@ -162,7 +149,9 @@ namespace Zeega.Domain {
         /// <param name="languageCode">Language code of tag</param>
         /// <param name="baseTag">Base tag</param>
         /// <returns>Created tag</returns>
-        public static Tag CreateTag(string name, LanguageCode languageCode, Tag baseTag) { return CreateTag(name, name, languageCode, baseTag); }
+        public static Tag CreateTag(string name, LanguageCode languageCode, Tag baseTag) {
+            return CreateTag(name, name, languageCode, baseTag);
+        }
 
         #endregion
 
