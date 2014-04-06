@@ -122,6 +122,11 @@ namespace Zeega.Domain.GameModel {
         /// </summary>
         public short Sequence { get; set; }
 
+        /// <summary>
+        /// Gets or Sets indicator which indicate is media resource active
+        /// </summary>
+        public bool IsActive { get; set; }
+
         #endregion
 
         #region Constructors and Init
@@ -134,7 +139,7 @@ namespace Zeega.Domain.GameModel {
         /// <param name="srcWidth">Media resource width</param>
         /// /// <param name="srcHeight">Media resource height</param>
         /// <param name="type">Media resource type</param>
-        public MediaRes(string srcUri, int srcWidth, int srcHeight, MediaResType type) {
+        internal MediaRes(string srcUri, int srcWidth, int srcHeight, MediaResType type) {
             if(string.IsNullOrEmpty(srcUri)) throw new ArgumentNullException("srcUri", "Media resource URI can't be null or emtpy.");
             this.srcUri = srcUri;
 

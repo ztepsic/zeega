@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Zed.Core.Domain;
 
 namespace Zeega.Domain.GameModel {
@@ -62,10 +64,17 @@ namespace Zeega.Domain.GameModel {
         public string Tags { get; set; }
 
         /// <summary>
+        /// List of media resources
+        /// </summary>
+        private readonly IList<MediaRes> mediaResources;
+
+        /// <summary>
         /// Gets or Sets media resources of the game
         /// like thumbnails, screenshots and video
         /// </summary>
-        public MediaRes MediaRes { get; set; }
+        public IList<MediaRes> MediaResources {
+            get { return new ReadOnlyCollection<MediaRes>(mediaResources); }
+        }
 
         /// <summary>
         /// Gets or Sets game source
@@ -122,11 +131,48 @@ namespace Zeega.Domain.GameModel {
         /// <param name="name">Game name</param>
         public Game(string name) {
             Name = name;
+
+            mediaResources = new List<MediaRes>();
         }
 
         #endregion
 
         #region Methods
+
+        /// <summary>
+        /// Creates and adds media resource to game source.
+        /// </summary>
+        /// <param name="srcUri">Media resource URI</param>
+        /// <param name="srcWidth">Media resource width</param>
+        /// <param name="srcHeight">Media resource height</param>
+        /// <param name="type">Media resource type</param>
+        public MediaRes CreateMediaResource(string srcUri, int srcWidth, int srcHeight, MediaResType type) {
+            var mediaRes = new MediaRes(srcUri, srcWidth, srcHeight, type) {
+                Sequence = (short)(mediaResources.Count + 1)
+            };
+            mediaResources.Add(mediaRes);
+
+            return mediaRes;
+        }
+
+        /// <summary>
+        /// Removes media resource
+        /// </summary>
+        /// <param name="mediaRes">Media resource to be removed</param>
+        /// <returns>true if removal was successful, otherwise false</returns>
+        public bool RemoveMediaResource(MediaRes mediaRes) {
+            var isRemoved = mediaResources.Remove(mediaRes);
+
+            if (isRemoved) {
+                // Reorder sequence ordering
+                short sequence = 0;
+                foreach (var mediaResource in mediaResources) {
+                    mediaResource.Sequence = ++sequence;
+                }
+            }
+
+            return isRemoved;
+        }
 
         #endregion
 

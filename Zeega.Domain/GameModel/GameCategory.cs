@@ -51,7 +51,7 @@ namespace Zeega.Domain.GameModel {
         /// <summary>
         /// Game category order sequence
         /// </summary>
-        public short Sequence { get; set; }
+        public short Sequence { get; internal set; }
 
         /// <summary>
         /// Full text description of the game category
@@ -92,6 +92,8 @@ namespace Zeega.Domain.GameModel {
             this.appTenant = appTenant;
             Name = name;
             SetSlug(slug);
+
+            Sequence = 0;
         }
 
         #endregion

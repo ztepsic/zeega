@@ -18,7 +18,7 @@ namespace Zeega.Domain.Tests {
             Assert.IsNotNull(tag);
             Assert.AreEqual(NAME, tag.Name);
             Assert.AreEqual(NAME.ToSlug(), tag.Slug);
-            Assert.AreEqual(LanguageCode.ENGLISH_TWO_LETTER_CODE, tag.LanguageCode);
+            Assert.AreEqual(LanguageCode.ENGLISH_TWO_LETTER_CODE, tag.LanguageCode.ToString());
         }
 
         [Test]

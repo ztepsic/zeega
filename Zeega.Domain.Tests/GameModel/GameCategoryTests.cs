@@ -22,7 +22,7 @@ namespace Zeega.Domain.Tests.GameModel {
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentException))]
+        [ExpectedException(typeof(ArgumentNullException))]
         public void Slug_NullString_ExceptionThrown() {
             // Arrange
             var appTenant = new AppTenant("Zeega", new LanguageCode("en"), true);
@@ -34,7 +34,7 @@ namespace Zeega.Domain.Tests.GameModel {
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentException))]
+        [ExpectedException(typeof(ArgumentNullException))]
         public void Slug_WhiteSpaceString_ExceptionThrown() {
             // Arrange
             var appTenant = new AppTenant("Zeega", new LanguageCode("en"));
@@ -46,7 +46,7 @@ namespace Zeega.Domain.Tests.GameModel {
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentException))]
+        [ExpectedException(typeof(ArgumentNullException))]
         public void Slug_EmptyString_ExceptionThrown() {
             // Arrange
             var appTenant = new AppTenant("Zeega", new LanguageCode("en"));

@@ -55,6 +55,7 @@
     <Compile Include="GameModel\Game.cs" />
     <Compile Include="GameModel\GameCategory.cs" />
     <Compile Include="GameModel\GameCategoryMapping.cs" />
+    <Compile Include="GameModel\GameCategorySrv.cs" />
     <Compile Include="GameModel\GameInstance.cs" />
     <Compile Include="GameModel\GameSrcType.cs" />
     <Compile Include="GameModel\MediaRes.cs" />

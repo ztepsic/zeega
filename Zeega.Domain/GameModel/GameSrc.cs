@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using Zed.Core.Domain;
 
 namespace Zeega.Domain.GameModel {
     /// <summary>
     /// GameSrc class that represents a game source
     /// </summary>
-    public class GameSrc : Entity {
+    public class GameSrc {
 
         #region Constants
 
@@ -63,18 +60,6 @@ namespace Zeega.Domain.GameModel {
         public bool IsSrcOnline { get; set; }
 
         /// <summary>
-        /// List of media resources
-        /// </summary>
-        private readonly IList<MediaRes> mediaResources;
-
-        /// <summary>
-        /// Gets list of media resources
-        /// </summary>
-        public IList<MediaRes> SesondaryCategories {
-            get { return new ReadOnlyCollection<MediaRes>(mediaResources); }
-        }
-
-        /// <summary>
         /// Gets or Sets device type support
         /// </summary>
         public DeviceTypeSupport DeviceTypeSupport { get; set; }
@@ -110,32 +95,12 @@ namespace Zeega.Domain.GameModel {
             this.srcUri = srcUri;
             this.srcType = srcType;
 
-            mediaResources = new List<MediaRes>();
+            IsSrcOnline = true;
         }
 
         #endregion
 
         #region Methods
-
-        /// <summary>
-        /// Adds media resource
-        /// </summary>
-        /// <param name="mediaRes">Media resource to be added</param>
-        public void AddMediaRes(MediaRes mediaRes) {
-            if (mediaRes == null) throw new ArgumentNullException("mediaRes", "Media resource can't be null.");
-            if (mediaResources.Contains(mediaRes)) throw new ArgumentException("Media resource is already added.", "mediaRes");
-
-            mediaResources.Add(mediaRes);
-        }
-
-        /// <summary>
-        /// Removes media resource
-        /// </summary>
-        /// <param name="mediaRes">Media resource to be removed</param>
-        /// <returns>true if removal was successful, otherwise false</returns>
-        public bool RemoveTag(MediaRes mediaRes) {
-            return mediaResources.Remove(mediaRes);
-        }
 
         #endregion
 
