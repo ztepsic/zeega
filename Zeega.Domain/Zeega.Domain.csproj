@@ -73,7 +73,7 @@
     <Compile Include="Tag.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="GameModel\GameModel.cd" />
+    <None Include="Diagrams\GameModel.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
