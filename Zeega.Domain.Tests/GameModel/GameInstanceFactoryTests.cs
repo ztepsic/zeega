@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Moq;
 using NUnit.Framework;
 using Zeega.Domain.GameModel;
@@ -24,14 +20,14 @@ namespace Zeega.Domain.Tests.GameModel {
                 .AddTag(baseTag2);
 
             var appTenant2 = new AppTenant("OtkrijIgre", new LanguageCode(LanguageCode.CROATIAN_TWO_LETTER_CODE));
-            var gameInstance2Name = "Angry Birds New Instance";
+            const string gameInstance2Name = "Angry Birds New Instance";
 
             var tag1 = Tag.CreateTag("TagHR1", appTenant2.LanguageCode, baseTag1);
             var tag2 = Tag.CreateTag("TagHR2", appTenant2.LanguageCode, baseTag2);
 
             var tagsRepoMock = new Mock<ITagsRepository>();
             tagsRepoMock.Setup(tagsRepo => tagsRepo.GetTagsFor(gameInstance1.Tags, appTenant2.LanguageCode))
-                .Returns(new List<Tag>() { tag1, tag2 });
+                .Returns(new List<Tag> { tag1, tag2 });
 
             var gameInstanceFactory = new GameInstanceFactory(tagsRepoMock.Object);
 

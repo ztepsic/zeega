@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Zeega.Domain.GameModel {
-    interface IGamesRepository {
+﻿namespace Zeega.Domain.GameModel {
+    /// <summary>
+    /// Games repository interface
+    /// </summary>
+    public interface IGamesRepository {
     }
 }

@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Zeega.Domain {
-    interface IAppTenantsRepository {
+﻿namespace Zeega.Domain {
+    /// <summary>
+    /// Application tenant repository interface
+    /// </summary>
+    public interface IAppTenantsRepository {
     }
 }

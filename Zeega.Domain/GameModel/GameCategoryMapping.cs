@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Zed.Core.Domain;
-
-namespace Zeega.Domain.GameModel {
+﻿namespace Zeega.Domain.GameModel {
     /// <summary>
     /// Class that represents mapping between two GameCategories where
     /// each GameCategory has different <see cref="AppTenant"/>.
