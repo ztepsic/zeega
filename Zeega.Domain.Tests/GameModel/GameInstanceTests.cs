@@ -178,22 +178,5 @@ namespace Zeega.Domain.Tests.GameModel {
             Assert.IsFalse(gameInstance.SecondaryCategories.Contains(gameCategory2));
         }
 
-        [Test]
-        public void Create_ExistingGameInstance_NewGameInstanceWithCopiedValuesFromPassedGameArgument() {
-            // Arrange
-            var appTenant = new AppTenant("Zeega", new LanguageCode(LanguageCode.ENGLISH_TWO_LETTER_CODE));
-            var game = new Game("Angry Birds");
-            var gameInstance1 = new GameInstance(appTenant, game);
-
-            // Act
-            var gameInstance2 = GameInstance.Create(gameInstance1);
-
-            // Assert
-            Assert.IsNotNull(gameInstance2);
-            Assert.AreNotSame(gameInstance1, gameInstance2);
-            Assert.AreNotEqual(gameInstance1, gameInstance2);
-            Assert.AreEqual(gameInstance1.Name, gameInstance2.Name);
-        }
-
     }
 }

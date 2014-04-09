@@ -57,17 +57,23 @@
     <Compile Include="GameModel\GameCategoryMapping.cs" />
     <Compile Include="GameModel\GameCategorySrv.cs" />
     <Compile Include="GameModel\GameInstance.cs" />
+    <Compile Include="GameModel\GameInstanceFactory.cs" />
     <Compile Include="GameModel\GameSrcType.cs" />
+    <Compile Include="GameModel\IGameCategoriesRepository.cs" />
+    <Compile Include="GameModel\IGameInstancesRepository.cs" />
+    <Compile Include="GameModel\IGamesRepository.cs" />
     <Compile Include="GameModel\MediaRes.cs" />
     <Compile Include="GameModel\MediaResType.cs" />
     <Compile Include="GameModel\MochiGame.cs" />
     <Compile Include="GameModel\GameSrc.cs" />
+    <Compile Include="IAppTenantsRepository.cs" />
+    <Compile Include="ITagsRepository.cs" />
     <Compile Include="LanguageCode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tag.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="GameModel\Game.cd" />
+    <None Include="GameModel\GameModel.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

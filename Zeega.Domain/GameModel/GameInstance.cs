@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Security.Cryptography;
-using NHibernate.Mapping;
 using Zed.Core.Domain;
 using Zed.Core.Utilities;
 
@@ -37,6 +35,11 @@ namespace Zeega.Domain.GameModel {
         /// Game upon which is defined this game instance
         /// </summary>
         private readonly Game game;
+
+        /// <summary>
+        /// Gets game Id
+        /// </summary>
+        public int GameId { get { return game.Id; } }
 
         /// <summary>
         /// Game instance name
@@ -150,6 +153,16 @@ namespace Zeega.Domain.GameModel {
         /// </summary>
         public bool IsPublished { get; set; }
 
+        /// <summary>
+        /// Gets game source
+        /// </summary>
+        public GameSrc GameSrc { get { return game.GameSrc; } }
+
+        /// <summary>
+        /// Gets game's media resources
+        /// </summary>
+        public IList<MediaRes> MediaResources { get { return game.MediaResources; } }
+
         #endregion
 
         #region Constructors and Init
@@ -201,9 +214,17 @@ namespace Zeega.Domain.GameModel {
         /// Creates a new game instance based on existing game instance
         /// </summary>
         /// <param name="gameInstance">Game instance to make clone from</param>
+        /// <param name="appTenant">Application tenant which is expected to be different from one in provided game instance.</param>
+        /// <param name="gameInstanceName">Name of a new game instance</param>
         /// <returns>A new game instance with cloned vales based on provided game instance.</returns>
-        public static GameInstance Create(GameInstance gameInstance) {
-            throw new NotImplementedException();
+        internal static GameInstance CreateInstanceClone(GameInstance gameInstance, AppTenant appTenant, string gameInstanceName) {
+            var newGameInstance = new GameInstance(appTenant, gameInstance.game, gameInstanceName) {
+                Description = gameInstance.Description,
+                ShortDescription = gameInstance.ShortDescription,
+                Instructions = gameInstance.Instructions,
+                Controls = gameInstance.Controls
+            };
+            return newGameInstance;
         }
 
         /// <summary>
