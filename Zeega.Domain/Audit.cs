@@ -5,7 +5,7 @@ namespace Zeega.Domain {
     /// <summary>
     /// The value object that represents Audit data
     /// </summary>
-    public class Audit : ValueObject {
+    public class Audit {
 
         #region Fields and Properties
 
@@ -19,15 +19,11 @@ namespace Zeega.Domain {
         /// </summary>
         public DateTime Created { get { return created; } }
 
-        /// <summary>
-        /// Update date and time
-        /// </summary>
-        private readonly DateTime updated;
 
         /// <summary>
-        /// Gets update date and time
+        /// Gets or Sets update date and time
         /// </summary>
-        public DateTime Updated { get { return updated; } }
+        public DateTime Updated { get; set; }
 
         #endregion
 

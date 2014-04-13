@@ -13,6 +13,11 @@ namespace Zeega.Domain.GameModel {
         /// </summary>
         private readonly ITagsRepository tagsRepository;
 
+        /// <summary>
+        /// Game category mapping repository
+        /// </summary>
+        private readonly IGameCategoryMappingsRepository gameCategoryMappingsRepository;
+
 
         #endregion
 
@@ -22,8 +27,10 @@ namespace Zeega.Domain.GameModel {
         /// Creates game instance factory
         /// </summary>
         /// <param name="tagsRepository">Tags repository</param>
-        public GameInstanceFactory(ITagsRepository tagsRepository) {
+        /// <param name="gameCategoryMappingsRepository">Game category mapping repository</param>
+        public GameInstanceFactory(ITagsRepository tagsRepository, IGameCategoryMappingsRepository gameCategoryMappingsRepository) {
             this.tagsRepository = tagsRepository;
+            this.gameCategoryMappingsRepository = gameCategoryMappingsRepository;
         }
 
         #endregion
@@ -42,6 +49,16 @@ namespace Zeega.Domain.GameModel {
             var gameInstanceTags = tagsRepository.GetTagsFor(gameInstance.Tags, appTenant.LanguageCode);
             foreach (var gameInstanceTag in gameInstanceTags) {
                 newGameInstance.AddTag(gameInstanceTag);
+            }
+
+            var primaryCategory = gameCategoryMappingsRepository.GetMappedGameCategoryFrom(gameInstance.PrimaryCategory);
+            if (primaryCategory != null) {
+                newGameInstance.PrimaryCategory = primaryCategory;
+
+                var secondaryCategories = gameCategoryMappingsRepository.GetMappedGameCategoriesFrom(gameInstance.SecondaryCategories);
+                foreach (var secondaryCategory in secondaryCategories) {
+                    newGameInstance.AddSecondaryCategory(secondaryCategory);
+                }
             }
 
             return newGameInstance;

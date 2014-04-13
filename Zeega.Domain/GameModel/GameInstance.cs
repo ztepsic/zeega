@@ -163,6 +163,11 @@ namespace Zeega.Domain.GameModel {
         /// </summary>
         public IList<MediaRes> MediaResources { get { return game.MediaResources; } }
 
+        /// <summary>
+        /// Gets or Sets Audit
+        /// </summary>
+        public Audit Audit { get; set; }
+
         #endregion
 
         #region Constructors and Init

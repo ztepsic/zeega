@@ -76,6 +76,11 @@ namespace Zeega.Domain.GameModel {
             get { return srcType; }
         }
 
+        /// <summary>
+        /// Gets or Sets Audit
+        /// </summary>
+        public Audit Audit { get; set; }
+
         #endregion
 
         #region Constructors and Init
