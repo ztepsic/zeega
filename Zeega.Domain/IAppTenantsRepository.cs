@@ -1,7 +1,8 @@
-﻿namespace Zeega.Domain {
+﻿using Zed.Core.Domain;
+
+namespace Zeega.Domain {
     /// <summary>
     /// Application tenant repository interface
     /// </summary>
-    public interface IAppTenantsRepository {
-    }
+    public interface IAppTenantsRepository : ICrudRepository<AppTenant> { }
 }

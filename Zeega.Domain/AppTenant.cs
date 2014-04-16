@@ -35,7 +35,7 @@ namespace Zeega.Domain {
         /// <summary>
         /// Gets two letter language code (ISO 639-1) of the application tenant
         /// </summary>
-        public LanguageCode LanguageCode { get { return languageCode; } }
+        public virtual LanguageCode LanguageCode { get { return languageCode; } }
 
         /// <summary>
         /// Value that indicates the primary application tenant
@@ -45,7 +45,7 @@ namespace Zeega.Domain {
         /// <summary>
         /// Gets value that indicates the primary application tenant
         /// </summary>
-        public bool IsPrimary { get { return isPrimary; } }
+        public virtual bool IsPrimary { get { return isPrimary; } }
 
         /// <summary>
         /// Gets or Sets application tenant description
@@ -55,6 +55,11 @@ namespace Zeega.Domain {
         #endregion
 
         #region Constructors and Init
+
+        /// <summary>
+        /// Default constructor that creates a new instance of AppTenant class.
+        /// </summary>
+        protected AppTenant() { }
 
         /// <summary>
         /// Creates a new instance of AppTenant class for the specified tenant name

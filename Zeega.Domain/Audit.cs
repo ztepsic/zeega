@@ -35,7 +35,7 @@ namespace Zeega.Domain {
         /// <param name="created">Date of creation</param>
         public Audit(DateTime created) {
             this.created = created;
-            updated = created;
+            Updated = created;
         }
 
         #endregion

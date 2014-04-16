@@ -45,9 +45,15 @@ namespace Zeega.Domain {
         #region Consructors and Init
 
         /// <summary>
-        /// C
+        /// Default constructor.
+        /// Created for NHibernate support.
         /// </summary>
-        /// <param name="languageCode"></param>
+        private LanguageCode() { }
+
+        /// <summary>
+        /// Creates language code based on two letter language code string
+        /// </summary>
+        /// <param name="languageCode">Two letter language code</param>
         public LanguageCode(string languageCode) {
             if (String.IsNullOrWhiteSpace(languageCode)) throw new ArgumentNullException("languageCode", "Language code must contain some value.");
             if (!new Regex(TWO_LETTER_LANGUAGE_CODE_PATTERN).IsMatch(languageCode)) {
@@ -62,7 +68,7 @@ namespace Zeega.Domain {
         #region Methods
 
         /// <summary>
-        /// 
+        /// ToString
         /// </summary>
         /// <returns></returns>
         public override string ToString() { return value; }

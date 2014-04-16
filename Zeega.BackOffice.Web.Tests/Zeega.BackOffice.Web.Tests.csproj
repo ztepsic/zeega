@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4CF342C1-A8CA-476E-8E44-FA3C8D2DD44D}</ProjectGuid>
+    <ProjectGuid>{6F922D32-F21E-49D2-A30D-D58ABC693593}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Zeega.Domain.Tests</RootNamespace>
-    <AssemblyName>Zeega.Domain.Tests</AssemblyName>
+    <RootNamespace>Zeega.BackOffice.Web.Tests</RootNamespace>
+    <AssemblyName>Zeega.BackOffice.Web.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,12 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Moq">
-      <HintPath>..\packages\Moq.4.2.1402.2112\lib\net40\Moq.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework">
-      <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -44,32 +37,9 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Zed.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Zed.Core.1.0.0\lib\Zed.Core.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppTenantTests.cs" />
-    <Compile Include="GameModel\GameCategorySrvTests.cs" />
-    <Compile Include="GameModel\GameCategoryTests.cs" />
-    <Compile Include="GameModel\GameInstanceFactoryTests.cs" />
-    <Compile Include="GameModel\GameInstanceTests.cs" />
-    <Compile Include="GameModel\GameSrcTests.cs" />
-    <Compile Include="GameModel\GameTests.cs" />
-    <Compile Include="GameModel\MediaResTests.cs" />
-    <Compile Include="LanguageCodeTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TagTests.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Zeega.Domain\Zeega.Domain.csproj">
-      <Project>{a8e3ff82-4cd4-484d-9fcd-ab83eef6930a}</Project>
-      <Name>Zeega.Domain</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -162,6 +162,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
     </Reference>
+    <Reference Include="Zed.NHibernate.Web">
+      <HintPath>..\packages\Zed.NHibernate.Web.1.0.0\lib\Zed.NHibernate.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Zed.Web">
+      <HintPath>..\packages\Zed.Web.1.0.0\lib\Zed.Web.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Owin">
