@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="Dal\AppTenantsNhRepositoryTests.cs" />
     <Compile Include="Dal\SQLiteNHibernateTestFixture.cs" />
+    <Compile Include="Dal\TagsNhRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

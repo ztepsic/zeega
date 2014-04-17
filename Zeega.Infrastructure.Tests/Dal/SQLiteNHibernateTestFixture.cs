@@ -4,6 +4,7 @@ using NHibernate.Dialect;
 using NHibernate.Driver;
 using NUnit.Framework;
 using Zed.NHibernate.Test;
+using Zeega.Domain;
 
 namespace Zeega.Infrastructure.Tests.Dal {
     public class SQLiteNHibernateTestFixture : NHibernateTestFixture {
@@ -19,7 +20,7 @@ namespace Zeega.Infrastructure.Tests.Dal {
                 db.ConnectionString = CONNECTION_STRING;
             })
                 .SetProperty(Environment.CurrentSessionContextClass, "thread_static")
-                .AddAssembly("Zeega.Domain");
+                .AddAssembly(typeof(AppTenant).Assembly);
 
             var configProperties = Configuration.Properties;
             if (configProperties.ContainsKey(Environment.ConnectionStringName)) {

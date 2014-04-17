@@ -14,7 +14,7 @@ namespace Zeega.Infrastructure.Dal {
         #region Constructors and Init
         
         /// <summary>
-        /// Creates an instance of application tenants NHibernate repository
+        /// Creates an instance of NHibernate application tenants repository
         /// </summary>
         /// <param name="sessionFactory"></param>
         public AppTenantsNhRepository(ISessionFactory sessionFactory) : base(sessionFactory) { }

@@ -18,7 +18,7 @@ namespace Zeega.Domain {
         /// <summary>
         /// Gets or Sets tag name
         /// </summary>
-        public string Name {
+        public virtual string Name {
             get { return name; }
             set {
                 if (String.IsNullOrWhiteSpace(value)) throw new ArgumentNullException("value", "Tag name must contain some value.");
@@ -36,12 +36,12 @@ namespace Zeega.Domain {
         /// <summary>
         /// Gets or Sets tag slug
         /// </summary>
-        public string Slug { get { return slug; } }
+        public virtual string Slug { get { return slug; } }
 
         /// <summary>
         /// Gets or Sets two letter language code (ISO 639-1) of the tag
         /// </summary>
-        public LanguageCode LanguageCode { get; set; }
+        public virtual LanguageCode LanguageCode { get; protected set; }
 
         /// <summary>
         /// Base tag
@@ -51,11 +51,16 @@ namespace Zeega.Domain {
         /// <summary>
         /// Gets base tag.
         /// </summary>
-        public Tag BaseTag { get { return baseTag; }}
+        public virtual Tag BaseTag { get { return baseTag; }}
 
         #endregion
 
         #region Constructors and Init
+
+        /// <summary>
+        /// Default constructor that creates a new instance of Tag class.
+        /// </summary>
+        protected Tag() { }
 
         /// <summary>
         /// Creates instance of Tag class with provided tag name and slug
@@ -101,7 +106,7 @@ namespace Zeega.Domain {
         /// to slug form.
         /// </summary>
         /// <param name="slugValue">Slug value</param>
-        public void SetSlug(string slugValue) {
+        public virtual void SetSlug(string slugValue) {
             if (String.IsNullOrWhiteSpace(slugValue)) throw new ArgumentNullException("slugValue", "Tag slugValue must contain some value.");
 
             slug = slugValue.ToSlug();

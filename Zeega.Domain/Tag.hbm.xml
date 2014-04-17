@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="Zeega.Domain" namespace="Zeega.Domain">
+  <class name="Tag" table="Tagss" >
+    <id name="Id">
+      <generator class="native" />
+    </id>
+    <property name="name" column="Name" access="field" />
+    <property name="slug" column="Slug" access="field" />
+    <many-to-one name="baseTag" column="BaseTag" access="field" />
+    <component name="LanguageCode">
+      <property name="value" column="LanguageCode" access="field" />
+    </component>
+  </class>
+</hibernate-mapping>
