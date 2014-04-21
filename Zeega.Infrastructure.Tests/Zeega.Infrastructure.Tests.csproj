@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dal\AppTenantsNhRepositoryTests.cs" />
+    <Compile Include="Dal\GameModel\GameCategoriesNhRepositoryTests.cs" />
     <Compile Include="Dal\SQLiteNHibernateTestFixture.cs" />
     <Compile Include="Dal\TagsNhRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -83,9 +84,7 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Dal\GameModel\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="x64\SQLite.Interop.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

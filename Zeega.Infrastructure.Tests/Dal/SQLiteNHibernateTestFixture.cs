@@ -1,4 +1,5 @@
 ﻿using System.Data.SQLite;
+using NHibernate.Bytecode;
 using NHibernate.Cfg;
 using NHibernate.Dialect;
 using NHibernate.Driver;
@@ -13,13 +14,15 @@ namespace Zeega.Infrastructure.Tests.Dal {
 
         static SQLiteNHibernateTestFixture() {
             TestConnectionProvider.CreateConnectionFunc = connString => new SQLiteConnection(connString);
-            Configuration.DataBaseIntegration(db => {
-                db.Dialect<SQLiteDialect>();
-                db.Driver<SQLite20Driver>();
-                db.ConnectionProvider<TestConnectionProvider>();
-                db.ConnectionString = CONNECTION_STRING;
-            })
+            Configuration.Proxy(p => p.ProxyFactoryFactory<DefaultProxyFactoryFactory>())
+                .DataBaseIntegration(db => {
+                    db.Dialect<SQLiteDialect>();
+                    db.Driver<SQLite20Driver>();
+                    db.ConnectionProvider<TestConnectionProvider>();
+                    db.ConnectionString = CONNECTION_STRING;
+                })
                 .SetProperty(Environment.CurrentSessionContextClass, "thread_static")
+                .SetProperty("show_sql", "true")
                 .AddAssembly(typeof(AppTenant).Assembly);
 
             var configProperties = Configuration.Properties;

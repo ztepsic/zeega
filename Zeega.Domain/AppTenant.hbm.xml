@@ -4,11 +4,11 @@
 		<id name="Id">
 			<generator class="native" />
 		</id>
-    <property name="name" column="Name" access="field" />
-    <property name="Description" column="Description" />
-    <property name="isPrimary" column="IsPrimary" access="field" />
-    <component name="languageCode" access="field">
-      <property name="value" column="LanguageCode" access="field" />
+    <property name="Name" access="nosetter.camelcase" not-null="true" />
+    <property name="Description" />
+    <property name="IsPrimary" access="nosetter.camelcase" not-null="true" />
+    <component name="LanguageCode" access="nosetter.camelcase">
+      <property name="Value" column="LanguageCode" access="nosetter.camelcase" not-null="true" />
     </component>
 	</class>
 </hibernate-mapping>

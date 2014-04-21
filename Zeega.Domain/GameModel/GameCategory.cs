@@ -1,11 +1,12 @@
 ﻿using System;
+using Zed.Core.Domain;
 using Zed.Core.Utilities;
 
 namespace Zeega.Domain.GameModel {
     /// <summary>
     /// Represents game category entity
     /// </summary>
-    public class GameCategory {
+    public class GameCategory : Entity {
 
         #region Fields and Properties
 
@@ -17,7 +18,7 @@ namespace Zeega.Domain.GameModel {
         /// <summary>
         /// Gets application tenant that owns this game category instance
         /// </summary>
-        public AppTenant AppTenant { get { return appTenant; } }
+        public virtual AppTenant AppTenant { get { return appTenant; } }
 
         /// <summary>
         /// Game category name
@@ -51,7 +52,7 @@ namespace Zeega.Domain.GameModel {
         /// <summary>
         /// Game category order sequence
         /// </summary>
-        public short Sequence { get; internal set; }
+        public virtual short Sequence { get; protected internal set; }
 
         /// <summary>
         /// Full text description of the game category
@@ -72,6 +73,11 @@ namespace Zeega.Domain.GameModel {
         #endregion
 
         #region Constructors and init
+
+        /// <summary>
+        /// Default constructor that creates a new instance of GameCategory class.
+        /// </summary>
+        protected GameCategory() { }
 
         /// <summary>
         /// Creates the instance of the GameCategory class with provided game category name
@@ -105,7 +111,7 @@ namespace Zeega.Domain.GameModel {
         /// to slug form.
         /// </summary>
         /// <param name="slugValue">Slug value</param>
-        public void SetSlug(string slugValue) {
+        public virtual void SetSlug(string slugValue) {
             if (String.IsNullOrWhiteSpace(slugValue)) throw new ArgumentNullException("slugValue", "Game category slugValue must contain some value.");
 
             slug = slugValue.ToSlug();
