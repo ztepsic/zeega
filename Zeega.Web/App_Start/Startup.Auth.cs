@@ -4,8 +4,14 @@ using Microsoft.Owin.Security.Cookies;
 using Owin;
 
 namespace Zeega.Web {
+    /// <summary>
+    /// Startup partial class
+    /// </summary>
     public partial class Startup {
-        // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
+        /// <summary>
+        /// For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
+        /// </summary>
+        /// <param name="app"></param>
         public void ConfigureAuth(IAppBuilder app) {
             // Enable the application to use a cookie to store information for the signed in user
             app.UseCookieAuthentication(new CookieAuthenticationOptions {

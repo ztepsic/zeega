@@ -9,12 +9,20 @@ namespace Zeega.Web.Controllers {
     /// Game controler
     /// </summary>
     public class GameController : Controller {
-        //
-        // GET: /Game/
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Index() {
             return View();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="categorySlug"></param>
+        /// <returns></returns>
         public String Category(string categorySlug) {
             return categorySlug;
         }

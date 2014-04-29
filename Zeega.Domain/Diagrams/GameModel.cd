@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Zeega.Domain.GameModel.DeviceTypeSupport">
+    <Position X="14.5" Y="3.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAQABAAEAAQAAAAAAAAAA=</HashCode>
+      <FileName>GameModel\DeviceTypeSupport.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Zeega.Domain.GameModel.Game">
+    <Position X="7.25" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AQAIAAAAAIkkABAAgBCAAAQAAABMEkIAAAAgAAAACgA=</HashCode>
+      <FileName>GameModel\Game.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="GameSrc" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="MediaResources" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Zeega.Domain.GameModel.GameCategory" Collapsed="true">
+    <Position X="3" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAIAAAAgkAAAAAAAAAAQAAAAEAAAABAAAAAUAgAA=</HashCode>
+      <FileName>GameModel\GameCategory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Zeega.Domain.GameModel.GameInstance">
+    <Position X="2.75" Y="2.25" Width="3" />
+    <AssociationLine Name="PrimaryCategory" Type="Zeega.Domain.GameModel.GameCategory" FixedToPoint="true">
+      <Path>
+        <Point X="3.188" Y="2.25" />
+        <Point X="3.188" Y="1.062" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="SecondaryCategories" Type="Zeega.Domain.GameModel.GameCategory" FixedToPoint="true">
+      <Path>
+        <Point X="5.25" Y="2.25" />
+        <Point X="5.25" Y="1.062" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="AppTenant" Type="Zeega.Domain.AppTenant" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="2.75" Y="7.234" />
+        <Point X="1.5" Y="7.234" />
+        <Point X="1.5" Y="5.191" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>hgAIAIAAAJgkAAUQAAEgAAQAAQAsAkAIBABgABQAAAg=</HashCode>
+      <FileName>GameModel\GameInstance.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="game" />
+      <Property Name="PrimaryCategory" />
+      <Property Name="AppTenant" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="SecondaryCategories" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Zeega.Domain.GameModel.GameSrc">
+    <Position X="10.5" Y="3" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAARAAAAAQSQAAAEEQgABAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameModel\GameSrc.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="SrcType" />
+      <Property Name="DeviceTypeSupport" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Zeega.Domain.GameModel.MediaRes">
+    <Position X="10" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAIADEACAEQwAABAJAgAAAQgAAAEIAAg=</HashCode>
+      <FileName>GameModel\MediaRes.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Type" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Zeega.Domain.AppTenant" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAEAAAAgAAAAAAAAAAQAAAAEAAAAAAQAAAAEAAA=</HashCode>
+      <FileName>AppTenant.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Zeega.Domain.GameModel.GameSrcType" Collapsed="true">
+    <Position X="10.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>GameModel\GameSrcType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Zeega.Domain.GameModel.MediaResType" Collapsed="true">
+    <Position X="10" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAgAAAAAAg=</HashCode>
+      <FileName>GameModel\MediaResType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -2,8 +2,14 @@
 using System.Web.Optimization;
 
 namespace Zeega.Web {
+    /// <summary>
+    /// Bundle configuration
+    /// </summary>
     public class BundleConfig {
-        // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
+        /// <summary>
+        /// For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
+        /// </summary>
+        /// <param name="bundles"></param>
         public static void RegisterBundles(BundleCollection bundles) {
             bundles.Add(new ScriptBundle("~/assets/js/jquery").Include(
                         "~/assets/js/jquery-{version}.js"));
