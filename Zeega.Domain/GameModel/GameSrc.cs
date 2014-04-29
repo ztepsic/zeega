@@ -86,6 +86,11 @@ namespace Zeega.Domain.GameModel {
         #region Constructors and Init
 
         /// <summary>
+        /// Default constructor
+        /// </summary>
+        private GameSrc() { }
+
+        /// <summary>
         /// Creates swf resource based on provided parameters.
         /// </summary>
         /// <param name="width">Width of the swf resource</param>

@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using NHibernate.Criterion;
+using NHibernate.Mapping.ByCode;
+using NHibernate.Mapping.ByCode.Conformist;
+using Zeega.Domain;
+
+namespace Zeega.Infrastructure.Dal.NHibernate.ModelMapping {
+    public class AuditMapping : ComponentMapping<Audit> {
+        public AuditMapping() {
+            Property(x => x.Created,
+                m => {
+                    m.Access(Accessor.NoSetter);
+                    m.NotNullable(true);
+                });
+            Property(x => x.Updated,
+                m => {
+                    m.Access(Accessor.NoSetter);
+                    m.NotNullable(true);
+                });
+        }
+    }
+}

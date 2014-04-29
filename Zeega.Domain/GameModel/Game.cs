@@ -19,7 +19,7 @@ namespace Zeega.Domain.GameModel {
         /// <summary>
         /// Gets or Sets game's name
         /// </summary>
-        public string Name {
+        public virtual string Name {
             get { return name; }
             set {
                 if (String.IsNullOrWhiteSpace(value)) throw new ArgumentNullException("value", "Game name must contain some value.");
@@ -31,37 +31,37 @@ namespace Zeega.Domain.GameModel {
         /// <summary>
         /// Gets or Sets game external/original Id
         /// </summary>
-        public string ExternalId { get; set; }
+        public virtual string ExternalId { get; set; }
 
         /// <summary>
         /// Game categories
         /// </summary>
-        public string Categories { get; set; }
+        public virtual string Categories { get; set; }
 
         /// <summary>
         /// Gets or Sets the full text description of the game
         /// </summary>
-        public string Description { get; set; }
+        public virtual string Description { get; set; }
 
         /// <summary>
         /// Gets or Sets short text description of game.
         /// </summary>
-        public string ShortDescription { get; set; }
+        public virtual string ShortDescription { get; set; }
 
         /// <summary>
         /// Gets or Sets game instructions
         /// </summary>
-        public string Instructions { get; set; }
+        public virtual string Instructions { get; set; }
 
         /// <summary>
         /// Game controls
         /// </summary>
-        public string Controls { get; set; }
+        public virtual string Controls { get; set; }
 
         /// <summary>
         /// Gets list of game tags/keywords
         /// </summary>
-        public string Tags { get; set; }
+        public virtual string Tags { get; set; }
 
         /// <summary>
         /// List of media resources
@@ -72,58 +72,63 @@ namespace Zeega.Domain.GameModel {
         /// Gets or Sets media resources of the game
         /// like thumbnails, screenshots and video
         /// </summary>
-        public IList<MediaRes> MediaResources {
+        public virtual IList<MediaRes> MediaResources {
             get { return new ReadOnlyCollection<MediaRes>(mediaResources); }
         }
 
         /// <summary>
         /// Gets or Sets game source
         /// </summary>
-        public GameSrc GameSrc { get; set; }
+        public virtual GameSrc GameSrc { get; set; }
 
         /// <summary>
         /// Game's provider
         /// </summary>
-        public string Provider { get; set; }
+        public virtual string Provider { get; set; }
 
         /// <summary>
         /// Game's provider URL
         /// </summary>
-        public string ProviderUrl { get; set; }
+        public virtual string ProviderUrl { get; set; }
 
         /// <summary>
         /// A URL where the game is located (the developer's or provider's site)
         /// </summary>
-        public string ProviderGameUrl { get; set; }
+        public virtual string ProviderGameUrl { get; set; }
 
         /// <summary>
         /// Game author
         /// </summary>
-        public string Author { get; set; }
+        public virtual string Author { get; set; }
 
         /// <summary>
         /// Game author URL
         /// </summary>
-        public string AuthorUrl { get; set; }
+        public virtual string AuthorUrl { get; set; }
 
         /// <summary>
         /// URL of a zip package containing the thumb, game SWF, and meta data
         /// </summary>
-        public string ZipUrl { get; set; }
+        public virtual string ZipUrl { get; set; }
 
         /// <summary>
         /// Gets or Sets the indicator that indicates whether the zip archive was downloaded
         /// </summary>
-        public bool IsZipDownloaded { get; set; }
+        public virtual bool IsZipDownloaded { get; set; }
 
         /// <summary>
         /// Game audit
         /// </summary>
-        public Audit Audit { get; set; }
+        public virtual Audit Audit { get; set; }
 
         #endregion
 
         #region Constructors and Init
+
+        /// <summary>
+        /// Default contructor
+        /// </summary>
+        protected Game() { }
 
         /// <summary>
         /// Creates instance of Game class with provded paramaters.
@@ -146,7 +151,7 @@ namespace Zeega.Domain.GameModel {
         /// <param name="srcWidth">Media resource width</param>
         /// <param name="srcHeight">Media resource height</param>
         /// <param name="type">Media resource type</param>
-        public MediaRes CreateMediaResource(string srcUri, int srcWidth, int srcHeight, MediaResType type) {
+        public virtual MediaRes CreateMediaResource(string srcUri, int srcWidth, int srcHeight, MediaResType type) {
             var mediaRes = new MediaRes(srcUri, srcWidth, srcHeight, type) {
                 Sequence = (short)(mediaResources.Count + 1)
             };
@@ -160,7 +165,7 @@ namespace Zeega.Domain.GameModel {
         /// </summary>
         /// <param name="mediaRes">Media resource to be removed</param>
         /// <returns>true if removal was successful, otherwise false</returns>
-        public bool RemoveMediaResource(MediaRes mediaRes) {
+        public virtual bool RemoveMediaResource(MediaRes mediaRes) {
             var isRemoved = mediaResources.Remove(mediaRes);
 
             if (isRemoved) {

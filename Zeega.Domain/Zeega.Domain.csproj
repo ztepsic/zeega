@@ -79,15 +79,27 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AppTenant.hbm.xml">
+    <Content Include="AppTenant.hbm.xml">
       <SubType>Designer</SubType>
-    </EmbeddedResource>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Tag.hbm.xml" />
+    <Content Include="Tag.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="GameModel\GameCategory.hbm.xml" />
+    <Content Include="GameModel\GameCategory.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="GameModel\Game.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="GameModel\GameInstance.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="GameModel\MediaRes.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="GameModel\GameCategoryMapping.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -5,7 +5,10 @@ using NHibernate.Linq;
 using Zed.NHibernate;
 using Zeega.Domain;
 
-namespace Zeega.Infrastructure.Dal {
+namespace Zeega.Infrastructure.Dal.NHibernate {
+    /// <summary>
+    /// Tags NHibernate repository
+    /// </summary>
     public class TagsNhRepository : NHibernateCrudRepository<Tag>, ITagsRepository {
 
         #region Fields and Properties

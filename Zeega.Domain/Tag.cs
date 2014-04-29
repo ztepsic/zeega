@@ -139,7 +139,7 @@ namespace Zeega.Domain {
         /// <param name="slug">Tag slug</param>
         /// <param name="languageCode">Language code of tag</param>
         /// <param name="baseTag">Base tag</param>
-        /// <returns>Created tag</returns>
+        /// <returns>CreatedOn tag</returns>
         public static Tag CreateTag(string name, string slug, LanguageCode languageCode, Tag baseTag) {
             if(baseTag.BaseTag != null) throw new ArgumentException("Provided Tag is not base tag, it must have null value setto BaseTag property.", "baseTag");
             return baseTag.LanguageCode.Equals(languageCode) ? baseTag : new Tag(name, slug, languageCode, baseTag);
@@ -153,7 +153,7 @@ namespace Zeega.Domain {
         /// <param name="name">Tag name</param>
         /// <param name="languageCode">Language code of tag</param>
         /// <param name="baseTag">Base tag</param>
-        /// <returns>Created tag</returns>
+        /// <returns>CreatedOn tag</returns>
         public static Tag CreateTag(string name, LanguageCode languageCode, Tag baseTag) {
             return CreateTag(name, name, languageCode, baseTag);
         }

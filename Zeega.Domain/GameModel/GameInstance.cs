@@ -29,7 +29,7 @@ namespace Zeega.Domain.GameModel {
         /// <summary>
         /// Gets application tenant that owns this game instance
         /// </summary>
-        public AppTenant AppTenant { get { return appTenant; } }
+        public virtual AppTenant AppTenant { get { return appTenant; } }
 
         /// <summary>
         /// Game upon which is defined this game instance
@@ -39,7 +39,7 @@ namespace Zeega.Domain.GameModel {
         /// <summary>
         /// Gets game Id
         /// </summary>
-        public int GameId { get { return game.Id; } }
+        public virtual int GameId { get { return game.Id; } }
 
         /// <summary>
         /// Game instance name
@@ -49,7 +49,7 @@ namespace Zeega.Domain.GameModel {
         /// <summary>
         /// Gets or Sets game instance name
         /// </summary>
-        public string Name {
+        public virtual string Name {
             get { return name; }
             set {
                 if (String.IsNullOrWhiteSpace(value)) throw new ArgumentNullException("value", "Game name must contain some value.");
@@ -66,7 +66,7 @@ namespace Zeega.Domain.GameModel {
         /// <summary>
         /// Gets unique text slug
         /// </summary>
-        public string Slug { get { return slug; } }
+        public virtual string Slug { get { return slug; } }
 
         /// <summary>
         /// Primary game category
@@ -76,7 +76,7 @@ namespace Zeega.Domain.GameModel {
         /// <summary>
         /// Gets or Sets game category
         /// </summary>
-        public GameCategory PrimaryCategory {
+        public virtual GameCategory PrimaryCategory {
             get { return primaryCategory; }
             set {
                 if(value == null) throw new ArgumentNullException("value", "Primary category can't be null.");
@@ -94,14 +94,14 @@ namespace Zeega.Domain.GameModel {
         /// <summary>
         /// Gets list of secondary game instance categories
         /// </summary>
-        public IList<GameCategory> SecondaryCategories {
+        public virtual IList<GameCategory> SecondaryCategories {
             get { return new ReadOnlyCollection<GameCategory>(secondaryCategories); }
         }
 
         /// <summary>
         /// Gets or Sets the full text description of the game instance.
         /// </summary>
-        public string Description { get; set; }
+        public virtual string Description { get; set; }
 
         /// <summary>
         /// Short text description of the game instance.
@@ -113,7 +113,7 @@ namespace Zeega.Domain.GameModel {
         /// Gets or Sets short text description of game instance.
         /// Includes up to 300 characters.
         /// </summary>
-        public string ShortDescription {
+        public virtual string ShortDescription {
             get { return shortDescription; }
             set {
                 if (value != null && value.Length > MAX_CHARS_FOR_SHORT_DESCRIPTION) {
@@ -127,13 +127,13 @@ namespace Zeega.Domain.GameModel {
         /// <summary>
         /// Gets or Sets game instructions
         /// </summary>
-        public string Instructions { get; set; }
+        public virtual string Instructions { get; set; }
 
         /// <summary>
         /// JSON encoded key-value mapping of the games controls
         /// TODO - create better controls mapping
         /// </summary>
-        public string Controls { get; set; }
+        public virtual string Controls { get; set; }
 
 
         /// <summary>
@@ -144,33 +144,38 @@ namespace Zeega.Domain.GameModel {
         /// <summary>
         /// Gets list of game instance tags/keywords
         /// </summary>
-        public IList<Tag> Tags {
+        public virtual IList<Tag> Tags {
             get { return new ReadOnlyCollection<Tag>(tags); }
         }
 
         /// <summary>
         /// Indicates if game instance is published (true) or not (false)
         /// </summary>
-        public bool IsPublished { get; set; }
+        public virtual bool IsPublished { get; set; }
 
         /// <summary>
         /// Gets game source
         /// </summary>
-        public GameSrc GameSrc { get { return game.GameSrc; } }
+        public virtual GameSrc GameSrc { get { return game.GameSrc; } }
 
         /// <summary>
         /// Gets game's media resources
         /// </summary>
-        public IList<MediaRes> MediaResources { get { return game.MediaResources; } }
+        public virtual IList<MediaRes> MediaResources { get { return game.MediaResources; } }
 
         /// <summary>
         /// Gets or Sets Audit
         /// </summary>
-        public Audit Audit { get; set; }
+        public virtual Audit Audit { get; set; }
 
         #endregion
 
         #region Constructors and Init
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        protected GameInstance() { }
 
         /// <summary>
         /// Creates game instance with provded paramaters.
@@ -199,6 +204,8 @@ namespace Zeega.Domain.GameModel {
             tags = new List<Tag>();
 
             mapGameToGameInstance();
+
+            Audit = new Audit(DateTime.Now);
             
         }
 
@@ -237,7 +244,7 @@ namespace Zeega.Domain.GameModel {
         /// to slug form.
         /// </summary>
         /// <param name="slugValue">Slug value</param>
-        public void SetSlug(string slugValue) {
+        public virtual void SetSlug(string slugValue) {
             if (String.IsNullOrWhiteSpace(slugValue)) throw new ArgumentNullException("slugValue", "Game slug must contain some value.");
 
             slug = slugValue.ToSlug();
@@ -248,7 +255,7 @@ namespace Zeega.Domain.GameModel {
         /// </summary>
         /// <param name="secondaryCategory">Secondary game instance category</param>
         /// <returns>Self instance - this</returns>
-        public GameInstance AddSecondaryCategory(GameCategory secondaryCategory) {
+        public virtual GameInstance AddSecondaryCategory(GameCategory secondaryCategory) {
             if(PrimaryCategory == null) throw new InvalidOperationException("Primary category must be set in order to add a secondary game category.");
             if(secondaryCategory == null) throw new ArgumentNullException("secondaryCategory", "Secondary game secondaryCategory can't be null.");
             if (!AppTenant.Equals(secondaryCategory.AppTenant)) throw new ArgumentException("Game category application tenant must be equal as Game instance application tenant.");
@@ -265,7 +272,7 @@ namespace Zeega.Domain.GameModel {
         /// </summary>
         /// <param name="secondaryCategory">Secondary game instance category to be removed</param>
         /// <returns>true if removal was successful, otherwise false</returns>
-        public bool RemoveSecondaryCategory(GameCategory secondaryCategory) {
+        public virtual bool RemoveSecondaryCategory(GameCategory secondaryCategory) {
             return secondaryCategories.Remove(secondaryCategory);
         }
 
@@ -274,7 +281,7 @@ namespace Zeega.Domain.GameModel {
         /// </summary>
         /// <param name="tag">Tag to be added</param>
         /// <returns>Self instance - this</returns>
-        public GameInstance AddTag(Tag tag) {
+        public virtual GameInstance AddTag(Tag tag) {
             if (tag == null) throw new ArgumentNullException("tag");
             if (!tag.LanguageCode.Equals(appTenant.LanguageCode)) throw new ArgumentException("Tag's language code is different from application tenant language code.");
 
@@ -288,7 +295,7 @@ namespace Zeega.Domain.GameModel {
         /// </summary>
         /// <param name="tag">Tag to be removed</param>
         /// <returns>true if removal was successful, otherwise false</returns>
-        public bool RemoveTag(Tag tag) {
+        public virtual bool RemoveTag(Tag tag) {
             return tags.Remove(tag);
         }
 

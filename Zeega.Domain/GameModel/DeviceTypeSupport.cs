@@ -33,6 +33,11 @@ namespace Zeega.Domain.GameModel {
         #region Constructors and Init
 
         /// <summary>
+        /// Default constructor created DeviceTypeSupport instance
+        /// </summary>
+        private DeviceTypeSupport() { }
+
+        /// <summary>
         /// Creates value object that represetns device type support
         /// </summary>
         /// <param name="isDesktopEnabled">Indicates if a desktop device is enabled.</param>

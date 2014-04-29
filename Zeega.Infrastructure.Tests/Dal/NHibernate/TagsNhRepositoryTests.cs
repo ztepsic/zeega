@@ -1,10 +1,10 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using NUnit.Framework;
-using Zed.Core.Domain;
 using Zeega.Domain;
-using Zeega.Infrastructure.Dal;
+using Zeega.Infrastructure.Dal.NHibernate;
 
-namespace Zeega.Infrastructure.Tests.Dal {
+namespace Zeega.Infrastructure.Tests.Dal.NHibernate {
     [TestFixture]
     public class TagsNhRepositoryTests : SQLiteNHibernateTestFixture {
 

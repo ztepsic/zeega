@@ -1,9 +1,8 @@
 ﻿using NUnit.Framework;
-using Zed.Core.Domain;
 using Zeega.Domain;
-using Zeega.Infrastructure.Dal;
+using Zeega.Infrastructure.Dal.NHibernate;
 
-namespace Zeega.Infrastructure.Tests.Dal {
+namespace Zeega.Infrastructure.Tests.Dal.NHibernate {
     [TestFixture]
     public class AppTenantsNhRepositoryTests : SQLiteNHibernateTestFixture {
 
@@ -33,17 +32,13 @@ namespace Zeega.Infrastructure.Tests.Dal {
 
             // Act
             AppTenant fetchedAppTenant;
-            
-            using (var trx = Session.BeginTransaction()) {
-                appTenantsRepo.SaveOrUpdate(appTenant);
-                trx.Commit();
-            }
 
             using (var trx = Session.BeginTransaction()) {
                 appTenantsRepo.SaveOrUpdate(appTenant);
                 trx.Commit();
             }
 
+            Session.Clear(); // To clear cache so we can see select
             using (var trx = Session.BeginTransaction()) {
                 fetchedAppTenant = appTenantsRepo.GetById(appTenant.Id);
                 trx.Rollback();

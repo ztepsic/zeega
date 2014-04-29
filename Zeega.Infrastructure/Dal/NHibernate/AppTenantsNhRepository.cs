@@ -2,7 +2,7 @@
 using Zed.NHibernate;
 using Zeega.Domain;
 
-namespace Zeega.Infrastructure.Dal {
+namespace Zeega.Infrastructure.Dal.NHibernate {
     /// <summary>
     /// Application tenant NHibernate repository
     /// </summary>

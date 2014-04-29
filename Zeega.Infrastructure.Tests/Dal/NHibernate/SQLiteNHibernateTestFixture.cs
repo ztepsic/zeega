@@ -3,11 +3,12 @@ using NHibernate.Bytecode;
 using NHibernate.Cfg;
 using NHibernate.Dialect;
 using NHibernate.Driver;
+using NHibernate.Mapping.ByCode;
 using NUnit.Framework;
 using Zed.NHibernate.Test;
-using Zeega.Domain;
+using Zeega.Infrastructure.Dal.NHibernate.ModelMapping;
 
-namespace Zeega.Infrastructure.Tests.Dal {
+namespace Zeega.Infrastructure.Tests.Dal.NHibernate {
     public class SQLiteNHibernateTestFixture : NHibernateTestFixture {
 
         private const string CONNECTION_STRING = "Data Source=:memory:;Version=3;New=True;";
@@ -23,7 +24,12 @@ namespace Zeega.Infrastructure.Tests.Dal {
                 })
                 .SetProperty(Environment.CurrentSessionContextClass, "thread_static")
                 .SetProperty("show_sql", "true")
-                .AddAssembly(typeof(AppTenant).Assembly);
+                //.AddAssembly(typeof(AppTenant).Assembly)
+                ;
+
+            var modelMapper = new ModelMapper();
+            modelMapper.AddMappings();
+            Configuration.AddMapping(modelMapper.CompileMappingForAllExplicitlyAddedEntities());
 
             var configProperties = Configuration.Properties;
             if (configProperties.ContainsKey(Environment.ConnectionStringName)) {

@@ -36,7 +36,7 @@ namespace Zeega.Domain.GameModel {
         /// <summary>
         /// Gets media resource type
         /// </summary>
-        public MediaResType Type { get { return type; } }
+        public virtual MediaResType Type { get { return type; } }
 
         /// <summary>
         /// Thumbnail of media resource URI
@@ -46,7 +46,7 @@ namespace Zeega.Domain.GameModel {
         /// <summary>
         /// Gets thubmnail of media resource URI
         /// </summary>
-        public string ThumbSrcUri {
+        public virtual string ThumbSrcUri {
             get { return thumbSrcUri; }
             set {
                 if (string.IsNullOrEmpty(value)) throw new ArgumentNullException("value", "Thumbnail of media resource URI can't be null or emtpy.");
@@ -63,7 +63,7 @@ namespace Zeega.Domain.GameModel {
         /// <summary>
         /// Gets thumbnail of media resource width in pixels
         /// </summary>
-        public int ThumbSrcWidth {
+        public virtual int ThumbSrcWidth {
             get { return thumbSrcWidth; }
             set {
                 if (value < MIN_WIDTH) throw new ArgumentException(String.Format("Thumbnail of media resource width must be greater or equal to {0} px.", MIN_WIDTH), "value");
@@ -79,7 +79,7 @@ namespace Zeega.Domain.GameModel {
         /// <summary>
         /// Gets thumbnail media resource height in pixels
         /// </summary>
-        public int ThumbSrcHeight {
+        public virtual int ThumbSrcHeight {
             get { return thumbSrcHeight; }
             set {
                 if (value < MIN_HEIGHT) throw new ArgumentException(String.Format("Media resource height must be greater or equal to {0} px.", MIN_HEIGHT), "value");
@@ -95,7 +95,7 @@ namespace Zeega.Domain.GameModel {
         /// <summary>
         /// Gets media resource URI
         /// </summary>
-        public string SrcUri { get { return srcUri; } }
+        public virtual string SrcUri { get { return srcUri; } }
 
         /// <summary>
         /// Media resource width in pixels
@@ -105,7 +105,7 @@ namespace Zeega.Domain.GameModel {
         /// <summary>
         /// Gets media resource width in pixels
         /// </summary>
-        public int SrcWidth { get { return srcWidth; } }
+        public virtual int SrcWidth { get { return srcWidth; } }
 
         /// <summary>
         /// Media resource height in pixels
@@ -115,21 +115,26 @@ namespace Zeega.Domain.GameModel {
         /// <summary>
         /// Gets media resource height in pixels
         /// </summary>
-        public int SrcHeight { get { return srcHeight; } }
+        public virtual int SrcHeight { get { return srcHeight; } }
 
         /// <summary>
         /// MediaRes order sequence
         /// </summary>
-        public short Sequence { get; set; }
+        public virtual short Sequence { get; set; }
 
         /// <summary>
         /// Gets or Sets indicator which indicate is media resource active
         /// </summary>
-        public bool IsActive { get; set; }
+        public virtual bool IsActive { get; set; }
 
         #endregion
 
         #region Constructors and Init
+
+        /// <summary>
+        /// Default contructor
+        /// </summary>
+        protected MediaRes() { }
 
         /// <summary>
         /// Creates instance of MediRes class with provided paremeters whare

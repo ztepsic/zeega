@@ -12,30 +12,35 @@ namespace Zeega.Domain {
         /// <summary>
         /// Creation date and time
         /// </summary>
-        private readonly DateTime created;
+        private readonly DateTime createdOn;
 
         /// <summary>
         /// Gets creation date and time
         /// </summary>
-        public DateTime Created { get { return created; } }
+        public DateTime CreatedOn { get { return createdOn; } }
 
 
         /// <summary>
         /// Gets or Sets update date and time
         /// </summary>
-        public DateTime Updated { get; set; }
+        public DateTime UpdatedOn { get; set; }
 
         #endregion
 
         #region Constructors and Init
 
         /// <summary>
+        /// Default constructor.
+        /// </summary>
+        private Audit() { }
+
+        /// <summary>
         /// Creates instance of Audit class based on creation date
         /// </summary>
-        /// <param name="created">Date of creation</param>
-        public Audit(DateTime created) {
-            this.created = created;
-            Updated = created;
+        /// <param name="createdOn">Date of creation</param>
+        public Audit(DateTime createdOn) {
+            this.createdOn = createdOn;
+            UpdatedOn = createdOn;
         }
 
         #endregion

@@ -46,7 +46,6 @@ namespace Zeega.Domain {
 
         /// <summary>
         /// Default constructor.
-        /// Created for NHibernate support.
         /// </summary>
         private LanguageCode() { }
 

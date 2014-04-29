@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="Zeega.Domain" namespace="Zeega.Domain.GameModel">
+  <class name="GameInstance" table="GameInstances" schema="Game" >
+    <id name="Id">
+      <generator class="native" />
+    </id>
+
+    <many-to-one name="AppTenant" not-null="true" access="nosetter.camelcase" />
+    <many-to-one name="game" column="Game" not-null="true" access="field" />
+
+    <property name="Name" access="nosetter.camelcase" not-null="true" />
+    <property name="Slug" access="nosetter.camelcase" not-null="true" />
+
+    <many-to-one name="PrimaryCategory" not-null="true" access="nosetter.camelcase" />
+
+    <bag name="SecondaryCategories" access="nosetter.camelcase">
+      <key column="GameCategoryId" />
+      <many-to-many class="GameCategory" />
+    </bag>
+    
+    <property name="Description" />
+    <property name="ShortDescription" />
+    <property name="Instructions" />
+    <property name="Controls" />
+
+    <bag name="Tags" access="nosetter.camelcase">
+      <key column="TagId" />
+      <many-to-many class="Zeega.Domain.Tag" />
+    </bag>
+
+    <property name="IsPublished" />
+
+    <property name="Audit" />
+
+  </class>
+</hibernate-mapping>

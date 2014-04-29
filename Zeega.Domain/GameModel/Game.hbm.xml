@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="Zeega.Domain" namespace="Zeega.Domain.GameModel">
+  <class name="Game" table="Games" schema="Game" >
+    <id name="Id">
+      <generator class="native" />
+    </id>
+
+    <property name="Name" not-null="true" />
+    <property name="ExternalId" />
+    <property name="Categories" />
+    <property name="Description" />
+    <property name="ShortDescription" />
+    <property name="Instructions" />
+    <property name="Controls" />
+    <property name="Tags" />
+    
+    <list name="MediaResources">
+      <key column="GameId" not-null="true" />
+      <index column="Sequence" />
+      <one-to-many class="MediaRes"/>
+    </list>
+      
+    <component name="GameSrc">
+      <property name="Width" access="nosetter.camelcase" not-null="true" />
+      <property name="Height" access="nosetter.camelcase" not-null="true" />
+      <property name="SrcUri" access="nosetter.camelcase" not-null="true" />
+      <property name="IsSrcOnline" access="nosetter.camelcase" not-null="true" />
+      <component name="DeviceTypeSupport">
+        <property name="IsDesktopEnabled" access="nosetter.camelcase" not-null="true" />
+        <property name="IsMobileEnabled" access="nosetter.camelcase" not-null="true" />
+      </component>
+      <property name="SrcType" not-null="true" />
+    </component>
+    
+    <property name="Provider" not-null="true" />
+    <property name="ProviderUrl" not-null="true" />
+    <property name="ProviderGameUrl" />
+    <property name="Author" />
+    <property name="AuthorUrl" />
+    <property name="ZipUrl" />
+    <property name="IsZipDownloaded" />
+    
+   </class>
+</hibernate-mapping>
