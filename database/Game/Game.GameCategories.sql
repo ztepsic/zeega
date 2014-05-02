@@ -31,7 +31,7 @@ go
 
 
 
-exec sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Represents game category entity' , @level0type=N'SCHEMA',@level0name=N'Game', @level1type=N'TABLE',@level1name=N'GameCategories'
+exec sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Contains game categories' , @level0type=N'SCHEMA',@level0name=N'Game', @level1type=N'TABLE',@level1name=N'GameCategories'
 exec sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Game category name' , @level0type=N'SCHEMA',@level0name=N'Game', @level1type=N'TABLE',@level1name=N'GameCategories', @level2type=N'COLUMN',@level2name=N'Name'
 exec sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Game category slug value' , @level0type=N'SCHEMA',@level0name=N'Game', @level1type=N'TABLE',@level1name=N'GameCategories', @level2type=N'COLUMN',@level2name=N'Slug'
 exec sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Application tenant that owns this game category instance' , @level0type=N'SCHEMA',@level0name=N'Game', @level1type=N'TABLE',@level1name=N'GameCategories', @level2type=N'COLUMN',@level2name=N'AppTenantId'

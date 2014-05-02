@@ -5,8 +5,8 @@ using Zeega.Domain.GameModel;
 namespace Zeega.Infrastructure.Dal.NHibernate.ModelMapping.GameModel {
     class MediaResMapping : ClassMapping<MediaRes> {
         public MediaResMapping() {
-            Table("GameCategories");
-            Schema("Game");
+            Schema(MappingConstants.GAME_MODEL_SCHEMA);
+            Table("MediaResources");
 
             Id(x => x.Id, m => m.Generator(Generators.Native));
 

@@ -46,13 +46,15 @@ namespace Zeega.Web.Controllers {
         [NHibernateTransaction]
         public PartialViewResult Main() {
             var appConfig = WebConfigurationManager.GetSection("appConfig") as AppConfig;
+            appConfig.AppTitle = "9999999999"; // TODO - disable changes like that
+            
             ViewBag.AppTitle = appConfig.AppTitle + Resource.Games;
 
             var appTenant = new AppTenant("Zeega", new LanguageCode(LanguageCode.ENGLISH_TWO_LETTER_CODE));
-            appTenant.SetIdTo(1);
+            appTenant.SetIdTo(2);
             var returnString = String.Empty;
-            //var result = gameCategoriesRepository.GetCategoriesWithGames(appTenant).Aggregate(returnString, (current, next) => current + next.Name);
-            var result = gameCategoriesRepository.GetAll();
+            var result = gameCategoriesRepository.GetCategoriesWithGames(appTenant).ToArray();
+            //var result = gameCategoriesRepository.GetAll();
             return PartialView(result);
         }
 

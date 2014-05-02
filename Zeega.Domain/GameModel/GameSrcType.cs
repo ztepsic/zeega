@@ -9,8 +9,8 @@
         Swf = 1,
 
         /// <summary>
-        /// Html5 game source type
+        /// Html game source type
         /// </summary>
-        Html5 = 2
+        Html = 2
     }
 }

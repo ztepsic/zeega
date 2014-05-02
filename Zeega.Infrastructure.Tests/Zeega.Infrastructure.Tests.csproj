@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dal\NHibernate\AppTenantsNhRepositoryTests.cs" />
+    <Compile Include="Dal\NHibernate\DbSchemaBuilder.cs" />
     <Compile Include="Dal\NHibernate\GameModel\GameCategoriesNhRepositoryTests.cs" />
     <Compile Include="Dal\NHibernate\GameModel\GameInstancesNhRepositoryTests.cs" />
     <Compile Include="Dal\NHibernate\GameModel\GamesNhRepositoryTests.cs" />

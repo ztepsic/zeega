@@ -319,6 +319,7 @@
     <Content Include="Views\Shared\AdUnits\Displays3Links_180x90.cshtml" />
     <Content Include="Views\Shared\AdUnits\Displays3Links_160x90.cshtml" />
     <Content Include="Views\Shared\AdUnits\Displays3Links_120x90.cshtml" />
+    <Content Include="OtkrijIgre.config" />
     <None Include="Properties\PublishProfiles\Zeega.FileSystem.pubxml" />
     <Content Include="Views\Nav\Main.cshtml" />
     <EmbeddedResource Include="Localization\Resource.hr-HR.resx">

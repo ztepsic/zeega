@@ -20,9 +20,11 @@ namespace Zeega.Infrastructure.Tests.Dal.NHibernate.GameModel {
 
         private Game createGame() {
             var game = new Game("Angry Birds") {
+                GameSrc = new GameSrc(800, 600, "http://example.com/angry-birds", GameSrcType.Swf),
                 Provider = "GameProvider",
                 ProviderUrl = "http://www.example.com",
-                ProviderGameUrl = "http://www.example.com/angry-birds"
+                ProviderGameUrl = "http://www.example.com/angry-birds",
+                Audit = new Audit(DateTime.Now)
             };
 
             using (var trx = Session.BeginTransaction()) {

@@ -5,6 +5,8 @@ using Zeega.Domain;
 namespace Zeega.Infrastructure.Dal.NHibernate.ModelMapping {
     class TagMapping : ClassMapping<Tag> {
         public TagMapping() {
+            Table("Tags");
+
             Id(x => x.Id, m => m.Generator(Generators.Native));
             Property(x => x.Name,
                 m => {

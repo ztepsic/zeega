@@ -5,6 +5,9 @@ using Zeega.Domain;
 namespace Zeega.Infrastructure.Dal.NHibernate.ModelMapping {
     class AppTenantMapping : ClassMapping<AppTenant> {
         public AppTenantMapping() {
+            Schema(MappingConstants.APP_SCHEMA);
+            Table("AppTenants");
+
             Id(x => x.Id, m => m.Generator(Generators.Native));
             Property(x => x.Name,
                 m => {

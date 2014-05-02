@@ -36,10 +36,10 @@ namespace Zeega.Infrastructure.Dal.NHibernate.GameModel {
         public IEnumerable<GameCategory> GetCategoriesWithGames(AppTenant appTenant) {
             return from category in Session.Query<GameCategory>()
                    where category.AppTenant == appTenant
-                   && (from game in Session.Query<GameInstance>()
-                       where game.PrimaryCategory == category
-                       || game.SecondaryCategories.Contains(category)
-                       select game
+                   && (from gameInstance in Session.Query<GameInstance>()
+                       where gameInstance.PrimaryCategory == category
+                       || gameInstance.SecondaryCategories.Contains(category)
+                       select gameInstance
                           ).Any()
                    orderby category.Sequence
                    select category;

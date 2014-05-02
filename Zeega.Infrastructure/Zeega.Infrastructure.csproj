@@ -65,6 +65,7 @@
     <Compile Include="Dal\NHibernate\ModelMapping\GameModel\GameMapping.cs" />
     <Compile Include="Dal\NHibernate\ModelMapping\GameModel\MediaResMapping.cs" />
     <Compile Include="Dal\NHibernate\ModelMapping\LanguageCodeMapping.cs" />
+    <Compile Include="Dal\NHibernate\ModelMapping\MappingConstants.cs" />
     <Compile Include="Dal\NHibernate\ModelMapping\ModelMapperExension.cs" />
     <Compile Include="Dal\NHibernate\ModelMapping\TagMapping.cs" />
     <Compile Include="Dal\NHibernate\TagsNhRepository.cs" />
