@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using Zed.Core.Domain;
 
 namespace Zeega.Domain {
     /// <summary>
     /// Tags repository interface
     /// </summary>
-    public interface ITagsRepository {
+    public interface ITagsRepository : ICrudRepository<Tag> {
         /// <summary>
         /// Gets tags in particular language for provided tags
         /// </summary>

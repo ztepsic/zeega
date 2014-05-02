@@ -1,0 +1,64 @@
+﻿
+@model IEnumerable<Zeega.Domain.GameModel.GameCategory>
+           
+<ul class="row">
+    <li class="col-sm-4">
+        <dl>
+            <dt>
+                Featured
+            </dt>
+            <dd>
+                <ul class="two-columns">
+                    <li><a href="" title="What to play">What to play @ViewBag.AppTitle</a></li>
+                    <li><a href="" title="Favorites">Favorites</a></li>
+                    <li><a href="" title="Play later">Play later</a></li>
+                    <li><a href="" title="Hot new games">Hot new games</a></li>
+                    <li><a href="" title="Top rated">Top rated</a></li>
+                    <li>@Html.ActionLink("All Games", "Index", "Game", null, new { title = "All Games"})
+                </li>
+            </ul>
+            </dd>
+        </dl>
+    </li>
+    <li class="col-sm-4">
+        <dl>
+            <dt>Categories</dt>
+            <dd>
+                <ul class="two-columns">
+                    @foreach (var category in Model) {
+                        <li>
+                            @Html.RouteLink(category.Name,
+                                new {
+                                    controller = "Game",
+                                    action = "Category",
+                                    categorySlug = category.Slug
+                                },
+                                new { title = category.Name }
+                            )
+                        </li>
+                    }
+                </ul>
+
+            </dd>
+        </dl>
+    </li>
+    <li class="col-sm-4">
+        <dl>
+            <dt>Play history</dt>
+            <dd>
+                <ul class="two-columns">
+                    <li><a href="" title="Alien abductor">Alien abductor</a></li>
+                    <li><a href="" title="Hack Slash Crawl">Hack Slash Crawl</a></li>
+                    <li><a href="" title="Taylor Momsen Dress Up">Taylor Momsen Dress Up</a></li>
+                    <li><a href="" title="Sift Heads World - Ultimatum">Sift Heads World - Ultimatum</a></li>
+                    <li><a href="" title="Racing">Racing</a></li>
+                    <li><a href="" title="Strategy & Defense">Strategy & Defense</a></li>
+                    <li><a href="" title="Puzzle">Puzzle</a></li>
+                    <li><a href="" title="Girl">Girl</a></li>
+                    <li><a href="" title="Cards & Casino">Cards & Casino</a></li>
+                    <li><a href="" title="Special ocasion games">Special ocasion games</a></li>
+                </ul>
+            </dd>
+        </dl>
+    </li>
+</ul>

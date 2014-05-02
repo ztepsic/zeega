@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
+using Zeega.Web.Localization;
 
 namespace Zeega.Web {
     /// <summary>
@@ -18,20 +15,26 @@ namespace Zeega.Web {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "Game.Info",
+                url: Resource.Game + "/{gameId}/{gameSlug}",
+                defaults: new { controller = "Game", action = "Info" }
+            );
+
+            routes.MapRoute(
                 name: "Game.Play",
-                url: "game/{gameId}/{gameSlug}",
+                url: Resource.Play + "/{gameId}/{gameSlug}",
                 defaults: new { controller = "Game", action = "Play" }
             );
 
             routes.MapRoute(
                name: "Game.Category",
-               url: "{categorySlug}-games",
+               url: "{categorySlug}-" + Resource.Games,
                defaults: new { controller = "Game", action = "Category" }
            );
 
             routes.MapRoute(
                 name: "Game.Games",
-                url: "games",
+                url: Resource.Games,
                 defaults: new { controller = "Game", action = "Index" }
             );
 

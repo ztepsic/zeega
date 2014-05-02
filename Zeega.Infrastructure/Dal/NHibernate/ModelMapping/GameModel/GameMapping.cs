@@ -5,6 +5,9 @@ using Zeega.Domain.GameModel;
 namespace Zeega.Infrastructure.Dal.NHibernate.ModelMapping.GameModel {
     class GameMapping : ClassMapping<Game> {
         public GameMapping() {
+            Table("GameCategories");
+            Schema("Game");
+
             Id(x => x.Id, m => m.Generator(Generators.Native));
             Property(x => x.Name, m => m.NotNullable(true));
             Property(x => x.ExternalId);

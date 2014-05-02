@@ -41,6 +41,7 @@ namespace Zeega.Infrastructure.Dal.NHibernate.GameModel {
                        || game.SecondaryCategories.Contains(category)
                        select game
                           ).Any()
+                   orderby category.Sequence
                    select category;
         }
 
