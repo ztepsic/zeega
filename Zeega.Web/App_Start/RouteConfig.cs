@@ -16,25 +16,25 @@ namespace Zeega.Web {
 
             routes.MapRoute(
                 name: "Game.Info",
-                url: Resource.Game + "/{gameId}/{gameSlug}",
+                url: RouteRes.Game + "/{gameId}/{gameSlug}",
                 defaults: new { controller = "Game", action = "Info" }
             );
 
             routes.MapRoute(
                 name: "Game.Play",
-                url: Resource.Play + "/{gameId}/{gameSlug}",
+                url: RouteRes.Play + "/{gameId}/{gameSlug}",
                 defaults: new { controller = "Game", action = "Play" }
             );
 
             routes.MapRoute(
                name: "Game.Category",
-               url: "{categorySlug}-" + Resource.Games,
+               url: "{categorySlug}-" + RouteRes.Games,
                defaults: new { controller = "Game", action = "Category" }
            );
 
             routes.MapRoute(
                 name: "Game.Games",
-                url: Resource.Games,
+                url: RouteRes.Games,
                 defaults: new { controller = "Game", action = "Index" }
             );
 

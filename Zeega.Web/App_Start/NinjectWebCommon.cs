@@ -74,8 +74,9 @@ namespace Zeega.Web.App_Start {
                 NHibernateSessionProvider.Init(cfg => cfg.Configure()
                     .AddMapping(modelMapper.CompileMappingForAllExplicitlyAddedEntities()));
 
+                Bind<IAppConfig>().ToConstant(MvcApplication.AppConfig);
                 Bind<ISessionFactory>().ToConstant(NHibernateSessionProvider.SessionFactory);
-                Bind<IGameCategoriesRepository>().To<GameCategoriesNhRepository>();
+                Bind<IGameCategoriesRepository>().To<GameCategoriesNhRepository>().InRequestScope();
             }
         }
     }

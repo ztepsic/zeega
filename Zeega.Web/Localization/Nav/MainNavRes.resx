@@ -117,16 +117,55 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Category" xml:space="preserve">
-    <value>kategorija</value>
+  <data name="AllGames" xml:space="preserve">
+    <value>All Games</value>
   </data>
-  <data name="Game" xml:space="preserve">
-    <value>igra</value>
+  <data name="BrowseGames" xml:space="preserve">
+    <value>Browse Games</value>
   </data>
-  <data name="Games" xml:space="preserve">
-    <value>igre</value>
+  <data name="Categories" xml:space="preserve">
+    <value>Categories</value>
   </data>
-  <data name="Play" xml:space="preserve">
-    <value>play</value>
+  <data name="CurrentlyPlaying" xml:space="preserve">
+    <value>Currently playing</value>
+  </data>
+  <data name="Favorites" xml:space="preserve">
+    <value>Favorites</value>
+  </data>
+  <data name="Featured" xml:space="preserve">
+    <value>Featured</value>
+  </data>
+  <data name="LogIn" xml:space="preserve">
+    <value>Log In</value>
+  </data>
+  <data name="MostPopularAllTime" xml:space="preserve">
+    <value>Most popular all time</value>
+  </data>
+  <data name="MostPopularThisMonth" xml:space="preserve">
+    <value>Most popular this month</value>
+  </data>
+  <data name="MostPopularThisWeek" xml:space="preserve">
+    <value>Most popular this week</value>
+  </data>
+  <data name="NewGames" xml:space="preserve">
+    <value>Hot new games</value>
+  </data>
+  <data name="PlayHistory" xml:space="preserve">
+    <value>Play history</value>
+  </data>
+  <data name="PlayLater" xml:space="preserve">
+    <value>Play later</value>
+  </data>
+  <data name="SearchPlaceholder" xml:space="preserve">
+    <value>Search for Games and more</value>
+  </data>
+  <data name="SignUp" xml:space="preserve">
+    <value>Sign Up</value>
+  </data>
+  <data name="TopRated" xml:space="preserve">
+    <value>Top rated</value>
+  </data>
+  <data name="WhatToPlay" xml:space="preserve">
+    <value>What to play</value>
   </data>
 </root>

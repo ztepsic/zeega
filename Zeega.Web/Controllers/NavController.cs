@@ -1,20 +1,15 @@
-﻿using System;
-using System.Globalization;
-using System.Linq;
-using System.Threading;
-using System.Web.Configuration;
+﻿using System.Linq;
 using System.Web.Mvc;
-using Zed.Core.Domain;
 using Zed.NHibernate.Web;
-using Zeega.Domain;
 using Zeega.Domain.GameModel;
 using Zeega.Web.Localization;
+using Zeega.Web.Models.Nav;
 
 namespace Zeega.Web.Controllers {
     /// <summary>
     /// Navigation controller
     /// </summary>
-    public class NavController : Controller {
+    public class NavController : ZeegaBaseController {
 
         #region Fields and Properties
 
@@ -30,8 +25,9 @@ namespace Zeega.Web.Controllers {
         /// <summary>
         /// Creates a NavController instance
         /// </summary>
+        /// <param name="appConfig">Application config</param>
         /// <param name="gameCategoriesRepository">Game categories repository</param>
-        public NavController(IGameCategoriesRepository gameCategoriesRepository) {
+        public NavController(IAppConfig appConfig, IGameCategoriesRepository gameCategoriesRepository) : base(appConfig) {
             this.gameCategoriesRepository = gameCategoriesRepository;
         }
 
@@ -42,20 +38,13 @@ namespace Zeega.Web.Controllers {
         /// <summary>
         /// Gets main navigation
         /// </summary>
-        /// <returns>Main navigation</returns>
+        /// <returns>MainNav navigation</returns>
         [NHibernateTransaction]
-        public PartialViewResult Main() {
-            var appConfig = WebConfigurationManager.GetSection("appConfig") as AppConfig;
-            appConfig.AppTitle = "9999999999"; // TODO - disable changes like that
-            
-            ViewBag.AppTitle = appConfig.AppTitle + Resource.Games;
-
-            var appTenant = new AppTenant("Zeega", new LanguageCode(LanguageCode.ENGLISH_TWO_LETTER_CODE));
-            appTenant.SetIdTo(2);
-            var returnString = String.Empty;
-            var result = gameCategoriesRepository.GetCategoriesWithGames(appTenant).ToArray();
-            //var result = gameCategoriesRepository.GetAll();
-            return PartialView(result);
+        public PartialViewResult MainNav() {
+            var mainNavViewModel = new MainNavViewModel {
+                GameCategories = gameCategoriesRepository.GetCategoriesWithGames(AppConfig.AppTenant).ToArray()
+            };
+            return PartialView(mainNavViewModel);
         }
 
         #endregion

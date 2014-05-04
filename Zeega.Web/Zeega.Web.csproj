@@ -44,6 +44,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.3.2.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Net4">
+      <HintPath>..\packages\AutoMapper.3.2.1\lib\net40\AutoMapper.Net4.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
@@ -204,8 +210,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppConfig.cs" />
-    <Compile Include="AppConfigHandler.cs" />
+    <Compile Include="App_Start\AppConfig.cs" />
+    <Compile Include="App_Start\AppConfigHandler.cs" />
+    <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
@@ -215,22 +222,30 @@
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NavController.cs" />
+    <Compile Include="Controllers\ZeegaBaseController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="App_Start\IAppConfig.cs" />
+    <Compile Include="Localization\GeneralRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GeneralRes.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Localization\Nav\MainNavRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MainNavRes.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Localization\RouteRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RouteRes.resx</DependentUpon>
+    </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Nav\MainNavViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Localization\Resource.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resource.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Localization\Resource.hr-HR.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resource.hr-HR.resx</DependentUpon>
-    </Compile>
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -255,6 +270,11 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="assets\css\Site.css" />
+    <EmbeddedResource Include="Localization\RouteRes.hr-HR.resx" />
+    <EmbeddedResource Include="Localization\RouteRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RouteRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="assets\css\less\_variables.less" />
     <None Include="assets\css\less\style.less" />
     <None Include="assets\css\less\bootstrap.less" />
@@ -320,12 +340,19 @@
     <Content Include="Views\Shared\AdUnits\Displays3Links_160x90.cshtml" />
     <Content Include="Views\Shared\AdUnits\Displays3Links_120x90.cshtml" />
     <Content Include="OtkrijIgre.config" />
-    <None Include="Properties\PublishProfiles\Zeega.FileSystem.pubxml" />
-    <Content Include="Views\Nav\Main.cshtml" />
-    <EmbeddedResource Include="Localization\Resource.hr-HR.resx">
+    <EmbeddedResource Include="Localization\GeneralRes.hr-HR.resx" />
+    <EmbeddedResource Include="Localization\GeneralRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resource.hr-HR.Designer.cs</LastGenOutput>
+      <LastGenOutput>GeneralRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\Nav\MainNavRes.hr-HR.resx">
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="Properties\PublishProfiles\Zeega.FileSystem.pubxml" />
+    <Content Include="Views\Nav\MainNav.cshtml" />
+    <EmbeddedResource Include="Localization\Nav\MainNavRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MainNavRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <Content Include="Zeega.config" />
   </ItemGroup>
@@ -346,13 +373,6 @@
       <Project>{987ec2b2-647d-4018-a334-9e8178228b61}</Project>
       <Name>Zeega.Infrastructure</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Localization\Resource.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -382,6 +402,7 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="..\packages\AutoMapper.3.2.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.2.1\tools\AutoMapper.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
