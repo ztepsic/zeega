@@ -20,7 +20,7 @@ create table App.AppTenants (
 );
 go
 
-alter table App.AppTenant
+alter table App.AppTenants
 	add constraint UX_AppTenant_Code unique(Code);
 go
 
