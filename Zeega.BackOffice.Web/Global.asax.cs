@@ -8,7 +8,13 @@ using System.Web.Routing;
 using Zeega.BackOffice.Web.App_Start;
 
 namespace Zeega.BackOffice.Web {
+    /// <summary>
+    /// MVC application
+    /// </summary>
     public class MvcApplication : System.Web.HttpApplication {
+        /// <summary>
+        /// Application strart
+        /// </summary>
         protected void Application_Start() {
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

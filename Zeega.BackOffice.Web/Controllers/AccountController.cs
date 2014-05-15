@@ -12,23 +12,41 @@ using Zeega.BackOffice.Web.Models;
 
 namespace Zeega.BackOffice.Web.Controllers
 {
+    /// <summary>
+    /// Account controller
+    /// </summary>
     [Authorize]
     public class AccountController : Controller
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public AccountController()
             : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
         {
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userManager"></param>
         public AccountController(UserManager<ApplicationUser> userManager)
         {
             UserManager = userManager;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public UserManager<ApplicationUser> UserManager { get; private set; }
 
         //
         // GET: /Account/Login
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
@@ -38,6 +56,12 @@ namespace Zeega.BackOffice.Web.Controllers
 
         //
         // POST: /Account/Login
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -63,6 +87,10 @@ namespace Zeega.BackOffice.Web.Controllers
 
         //
         // GET: /Account/Register
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [AllowAnonymous]
         public ActionResult Register()
         {
@@ -71,6 +99,11 @@ namespace Zeega.BackOffice.Web.Controllers
 
         //
         // POST: /Account/Register
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -97,6 +130,12 @@ namespace Zeega.BackOffice.Web.Controllers
 
         //
         // POST: /Account/Disassociate
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="loginProvider"></param>
+        /// <param name="providerKey"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Disassociate(string loginProvider, string providerKey)
@@ -116,6 +155,11 @@ namespace Zeega.BackOffice.Web.Controllers
 
         //
         // GET: /Account/Manage
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
         public ActionResult Manage(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
@@ -131,6 +175,11 @@ namespace Zeega.BackOffice.Web.Controllers
 
         //
         // POST: /Account/Manage
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Manage(ManageUserViewModel model)
@@ -182,6 +231,12 @@ namespace Zeega.BackOffice.Web.Controllers
 
         //
         // POST: /Account/ExternalLogin
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="provider"></param>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -193,6 +248,11 @@ namespace Zeega.BackOffice.Web.Controllers
 
         //
         // GET: /Account/ExternalLoginCallback
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
         [AllowAnonymous]
         public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
         {
@@ -220,6 +280,11 @@ namespace Zeega.BackOffice.Web.Controllers
 
         //
         // POST: /Account/LinkLogin
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="provider"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult LinkLogin(string provider)
@@ -230,6 +295,10 @@ namespace Zeega.BackOffice.Web.Controllers
 
         //
         // GET: /Account/LinkLoginCallback
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public async Task<ActionResult> LinkLoginCallback()
         {
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync(XsrfKey, User.Identity.GetUserId());
@@ -247,6 +316,12 @@ namespace Zeega.BackOffice.Web.Controllers
 
         //
         // POST: /Account/ExternalLoginConfirmation
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -285,6 +360,10 @@ namespace Zeega.BackOffice.Web.Controllers
 
         //
         // POST: /Account/LogOff
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
@@ -295,12 +374,20 @@ namespace Zeega.BackOffice.Web.Controllers
 
         //
         // GET: /Account/ExternalLoginFailure
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [AllowAnonymous]
         public ActionResult ExternalLoginFailure()
         {
             return View();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [ChildActionOnly]
         public ActionResult RemoveAccountList()
         {
@@ -309,6 +396,10 @@ namespace Zeega.BackOffice.Web.Controllers
             return (ActionResult)PartialView("_RemoveAccountPartial", linkedAccounts);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="disposing"></param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && UserManager != null)
@@ -356,11 +447,26 @@ namespace Zeega.BackOffice.Web.Controllers
             return false;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public enum ManageMessageId
         {
+            /// <summary>
+            /// 
+            /// </summary>
             ChangePasswordSuccess,
+            /// <summary>
+            /// 
+            /// </summary>
             SetPasswordSuccess,
+            /// <summary>
+            /// 
+            /// </summary>
             RemoveLoginSuccess,
+            /// <summary>
+            /// 
+            /// </summary>
             Error
         }
 

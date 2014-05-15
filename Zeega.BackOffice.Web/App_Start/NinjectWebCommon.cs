@@ -18,6 +18,10 @@ namespace Zeega.BackOffice.Web.App_Start {
     using Ninject;
     using Ninject.Web.Common;
 
+    /// <summary>
+    /// Ninject bootstraper
+    /// </summary>
+
     public static class NinjectWebCommon {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
 

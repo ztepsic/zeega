@@ -7,12 +7,18 @@ namespace Zeega.BackOffice.Web {
     /// </summary>
     public class BundleConfig {
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
+        /// <summary>
+        /// Register bundles
+        /// </summary>
+        /// <param name="bundles"></param>
         public static void RegisterBundles(BundleCollection bundles) {
             bundles.Add(new ScriptBundle("~/assets/js/jquery").Include(
                         "~/assets/js/jquery-{version}.js"));
 
-            bundles.Add(new ScriptBundle("~/assets/js/jqueryval").Include(
-                        "~/assets/js/jquery.validate*"));
+            bundles.Add(new ScriptBundle("~/assets/js/jqueryval")
+                .Include("~/assets/js/jquery.validate.js")
+                .Include("~/assets/js/jquery.validate.unobtrusive.js")
+                .Include("~/assets/js/jquery.validate.bootstrap.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.

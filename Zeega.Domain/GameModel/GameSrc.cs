@@ -32,7 +32,6 @@ namespace Zeega.Domain.GameModel {
         /// </summary>
         public int Width { get { return width; } }
 
-
         /// <summary>
         /// Game height in pixels
         /// </summary>

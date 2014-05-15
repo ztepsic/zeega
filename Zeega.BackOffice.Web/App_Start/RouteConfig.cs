@@ -6,7 +6,14 @@ using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace Zeega.BackOffice.Web {
+    /// <summary>
+    /// Route configuration
+    /// </summary>
     public class RouteConfig {
+        /// <summary>
+        /// Register routes
+        /// </summary>
+        /// <param name="routes"></param>
         public static void RegisterRoutes(RouteCollection routes) {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
