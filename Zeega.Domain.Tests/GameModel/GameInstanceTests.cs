@@ -11,7 +11,7 @@ namespace Zeega.Domain.Tests.GameModel {
             // Arrange
             var appTenant = new AppTenant("Zeega", new LanguageCode("en"));
             const string gameName = "Angry birds";
-            var game = new Game(gameName);
+            var game = new Game(gameName, new GameProvider("Spil Games"));
 
             // Act
             var gameInstance = new GameInstance(appTenant, game, gameName);
@@ -26,7 +26,8 @@ namespace Zeega.Domain.Tests.GameModel {
         public void Ctor_WithParams_CreatesGameInstanceWithPopulatedFieldsBasedOnGameData() {
             // Arrange
             var appTenant = new AppTenant("Zeega", new LanguageCode(LanguageCode.ENGLISH_TWO_LETTER_CODE));
-            var game = new Game("Angry Birds") {
+            var gameProvider = new GameProvider("Spil Games");
+            var game = new Game("Angry Birds", gameProvider) {
                 Description = "Description",
                 ShortDescription = "ShortDescription",
                 Instructions = "Instruction"
@@ -48,7 +49,7 @@ namespace Zeega.Domain.Tests.GameModel {
         public void SetShortDescription_InvalidNumberOfChars_ExceptionTrown() {
             // Arrange
             var appTenant = new AppTenant("Zeega", new LanguageCode("en"));
-            var gameInstance = new GameInstance(appTenant, new Game("Angry brids"));
+            var gameInstance = new GameInstance(appTenant, new Game("Angry brids", new GameProvider("Spil Games")));
             const string shortDescription = @"Second installment of Freedom Tower - The Invasion with 6 new worlds, 
                 different weapons, allied troops, powerful bosses and much more. Our planet faces danger once more.
                 Second installment of Freedom Tower - The Invasion with 6 new worlds, 
@@ -67,7 +68,7 @@ namespace Zeega.Domain.Tests.GameModel {
             var baseTag = Tag.CreateBaseTag("Football");
             var appTenant = new AppTenant("ZeegaHR", new LanguageCode("hr"));
             var tag = Tag.CreateTag("Nogomet", new LanguageCode("es"), baseTag);
-            var game = new Game("Angry birds");
+            var game = new Game("Angry birds", new GameProvider("Spil Games"));
             var gameInstance = new GameInstance(appTenant, game, "Ptice");
 
             // Act
@@ -80,7 +81,7 @@ namespace Zeega.Domain.Tests.GameModel {
         public void RemoveTag_TagToBeRemoved_RemovedTagFromTagList() {
             // Arrange
             var appTenant = new AppTenant("Zeega", new LanguageCode("en"), true);
-            var game = new Game("Angry birds");
+            var game = new Game("Angry birds", new GameProvider("Spil Games"));
             var gameInstance = new GameInstance(appTenant, game);
             var tag1 = Tag.CreateBaseTag("Tower defense");
             var tag2 = Tag.CreateBaseTag("Multiplayer");
@@ -106,7 +107,7 @@ namespace Zeega.Domain.Tests.GameModel {
             var primaryCategory = new GameCategory(appTenant1, "Primary Category");
 
             var appTenant2 = new AppTenant("OtkrijIgre", new LanguageCode(LanguageCode.CROATIAN_TWO_LETTER_CODE));
-            var gameInstance = new GameInstance(appTenant2, new Game("Angry Birds"));
+            var gameInstance = new GameInstance(appTenant2, new Game("Angry Birds", new GameProvider("Spil Games")));
 
             // Act
             gameInstance.PrimaryCategory = primaryCategory;
@@ -123,7 +124,7 @@ namespace Zeega.Domain.Tests.GameModel {
 
             var appTenant2 = new AppTenant("OtkrijIgre", new LanguageCode(LanguageCode.CROATIAN_TWO_LETTER_CODE));
             var primaryCategory = new GameCategory(appTenant2, "Primary Category");
-            var gameInstance = new GameInstance(appTenant2, new Game("Angry Birds")) {
+            var gameInstance = new GameInstance(appTenant2, new Game("Angry Birds", new GameProvider("Spil Games"))) {
                 PrimaryCategory = primaryCategory
             };
 
@@ -141,7 +142,7 @@ namespace Zeega.Domain.Tests.GameModel {
             var primaryCategory = new GameCategory(appTenant, "Primary Category");
             var secondaryCategory = new GameCategory(appTenant, "Secondary Category");
 
-            var gameInstance = new GameInstance(appTenant, new Game("Angry Birds")) {
+            var gameInstance = new GameInstance(appTenant, new Game("Angry Birds", new GameProvider("Spil Games"))) {
                 PrimaryCategory = primaryCategory
             };
 
@@ -156,7 +157,7 @@ namespace Zeega.Domain.Tests.GameModel {
         public void RemoveSecondaryCategory_CategoryToBeRemoved_RemovedCategoryFromSecondaryCategoryList() {
             // Arrange
             var appTenant = new AppTenant("Zeega", new LanguageCode("en"), true);
-            var game = new Game("Angry birds");
+            var game = new Game("Angry birds", new GameProvider("Spil Games"));
             var gameInstance = new GameInstance(appTenant, game) {
                 PrimaryCategory = new GameCategory(appTenant, "PrimaryCategory")
             };

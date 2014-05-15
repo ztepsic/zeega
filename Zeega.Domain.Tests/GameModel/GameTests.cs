@@ -14,7 +14,7 @@ namespace Zeega.Domain.Tests.GameModel {
             const string gameName = "Angry birds";
 
             // Act
-            var game = new Game(gameName);
+            var game = new Game(gameName, new GameProvider("Spil Games"));
 
             // Assert
             Assert.AreEqual(gameName, game.Name);
@@ -24,7 +24,7 @@ namespace Zeega.Domain.Tests.GameModel {
         [Test]
         public void SetGameSrc_GameSrc_GameSrcAssignedToGame() {
             // Arrange
-            var game = new Game("Angry Birds");
+            var game = new Game("Angry Birds", new GameProvider("Spil Games"));
             var gameSrc = new GameSrc(640, 480, @"http://example.com/game/game.swf", GameSrcType.Swf);
 
             // Act
@@ -38,7 +38,7 @@ namespace Zeega.Domain.Tests.GameModel {
         [Test]
         public void CreateMediaRes_WithParams_MediaResourceCreatedAndAddedToGameSrc() {
             // Arrange
-            var game = new Game("Angry Birds");
+            var game = new Game("Angry Birds", new GameProvider("Spil Games"));
             const string MEDIA_RES_SRC_URI = @"http://example.com/assets/scrrenshot.jpg";
             const string THUMB_MEDIA_RES_SRC_URI = @"http://example.com/assets/thumb.jpg";
 
@@ -65,7 +65,7 @@ namespace Zeega.Domain.Tests.GameModel {
         [Test]
         public void DeleteMediaRes_MediaRes_MediaResourceDeletedFromGameSrc() {
             // Arrange
-            var game = new Game("Angry Birds");
+            var game = new Game("Angry Birds", new GameProvider("Spil Games"));
             const string MEDIA_RES_SRC_URI_1 = @"http://example.com/assets/scrrenshot.jpg";
             const string MEDIA_RES_SRC_URI_2 = @"http://example.com/assets/scrrenshot2.jpg";
             const string MEDIA_RES_SRC_URI_3 = @"http://example.com/assets/scrrenshot3.jpg";

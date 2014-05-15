@@ -66,12 +66,14 @@
     <Compile Include="Dal\NHibernate\AppTenantsNhRepository.cs" />
     <Compile Include="Dal\NHibernate\GameModel\GameCategoriesNhRepository.cs" />
     <Compile Include="Dal\NHibernate\GameModel\GameInstancesNhRepository.cs" />
+    <Compile Include="Dal\NHibernate\GameModel\GameProvidersNhRepository.cs" />
     <Compile Include="Dal\NHibernate\GameModel\GamesNhRepository.cs" />
     <Compile Include="Dal\NHibernate\ModelMapping\AppTenantMapping.cs" />
     <Compile Include="Dal\NHibernate\ModelMapping\AuditMapping.cs" />
     <Compile Include="Dal\NHibernate\ModelMapping\GameModel\GameCategoryMapping.cs" />
     <Compile Include="Dal\NHibernate\ModelMapping\GameModel\GameInstanceMapping.cs" />
     <Compile Include="Dal\NHibernate\ModelMapping\GameModel\GameMapping.cs" />
+    <Compile Include="Dal\NHibernate\ModelMapping\GameModel\GameProviderMapping.cs" />
     <Compile Include="Dal\NHibernate\ModelMapping\GameModel\MediaResMapping.cs" />
     <Compile Include="Dal\NHibernate\ModelMapping\LanguageCodeMapping.cs" />
     <Compile Include="Dal\NHibernate\ModelMapping\MappingConstants.cs" />

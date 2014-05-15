@@ -68,10 +68,12 @@
     <Compile Include="GameModel\GameCategorySrv.cs" />
     <Compile Include="GameModel\GameInstance.cs" />
     <Compile Include="GameModel\GameInstanceFactory.cs" />
+    <Compile Include="GameModel\GameProvider.cs" />
     <Compile Include="GameModel\GameSrcType.cs" />
     <Compile Include="GameModel\IGameCategoriesRepository.cs" />
     <Compile Include="GameModel\IGameCategoryMappingsRepository.cs" />
     <Compile Include="GameModel\IGameInstancesRepository.cs" />
+    <Compile Include="GameModel\IGameProvidersRepository.cs" />
     <Compile Include="GameModel\IGamesRepository.cs" />
     <Compile Include="GameModel\MediaRes.cs" />
     <Compile Include="GameModel\MediaResType.cs" />

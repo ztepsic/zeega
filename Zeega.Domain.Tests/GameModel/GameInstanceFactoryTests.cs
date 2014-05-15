@@ -11,7 +11,7 @@ namespace Zeega.Domain.Tests.GameModel {
         public void CreateCloneOf_ExistingGameInstance_NewGameInstanceWithCopiedValuesFromPassedGameArgument() {
             // Arrange
             var appTenant1 = new AppTenant("Zeega", new LanguageCode(LanguageCode.ENGLISH_TWO_LETTER_CODE));
-            var game = new Game("Angry Birds");
+            var game = new Game("Angry Birds", new GameProvider("Spil Games"));
             var gameInstance1 = new GameInstance(appTenant1, game) {
                 PrimaryCategory = new GameCategory(appTenant1, "Sports1")
             };

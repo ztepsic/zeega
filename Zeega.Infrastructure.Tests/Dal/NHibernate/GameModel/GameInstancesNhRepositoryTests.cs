@@ -19,10 +19,9 @@ namespace Zeega.Infrastructure.Tests.Dal.NHibernate.GameModel {
         }
 
         private Game createGame() {
-            var game = new Game("Angry Birds") {
+            var gameProvider = createGameProvider("Spil Games");
+            var game = new Game("Angry Birds", gameProvider) {
                 GameSrc = new GameSrc(800, 600, "http://example.com/angry-birds", GameSrcType.Swf),
-                Provider = "GameProvider",
-                ProviderUrl = "http://www.example.com",
                 ProviderGameUrl = "http://www.example.com/angry-birds",
                 Audit = new Audit(DateTime.Now)
             };
@@ -42,6 +41,18 @@ namespace Zeega.Infrastructure.Tests.Dal.NHibernate.GameModel {
                 trx.Commit();
             }
             return gameCategory;
+        }
+
+        private GameProvider createGameProvider(string providerName) {
+            var gameProvider = new GameProvider(providerName) {
+                OfficialUrl = "http://www.spilgames.com"
+            };
+            using (var trx = Session.BeginTransaction()) {
+                Session.SaveOrUpdate(gameProvider);
+                trx.Commit();
+            }
+
+            return gameProvider;
         }
 
         [Test]

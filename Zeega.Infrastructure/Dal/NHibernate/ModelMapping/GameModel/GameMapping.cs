@@ -54,8 +54,13 @@ namespace Zeega.Infrastructure.Dal.NHibernate.ModelMapping.GameModel {
 
             });
 
-            Property(x => x.Provider, m => m.NotNullable(true));
-            Property(x => x.ProviderUrl, m => m.NotNullable(true));
+            ManyToOne(x => x.Provider,
+                m => {
+                    m.Column("GameProviderId");
+                    m.Access(Accessor.NoSetter);
+                    m.NotNullable(true);
+                });
+
             Property(x => x.ProviderGameUrl);
             Property(x => x.Author);
             Property(x => x.AuthorUrl);

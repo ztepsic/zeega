@@ -64,6 +64,7 @@
     <Compile Include="GameModel\GameCategoryTests.cs" />
     <Compile Include="GameModel\GameInstanceFactoryTests.cs" />
     <Compile Include="GameModel\GameInstanceTests.cs" />
+    <Compile Include="GameModel\GameProviderTests.cs" />
     <Compile Include="GameModel\GameSrcTests.cs" />
     <Compile Include="GameModel\GameTests.cs" />
     <Compile Include="GameModel\MediaResTests.cs" />

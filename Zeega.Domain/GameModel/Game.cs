@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics.Eventing.Reader;
 using Zed.Core.Domain;
 
 namespace Zeega.Domain.GameModel {
@@ -84,12 +85,12 @@ namespace Zeega.Domain.GameModel {
         /// <summary>
         /// Game's provider
         /// </summary>
-        public virtual string Provider { get; set; }
+        private readonly GameProvider provider;
 
         /// <summary>
-        /// Game's provider URL
+        /// Gets game's provider
         /// </summary>
-        public virtual string ProviderUrl { get; set; }
+        public virtual GameProvider Provider { get { return provider; } }
 
         /// <summary>
         /// A URL where the game is located (the developer's or provider's site)
@@ -134,8 +135,12 @@ namespace Zeega.Domain.GameModel {
         /// Creates instance of Game class with provded paramaters.
         /// </summary>
         /// <param name="name">Game name</param>
-        public Game(string name) {
+        /// <param name="provider">Game's provider</param>
+        public Game(string name, GameProvider provider) {
             Name = name;
+
+            if(provider == null) throw new ArgumentNullException("provider", "Game provider can't be undefined(null).");
+            this.provider = provider;
 
             mediaResources = new List<MediaRes>();
         }

@@ -10,7 +10,7 @@ namespace Zeega.Domain.Tests.GameModel {
         [ExpectedException(typeof(ArgumentException))]
         public void ThumbSrcUri_WithSamePathAsSrc_ThrownExceptionOnlyIfTypeIsVideo() {
             // Arrange
-            var game = new Game("Angry Birds");
+            var game = new Game("Angry Birds", new GameProvider("Spil Games"));
             const string SRC_URI = "http://example.com/assets/1/screenshot.jpg";
             const string THUMB_SRC_URI = SRC_URI;
 

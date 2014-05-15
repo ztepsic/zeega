@@ -77,6 +77,7 @@
     <Compile Include="Dal\NHibernate\DbSchemaBuilder.cs" />
     <Compile Include="Dal\NHibernate\GameModel\GameCategoriesNhRepositoryTests.cs" />
     <Compile Include="Dal\NHibernate\GameModel\GameInstancesNhRepositoryTests.cs" />
+    <Compile Include="Dal\NHibernate\GameModel\GameProvidersNhRepositoryTests.cs" />
     <Compile Include="Dal\NHibernate\GameModel\GamesNhRepositoryTests.cs" />
     <Compile Include="Dal\NHibernate\SQLiteNHibernateTestFixture.cs" />
     <Compile Include="Dal\NHibernate\TagsNhRepositoryTests.cs" />
