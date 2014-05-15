@@ -203,19 +203,8 @@ namespace Zeega.Domain.GameModel {
             secondaryCategories = new List<GameCategory>();
             tags = new List<Tag>();
 
-            mapGameToGameInstance();
-
             Audit = new Audit(DateTime.Now);
             
-        }
-
-        /// <summary>
-        /// Maps game properties to game instance properties
-        /// </summary>
-        private void mapGameToGameInstance() {
-            Description = game.Description;
-            ShortDescription = game.ShortDescription;
-            Instructions = game.Instructions;
         }
 
         #endregion

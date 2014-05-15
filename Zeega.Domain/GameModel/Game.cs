@@ -60,9 +60,16 @@ namespace Zeega.Domain.GameModel {
         public virtual string Controls { get; set; }
 
         /// <summary>
-        /// Gets list of game tags/keywords
+        /// List of game tags/keywords
         /// </summary>
-        public virtual string Tags { get; set; }
+        private readonly IList<Tag> tags;
+
+        /// <summary>
+        /// Gets list of game  tags/keywords
+        /// </summary>
+        public virtual IList<Tag> Tags {
+            get { return new ReadOnlyCollection<Tag>(tags); }
+        }
 
         /// <summary>
         /// List of media resources
@@ -143,6 +150,7 @@ namespace Zeega.Domain.GameModel {
             this.provider = provider;
 
             mediaResources = new List<MediaRes>();
+            tags = new List<Tag>();
         }
 
         #endregion
@@ -182,6 +190,28 @@ namespace Zeega.Domain.GameModel {
             }
 
             return isRemoved;
+        }
+
+        /// <summary>
+        /// Adds tag to game tags
+        /// </summary>
+        /// <param name="tag">Tag to be added</param>
+        /// <returns>Self instance - this</returns>
+        public virtual Game AddTag(Tag tag) {
+            if (tag == null) throw new ArgumentNullException("tag");
+
+            tags.Add(tag);
+
+            return this;
+        }
+
+        /// <summary>
+        /// Removes tag from game tags
+        /// </summary>
+        /// <param name="tag">Tag to be removed</param>
+        /// <returns>true if removal was successful, otherwise false</returns>
+        public virtual bool RemoveTag(Tag tag) {
+            return tags.Remove(tag);
         }
 
         #endregion

@@ -71,7 +71,63 @@ namespace Zeega.Domain.Tests.GameModel {
             Assert.AreEqual(secondaryCategory2_1, gameInstance2.SecondaryCategories[0]);
             Assert.AreEqual(secondaryCategory2_2, gameInstance2.SecondaryCategories[1]);
 
+        }
 
+        [Test]
+        public void CreateWithGamePropertyCopy_WithParams_CreatesGameInstanceWithPopulatedFieldsBasedOnGameData() {
+            // Arrange
+            var gameProvider = new GameProvider("Spil Games");
+            var game = new Game("Angry Birds", gameProvider) {
+                Description = "Description",
+                ShortDescription = "ShortDescription",
+                Instructions = "Instruction"
+            };
+
+            var baseTag1 = Tag.CreateBaseTag("TagEN1");
+            var baseTag2 = Tag.CreateBaseTag("TagEN2");
+            game.AddTag(baseTag1)
+                .AddTag(baseTag2);
+
+            //var secondaryCategory1_1 = new GameCategory(appTenant1, "Action1_1");
+            //var secondaryCategory1_2 = new GameCategory(appTenant1, "Action1_2");
+            //game.AddSecondaryCategory(secondaryCategory1_1)
+            //    .AddSecondaryCategory(secondaryCategory1_2);
+
+            var appTenant = new AppTenant("Otkrij Igre", new LanguageCode(LanguageCode.CROATIAN_TWO_LETTER_CODE));
+
+            var tag1 = Tag.CreateTag("TagHR1", appTenant.LanguageCode, baseTag1);
+            var tag2 = Tag.CreateTag("TagHR2", appTenant.LanguageCode, baseTag2);
+
+            var tagsRepoMock = new Mock<ITagsRepository>();
+            tagsRepoMock.Setup(tagsRepo => tagsRepo.GetTagsFor(game.Tags, appTenant.LanguageCode))
+                .Returns(new List<Tag> { tag1, tag2 });
+
+            //var primaryCategory2 = new GameCategory(appTenant2, "Sports2");
+            //var secondaryCategory2_1 = new GameCategory(appTenant2, "Action2_1");
+            //var secondaryCategory2_2 = new GameCategory(appTenant2, "Action2_2");
+
+            var gameCategoryMappingRepoMock = new Mock<IGameCategoryMappingsRepository>();
+            //gameCategoryMappingRepoMock.Setup(gameCatMapRepo => gameCatMapRepo.GetMappedGameCategoryFrom(gameInstance1.PrimaryCategory))
+            //    .Returns(primaryCategory2);
+
+            //gameCategoryMappingRepoMock.Setup(gameCatMapRepo => gameCatMapRepo.GetMappedGameCategoriesFrom(gameInstance1.SecondaryCategories))
+            //    .Returns(new List<GameCategory> { secondaryCategory2_1, secondaryCategory2_2 });
+
+
+            var gameInstanceFactory = new GameInstanceFactory(tagsRepoMock.Object, gameCategoryMappingRepoMock.Object);
+
+
+            // Act
+            var gameInstance = gameInstanceFactory.CreateWithGamePropertyCopy(appTenant, game);
+
+            // Assert
+            Assert.AreEqual(gameInstance.Name, gameInstance.Name);
+            Assert.AreEqual(gameInstance.Description, gameInstance.Description);
+            Assert.AreEqual(gameInstance.ShortDescription, gameInstance.ShortDescription);
+            Assert.AreEqual(gameInstance.Instructions, gameInstance.Instructions);
+            Assert.IsTrue(gameInstance.Tags.Count == 2);
+            Assert.AreEqual(tag1, gameInstance.Tags[0]);
+            Assert.AreEqual(tag2, gameInstance.Tags[1]);
         }
 
     }

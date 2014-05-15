@@ -64,6 +64,41 @@ namespace Zeega.Domain.GameModel {
             return newGameInstance;
         }
 
+
+        /// <summary>
+        /// Creates a new game instance where some of game properties are copied to game instance properties
+        /// </summary>
+        /// <param name="appTenant">Application tenant that owns this game instance</param>
+        /// <param name="game">Game upon which will be defined game instance</param>
+        /// <returns>A new game instance with some of the properties filled with game ones. </returns>
+        public GameInstance CreateWithGamePropertyCopy(AppTenant appTenant, Game game) {
+            return CreateWithGamePropertyCopy(appTenant, game, game.Name);
+        } 
+
+        /// <summary>
+        /// Creates a new game instance where some of game properties are copied to game instance properties
+        /// </summary>
+        /// <param name="appTenant">Application tenant that owns this game instance</param>
+        /// <param name="game">Game upon which will be defined game instance</param>
+        /// <param name="name">Game instance name</param>
+        /// <returns>A new game instance with some of the properties filled with game ones. </returns>
+        public GameInstance CreateWithGamePropertyCopy(AppTenant appTenant, Game game, string name) {
+            var gameInstance = new GameInstance(appTenant, game, name) {
+                Description = game.Description,
+                ShortDescription = game.ShortDescription,
+                Instructions = game.Instructions
+            };
+
+            var tags = tagsRepository.GetTagsFor(game.Tags, appTenant.LanguageCode);
+
+            foreach (var tag in tags) {
+                gameInstance.AddTag(tag);
+            }
+
+            return gameInstance;
+
+        }
+
         #endregion
 
     }

@@ -89,6 +89,26 @@ namespace Zeega.Domain.Tests.GameModel {
             
         }
 
+        [Test]
+        public void RemoveTag_TagToBeRemoved_RemovedTagFromTagList() {
+            // Arrange
+            var game = new Game("Angry birds", new GameProvider("Spil Games"));
+            var tag1 = Tag.CreateBaseTag("Tower defense");
+            var tag2 = Tag.CreateBaseTag("Multiplayer");
+            var tag3 = Tag.CreateBaseTag("strategy");
+            game.AddTag(tag1)
+                .AddTag(tag2)
+                .AddTag(tag3);
+
+            // Act
+            var isTagRemoved = game.RemoveTag(tag2);
+
+            // Assert
+            Assert.AreEqual(2, game.Tags.Count);
+            Assert.IsTrue(isTagRemoved);
+            Assert.IsFalse(game.Tags.Contains(tag2));
+        }
+
         #endregion
     }
 }

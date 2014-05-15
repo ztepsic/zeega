@@ -16,7 +16,20 @@ namespace Zeega.Infrastructure.Dal.NHibernate.ModelMapping.GameModel {
             Property(x => x.ShortDescription);
             Property(x => x.Instructions);
             Property(x => x.Controls);
-            Property(x => x.Tags);
+
+            Bag(x => x.Tags,
+                m => {
+                    m.Schema(MappingConstants.GAME_MODEL_SCHEMA);
+                    m.Table("GameTags");
+                    m.Access(Accessor.NoSetter);
+                    m.Key(k => {
+                        k.Column("GameId");
+                        k.NotNullable(true);
+                    });
+                },
+                r => r.ManyToMany(m => m.Column("TagId"))
+            );
+
 
             List(x => x.MediaResources,
                 m => {

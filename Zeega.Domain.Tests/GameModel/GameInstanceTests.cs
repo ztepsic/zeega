@@ -23,28 +23,6 @@ namespace Zeega.Domain.Tests.GameModel {
         }
 
         [Test]
-        public void Ctor_WithParams_CreatesGameInstanceWithPopulatedFieldsBasedOnGameData() {
-            // Arrange
-            var appTenant = new AppTenant("Zeega", new LanguageCode(LanguageCode.ENGLISH_TWO_LETTER_CODE));
-            var gameProvider = new GameProvider("Spil Games");
-            var game = new Game("Angry Birds", gameProvider) {
-                Description = "Description",
-                ShortDescription = "ShortDescription",
-                Instructions = "Instruction"
-            };
-
-
-            // Act
-            var gameInstance = new GameInstance(appTenant, game);
-
-            // Assert
-            Assert.AreEqual(game.Name, gameInstance.Name);
-            Assert.AreEqual(game.Description, gameInstance.Description);
-            Assert.AreEqual(game.ShortDescription, gameInstance.ShortDescription);
-            Assert.AreEqual(game.Instructions, gameInstance.Instructions);
-        }
-
-        [Test]
         [ExpectedException(typeof(ArgumentException))]
         public void SetShortDescription_InvalidNumberOfChars_ExceptionTrown() {
             // Arrange
