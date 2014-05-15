@@ -5,6 +5,9 @@ using Zeega.Domain.GameModel;
 namespace Zeega.Infrastructure.Dal.NHibernate.ModelMapping.GameModel {
     class GameInstanceMapping : ClassMapping<GameInstance> {
         public GameInstanceMapping() {
+            Schema(MappingConstants.GAME_MODEL_SCHEMA);
+            Table("GameInstances");
+
             Id(x => x.Id, m => m.Generator(Generators.Native));
 
             ManyToOne(x => x.AppTenant,
@@ -40,13 +43,15 @@ namespace Zeega.Infrastructure.Dal.NHibernate.ModelMapping.GameModel {
 
             Bag(x => x.SecondaryCategories,
                 m => {
+                    m.Schema(MappingConstants.GAME_MODEL_SCHEMA);
+                    m.Table("SecondaryGameInstCategories");
                     m.Access(Accessor.NoSetter);
                     m.Key(k => {
                         k.Column("GameInstanceId");
                         k.NotNullable(true);
                     });
                 },
-                r => r.ManyToMany()
+                r => r.ManyToMany(m => m.Column("GameCategoryId"))
             );
 
             Property(x => x.Description);
@@ -56,13 +61,15 @@ namespace Zeega.Infrastructure.Dal.NHibernate.ModelMapping.GameModel {
 
             Bag(x => x.Tags,
                 m => {
+                    m.Schema(MappingConstants.GAME_MODEL_SCHEMA);
+                    m.Table("GameInstanceTags");
                     m.Access(Accessor.NoSetter);
                     m.Key(k => {
                         k.Column("GameInstanceId");
                         k.NotNullable(true);
                     });
                 },
-                r => r.ManyToMany()
+                r => r.ManyToMany(m => m.Column("TagId"))
             );
 
             Property(x => x.IsPublished);

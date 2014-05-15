@@ -1,7 +1,9 @@
-﻿namespace Zeega.Domain.GameModel {
+﻿using Zed.Core.Domain;
+
+namespace Zeega.Domain.GameModel {
     /// <summary>
     /// Games repository interface
     /// </summary>
-    public interface IGamesRepository {
+    public interface IGamesRepository : ICrudRepository<Game> {
     }
 }

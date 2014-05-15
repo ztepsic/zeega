@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using NUnit.Framework;
 using Zeega.Domain;
 using Zeega.Infrastructure.Dal.NHibernate;

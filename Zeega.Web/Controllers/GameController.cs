@@ -11,7 +11,7 @@ namespace Zeega.Web.Controllers {
     public class GameController : Controller {
         
         /// <summary>
-        /// 
+        /// All Games
         /// </summary>
         /// <returns></returns>
         public ActionResult Index() {

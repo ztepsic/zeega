@@ -32,7 +32,6 @@ namespace Zeega.Domain.GameModel {
         /// </summary>
         public int Width { get { return width; } }
 
-
         /// <summary>
         /// Game height in pixels
         /// </summary>
@@ -75,11 +74,6 @@ namespace Zeega.Domain.GameModel {
         public GameSrcType SrcType {
             get { return srcType; }
         }
-
-        /// <summary>
-        /// Gets or Sets Audit
-        /// </summary>
-        public Audit Audit { get; set; }
 
         #endregion
 

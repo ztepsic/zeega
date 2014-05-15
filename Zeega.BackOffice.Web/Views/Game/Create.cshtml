@@ -1,0 +1,321 @@
+﻿@using Zed.Web.Helpers;
+@model Zeega.BackOffice.Web.Models.GameViewModel
+           
+@section scripts {
+    @Scripts.Render("~/assets/js/jqueryval")
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Add new game <br /><small>Subtext for header</small></h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">Game data</div>
+                <div class="panel-body">
+                    @using (Html.BeginForm("create", "game", FormMethod.Post, new { role = "form", @class = "form-horizontal" })) {
+                        <fieldset>
+                            <legend>General</legend>
+                            <div class="form-group @Html.ValidationErrorCssClassFor(x => x.ExternalId, "has-error")" >
+                                @Html.LabelFor(x => x.ExternalId, new { @class = "col-sm-2 control-label" })
+                                <div class="col-sm-10">
+                                    @Html.TextBoxFor(x => x.ExternalId, new { @class = "form-control", placeholder = "External Id" })
+                                    <p class="help-block">
+                                        @Html.ValidationMessageFor(x => x.ExternalId)
+                                        Game external/original Id.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="form-group @Html.ValidationErrorCssClassFor(x => x.Name, "has-error")">
+                                @Html.LabelFor(x => x.Name, new { @class = "col-sm-2 control-label" })
+                                <div class="col-sm-10">
+                                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control", placeholder = "Game Name" })
+                                    <p class="help-block">@Html.ValidationMessageFor(x => x.Name)</p>
+                                </div>
+                            </div>
+
+                            <div class="form-group @Html.ValidationErrorCssClassFor(x => x.Categories, "has-error")">
+                                @Html.LabelFor(x => x.Categories, new { @class = "col-sm-2 control-label" })
+                                <div class="col-sm-10">
+                                    @Html.TextBoxFor(x => x.Categories, new { @class = "form-control", placeholder = "Game Categories" })
+                                    <p class="help-block">
+                                        @Html.ValidationMessageFor(x => x.Categories)
+                                        Game categories separated by commas. E.g sports, arcade
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="form-group @Html.ValidationErrorCssClassFor(x => x.Tags, "has-error")">
+                                @Html.LabelFor(x => x.Tags, new { @class = "col-sm-2 control-label" })
+                                <div class="col-sm-10">
+                                    @Html.TextBoxFor(x => x.Tags, new { @class = "form-control", placeholder = "Game Tags" })
+                                    <p class="help-block">
+                                        @Html.ValidationMessageFor(x => x.Tags)
+                                        Game tags separated by commas. E.g football, soccer
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="form-group @Html.ValidationErrorCssClassFor(x => x.ShortDescription, "has-error")">
+                                @Html.LabelFor(x => x.ShortDescription, new { @class = "col-sm-2 control-label" })
+                                <div class="col-sm-10">
+                                    @Html.TextAreaFor(x => x.ShortDescription, new { rows = "3", @class = "form-control", placeholder = "Short game description" })
+                                    <p class="help-block">
+                                        @Html.ValidationMessageFor(x => x.ShortDescription)
+                                        Short game description.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="form-group @Html.ValidationErrorCssClassFor(x => x.Description, "has-error")">
+                                @Html.LabelFor(x => x.Description, new { @class = "col-sm-2 control-label" })
+                                <div class="col-sm-10">
+                                    @Html.TextAreaFor(x => x.Description, new { rows = "5", @class = "form-control", placeholder = "Game description" })
+                                    <p class="help-block">
+                                        @Html.ValidationMessageFor(x => x.Description)
+                                        Game description.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="form-group @Html.ValidationErrorCssClassFor(x => x.Instructions, "has-error")">
+                                @Html.LabelFor(x => x.Instructions, new { @class = "col-sm-2 control-label" })
+                                <div class="col-sm-10">
+                                    @Html.TextAreaFor(x => x.Instructions, new { rows = "5", @class = "form-control", placeholder = "Game instructions" })
+                                    <p class="help-block">
+                                        @Html.ValidationMessageFor(x => x.Instructions)
+                                        Game instructions, tips and hints.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="form-group @Html.ValidationErrorCssClassFor(x => x.Controls, "has-error")">
+                                @Html.LabelFor(x => x.Controls, new { @class = "col-sm-2 control-label" })
+                                <div class="col-sm-10">
+                                    @Html.TextAreaFor(x => x.Controls, new { rows = "5", @class = "form-control", placeholder = "Game controls" })
+                                    <p class="help-block">
+                                        @Html.ValidationMessageFor(x => x.Controls)
+                                        Game controls.
+                                    </p>
+                                </div>
+                            </div>
+
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>Game source</legend>
+                            <div class="form-group form-inline">
+                                <span class="col-sm-2 control-label">Game source dimensions</span>
+                                <div class="col-sm-10">
+                                    <div class="row">
+                                        <div class="col-sm-3 form-group @Html.ValidationErrorCssClassFor(x => x.GameSrc.Width, "has-error")">
+                                            @Html.LabelFor(x => x.GameSrc.Width, new { @class = "col-sm-4 control-label" })
+                                            <div class="input-group col-sm-6">
+                                                @Html.TextBoxFor(x => x.GameSrc.Width, new { @class = "form-control" })
+                                                <span class="input-group-addon">px</span>
+                                            </div>
+                                            <div class="help-block">@Html.ValidationMessageFor(x => x.GameSrc.Width)</div>
+                                        </div>
+
+                                        <div class="col-sm-3 form-group @Html.ValidationErrorCssClassFor(x => x.GameSrc.Height, "has-error")">
+                                            @Html.LabelFor(x => x.GameSrc.Height, new { @class = "col-sm-4 control-label" })
+                                            <div class="input-group col-sm-6">
+                                                @Html.TextBoxFor(x => x.GameSrc.Height, new { @class = "form-control" })
+                                                <span class="input-group-addon">px</span>
+                                            </div>
+                                            <div class="help-block">@Html.ValidationMessageFor(x => x.GameSrc.Height)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group @Html.ValidationErrorCssClassFor(x => x.GameSrc.SrcUri, "has-error")">
+                                @Html.LabelFor(x => x.GameSrc.SrcUri, new { @class = "col-sm-2 control-label" })
+                                <div class="col-sm-10">
+                                    @Html.TextBoxFor(x => x.GameSrc.SrcUri, new { @class = "form-control", placeholder = "Game source URI" })
+                                    <div class="checkbox col-sm-12">
+                                        <label>
+                                            @Html.CheckBoxFor(x => x.GameSrc.IsSrcOnline)
+                                            @Html.DisplayNameFor(x => x.GameSrc.IsSrcOnline)
+                                        </label>
+                                    </div>
+                                    <div class="help-block">@Html.ValidationMessageFor(x => x.GameSrc.SrcUri)</div>
+                                </div>
+                            </div>
+                            <div class="form-group @Html.ValidationErrorCssClassFor(x => x.GameSrc.SrcType, "has-error")">
+                                @Html.LabelFor(x => x.GameSrc.SrcType, new { @class = "col-sm-2 control-label" })
+                                <div class="col-sm-10">
+                                    <div class="col-sm-2">
+                                        @Html.EnumDropDownListFor(x => x.GameSrc.SrcType, "-- Choose", new { @class = "form-control" })
+                                    </div>
+                                    
+                                    <div class="help-block">@Html.ValidationMessageFor(x => x.GameSrc.SrcType)</div>
+                                </div>
+                            </div>
+                            <div class="form-group @Html.ValidationErrorCssClassFor(x => x.GameSrc.DeviceTypeSupport, "has-error")">
+                                @Html.LabelFor(x => x.GameSrc.DeviceTypeSupport, new { @class = "col-sm-2 control-label" })
+                                <div class="col-sm-10">
+                                    <label class="checkbox-inline">
+                                        @Html.CheckBoxFor(x => x.GameSrc.DeviceTypeSupport.IsDesktopEnabled)
+                                        @Html.DisplayNameFor(x => x.GameSrc.DeviceTypeSupport.IsDesktopEnabled)
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        @Html.CheckBoxFor(x => x.GameSrc.DeviceTypeSupport.IsMobileEnabled)
+                                        @Html.DisplayNameFor(x => x.GameSrc.DeviceTypeSupport.IsMobileEnabled)
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>Game resources</legend>
+                            @for (var i = 0; i < 3; i++) {
+                                <div class="form-group">
+                                    @Html.LabelFor(x => x.MediaResources[i].Type, new { @class = "col-sm-2 control-label"})
+                                    <div class="col-sm-3">
+                                        @Html.EnumDropDownListFor(x => x.MediaResources[i].Type, "-- Choose", new { @class = "form-control"})
+                                    </div>
+                                </div>
+                                <div class="form-group form-inline">
+                                    <span class="col-sm-2 control-label">Thumbnail media resource dimensions</span>
+                                    <div class="col-sm-10">
+                                        <div class="form-group row">
+                                            <div class="col-sm-5">
+                                                @Html.LabelFor(x => x.MediaResources[i].ThumbSrcWidth, new { @class = "col-sm-5 control-label" })
+                                                <div class="input-group col-sm-4">
+                                                    @Html.TextBoxFor(x => x.MediaResources[i].ThumbSrcWidth, new { @class = "form-control" })
+                                                    <span class="input-group-addon">px</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-5">
+                                                @Html.LabelFor(x => x.MediaResources[i].ThumbSrcHeight, new { @class = "col-sm-5 control-label" })
+                                                <div class="input-group col-sm-4">
+                                                    @Html.TextBoxFor(x => x.MediaResources[i].ThumbSrcHeight, new { @class = "form-control" })
+                                                    <span class="input-group-addon">px</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(x => x.MediaResources[i].ThumbSrcUri, new { @class = "col-sm-2 control-label" })
+                                    <div class="col-sm-10">
+                                        @Html.TextBoxFor(x => x.MediaResources[i].ThumbSrcUri, new { @class = "form-control", placeholder = "Game source URI" })
+                                    </div>
+                                </div>
+                                <div class="form-group form-inline">
+                                    <span class="col-sm-2 control-label">Media resource dimensions</span>
+                                    <div class="col-sm-10">
+                                        <div class="form-group row">
+                                            <div class="col-sm-5">
+                                                @Html.LabelFor(x => x.MediaResources[i].SrcWidth, new { @class = "col-sm-5 control-label" })
+                                                <div class="input-group col-sm-4">
+                                                    @Html.TextBoxFor(x => x.MediaResources[i].SrcWidth, new { @class = "form-control" })
+                                                    <span class="input-group-addon">px</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-5">
+                                                @Html.LabelFor(x => x.MediaResources[i].SrcHeight, new { @class = "col-sm-5 control-label" })
+                                                <div class="input-group col-sm-4">
+                                                    @Html.TextBoxFor(x => x.MediaResources[i].SrcHeight, new { @class = "form-control" })
+                                                    <span class="input-group-addon">px</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(x => x.MediaResources[i].SrcUri, new { @class = "col-sm-2 control-label" })
+                                    <div class="col-sm-10">
+                                        @Html.TextBoxFor(x => x.MediaResources[i].SrcUri, new { @class = "form-control", placeholder = "Game source URI" })
+                                    </div>
+                                </div>
+                            }
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>Provider</legend>
+                            <div class="form-group @Html.ValidationErrorCssClassFor(x => x.Provider, "has-error")">
+                                @Html.LabelFor(x => x.Provider, new { @class = "col-sm-2 control-label" })
+                                <div class="col-sm-10">
+                                    @Html.TextBoxFor(x => x.Provider, new { @class = "form-control", placeholder = "Game provider" })
+                                    <div class="help-block">@Html.ValidationMessageFor(x => x.Provider)</div>
+                                </div>
+                            </div>
+                            <div class="form-group @Html.ValidationErrorCssClassFor(x => x.ProviderUrl, "has-error")">
+                                @Html.LabelFor(x => x.ProviderUrl, new { @class = "col-sm-2 control-label" })
+                                <div class="col-sm-10">
+                                    @Html.TextBoxFor(x => x.ProviderUrl, new { @class = "form-control", placeholder = "Game provider url" })
+                                    <div class="help-block">@Html.ValidationMessageFor(x => x.ProviderUrl)</div>
+                                </div>
+                            </div>
+                            <div class="form-group @Html.ValidationErrorCssClassFor(x => x.ProviderGameUrl, "has-error")">
+                                @Html.LabelFor(x => x.ProviderGameUrl, new { @class = "col-sm-2 control-label" })
+                                <div class="col-sm-10">
+                                    @Html.TextBoxFor(x => x.ProviderGameUrl, new { @class = "form-control", placeholder = "Provider's game url" })
+                                    <p class="help-block">
+                                        @Html.ValidationMessageFor(x => x.ProviderGameUrl)
+                                        A URL where the game is located (the developer's or provider's site).
+                                    </p>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>Author</legend>
+                            <div class="form-group @Html.ValidationErrorCssClassFor(x => x.Author, "has-error")">
+                                @Html.LabelFor(x => x.Author, new { @class = "col-sm-2 control-label" })
+                                <div class="col-sm-10">
+                                    @Html.TextBoxFor(x => x.Author, new { @class = "form-control", placeholder = "Author" })
+                                    <div class="help-block">@Html.ValidationMessageFor(x => x.Author)</div>
+                                </div>
+                            </div>
+                            <div class="form-group @Html.ValidationErrorCssClassFor(x => x.AuthorUrl, "has-error")">
+                                @Html.LabelFor(x => x.AuthorUrl, new { @class = "col-sm-2 control-label" })
+                                <div class="col-sm-10">
+                                    @Html.TextBoxFor(x => x.AuthorUrl, new { @class = "form-control", placeholder = "Author URL" })
+                                    <div class="help-block">@Html.ValidationMessageFor(x => x.AuthorUrl)</div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        
+                        <fieldset>
+                            <legend>Other</legend>
+                            <div class="form-group @Html.ValidationErrorCssClassFor(x => x.ZipUrl, "has-error")">
+                                @Html.LabelFor(x => x.ZipUrl, new { @class = "col-sm-2 control-label" })
+                                <div class="col-sm-10">
+                                    @Html.TextBoxFor(x => x.ZipUrl, new { @class = "form-control", placeholder = "ZIP URL" })
+                                    <p class="help-block">
+                                        <div class="help-block">@Html.ValidationMessageFor(x => x.ZipUrl)</div>
+                                        URL of a zip package containing the thumb, game SWF, and meta data
+                                    </p>
+
+                                    <div class="checkbox col-sm-10">
+                                        <label>
+                                            @Html.CheckBoxFor(x => x.IsZipDownloaded)
+                                            @Html.DisplayNameFor(x => x.IsZipDownloaded)
+                                        </label>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <div class="text-center col-sm-12">
+                            <button type="submit" class="btn btn-primary">Create</button>
+                            <button type="submit" class="btn btn-primary">Create and Go to Game Instance</button>
+                            <button type="submit" class="btn btn-default">Cancel</button>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div> <!-- .col-md-8 -->
+    </div>
+</div> <!-- .container -->

@@ -5,6 +5,9 @@ using Zeega.Domain.GameModel;
 namespace Zeega.Infrastructure.Dal.NHibernate.ModelMapping.GameModel {
     class GameCategoryMapping : ClassMapping<GameCategory> {
         public GameCategoryMapping() {
+            Schema(MappingConstants.GAME_MODEL_SCHEMA);
+            Table("GameCategories");
+
             Id(x => x.Id, m => m.Generator(Generators.Native));
 
             ManyToOne(x => x.AppTenant,
