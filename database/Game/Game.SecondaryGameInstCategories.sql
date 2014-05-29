@@ -16,10 +16,18 @@ create table Game.SecondaryGameInstCategories (
 			on update no action
 );
 
-exec sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Relation between game instances and game categories' , @level0type=N'SCHEMA',@level0name=N'Game', @level1type=N'TABLE',@level1name=N'SecondaryGameInstCategories'
+exec sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Relation between game instances and game categories',
+								@level1type=N'TABLE', @level1name=N'SecondaryGameInstCategories',
+								@level0type=N'SCHEMA', @level0name=N'Game'
+								
 exec sys.sp_addextendedproperty @level2type=N'COLUMN', @level2name=N'GameInstanceId',
-								@name=N'MS_Description', @value=N'Game instance id', @level0type=N'SCHEMA',@level0name=N'Game', @level1type=N'TABLE',@level1name=N'SecondaryGameInstCategories'
+								@name=N'MS_Description', @value=N'Game instance id',
+								 @level1type=N'TABLE', @level1name=N'SecondaryGameInstCategories',
+								@level0type=N'SCHEMA', @level0name=N'Game'
+								
 exec sys.sp_addextendedproperty @level2type=N'COLUMN', @level2name=N'GameCategoryId',
-								@name=N'MS_Description', @value=N'Game category id', @level0type=N'SCHEMA',@level0name=N'Game', @level1type=N'TABLE',@level1name=N'SecondaryGameInstCategories'
+								@name=N'MS_Description', @value=N'Game category id',
+								@level1type=N'TABLE',@level1name=N'SecondaryGameInstCategories',
+								@level0type=N'SCHEMA', @level0name=N'Game'
 go
 

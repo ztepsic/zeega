@@ -71,31 +71,31 @@ namespace Zeega.Domain.GameModel {
         /// <summary>
         /// Primary game category
         /// </summary>
-        private GameCategory primaryCategory;
+        private GameInstanceCategory primaryInstanceCategory;
 
         /// <summary>
         /// Gets or Sets game category
         /// </summary>
-        public virtual GameCategory PrimaryCategory {
-            get { return primaryCategory; }
+        public virtual GameInstanceCategory PrimaryInstanceCategory {
+            get { return primaryInstanceCategory; }
             set {
                 if(value == null) throw new ArgumentNullException("value", "Primary category can't be null.");
                 if(!AppTenant.Equals(value.AppTenant)) throw new ArgumentException("Game category application tenant must be equal as Game instance application tenant.");
 
-                primaryCategory = value;
+                primaryInstanceCategory = value;
             }
         }
 
         /// <summary>
         /// List of secondary game instance categories
         /// </summary>
-        private readonly IList<GameCategory> secondaryCategories;
+        private readonly IList<GameInstanceCategory> secondaryCategories;
 
         /// <summary>
         /// Gets list of secondary game instance categories
         /// </summary>
-        public virtual IList<GameCategory> SecondaryCategories {
-            get { return new ReadOnlyCollection<GameCategory>(secondaryCategories); }
+        public virtual IList<GameInstanceCategory> SecondaryCategories {
+            get { return new ReadOnlyCollection<GameInstanceCategory>(secondaryCategories); }
         }
 
         /// <summary>
@@ -200,7 +200,7 @@ namespace Zeega.Domain.GameModel {
             Name = name;
             SetSlug(Name);
 
-            secondaryCategories = new List<GameCategory>();
+            secondaryCategories = new List<GameInstanceCategory>();
             tags = new List<Tag>();
 
             Audit = new Audit(DateTime.Now);
@@ -242,16 +242,16 @@ namespace Zeega.Domain.GameModel {
         /// <summary>
         /// Adds a secondary game category to game instance.
         /// </summary>
-        /// <param name="secondaryCategory">Secondary game instance category</param>
+        /// <param name="secondaryInstanceCategory">Secondary game instance category</param>
         /// <returns>Self instance - this</returns>
-        public virtual GameInstance AddSecondaryCategory(GameCategory secondaryCategory) {
-            if(PrimaryCategory == null) throw new InvalidOperationException("Primary category must be set in order to add a secondary game category.");
-            if(secondaryCategory == null) throw new ArgumentNullException("secondaryCategory", "Secondary game secondaryCategory can't be null.");
-            if (!AppTenant.Equals(secondaryCategory.AppTenant)) throw new ArgumentException("Game category application tenant must be equal as Game instance application tenant.");
-            if(PrimaryCategory.Equals(secondaryCategory)) throw new ArgumentException("Secondary game secondaryCategory already exists as primapry game secondaryCategory. You can change the sescondary secondaryCategory or remove/replace primary game secondaryCategory.");
-            if(secondaryCategories.Contains(secondaryCategory)) throw new ArgumentException("Secondary game secondaryCategory is already added.", "secondaryCategory");
+        public virtual GameInstance AddSecondaryCategory(GameInstanceCategory secondaryInstanceCategory) {
+            if(PrimaryInstanceCategory == null) throw new InvalidOperationException("Primary category must be set in order to add a secondary game category.");
+            if(secondaryInstanceCategory == null) throw new ArgumentNullException("secondaryInstanceCategory", "Secondary game secondaryInstanceCategory can't be null.");
+            if (!AppTenant.Equals(secondaryInstanceCategory.AppTenant)) throw new ArgumentException("Game category application tenant must be equal as Game instance application tenant.");
+            if(PrimaryInstanceCategory.Equals(secondaryInstanceCategory)) throw new ArgumentException("Secondary game secondaryInstanceCategory already exists as primapry game secondaryInstanceCategory. You can change the sescondary secondaryInstanceCategory or remove/replace primary game secondaryInstanceCategory.");
+            if(secondaryCategories.Contains(secondaryInstanceCategory)) throw new ArgumentException("Secondary game secondaryInstanceCategory is already added.", "secondaryInstanceCategory");
 
-            secondaryCategories.Add(secondaryCategory);
+            secondaryCategories.Add(secondaryInstanceCategory);
 
             return this;
         }
@@ -259,10 +259,10 @@ namespace Zeega.Domain.GameModel {
         /// <summary>
         /// Removes secondary game instance category
         /// </summary>
-        /// <param name="secondaryCategory">Secondary game instance category to be removed</param>
+        /// <param name="secondaryInstanceCategory">Secondary game instance category to be removed</param>
         /// <returns>true if removal was successful, otherwise false</returns>
-        public virtual bool RemoveSecondaryCategory(GameCategory secondaryCategory) {
-            return secondaryCategories.Remove(secondaryCategory);
+        public virtual bool RemoveSecondaryCategory(GameInstanceCategory secondaryInstanceCategory) {
+            return secondaryCategories.Remove(secondaryInstanceCategory);
         }
 
         /// <summary>

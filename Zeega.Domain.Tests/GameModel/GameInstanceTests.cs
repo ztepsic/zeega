@@ -82,13 +82,13 @@ namespace Zeega.Domain.Tests.GameModel {
         public void SetPrimaryCategory_PrimaryCategoryWithDifferentAppTenant_ArgumentExceptionThrwen() {
             // Arrange
             var appTenant1 = new AppTenant("Zeega", new LanguageCode(LanguageCode.ENGLISH_TWO_LETTER_CODE));
-            var primaryCategory = new GameCategory(appTenant1, "Primary Category");
+            var primaryCategory = new GameInstanceCategory(appTenant1, "Primary Category");
 
             var appTenant2 = new AppTenant("OtkrijIgre", new LanguageCode(LanguageCode.CROATIAN_TWO_LETTER_CODE));
             var gameInstance = new GameInstance(appTenant2, new Game("Angry Birds", new GameProvider("Spil Games")));
 
             // Act
-            gameInstance.PrimaryCategory = primaryCategory;
+            gameInstance.PrimaryInstanceCategory = primaryCategory;
 
             // Assert
         }
@@ -98,12 +98,12 @@ namespace Zeega.Domain.Tests.GameModel {
         public void AddSecondaryCategory_SecondaryCategoryWithDifferentAppTenant_ArgumentExceptionThrwen() {
             // Arrange
             var appTenant1 = new AppTenant("Zeega", new LanguageCode(LanguageCode.ENGLISH_TWO_LETTER_CODE));
-            var secondaryCategory = new GameCategory(appTenant1, "Secondary Category");
+            var secondaryCategory = new GameInstanceCategory(appTenant1, "Secondary Category");
 
             var appTenant2 = new AppTenant("OtkrijIgre", new LanguageCode(LanguageCode.CROATIAN_TWO_LETTER_CODE));
-            var primaryCategory = new GameCategory(appTenant2, "Primary Category");
+            var primaryCategory = new GameInstanceCategory(appTenant2, "Primary Category");
             var gameInstance = new GameInstance(appTenant2, new Game("Angry Birds", new GameProvider("Spil Games"))) {
-                PrimaryCategory = primaryCategory
+                PrimaryInstanceCategory = primaryCategory
             };
 
             // Act
@@ -117,11 +117,11 @@ namespace Zeega.Domain.Tests.GameModel {
         public void AddSecondaryCategory_SecondaryCategoryWhichAlreadyExistInList_ArgumentExceptionThrown() {
             // Arrange
             var appTenant = new AppTenant("Zeega", new LanguageCode(LanguageCode.ENGLISH_TWO_LETTER_CODE));
-            var primaryCategory = new GameCategory(appTenant, "Primary Category");
-            var secondaryCategory = new GameCategory(appTenant, "Secondary Category");
+            var primaryCategory = new GameInstanceCategory(appTenant, "Primary Category");
+            var secondaryCategory = new GameInstanceCategory(appTenant, "Secondary Category");
 
             var gameInstance = new GameInstance(appTenant, new Game("Angry Birds", new GameProvider("Spil Games"))) {
-                PrimaryCategory = primaryCategory
+                PrimaryInstanceCategory = primaryCategory
             };
 
             // Act
@@ -137,11 +137,11 @@ namespace Zeega.Domain.Tests.GameModel {
             var appTenant = new AppTenant("Zeega", new LanguageCode("en"), true);
             var game = new Game("Angry birds", new GameProvider("Spil Games"));
             var gameInstance = new GameInstance(appTenant, game) {
-                PrimaryCategory = new GameCategory(appTenant, "PrimaryCategory")
+                PrimaryInstanceCategory = new GameInstanceCategory(appTenant, "primaryInstanceCategory")
             };
-            var gameCategory1 = new GameCategory(appTenant, "Category1");
-            var gameCategory2 = new GameCategory(appTenant, "Category2");
-            var gameCategory3 = new GameCategory(appTenant, "Category3");
+            var gameCategory1 = new GameInstanceCategory(appTenant, "Category1");
+            var gameCategory2 = new GameInstanceCategory(appTenant, "Category2");
+            var gameCategory3 = new GameInstanceCategory(appTenant, "Category3");
 
             gameInstance.AddSecondaryCategory(gameCategory1)
                 .AddSecondaryCategory(gameCategory2)

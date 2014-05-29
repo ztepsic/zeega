@@ -10,7 +10,7 @@ namespace Zeega.Web.Models.Nav {
         /// <summary>
         /// Gets or Sets game categories
         /// </summary>
-        public IEnumerable<GameCategory> GameCategories { get; set; }
+        public IEnumerable<GameInstanceCategory> GameCategories { get; set; }
 
     }
 }

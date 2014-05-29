@@ -64,13 +64,16 @@
     <Compile Include="GameModel\DeviceTypeSupport.cs" />
     <Compile Include="GameModel\Game.cs" />
     <Compile Include="GameModel\GameCategory.cs" />
-    <Compile Include="GameModel\GameCategoryMapping.cs" />
-    <Compile Include="GameModel\GameCategorySrv.cs" />
+    <Compile Include="GameModel\GameCategoryToGameInstanceCategoryMapping.cs" />
+    <Compile Include="GameModel\GameInstanceCategory.cs" />
+    <Compile Include="GameModel\GameInstanceCategoryMapping.cs" />
+    <Compile Include="GameModel\GameInstanceCategorySrv.cs" />
     <Compile Include="GameModel\GameInstance.cs" />
     <Compile Include="GameModel\GameInstanceFactory.cs" />
     <Compile Include="GameModel\GameProvider.cs" />
     <Compile Include="GameModel\GameSrcType.cs" />
     <Compile Include="GameModel\IGameCategoriesRepository.cs" />
+    <Compile Include="GameModel\IGameInstanceCategoriesRepository.cs" />
     <Compile Include="GameModel\IGameCategoryMappingsRepository.cs" />
     <Compile Include="GameModel\IGameInstancesRepository.cs" />
     <Compile Include="GameModel\IGameProvidersRepository.cs" />
@@ -98,7 +101,7 @@
     <Content Include="Tag.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="GameModel\GameCategory.hbm.xml" />
+    <Content Include="GameModel\GameInstanceCategory.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="GameModel\Game.hbm.xml" />

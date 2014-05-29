@@ -76,7 +76,7 @@ namespace Zeega.Web.App_Start {
 
                 Bind<IAppConfig>().ToConstant(MvcApplication.AppConfig);
                 Bind<ISessionFactory>().ToConstant(NHibernateSessionProvider.SessionFactory);
-                Bind<IGameCategoriesRepository>().To<GameCategoriesNhRepository>().InRequestScope();
+                Bind<IGameInstanceCategoriesRepository>().To<GameInstanceCategoriesNhRepository>().InRequestScope();
             }
         }
     }

@@ -35,7 +35,7 @@ namespace Zeega.Infrastructure.Dal.NHibernate.ModelMapping.GameModel {
                     m.NotNullable(true);
                 });
 
-            ManyToOne(x => x.PrimaryCategory, m => {
+            ManyToOne(x => x.PrimaryInstanceCategory, m => {
                     m.Column("PrimaryGameCategoryId");
                     m.Access(Accessor.NoSetter);
                     m.NotNullable(true);

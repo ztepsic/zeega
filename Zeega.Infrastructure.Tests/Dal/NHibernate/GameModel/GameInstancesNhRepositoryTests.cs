@@ -34,8 +34,8 @@ namespace Zeega.Infrastructure.Tests.Dal.NHibernate.GameModel {
             return game;
         }
 
-        private GameCategory createGameCategory(AppTenant appTenant) {
-            var gameCategory = new GameCategory(appTenant, "Sports");
+        private GameInstanceCategory createGameCategory(AppTenant appTenant) {
+            var gameCategory = new GameInstanceCategory(appTenant, "Sports");
             using (var trx = Session.BeginTransaction()) {
                 Session.SaveOrUpdate(gameCategory);
                 trx.Commit();
@@ -62,7 +62,7 @@ namespace Zeega.Infrastructure.Tests.Dal.NHibernate.GameModel {
             var game = createGame();
             var gameCategory = createGameCategory(appTenant);
             var gameInstance = new GameInstance(appTenant, game) {
-                PrimaryCategory = gameCategory
+                PrimaryInstanceCategory = gameCategory
             };
 
             var gameInstancesRepo = new GameInstancesNhRepository(SessionFactory);

@@ -4,20 +4,20 @@ using Zeega.Domain.GameModel;
 
 namespace Zeega.Domain.Tests.GameModel {
     [TestFixture]
-    public class GameCategorySrvTests {
+    public class GameInstanceCategorySrvTests {
 
         [Test]
         public void OrderGameCategories_ListOfGameCategories_SequencePropertySetInAccordanceToOrderingInList() {
             // Arrange
             var appTenant = new AppTenant("Zeega", new LanguageCode(LanguageCode.ENGLISH_TWO_LETTER_CODE));
-            var gameCat1 = new GameCategory(appTenant, "Action");
-            var gameCat2 = new GameCategory(appTenant, "Sports");
-            var gameCat3 = new GameCategory(appTenant, "Adventure");
-            var gameCat4 = new GameCategory(appTenant, "Puzzles");
-            var gameCategories = new List<GameCategory>() { gameCat1, gameCat2, gameCat3, gameCat4 };
+            var gameCat1 = new GameInstanceCategory(appTenant, "Action");
+            var gameCat2 = new GameInstanceCategory(appTenant, "Sports");
+            var gameCat3 = new GameInstanceCategory(appTenant, "Adventure");
+            var gameCat4 = new GameInstanceCategory(appTenant, "Puzzles");
+            var gameCategories = new List<GameInstanceCategory>() { gameCat1, gameCat2, gameCat3, gameCat4 };
 
             // Act
-            GameCategorySrv.OrderGameCategories(gameCategories);
+            GameInstanceCategorySrv.OrderGameCategories(gameCategories);
 
             // Assert
             Assert.AreEqual(1, gameCat1.Sequence);

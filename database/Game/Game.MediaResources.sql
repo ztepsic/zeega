@@ -20,16 +20,58 @@ create table Game.MediaResources (
 			on update cascade
 );
 
-exec sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Contains media resources' , @level0type=N'SCHEMA',@level0name=N'Game', @level1type=N'TABLE',@level1name=N'MediaResources'
-exec sys.sp_addextendedproperty @level2type=N'COLUMN', @level2name=N'GameId', @name=N'MS_Description', @value=N'Media resource for particular game' , @level0type=N'SCHEMA',@level0name=N'Game', @level1type=N'TABLE',@level1name=N'MediaResources'
-exec sys.sp_addextendedproperty @level2type=N'COLUMN', @level2name=N'Type', @name=N'MS_Description', @value=N'Media resource type [1 - Thumbnail, 2 - Screenshot, 3 - Video]' , @level0type=N'SCHEMA',@level0name=N'Game', @level1type=N'TABLE',@level1name=N'MediaResources'
-exec sys.sp_addextendedproperty @level2type=N'COLUMN', @level2name=N'ThumbSrcUri', @name=N'MS_Description', @value=N'Thumbnail source URI' , @level0type=N'SCHEMA',@level0name=N'Game', @level1type=N'TABLE',@level1name=N'MediaResources'
-exec sys.sp_addextendedproperty @level2type=N'COLUMN', @level2name=N'ThumbSrcWidth', @name=N'MS_Description', @value=N'Thumbnail source width' , @level0type=N'SCHEMA',@level0name=N'Game', @level1type=N'TABLE',@level1name=N'MediaResources'
-exec sys.sp_addextendedproperty @level2type=N'COLUMN', @level2name=N'ThumbSrcHeight', @name=N'MS_Description', @value=N'Thumbnail source height' , @level0type=N'SCHEMA',@level0name=N'Game', @level1type=N'TABLE',@level1name=N'MediaResources'
-exec sys.sp_addextendedproperty @level2type=N'COLUMN', @level2name=N'SrcUri', @name=N'MS_Description', @value=N'Source URI' , @level0type=N'SCHEMA',@level0name=N'Game', @level1type=N'TABLE',@level1name=N'MediaResources'
-exec sys.sp_addextendedproperty @level2type=N'COLUMN', @level2name=N'SrcWidth', @name=N'MS_Description', @value=N'Source width' , @level0type=N'SCHEMA',@level0name=N'Game', @level1type=N'TABLE',@level1name=N'MediaResources'
-exec sys.sp_addextendedproperty @level2type=N'COLUMN', @level2name=N'SrcHeight', @name=N'MS_Description', @value=N'Source height' , @level0type=N'SCHEMA',@level0name=N'Game', @level1type=N'TABLE',@level1name=N'MediaResources'
-exec sys.sp_addextendedproperty @level2type=N'COLUMN', @level2name=N'Sequence', @name=N'MS_Description', @value=N'Media resource sequence' , @level0type=N'SCHEMA',@level0name=N'Game', @level1type=N'TABLE',@level1name=N'MediaResources'
-exec sys.sp_addextendedproperty @level2type=N'COLUMN', @level2name=N'IsActive', @name=N'MS_Description', @value=N'Is media resource active' , @level0type=N'SCHEMA',@level0name=N'Game', @level1type=N'TABLE',@level1name=N'MediaResources'
+exec sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Contains media resources',
+								@level1type=N'TABLE',@level1name=N'MediaResources',
+								@level0type=N'SCHEMA',@level0name=N'Game'
+								
+exec sys.sp_addextendedproperty @level2type=N'COLUMN', @level2name=N'GameId',
+								@name=N'MS_Description', @value=N'Media resource for particular game',
+								@level1type=N'TABLE',@level1name=N'MediaResources',
+								@level0type=N'SCHEMA',@level0name=N'Game'
+								
+exec sys.sp_addextendedproperty @level2type=N'COLUMN', @level2name=N'Type',
+								@name=N'MS_Description', @value=N'Media resource type [1 - Thumbnail, 2 - Screenshot, 3 - Video]',
+								@level1type=N'TABLE',@level1name=N'MediaResources',
+								@level0type=N'SCHEMA',@level0name=N'Game'
+								
+exec sys.sp_addextendedproperty @level2type=N'COLUMN', @level2name=N'ThumbSrcUri',
+								@name=N'MS_Description', @value=N'Thumbnail source URI',
+								@level1type=N'TABLE',@level1name=N'MediaResources',
+								@level0type=N'SCHEMA',@level0name=N'Game'
+								
+exec sys.sp_addextendedproperty @level2type=N'COLUMN', @level2name=N'ThumbSrcWidth',
+								@name=N'MS_Description', @value=N'Thumbnail source width',
+								@level1type=N'TABLE',@level1name=N'MediaResources',
+								@level0type=N'SCHEMA',@level0name=N'Game'
+								
+exec sys.sp_addextendedproperty @level2type=N'COLUMN', @level2name=N'ThumbSrcHeight',
+								@name=N'MS_Description', @value=N'Thumbnail source height',
+								@level1type=N'TABLE',@level1name=N'MediaResources',
+								@level0type=N'SCHEMA',@level0name=N'Game'
+								
+exec sys.sp_addextendedproperty @level2type=N'COLUMN', @level2name=N'SrcUri',
+								@name=N'MS_Description', @value=N'Source URI',
+								@level1type=N'TABLE',@level1name=N'MediaResources',
+								@level0type=N'SCHEMA',@level0name=N'Game'
+								
+exec sys.sp_addextendedproperty @level2type=N'COLUMN', @level2name=N'SrcWidth',
+								@name=N'MS_Description', @value=N'Source width',
+								 @level1type=N'TABLE',@level1name=N'MediaResources',
+								@level0type=N'SCHEMA',@level0name=N'Game'
+								
+exec sys.sp_addextendedproperty @level2type=N'COLUMN', @level2name=N'SrcHeight',
+								@name=N'MS_Description', @value=N'Source height',
+								@level1type=N'TABLE',@level1name=N'MediaResources',
+								@level0type=N'SCHEMA',@level0name=N'Game'
+								
+exec sys.sp_addextendedproperty @level2type=N'COLUMN', @level2name=N'Sequence',
+								@name=N'MS_Description', @value=N'Media resource sequence',
+								@level1type=N'TABLE',@level1name=N'MediaResources',
+								@level0type=N'SCHEMA',@level0name=N'Game'
+								
+exec sys.sp_addextendedproperty @level2type=N'COLUMN', @level2name=N'IsActive',
+								@name=N'MS_Description', @value=N'Is media resource active',
+								@level1type=N'TABLE',@level1name=N'MediaResources',
+								@level0type=N'SCHEMA',@level0name=N'Game'
 go
 

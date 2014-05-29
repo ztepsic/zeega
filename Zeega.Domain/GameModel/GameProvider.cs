@@ -32,7 +32,7 @@ namespace Zeega.Domain.GameModel {
         private string officialUrl;
 
         /// <summary>
-        /// Gets or Sets game provider's official url
+        /// Gets or Sets game provider's official URL
         /// </summary>
         public virtual string OfficialUrl {
             get { return officialUrl; }
@@ -42,6 +42,37 @@ namespace Zeega.Domain.GameModel {
                 officialUrl = value;
             }
         }
+
+        /// <summary>
+        /// Gets or Sets game provider's publisher URL
+        /// </summary>
+        public virtual string PublisherUrl { get; set; }
+
+        /// <summary>
+        /// Gets or Sets an indicator which indicates if provider has publisher API
+        /// </summary>
+        public virtual bool HasPublisherApi { get; set; }
+
+        /// <summary>
+        /// Gets or Sets gmae provider's catalog URL
+        /// </summary>
+        public virtual string GamesCatalogUrl { get; set; }
+
+        /// <summary>
+        /// Gets or Sets an indicator which indicates if provider has xml game feed
+        /// </summary>
+        public virtual bool HasXmlFeed { get; set; }
+
+        /// <summary>
+        /// Gets or Sets an indicator which indicates if provider has json game feed
+        /// </summary>
+        public virtual bool HasJsonFeed { get; set; }
+
+        /// <summary>
+        /// Gets or Sets an indicator which indicates if provider is active
+        /// </summary>
+        public virtual bool IsActive { get; set; }
+
 
         #endregion
 

@@ -64,13 +64,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dal\NHibernate\AppTenantsNhRepository.cs" />
-    <Compile Include="Dal\NHibernate\GameModel\GameCategoriesNhRepository.cs" />
+    <Compile Include="Dal\NHibernate\GameModel\GameInstanceCategoriesNhRepository.cs" />
     <Compile Include="Dal\NHibernate\GameModel\GameInstancesNhRepository.cs" />
     <Compile Include="Dal\NHibernate\GameModel\GameProvidersNhRepository.cs" />
     <Compile Include="Dal\NHibernate\GameModel\GamesNhRepository.cs" />
     <Compile Include="Dal\NHibernate\ModelMapping\AppTenantMapping.cs" />
     <Compile Include="Dal\NHibernate\ModelMapping\AuditMapping.cs" />
     <Compile Include="Dal\NHibernate\ModelMapping\GameModel\GameCategoryMapping.cs" />
+    <Compile Include="Dal\NHibernate\ModelMapping\GameModel\GameInstanceCategoryMapping.cs" />
     <Compile Include="Dal\NHibernate\ModelMapping\GameModel\GameInstanceMapping.cs" />
     <Compile Include="Dal\NHibernate\ModelMapping\GameModel\GameMapping.cs" />
     <Compile Include="Dal\NHibernate\ModelMapping\GameModel\GameProviderMapping.cs" />

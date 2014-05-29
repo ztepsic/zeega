@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics.Eventing.Reader;
 using Zed.Core.Domain;
 
 namespace Zeega.Domain.GameModel {
@@ -37,7 +36,12 @@ namespace Zeega.Domain.GameModel {
         /// <summary>
         /// Game categories
         /// </summary>
-        public virtual string Categories { get; set; }
+        private readonly IList<GameCategory> categories;
+
+        /// <summary>
+        /// Gets game categories
+        /// </summary>
+        public virtual IList<GameCategory> Categories { get { return new ReadOnlyCollection<GameCategory>(categories); } }
 
         /// <summary>
         /// Gets or Sets the full text description of the game
@@ -67,9 +71,7 @@ namespace Zeega.Domain.GameModel {
         /// <summary>
         /// Gets list of game  tags/keywords
         /// </summary>
-        public virtual IList<Tag> Tags {
-            get { return new ReadOnlyCollection<Tag>(tags); }
-        }
+        public virtual IList<Tag> Tags { get { return new ReadOnlyCollection<Tag>(tags); } }
 
         /// <summary>
         /// List of media resources
@@ -150,6 +152,7 @@ namespace Zeega.Domain.GameModel {
             this.provider = provider;
 
             mediaResources = new List<MediaRes>();
+            categories = new List<GameCategory>();
             tags = new List<Tag>();
         }
 
@@ -190,6 +193,26 @@ namespace Zeega.Domain.GameModel {
             }
 
             return isRemoved;
+        }
+
+        /// <summary>
+        /// Adds game category to game categories
+        /// </summary>
+        /// <param name="category">Game category</param>
+        /// <returns>Self instance - this</returns>
+        public virtual Game AddCategory(GameCategory category) {
+            if(category == null) throw new ArgumentNullException("category");
+            categories.Add(category);
+            return this;
+        }
+
+        /// <summary>
+        /// Removes game category from game categories
+        /// </summary>
+        /// <param name="category">Game category to be removed</param>
+        /// <returns>true if removal was successful, otherwise false</returns>
+        public virtual bool RemoveCategory(GameCategory category) {
+            return categories.Remove(category);
         }
 
         /// <summary>

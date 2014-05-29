@@ -75,7 +75,7 @@ namespace Zeega.BackOffice.Web.App_Start {
                     .AddMapping(modelMapper.CompileMappingForAllExplicitlyAddedEntities()));
 
                 Bind<ISessionFactory>().ToConstant(NHibernateSessionProvider.SessionFactory);
-                Bind<IGameCategoriesRepository>().To<GameCategoriesNhRepository>().InRequestScope();
+                Bind<IGameInstanceCategoriesRepository>().To<GameInstanceCategoriesNhRepository>().InRequestScope();
             }
         }
     }

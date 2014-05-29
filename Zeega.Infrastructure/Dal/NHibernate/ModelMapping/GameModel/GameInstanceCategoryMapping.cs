@@ -3,12 +3,19 @@ using NHibernate.Mapping.ByCode.Conformist;
 using Zeega.Domain.GameModel;
 
 namespace Zeega.Infrastructure.Dal.NHibernate.ModelMapping.GameModel {
-    class GameProviderMapping : ClassMapping<GameProvider> {
-        public GameProviderMapping() {
+    class GameInstanceCategoryMapping : ClassMapping<GameInstanceCategory> {
+        public GameInstanceCategoryMapping() {
             Schema(MappingConstants.GAME_MODEL_SCHEMA);
-            Table("GameProviders");
+            Table("GameInstanceCategories");
 
             Id(x => x.Id, m => m.Generator(Generators.Native));
+
+            ManyToOne(x => x.AppTenant,
+                m => {
+                    m.Column("AppTenantId");
+                    m.Access(Accessor.NoSetter);
+                    m.NotNullable(true);
+                });
 
             Property(x => x.Name,
                 m => {
@@ -16,18 +23,16 @@ namespace Zeega.Infrastructure.Dal.NHibernate.ModelMapping.GameModel {
                     m.NotNullable(true);
             });
 
-            Property(x => x.OfficialUrl,
+            Property(x => x.Slug,
                 m => {
                     m.Access(Accessor.NoSetter);
                     m.NotNullable(true);
             });
 
-            Property(x => x.PublisherUrl);
-            Property(x => x.HasPublisherApi);
-            Property(x => x.GamesCatalogUrl);
-            Property(x => x.HasXmlFeed);
-            Property(x => x.HasJsonFeed);
-            Property(x => x.IsActive);
+            Property(x => x.Sequence, m => m.NotNullable(true));
+            Property(x => x.Description);
+            Property(x => x.ShortDescription);
+            Property(x => x.Keywords);
 
         }
     }

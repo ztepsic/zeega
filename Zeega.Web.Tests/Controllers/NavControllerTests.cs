@@ -18,12 +18,12 @@ namespace Zeega.Web.Tests.Controllers {
             IAppConfig appConfig = new AppConfig(appTenant);
 
             // create mock repository
-            Mock<IGameCategoriesRepository> gameCategoriesRepoMock = new Mock<IGameCategoriesRepository>();
-            gameCategoriesRepoMock.Setup(m => m.GetCategoriesWithGames(appTenant)).Returns(new GameCategory[] {
-                new GameCategory(appTenant, "Sports"),
-                new GameCategory(appTenant, "Action & Arcade"),
-                new GameCategory(appTenant, "Strategy"),
-                new GameCategory(appTenant, "Adventure"),
+            Mock<IGameInstanceCategoriesRepository> gameCategoriesRepoMock = new Mock<IGameInstanceCategoriesRepository>();
+            gameCategoriesRepoMock.Setup(m => m.GetCategoriesWithGames(appTenant)).Returns(new GameInstanceCategory[] {
+                new GameInstanceCategory(appTenant, "Sports"),
+                new GameInstanceCategory(appTenant, "Action & Arcade"),
+                new GameInstanceCategory(appTenant, "Strategy"),
+                new GameInstanceCategory(appTenant, "Adventure"),
             });
 
             NavController navController = new NavController(appConfig, gameCategoriesRepoMock.Object);

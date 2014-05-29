@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using NUnit.Framework;
-using Zed.NHibernate;
+﻿using NUnit.Framework;
 using Zeega.Domain.GameModel;
 using Zeega.Infrastructure.Dal.NHibernate.GameModel;
 

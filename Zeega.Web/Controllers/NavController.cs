@@ -16,7 +16,7 @@ namespace Zeega.Web.Controllers {
         /// <summary>
         /// Game categories repository
         /// </summary>
-        private readonly IGameCategoriesRepository gameCategoriesRepository;
+        private readonly IGameInstanceCategoriesRepository gameInstanceCategoriesRepository;
 
         #endregion
 
@@ -26,9 +26,9 @@ namespace Zeega.Web.Controllers {
         /// Creates a NavController instance
         /// </summary>
         /// <param name="appConfig">Application config</param>
-        /// <param name="gameCategoriesRepository">Game categories repository</param>
-        public NavController(IAppConfig appConfig, IGameCategoriesRepository gameCategoriesRepository) : base(appConfig) {
-            this.gameCategoriesRepository = gameCategoriesRepository;
+        /// <param name="gameInstanceCategoriesRepository">Game categories repository</param>
+        public NavController(IAppConfig appConfig, IGameInstanceCategoriesRepository gameInstanceCategoriesRepository) : base(appConfig) {
+            this.gameInstanceCategoriesRepository = gameInstanceCategoriesRepository;
         }
 
         #endregion
@@ -42,7 +42,7 @@ namespace Zeega.Web.Controllers {
         [NHibernateTransaction]
         public PartialViewResult MainNav() {
             var mainNavViewModel = new MainNavViewModel {
-                GameCategories = gameCategoriesRepository.GetCategoriesWithGames(AppConfig.AppTenant).ToArray()
+                GameCategories = gameInstanceCategoriesRepository.GetCategoriesWithGames(AppConfig.AppTenant).ToArray()
             };
             return PartialView(mainNavViewModel);
         }

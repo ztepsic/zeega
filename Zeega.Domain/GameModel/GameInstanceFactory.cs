@@ -51,9 +51,9 @@ namespace Zeega.Domain.GameModel {
                 newGameInstance.AddTag(gameInstanceTag);
             }
 
-            var primaryCategory = gameCategoryMappingsRepository.GetMappedGameCategoryFrom(gameInstance.PrimaryCategory);
+            var primaryCategory = gameCategoryMappingsRepository.GetMappedGameCategoryFrom(gameInstance.PrimaryInstanceCategory);
             if (primaryCategory != null) {
-                newGameInstance.PrimaryCategory = primaryCategory;
+                newGameInstance.PrimaryInstanceCategory = primaryCategory;
 
                 var secondaryCategories = gameCategoryMappingsRepository.GetMappedGameCategoriesFrom(gameInstance.SecondaryCategories);
                 foreach (var secondaryCategory in secondaryCategories) {

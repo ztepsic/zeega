@@ -109,6 +109,24 @@ namespace Zeega.Domain.Tests.GameModel {
             Assert.IsFalse(game.Tags.Contains(tag2));
         }
 
+        [Test]
+        public void RemoveCategory_CategoryToBeRemoved_RemovedCategoryFromCategoryList() {
+            // Arrange
+            var game = new Game("Angry birds", new GameProvider("Spil Games"));
+            var category1 = new GameCategory("Sports");
+            var category2 = new GameCategory("Action");
+            game.AddCategory(category1)
+                .AddCategory(category2);
+
+            // Act
+            var isCategoryRemoved = game.RemoveCategory(category2);
+
+            // Assert
+            Assert.AreEqual(1, game.Categories.Count);
+            Assert.IsTrue(isCategoryRemoved);
+            Assert.IsFalse(game.Categories.Contains(category2));
+        }
+
         #endregion
     }
 }
