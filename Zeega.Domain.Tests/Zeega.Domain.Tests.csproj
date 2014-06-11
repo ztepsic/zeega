@@ -55,7 +55,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="Zed.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Zed.Core.1.0.0\lib\Zed.Core.dll</HintPath>
+      <HintPath>..\packages\Zed.Core.1.0.0.0\lib\net451\Zed.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

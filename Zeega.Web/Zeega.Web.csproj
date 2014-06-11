@@ -62,6 +62,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Iesi.Collections.3.2.0.1001\lib\Net35\Iesi.Collections.dll</HintPath>
     </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.0.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
@@ -191,17 +194,19 @@
     </Reference>
     <Reference Include="Zed.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Zed.Core.1.0.0\lib\Zed.Core.dll</HintPath>
+      <HintPath>..\packages\Zed.Core.1.0.0.0\lib\net451\Zed.Core.dll</HintPath>
     </Reference>
     <Reference Include="Zed.NHibernate, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Zed.NHibernate.1.0.0\lib\Zed.NHibernate.dll</HintPath>
+      <HintPath>..\packages\Zed.NHibernate.1.0.0.0\lib\net451\Zed.NHibernate.dll</HintPath>
     </Reference>
-    <Reference Include="Zed.NHibernate.Web">
-      <HintPath>..\packages\Zed.NHibernate.Web.1.0.0\lib\Zed.NHibernate.Web.dll</HintPath>
+    <Reference Include="Zed.NHibernate.Web, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Zed.NHibernate.Web.1.0.0.0\lib\net451\Zed.NHibernate.Web.dll</HintPath>
     </Reference>
-    <Reference Include="Zed.Web">
-      <HintPath>..\packages\Zed.Web.1.0.0\lib\Zed.Web.dll</HintPath>
+    <Reference Include="Zed.Web, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Zed.Web.1.0.0.0\lib\net451\Zed.Web.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

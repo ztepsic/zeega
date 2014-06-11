@@ -44,6 +44,10 @@
     <Reference Include="Iesi.Collections">
       <HintPath>..\packages\Iesi.Collections.3.2.0.1001\lib\Net35\Iesi.Collections.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="NHibernate">
       <HintPath>..\packages\NHibernate.3.3.3.4001\lib\Net35\NHibernate.dll</HintPath>
     </Reference>
@@ -56,10 +60,11 @@
     <Reference Include="System.Xml" />
     <Reference Include="Zed.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Zed.Core.1.0.0\lib\Zed.Core.dll</HintPath>
+      <HintPath>..\packages\Zed.Core.1.0.0.0\lib\net451\Zed.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Zed.NHibernate">
-      <HintPath>..\packages\Zed.NHibernate.1.0.0\lib\Zed.NHibernate.dll</HintPath>
+    <Reference Include="Zed.NHibernate, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Zed.NHibernate.1.0.0.0\lib\net451\Zed.NHibernate.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
