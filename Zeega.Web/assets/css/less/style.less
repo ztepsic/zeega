@@ -1,0 +1,202 @@
+﻿//
+// Imports
+// --------------------------------------------------
+
+// Variables
+@import "_variables.less";
+
+
+//
+// General
+// --------------------------------------------------
+body {
+    margin-top: @navbar-height + @padding-large-vertical; // beacause of main navbar fixed top
+}
+
+
+#breadcrumb-holder {
+    border-bottom: 1px solid @gray-lighter;
+}
+
+.breadcrumb {
+    padding: 8px 0px;
+    margin: 0px;
+    font-size: @font-size-small;
+
+    /*
+    // Change breacrumb separator
+    > li {
+        + li:before {
+            content: "\e080"; // Code from Glyphicons // Unicode space added since inline-block means non-collapsing white-space
+            padding: 0 5px;
+            color: @breadcrumb-color;
+            position: relative;
+            top: 1px;
+            display: inline-block;
+            font-family: 'Glyphicons Halflings';
+            font-style: normal;
+            font-weight: normal;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    }
+
+    */
+}
+
+//.content [class^=col-] {
+.content {
+    margin-top: @padding-large-vertical;
+    margin-bottom: @padding-large-vertical;
+    background-color: #fff;
+    border: 1px solid @gray-lighter;
+    border-radius: @border-radius-large @border-radius-large;
+}
+
+
+.make-ul-columns(@number-of-columns){
+    columns: @number-of-columns;
+    -webkit-columns: @number-of-columns;
+    -moz-columns: @number-of-columns;
+}
+
+ul.two-columns {
+    .make-ul-columns(2);
+} 
+
+ul.three-columns {
+    .make-ul-columns(3);
+}
+
+//
+// Header
+// --------------------------------------------------
+
+@media (min-width: @screen-sm-min) {
+    #main-navbar form#search.navbar-form {
+        width: 45%;
+    }
+}
+
+@media (min-width: @screen-lg) {
+    #main-navbar form#search.navbar-form {
+        width: 50%;
+    }
+}
+ 
+
+#main-navbar form#search .form-group {
+    display: block;
+}
+
+#main-navbar  ul.navbar-nav li.mega-menu {
+    position: static !important;
+}
+
+#main-navbar .dropdown-menu {
+    border: none;
+    border-bottom: 5px solid @navbar-default-bg;
+}
+
+@media (max-width: @grid-float-breakpoint-max) {
+    // Dropdowns get custom display when collapsed
+    #main-navbar .open .dropdown-menu {
+        background-color: @dropdown-bg;
+
+        > li > a {
+            color: @dropdown-link-color;
+
+            &:hover,
+            &:focus {
+                color: @dropdown-link-color;
+                background-color: @dropdown-link-hover-bg;
+            }
+        }
+    }
+}
+
+#main-navbar li.mega-menu .dropdown-menu {
+    right: 0;
+    border-radius: 0;
+}
+
+#main-navbar li.mega-menu .dropdown-menu ul {
+    list-style-type: none;
+    margin-top: @padding-large-vertical;
+    padding: 0px;
+}
+
+#main-navbar li.mega-menu .dropdown-menu ul dl dt {
+    border-bottom: 2px solid @dropdown-divider-bg;
+    color: @gray;
+    padding-bottom: 5px;
+}
+
+#main-navbar li.mega-menu .dropdown-menu ul dl dd {
+    margin: 0px;
+    padding: 0px;
+}
+
+
+//
+// Footer
+// --------------------------------------------------
+
+footer {
+    margin-top: @padding-large-vertical;
+    padding: 40px 0 0px 0;
+    background: @gray-darker;
+    min-height: 100px;
+    color: @gray;
+    border-top: 1px solid @gray;
+}
+
+footer hr {
+    border-top: #101010 1px solid;
+    border-bottom: #333333 1px solid;
+}
+
+footer a {
+    color: @gray-light;
+    &:hover,
+    &:focus {
+        color: @gray-lighter;
+        text-decoration: none;
+    }
+}
+
+footer ul li {
+    padding-bottom: 10px;
+}
+
+#footer-nav {
+    border-top: 1px solid @gray-dark;
+    margin-top: 20px;
+    padding-top: 20px;
+}
+
+
+//
+// Games
+// --------------------------------------------------
+
+#game-menu {
+    margin-top: @padding-large-vertical;
+    border-left: 1px solid @gray-lighter;
+    min-height: 150px;
+}
+
+#game-menu ul li {
+    margin-bottom: 3px;
+}
+
+#game-holder {
+    margin: @padding-large-vertical 0;
+    background-color: @gray-darker;
+    border-radius: @border-radius-large @border-radius-large;
+}
+
+#game-title h2 {
+    margin-bottom: 0;
+}

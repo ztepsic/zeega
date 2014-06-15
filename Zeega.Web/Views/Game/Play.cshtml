@@ -1,0 +1,99 @@
+﻿@{
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+@section Scripts {
+    <script>
+        $(function() {
+            $('#myTab a').click(function(e) {
+                e.preventDefault();
+                $(this).tab('show');
+            });
+            
+             $("[data-toggle='tooltip']").tooltip();
+
+        });
+    </script>
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4" id="">
+            <h2>Taylor Momsen Dress Up <br/><small>Subtext for header</small></h2>
+        </div>
+        <div class="col-md-8 hidden-xs">
+            <div class="text-center">
+                @RenderPage("../Shared/AdUnits/Leaderboard_728x90.cshtml")
+            </div>
+        </div> <!-- .col-sm-12 -->
+    </div>
+</div> <!-- .container -->
+
+<div class="container content">
+    <div class="row" id="breadcrumb-holder">
+        <div class="col-sm-12">
+            <ol class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Games</a></li>
+                <li><a href="#">Cooking games</a></li>
+                <li class="active">Alien Abductor</li>
+            </ol>
+        </div> <!-- .col-sm-12 -->
+    </div> <!-- .row -->
+    <div class="row">
+        <div class="col-sm-11 col-md-7">
+            <div id="game-holder" class="text-center">
+                <object type="application/x-shockwave-flash" data="http://games.mochimedia.com/c/g/alien-abductor/alien.swf?mochiad_options=" width="550" height="500" id="flashcontent" style="visibility: visible;"></object>
+            </div>
+        </div>
+        <div class="col-sm-1 hidden-xs" id="game-menu">
+            <ul class="list-unstyled">
+                <li><a href="" data-toggle="tooltip" data-placement="right" title="Add to favorites"><span class="glyphicon glyphicon-heart" title="Add to favorites"></span></a></li>
+                <li><a href="" data-toggle="tooltip" data-placement="right" title="Play later"><span class="glyphicon glyphicon-plus" title="Play later"></span></a></li>
+                <li><a href="" data-toggle="tooltip" data-placement="right" title="Show statistics"><span class="glyphicon glyphicon-stats" title="Statistics"></span></a></li>
+                <li><a href="" data-toggle="tooltip" data-placement="right" title="Game Info"><span class="glyphicon glyphicon-info-sign" title="Game Info"></span></a></li>
+            </ul>
+            <ul class="list-unstyled hidden-sm">
+                <li><span data-toggle="tooltip" data-placement="right" title="Currently playing" class="label label-info"><i class="fa fa-users"></i> 123456</span></li>
+                <li><span data-toggle="tooltip" data-placement="right" title="Your score" class="label label-success"><i class="fa fa-tachometer"></i> 987564.43</span></li>
+                <li><span data-toggle="tooltip" data-placement="right" title="Total gameplays" class="label label-default"><i class="fa fa-gamepad"></i> 123456</span></li>
+            </ul>
+        </div>
+        <div class="col-md-4 visible-md visible-lg">
+            @RenderPage("../Shared/AdUnits/MediumRectangle_300x250.cshtml")
+        </div>
+    </div> <!-- .row -->
+    
+    <div class="row">
+        <div class="col-sm-8 hidden-xs">
+            <div class="text-center">
+                @RenderPage("../Shared/AdUnits/Leaderboard_728x90.cshtml")
+            </div>
+            <ul id="myTab" class="nav nav-tabs">
+                <li class="active"><a href="#home" data-toggle="tab">Game Info</a></li>
+                <li class=""><a href="#profile" data-toggle="tab">Leaderboard</a></li>
+            </ul>
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade active in" id="home">
+                    <img src="http://thumbs2.mochiads.com/c/g/alien-abductor/_thumb_100x100.gif" />
+                    <p>
+                        DESCRIPTION
+                        Humans; the trading cattle of the galaxy. You're a bounty hunter in search of humans to sell on the inter-galactic human market place. You receive a bounty for each kidnapped human, which can then be used to buy upgrades for your ship, or save to earn interest. Kidnap the minimum number of humans required to complete the level in the allocated time period. You must move above the humans (within a set distance) to beam them up to the ship. The speed of beaming is affected by the upgrades you buy during the game. Avoid detection from radar stations and avoid being hit my missiles (guided and non-guided). Don't fly too close to the planet surface, unless you like to crash. If you are seriously damaged by missile attack, you can fly to your mothership (outer-space area) to recharge your shield… if you have time! Good luck, and good hunting.
+                    </p>
+                    <p>
+                        Developed By: freeworldgroup
+                        Category: Shooting
+                        Tags: kidnapping alien abduction action shooting
+                    </p>
+                </div>
+                <div class="tab-pane fade" id="profile">
+                    <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+                </div>
+            </div>
+        </div> <!-- .col-sm-8 -->
+        <div class="col-md-4 visible-md visible-lg">
+            @RenderPage("../Shared/AdUnits/MediumRectangle_300x250.cshtml")
+        </div>
+    </div>
+
+</div> <!-- .continer -->
