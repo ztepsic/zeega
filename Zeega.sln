@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30110.0
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeega.Web", "Zeega.Web\Zeega.Web.csproj", "{5385B889-0D33-4328-9C6A-49118C403A4E}"
 EndProject
@@ -19,11 +19,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeega.Infrastructure", "Zee
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeega.Infrastructure.Tests", "Zeega.Infrastructure.Tests\Zeega.Infrastructure.Tests.csproj", "{DFD6BDF4-55D6-4016-834C-24DC5D01FA40}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeega.BackOffice.Web", "Zeega.BackOffice.Web\Zeega.BackOffice.Web.csproj", "{358F4751-6D37-4B73-B7D4-ACED66F83C14}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeega.Admin.Web", "Zeega.Admin.Web\Zeega.Admin.Web.csproj", "{358F4751-6D37-4B73-B7D4-ACED66F83C14}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeega.Web.Tests", "Zeega.Web.Tests\Zeega.Web.Tests.csproj", "{C7CB594F-D7DA-414E-8976-7114B02D61D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeega.BackOffice.Web.Tests", "Zeega.BackOffice.Web.Tests\Zeega.BackOffice.Web.Tests.csproj", "{6F922D32-F21E-49D2-A30D-D58ABC693593}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeega.Admin.Web.Tests", "Zeega.Admin.Web.Tests\Zeega.Admin.Web.Tests.csproj", "{6F922D32-F21E-49D2-A30D-D58ABC693593}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
