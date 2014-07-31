@@ -54,7 +54,7 @@ namespace Zeega.Domain.GameModel {
         public virtual bool HasPublisherApi { get; set; }
 
         /// <summary>
-        /// Gets or Sets gmae provider's catalog URL
+        /// Gets or Sets game provider's catalog URL
         /// </summary>
         public virtual string GamesCatalogUrl { get; set; }
 

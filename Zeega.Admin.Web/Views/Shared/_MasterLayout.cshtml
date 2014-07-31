@@ -3,18 +3,16 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Zeega Back Office - The best online games</title>
-        <meta name="description" content="Zeega Back Office - Online gaming experience" />
-        <meta name="keywords" content="games, online, free, play" />
-        <meta name="google-site-verification" content="" />
-        <meta name="msvalidate.01" content="" />
-        <meta name="y_key" content="" />
+        <meta name="viewport"  content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <title>Dashboard | Zeega Admin</title>
+        <meta name="description" content="Dashboard - Zeega Admin" />
+        <meta name="keywords" content="admin, management,games, online, free, play" />
+        @RenderSection("metas", required: false)
         <link href="" rel="Shortcut Icon" type="image/x-icon" media="all" />
 
         @Styles.Render("~/assets/css/style")
+        @RenderSection("styles", required: false)
         @Scripts.Render("~/assets/js/modernizr")
-        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -24,15 +22,39 @@
         <![endif]-->
         
 </head>
-    <body>
+    <body class="skin-black">
         @RenderPage("Header.cshtml")
-        @RenderBody()
-        @RenderPage("Footer.cshtml")
-        
+
+        <div class="wrapper row-offcanvas row-offcanvas-left">
+            <!-- Left side column. contains the logo and sidebar -->
+            @RenderPage("Sidebar.cshtml")
+
+            <!-- Right side column. Contains the navbar and content of the page -->
+            <div class="right-side">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        @ViewBag.Title
+                        <small>Control panel</small>
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                        <li class="active">Blank page</li>
+                    </ol>
+                </section>
+
+                <!-- Main content -->
+                <section class="content">
+                    @RenderBody()            
+                </section><!-- /.content -->
+            </div><!-- /.right-side -->
+        </div><!-- ./wrapper -->
         
         @Scripts.Render("~/assets/js/jquery")
         @Scripts.Render("~/assets/js/bootstrap")
+        @Scripts.Render("~/assets/js/adminlte")
         @RenderSection("scripts", required: false)
+
     </body>
 </html>
 

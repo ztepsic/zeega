@@ -29,9 +29,18 @@ namespace Zeega.Admin.Web {
                 //          "~/assets/js/respond.js" // it is  already defined through CDN network
             ));
 
+            bundles.Add(new ScriptBundle("~/assets/js/adminlte").Include(
+                      "~/assets/js/AdminLTE/app.js"
+            ));
+
             bundles.Add(new StyleBundle("~/assets/css/style").Include(
                       "~/assets/css/bootstrap.css",
-                      "~/assets/css/style.css"));
+                      "~/assets/css/font-awesome.css",
+                      "~/assets/css/ionicons.css",
+                      "~/assets/css/AdminLTE.css"));
+
+            bundles.Add(new StyleBundle("~/assets/css/forms").Include(
+                "~/assets/css/iCheck/all.css"));
         }
     }
 }
