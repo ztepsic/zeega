@@ -11,7 +11,7 @@ namespace Zeega.Admin.Web.Controllers {
         /// Displays all game providers
         /// </summary>
         /// <returns></returns>
-        public ActionResult Index() {
+        public ViewResult Index() {
             return View();
         }
 
@@ -19,7 +19,7 @@ namespace Zeega.Admin.Web.Controllers {
         /// Displays form page for creating game provider
         /// </summary>
         /// <returns>Page for creating game provider</returns>
-        public ActionResult Create() {
+        public ViewResult Create() {
             return View(new GameProviderModel());
         }
 
@@ -28,8 +28,13 @@ namespace Zeega.Admin.Web.Controllers {
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        public string Create(GameProviderModel gameProviderModel) {
-            return "Submit";
+        public ActionResult Create(GameProviderModel gameProviderModel) {
+            if (ModelState.IsValid) {
+                TempData["message"] = string.Format("{0} has been created.", gameProviderModel.Name);
+                return RedirectToAction("Index");
+            } else {
+                return View(gameProviderModel);
+            }
         }
     }
 }
