@@ -1,0 +1,16 @@
+DropTables.sql
+DbSchemas_creation.sql
+Tags.sql
+
+\App\App.AppTenants.sql
+\Game\Game.GameCategories.sql
+\Game\Game.GameProviders.sql
+\Game.Games.sql
+\Game.MediaResources.sql
+\Game.GamesTags.sql
+\Game.GamesGameCategories.sql
+\Game.GameInstances.sql
+\Game.GameInstancesTags.sql
+\Game.GameInstanceCategories.sql
+\Game.SecondaryGameInstCategories.sql
+\Game.GameCatToGameInstCatMapping.sql

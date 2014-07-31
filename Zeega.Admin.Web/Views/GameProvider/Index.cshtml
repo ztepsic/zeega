@@ -1,11 +1,71 @@
-﻿@{
+﻿@using Zed.Core.Utilities
+@model IEnumerable<Zeega.Admin.Web.Models.Game.GameProviderModel>
+
+@{
     ViewBag.Title = "Game Providers";
+
+    Func<bool, string> boolCssColoringClass = x => x ? "success" : "danger";
+    Func<bool, string> boolCssIconClass = x => x ? "glyphicon glyphicon-ok" : "glyphicon glyphicon-remove";
 }
 
 <div class="row">
-    <div class="col-md-12">        
-        <a href="@Url.Action("create", "GameProvider")" class="btn btn-default btn-lg" role="button">
-            <span class="glyphicon glyphicon-plus"></span> Create a new Game Provider
-        </a>
+    <div class="col-md-12">
+        <div class="box box-primary">
+            
+            <div class="box-header">
+                <div class="row box-tools">
+                    <div class="col-md-12">
+                        <a href="@Url.Action("create", "GameProvider")" class="btn btn-default" role="button">
+                            <span class="glyphicon glyphicon-plus"></span> Create a new Game Provider
+                        </a>
+                    </div>
+                </div> 
+            </div>
+
+            <div class="box-body">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th></th>
+                                <th>Name</th>
+                                <th>Games</th>
+                                <th>Official URL</th>
+                                <th>Publisher API</th>
+                                <th>XML feed</th>
+                                <th>JSON feed</th>
+                            </tr>
+                            @foreach (var gameProvider in Model) {
+                                var slug = gameProvider.Name.ToSlug();
+                                <tr>
+                                    <td><a href="@Url.Action("edit", new { id = gameProvider.Id, slug = slug })"><span class="glyphicon glyphicon-edit"></span></a></td>
+                                    <td class="@boolCssColoringClass(gameProvider.IsActive)">
+                                        @Html.ActionLink(gameProvider.Name, "details", new { id = gameProvider.Id, slug = slug })
+                                    </td>
+                                    <td>12345</td>
+                                    <td>@gameProvider.OfficialUrl</td>
+                                    <td class="text-center @boolCssColoringClass(gameProvider.HasPublisherApi)"><span class="@boolCssIconClass(gameProvider.HasPublisherApi)"></span></td>
+                                    <td class="text-center @boolCssColoringClass(gameProvider.HasXmlFeed)"><span class="@boolCssIconClass(gameProvider.HasXmlFeed)"></span></td>
+                                    <td class="text-center @boolCssColoringClass(gameProvider.HasJsonFeed)"><span class="@boolCssIconClass(gameProvider.HasJsonFeed)"></span></td>
+                                </tr>
+                            }
+                           
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box-footer">
+                <div class="row">
+                    <div class="col-md-12">
+                        <a href="@Url.Action("create", "GameProvider")" class="btn btn-primary" role="button">
+                            <span class="glyphicon glyphicon-plus"></span> Create a new Game Provider
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
 </div>

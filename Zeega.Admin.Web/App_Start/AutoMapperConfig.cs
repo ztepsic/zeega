@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Zeega.Admin.Web.Models;
+using Zeega.Admin.Web.Models.Game;
 using Zeega.Domain.GameModel;
 
 namespace Zeega.Admin.Web {
@@ -12,7 +12,10 @@ namespace Zeega.Admin.Web {
         /// Configures autom mapper with mappings
         /// </summary>
         public static void Configure() {
-            Mapper.CreateMap<Game, GameViewModel>();
+            Mapper.CreateMap<GameProviderModel, GameProvider>()
+                .IgnoreAllPropertiesWithAnInaccessibleSetter();
+
+            Mapper.CreateMap<GameProvider, GameProviderModel>();
         }
     }
 }

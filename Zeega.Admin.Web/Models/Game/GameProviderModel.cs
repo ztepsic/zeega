@@ -47,19 +47,19 @@ namespace Zeega.Admin.Web.Models.Game {
         /// Gets or Sets an indicator which indicates if provider has xml game feed
         /// </summary>
         [Display(Name = "Has a XML feed?")]
-        public virtual bool HasXmlFeed { get; set; }
+        public bool HasXmlFeed { get; set; }
 
         /// <summary>
         /// Gets or Sets an indicator which indicates if provider has json game feed
         /// </summary>
         [Display(Name = "Has a JSON feed?")]
-        public virtual bool HasJsonFeed { get; set; }
+        public bool HasJsonFeed { get; set; }
 
         /// <summary>
         /// Gets or Sets an indicator which indicates if provider is active
         /// </summary>
         [Display(Name = "Is the game publisher active?")]
-        public virtual bool IsActive { get; set; }
+        public bool IsActive { get; set; }
 
     }
 }

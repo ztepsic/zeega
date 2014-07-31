@@ -421,6 +421,8 @@
     <Content Include="Views\Shared\Sidebar.cshtml" />
     <Content Include="Views\GameProvider\Index.cshtml" />
     <Content Include="Views\GameProvider\Create.cshtml" />
+    <Content Include="Views\GameProvider\Details.cshtml" />
+    <Content Include="Views\GameProvider\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

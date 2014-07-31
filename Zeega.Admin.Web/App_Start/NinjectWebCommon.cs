@@ -71,11 +71,12 @@ namespace Zeega.Admin.Web.App_Start {
             public override void Load() {
                 var modelMapper = new ModelMapper();
                 modelMapper.AddMappings();
-                //NHibernateSessionProvider.Init(cfg => cfg.Configure()
-                //    .AddMapping(modelMapper.CompileMappingForAllExplicitlyAddedEntities()));
+                NHibernateSessionProvider.Init(cfg => cfg.Configure()
+                    .AddMapping(modelMapper.CompileMappingForAllExplicitlyAddedEntities()));
 
-                //Bind<ISessionFactory>().ToConstant(NHibernateSessionProvider.SessionFactory);
-                //Bind<IGameInstanceCategoriesRepository>().To<GameInstanceCategoriesNhRepository>().InRequestScope();
+                Bind<ISessionFactory>().ToConstant(NHibernateSessionProvider.SessionFactory);
+                Bind<IGameProvidersRepository>().To<GameProvidersNhRepository>().InRequestScope();
+                Bind<IGameInstanceCategoriesRepository>().To<GameInstanceCategoriesNhRepository>().InRequestScope();
             }
         }
     }

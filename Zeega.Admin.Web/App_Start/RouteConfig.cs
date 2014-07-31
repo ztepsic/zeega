@@ -14,6 +14,18 @@ namespace Zeega.Admin.Web {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "GameProviderEdit",
+                url: "game-provider/edit/{id}/{slug}",
+                defaults: new { controller = "GameProvider", action = "Edit", slug = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "GameProvider",
+                url: "game-provider/{id}/{slug}",
+                defaults: new { controller = "GameProvider", action = "Details", slug = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 name: "GameProviders",
                 url: "game-providers/{action}",
                 defaults: new { controller = "GameProvider", action = "Index" }
