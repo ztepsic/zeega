@@ -164,9 +164,9 @@ namespace Zeega.Domain.GameModel {
         public virtual IList<MediaRes> MediaResources { get { return game.MediaResources; } }
 
         /// <summary>
-        /// Gets or Sets Audit
+        /// Gets or Sets ChangeStamp
         /// </summary>
-        public virtual Audit Audit { get; set; }
+        public virtual ChangeStamp ChangeStamp { get; set; }
 
         #endregion
 
@@ -203,7 +203,7 @@ namespace Zeega.Domain.GameModel {
             secondaryCategories = new List<GameInstanceCategory>();
             tags = new List<Tag>();
 
-            Audit = new Audit(DateTime.Now);
+            ChangeStamp = new ChangeStamp(DateTime.Now);
             
         }
 

@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppTenantTests.cs" />
+    <Compile Include="ChangeStampTests.cs" />
     <Compile Include="GameModel\GameCategoryTests.cs" />
     <Compile Include="GameModel\GameInstanceCategorySrvTests.cs" />
     <Compile Include="GameModel\GameInstanceCategoryTests.cs" />

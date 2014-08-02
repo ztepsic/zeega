@@ -1,25 +1,62 @@
-﻿@model Zeega.Admin.Web.Models.Game.GameProviderModel
+﻿@using Zed.Core.Utilities
+@model Zeega.Admin.Web.Models.Game.GameProviderModel
 
 
 @{
     ViewBag.Title = Model.Name + " Game provider";
 }
 
+
 <div class="row">
     <div class="col-md-12">
         <div class="box box-primary">
             <div class="box-header">
-                <h3 class="box-title">Details</h3>
+                <h3 class="box-title">Game provider details</h3>
             </div> <!-- .box-header -->
             <div class="box-body">
-                @Html.DisplayForModel()
-            </div> <!-- .box-body -->
-        
-            <div class="box-footer">
+                <dl class="dl-horizontal">
+                    <dt>@Html.DisplayNameFor(x => x.Id)</dt>
+                    <dd>@Html.DisplayFor(x => x.Id)</dd>
+                    
+                    <dt>@Html.DisplayNameFor(x => x.CreatedOn)</dt>
+                    <dd>@Html.DisplayFor(x => x.CreatedOn)</dd>
+                    
+                    <dt>@Html.DisplayNameFor(x => x.UpdatedOn)</dt>
+                    <dd>@Html.DisplayFor(x => x.UpdatedOn)</dd>
+
+                    <dt>@Html.DisplayNameFor(x => x.Name)</dt>
+                    <dd>@Html.DisplayFor(x => x.Name)</dd>
+
+                    <dt>@Html.DisplayNameFor(x => x.OfficialUrl)</dt>
+                    <dd>@Html.DisplayFor(x => x.OfficialUrl)</dd>
+
+                    <dt>@Html.DisplayNameFor(x => x.PublisherUrl)</dt>
+                    <dd>@Html.DisplayFor(x => x.PublisherUrl)</dd>
+
+                    <dt>@Html.DisplayNameFor(x => x.GamesCatalogUrl)</dt>
+                    <dd>@Html.DisplayFor(x => x.GamesCatalogUrl)</dd>
+
+                    <dt>@Html.DisplayNameFor(x => x.HasPublisherApi)</dt>
+                    <dd>@Model.HasPublisherApi</dd>
+
+                    <dt>@Html.DisplayNameFor(x => x.HasXmlFeed)</dt>
+                    <dd>@Model.HasXmlFeed</dd>
+
+                    <dt>@Html.DisplayNameFor(x => x.HasJsonFeed)</dt>
+                    <dd>@Model.HasJsonFeed</dd>
+
+                    <dt>@Html.DisplayNameFor(x => x.IsActive)</dt>
+                    <dd>@Model.IsActive</dd>
+                </dl>
+            </div> <!-- box-body -->
                 
-            </div> <!-- .box-footer -->
+            <div class="box-footer">
+                <a href="@Url.Action("edit", "GameProvider", new { id = Model.Id, slug = Model.Slug })" class="btn btn-primary" role="button">
+                    <span class="glyphicon glyphicon-edit"></span> Edit
+                </a>
+             </div> <!-- .box-footer -->
         </div> <!-- .box -->
-    </div>
+    </div> <!-- .col-md-12 -->
 </div>
 
 

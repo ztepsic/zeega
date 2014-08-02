@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 using AutoMapper;
 using Zed.NHibernate.Web;
@@ -96,6 +97,7 @@ namespace Zeega.Admin.Web.Controllers {
 
             if (ModelState.IsValid) {
                 gameProvider = Mapper.Map(gameProviderModel, gameProvider);
+                gameProvider.ChangeStamp.SetUpdatedOn();
 
                 gameProvidersRepository.SaveOrUpdate(gameProvider);
 
@@ -113,7 +115,7 @@ namespace Zeega.Admin.Web.Controllers {
         /// </summary>
         /// <returns>Page for creating game provider</returns>
         public ViewResult Create() {
-            return View(new GameProviderModel());
+            return View(new GameProviderModel() { IsActive = true });
         }
 
         /// <summary>

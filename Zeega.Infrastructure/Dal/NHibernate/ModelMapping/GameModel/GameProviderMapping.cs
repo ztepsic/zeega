@@ -28,6 +28,7 @@ namespace Zeega.Infrastructure.Dal.NHibernate.ModelMapping.GameModel {
             Property(x => x.HasXmlFeed);
             Property(x => x.HasJsonFeed);
             Property(x => x.IsActive);
+            Component(x => x.ChangeStamp);
 
         }
     }

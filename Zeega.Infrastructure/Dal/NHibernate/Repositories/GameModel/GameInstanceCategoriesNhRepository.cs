@@ -6,7 +6,7 @@ using Zed.NHibernate;
 using Zeega.Domain;
 using Zeega.Domain.GameModel;
 
-namespace Zeega.Infrastructure.Dal.NHibernate.GameModel {
+namespace Zeega.Infrastructure.Dal.NHibernate.Repositories.GameModel {
     /// <summary>
     /// Game categories NHibernate repository
     /// </summary>

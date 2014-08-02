@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 using Zeega.Domain;
-using Zeega.Infrastructure.Dal.NHibernate;
+using Zeega.Infrastructure.Dal.NHibernate.Repositories;
 
 namespace Zeega.Infrastructure.Tests.Dal.NHibernate {
     [TestFixture]

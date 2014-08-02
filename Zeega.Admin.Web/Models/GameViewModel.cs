@@ -133,9 +133,9 @@ namespace Zeega.Admin.Web.Models {
         public bool IsZipDownloaded { get; set; }
 
         /// <summary>
-        /// Game audit
+        /// Game change stamp
         /// </summary>
-        //public Audit Audit { get; set; }
+        //public ChangeStamp ChangeStamp { get; set; }
 
         #endregion
     }

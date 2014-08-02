@@ -3,7 +3,7 @@ using System.Linq;
 using NUnit.Framework;
 using Zeega.Domain;
 using Zeega.Domain.GameModel;
-using Zeega.Infrastructure.Dal.NHibernate.GameModel;
+using Zeega.Infrastructure.Dal.NHibernate.Repositories.GameModel;
 
 namespace Zeega.Infrastructure.Tests.Dal.NHibernate.GameModel {
     [TestFixture]

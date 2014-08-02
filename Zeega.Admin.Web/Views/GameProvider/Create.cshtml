@@ -24,8 +24,11 @@
                             <div class="col-sm-10">
                                 @Html.TextBoxFor(x => x.Name, new {@class = "form-control", placeholder = Html.DisplayNameFor(x => x.Name)})
                                 <p class="help-block">
-                                    @Html.ValidationMessageFor(x => x.Name)
-                                    Game provider's name.
+                                    @if (Html.HasValidationErrorFor(x => x.Name)) {
+                                        @Html.ValidationMessageFor(x => x.Name)
+                                    } else {
+                                        @:Game provider's name.
+                                    }
                                 </p>
                             </div>
                         </div>
@@ -35,8 +38,11 @@
                             <div class="col-sm-10">
                                 @Html.TextBoxFor(x => x.OfficialUrl, new {@class = "form-control", placeholder = Html.DisplayNameFor(x => x.OfficialUrl)})
                                 <p class="help-block">
-                                    @Html.ValidationMessageFor(x => x.OfficialUrl)
-                                    Game provider's official URL
+                                    @if (Html.HasValidationErrorFor(x => x.OfficialUrl)) {
+                                        @Html.ValidationMessageFor(x => x.OfficialUrl)
+                                    } else {
+                                        @:Game provider's official URL
+                                    }
                                 </p>
                             </div>
                         </div>
@@ -46,8 +52,11 @@
                             <div class="col-sm-10">
                                 @Html.TextBoxFor(x => x.PublisherUrl, new {@class = "form-control", placeholder = Html.DisplayNameFor(x => x.PublisherUrl)})
                                 <p class="help-block">
-                                    @Html.ValidationMessageFor(x => x.PublisherUrl)
-                                    Game provider's publisher URL
+                                    @if (Html.HasValidationErrorFor(x => x.PublisherUrl)) {
+                                        @Html.ValidationMessageFor(x => x.PublisherUrl)
+                                    } else {
+                                        @:Game provider's publisher URL
+                                    }
                                 </p>
                                 <label class="checkbox-inline">
                                     @Html.CheckBoxFor(x => x.HasPublisherApi)
@@ -69,8 +78,11 @@
                             <div class="col-sm-10">
                                 @Html.TextBoxFor(x => x.GamesCatalogUrl, new {@class = "form-control", placeholder = Html.DisplayNameFor(x => x.GamesCatalogUrl)})
                                 <p class="help-block">
-                                    @Html.ValidationMessageFor(x => x.GamesCatalogUrl)
-                                    Game provider's games catalog URL
+                                    @if (Html.HasValidationErrorFor(x => x.GamesCatalogUrl)) {
+                                        @Html.ValidationMessageFor(x => x.GamesCatalogUrl)
+                                    } else {
+                                        @:Game provider's games catalog URL
+                                    }
                                 </p>
                             </div>
                         </div>

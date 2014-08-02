@@ -20,6 +20,8 @@ create table Game.GameProviders (
 ,	HasXmlFeed bit not null default 0
 ,	HasJsonFeed bit not null default 0
 ,	IsActive bit not null default 1
+,	CreatedOn datetime not null
+,	UpdatedOn datetime not null
 );
 
 
@@ -67,4 +69,14 @@ exec sys.sp_addextendedproperty @level2type=N'COLUMN', @level2name=N'IsActive',
 								@name=N'MS_Description', @value=N'Is game provider active',
 								@level1type=N'TABLE',@level1name=N'GameProviders',
 								@level0type=N'SCHEMA', @level0name=N'Game'
+
+exec sys.sp_addextendedproperty @level2type=N'COLUMN', @level2name=N'CreatedOn',
+								@name=N'MS_Description', @value=N'DateTime when game provider is created',
+								@level1type=N'TABLE',@level1name=N'GameInstances',
+								@level0type=N'SCHEMA', @level0name=N'Game'
+								
+exec sys.sp_addextendedproperty @level2type=N'COLUMN', @level2name=N'UpdatedOn',
+								@name=N'MS_Description', @value=N'DateTime when game provider is updated',
+								@level1type=N'TABLE',@level1name=N'GameInstances',
+								@level0type=N'SCHEMA',@level0name=N'Game
 go

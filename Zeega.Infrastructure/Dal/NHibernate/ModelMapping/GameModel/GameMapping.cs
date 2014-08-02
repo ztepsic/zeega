@@ -92,7 +92,7 @@ namespace Zeega.Infrastructure.Dal.NHibernate.ModelMapping.GameModel {
             Property(x => x.ZipUrl);
             Property(x => x.IsZipDownloaded);
 
-            Component(x => x.Audit);
+            Component(x => x.ChangeStamp);
         }
     }
 }

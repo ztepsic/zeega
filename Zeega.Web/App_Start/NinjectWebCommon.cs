@@ -3,8 +3,8 @@ using NHibernate.Mapping.ByCode;
 using Ninject.Modules;
 using Zed.NHibernate;
 using Zeega.Domain.GameModel;
-using Zeega.Infrastructure.Dal.NHibernate.GameModel;
 using Zeega.Infrastructure.Dal.NHibernate.ModelMapping;
+using Zeega.Infrastructure.Dal.NHibernate.Repositories.GameModel;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Zeega.Web.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Zeega.Web.App_Start.NinjectWebCommon), "Stop")]

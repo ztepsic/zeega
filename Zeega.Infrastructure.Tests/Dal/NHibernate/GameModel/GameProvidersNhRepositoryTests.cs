@@ -1,6 +1,7 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 using Zeega.Domain.GameModel;
-using Zeega.Infrastructure.Dal.NHibernate.GameModel;
+using Zeega.Infrastructure.Dal.NHibernate.Repositories.GameModel;
 
 namespace Zeega.Infrastructure.Tests.Dal.NHibernate.GameModel {
     [TestFixture]
@@ -51,6 +52,36 @@ namespace Zeega.Infrastructure.Tests.Dal.NHibernate.GameModel {
             // Assert
             Assert.IsNotNull(fetchedGameProvider);
             Assert.AreEqual(gameProvider, fetchedGameProvider);
+        }
+
+
+        [Test]
+        public void Get_GameProvider_ChangeStampInUtcKind() {
+            // Arrange
+            var gameProvider = new GameProvider("Spil Games") {
+                OfficialUrl = "http://www.spilgames.com"
+            };
+
+            var gameProvidersRepo = new GameProvidersNhRepository(SessionFactory);
+
+            using (var trx = Session.BeginTransaction()) {
+                gameProvidersRepo.SaveOrUpdate(gameProvider);
+                trx.Commit();
+            }
+
+            Session.Clear(); // To clear cache so we can see select
+
+            // Act
+            GameProvider fetchedGameProvider = null;
+            using (var trx = Session.BeginTransaction()) {
+                fetchedGameProvider = gameProvidersRepo.GetById(gameProvider.Id);
+                trx.Commit();
+            }
+
+            // Assert
+            Assert.IsNotNull(fetchedGameProvider);
+            Assert.AreEqual(DateTimeKind.Utc, fetchedGameProvider.ChangeStamp.CreatedOn.Kind);
+            Assert.AreEqual(DateTimeKind.Utc, fetchedGameProvider.ChangeStamp.UpdatedOn.Kind);
         }
 
     }

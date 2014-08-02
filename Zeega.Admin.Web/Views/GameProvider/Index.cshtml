@@ -37,11 +37,10 @@
                                 <th>JSON feed</th>
                             </tr>
                             @foreach (var gameProvider in Model) {
-                                var slug = gameProvider.Name.ToSlug();
                                 <tr>
-                                    <td><a href="@Url.Action("edit", new { id = gameProvider.Id, slug = slug })"><span class="glyphicon glyphicon-edit"></span></a></td>
+                                    <td><a href="@Url.Action("edit", new { id = gameProvider.Id, slug = gameProvider.Slug })"><span class="glyphicon glyphicon-edit"></span></a></td>
                                     <td class="@boolCssColoringClass(gameProvider.IsActive)">
-                                        @Html.ActionLink(gameProvider.Name, "details", new { id = gameProvider.Id, slug = slug })
+                                        @Html.ActionLink(gameProvider.Name, "details", new { id = gameProvider.Id, gameProvider.Slug })
                                     </td>
                                     <td>12345</td>
                                     <td>@gameProvider.OfficialUrl</td>

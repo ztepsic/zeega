@@ -73,7 +73,7 @@ namespace Zeega.Infrastructure.Dal.NHibernate.ModelMapping.GameModel {
             );
 
             Property(x => x.IsPublished);
-            Component(x => x.Audit);
+            Component(x => x.ChangeStamp);
            
         }
     }

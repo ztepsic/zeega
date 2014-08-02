@@ -73,6 +73,11 @@ namespace Zeega.Domain.GameModel {
         /// </summary>
         public virtual bool IsActive { get; set; }
 
+        /// <summary>
+        /// Gets or Sets ChangeStamp
+        /// </summary>
+        public virtual ChangeStamp ChangeStamp { get; set; }
+
 
         #endregion
 
@@ -89,6 +94,8 @@ namespace Zeega.Domain.GameModel {
         /// <param name="name">Game provider's name</param>
         public GameProvider(string name) {
             Name = name;
+
+            ChangeStamp = new ChangeStamp(DateTime.Now);
         }
 
         #endregion

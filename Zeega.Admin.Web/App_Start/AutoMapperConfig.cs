@@ -15,7 +15,9 @@ namespace Zeega.Admin.Web {
             Mapper.CreateMap<GameProviderModel, GameProvider>()
                 .IgnoreAllPropertiesWithAnInaccessibleSetter();
 
-            Mapper.CreateMap<GameProvider, GameProviderModel>();
+            Mapper.CreateMap<GameProvider, GameProviderModel>()
+                .ForMember(dest => dest.CreatedOn, opt => opt.MapFrom(src => src.ChangeStamp.GetCreatedOn()))
+                .ForMember(dest => dest.UpdatedOn, opt => opt.MapFrom(src => src.ChangeStamp.GetUpdatedOn()));
         }
     }
 }

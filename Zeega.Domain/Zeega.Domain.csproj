@@ -61,7 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppTenant.cs" />
-    <Compile Include="Audit.cs" />
+    <Compile Include="ChangeStamp.cs" />
     <Compile Include="GameModel\DeviceTypeSupport.cs" />
     <Compile Include="GameModel\Game.cs" />
     <Compile Include="GameModel\GameCategory.cs" />

@@ -68,13 +68,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dal\NHibernate\AppTenantsNhRepository.cs" />
-    <Compile Include="Dal\NHibernate\GameModel\GameInstanceCategoriesNhRepository.cs" />
-    <Compile Include="Dal\NHibernate\GameModel\GameInstancesNhRepository.cs" />
-    <Compile Include="Dal\NHibernate\GameModel\GameProvidersNhRepository.cs" />
-    <Compile Include="Dal\NHibernate\GameModel\GamesNhRepository.cs" />
+    <Compile Include="Dal\NHibernate\Repositories\AppTenantsNhRepository.cs" />
+    <Compile Include="Dal\NHibernate\Repositories\GameModel\GameInstanceCategoriesNhRepository.cs" />
+    <Compile Include="Dal\NHibernate\Repositories\GameModel\GameInstancesNhRepository.cs" />
+    <Compile Include="Dal\NHibernate\Repositories\GameModel\GameProvidersNhRepository.cs" />
+    <Compile Include="Dal\NHibernate\Repositories\GameModel\GamesNhRepository.cs" />
     <Compile Include="Dal\NHibernate\ModelMapping\AppTenantMapping.cs" />
-    <Compile Include="Dal\NHibernate\ModelMapping\AuditMapping.cs" />
+    <Compile Include="Dal\NHibernate\ModelMapping\ChangeStampMapping.cs" />
     <Compile Include="Dal\NHibernate\ModelMapping\GameModel\GameCategoryMapping.cs" />
     <Compile Include="Dal\NHibernate\ModelMapping\GameModel\GameInstanceCategoryMapping.cs" />
     <Compile Include="Dal\NHibernate\ModelMapping\GameModel\GameInstanceMapping.cs" />
@@ -85,7 +85,7 @@
     <Compile Include="Dal\NHibernate\ModelMapping\MappingConstants.cs" />
     <Compile Include="Dal\NHibernate\ModelMapping\ModelMapperExension.cs" />
     <Compile Include="Dal\NHibernate\ModelMapping\TagMapping.cs" />
-    <Compile Include="Dal\NHibernate\TagsNhRepository.cs" />
+    <Compile Include="Dal\NHibernate\Repositories\TagsNhRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

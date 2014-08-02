@@ -37,7 +37,8 @@ namespace Zeega.Admin.Web {
                       "~/assets/css/bootstrap.css",
                       "~/assets/css/font-awesome.css",
                       "~/assets/css/ionicons.css",
-                      "~/assets/css/AdminLTE.css"));
+                      "~/assets/css/AdminLTE.css",
+                      "~/assets/css/style.css"));
 
             bundles.Add(new StyleBundle("~/assets/css/forms").Include(
                 "~/assets/css/iCheck/all.css"));

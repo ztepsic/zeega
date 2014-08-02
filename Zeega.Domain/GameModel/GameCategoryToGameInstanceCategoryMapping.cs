@@ -2,6 +2,9 @@
 using Zed.Core.Domain;
 
 namespace Zeega.Domain.GameModel {
+    /// <summary>
+    /// Entity class that represents game category to game instance category mapping
+    /// </summary>
     public class GameCategoryToGameInstanceCategoryMapping : Entity {
 
         #region Fields and Properties

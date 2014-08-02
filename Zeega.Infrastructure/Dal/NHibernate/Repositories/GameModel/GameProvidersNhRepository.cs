@@ -2,26 +2,29 @@
 using Zed.NHibernate;
 using Zeega.Domain.GameModel;
 
-namespace Zeega.Infrastructure.Dal.NHibernate.GameModel {
+namespace Zeega.Infrastructure.Dal.NHibernate.Repositories.GameModel {
     /// <summary>
-    /// Games NHibernate repository
+    /// Game provider NHibernate repository
     /// </summary>
-    public class GamesNhRepository : NHibernateCrudRepository<Game> {
+    public class GameProvidersNhRepository : NHibernateCrudRepository<GameProvider>, IGameProvidersRepository {
 
         #region Fields and Properties
+
         #endregion
 
         #region Constructors and Init
 
         /// <summary>
-        /// Creates games NHibernate repository
+        /// Creates game categories NHibernate repository
         /// </summary>
         /// <param name="sessionFactory">NHibernate session factory</param>
-        public GamesNhRepository(ISessionFactory sessionFactory) : base(sessionFactory) { }
+        public GameProvidersNhRepository(ISessionFactory sessionFactory) : base(sessionFactory) { }
 
         #endregion
 
         #region Methods
+
+
         #endregion
     }
 }

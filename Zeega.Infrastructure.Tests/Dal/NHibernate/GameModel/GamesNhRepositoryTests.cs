@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using Zeega.Domain;
 using Zeega.Domain.GameModel;
-using Zeega.Infrastructure.Dal.NHibernate.GameModel;
+using Zeega.Infrastructure.Dal.NHibernate.Repositories.GameModel;
 
 namespace Zeega.Infrastructure.Tests.Dal.NHibernate.GameModel {
     [TestFixture]
@@ -27,7 +27,7 @@ namespace Zeega.Infrastructure.Tests.Dal.NHibernate.GameModel {
             var game = new Game("Angry Birds", gameProvider) {
                 GameSrc = new GameSrc(800, 600, "http://example.com/angry-birds", GameSrcType.Swf),
                 ProviderGameUrl = "http://www.example.com/angry-birds",
-                Audit = new Audit(DateTime.Now)
+                ChangeStamp = new ChangeStamp(DateTime.Now)
             };
 
             var gamesRepo = new GamesNhRepository(SessionFactory);
@@ -48,7 +48,7 @@ namespace Zeega.Infrastructure.Tests.Dal.NHibernate.GameModel {
             var game = new Game("Angry Birds", gameProvider) {
                 GameSrc = new GameSrc(800, 600, "http://example.com/angry-birds", GameSrcType.Swf),
                 ProviderGameUrl = "http://www.example.com/angry-birds",
-                Audit = new Audit(DateTime.Now)
+                ChangeStamp = new ChangeStamp(DateTime.Now)
             };
 
             var gamesRepo = new GamesNhRepository(SessionFactory);

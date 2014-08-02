@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NHibernate;
+﻿using NHibernate;
 using Zed.NHibernate;
 using Zeega.Domain.GameModel;
 
-namespace Zeega.Infrastructure.Dal.NHibernate.GameModel {
+namespace Zeega.Infrastructure.Dal.NHibernate.Repositories.GameModel {
     /// <summary>
     /// Game instances NHibernate repository
     /// </summary>

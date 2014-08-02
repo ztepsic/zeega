@@ -1,18 +1,25 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using Zed.Core.Utilities;
 
 namespace Zeega.Admin.Web.Models.Game {
 
     public class GameProviderModel {
 
         /// <summary>
-        /// Identifier
+        /// Gets or Sets the identifier
         /// </summary>
         public int Id { get; set; }
 
         /// <summary>
+        /// Gets game provider's slug based on it's name
+        /// </summary>
+        public string Slug { get { return Name.ToSlug(); } }
+
+        /// <summary>
         /// Gets or Sets game provider's name
         /// </summary>
-        [Required(ErrorMessage = "Please enter a game provider's name")]
+        [Required(ErrorMessage = "Please enter a game provider's name.")]
         public string Name { get; set; }
 
         /// <summary>
@@ -60,6 +67,12 @@ namespace Zeega.Admin.Web.Models.Game {
         /// </summary>
         [Display(Name = "Is the game publisher active?")]
         public bool IsActive { get; set; }
+
+        [Display(Name = "Created on")]
+        public DateTime CreatedOn { get; set; }
+
+        [Display(Name = "Updated on")]
+        public DateTime UpdatedOn { get; set; }
 
     }
 }
