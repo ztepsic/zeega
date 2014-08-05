@@ -13,6 +13,7 @@ namespace Zeega.Admin.Web {
         /// </summary>
         public static void Configure() {
             Mapper.CreateMap<GameProviderModel, GameProvider>()
+                .ForMember(dest => dest.ChangeStamp, opt => opt.Ignore())
                 .IgnoreAllPropertiesWithAnInaccessibleSetter();
 
             Mapper.CreateMap<GameProvider, GameProviderModel>()

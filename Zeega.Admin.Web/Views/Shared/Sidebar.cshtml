@@ -1,4 +1,6 @@
-﻿<aside class="left-side sidebar-offcanvas">
+﻿@PageContext.Page.Request.RequestContext.RouteData.Route
+
+<aside class="left-side sidebar-offcanvas">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
         <!-- Sidebar user panel -->
@@ -24,19 +26,19 @@
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
-            <li class="active">
+            <li>
                 <a href="@Url.Action("index", "home")">
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                 </a>
             </li>
-            <li class="treeview">
+            <li class="treeview active">
                 <a href="pages/widgets.html">
                     <i class="fa fa-gamepad"></i>
                     <span>Games</span>
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li>
+                    <li class="active">
                         <a href="@Url.Action("index", "GameProvider")">
                             <i class="fa fa-angle-double-right"></i> Game Providers
                         </a>
