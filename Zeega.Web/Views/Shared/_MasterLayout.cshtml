@@ -25,9 +25,9 @@
         
 </head>
     <body>
-        @RenderPage("Header.cshtml")
+        @Html.Partial("_HeaderPartial")
         @RenderBody()
-        @RenderPage("Footer.cshtml")
+        @Html.Partial("_FooterPartial")
         
         
         @Scripts.Render("~/assets/js/jquery")

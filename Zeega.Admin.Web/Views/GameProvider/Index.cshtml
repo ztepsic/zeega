@@ -1,8 +1,12 @@
-﻿@using Zed.Core.Utilities
-@model IEnumerable<Zeega.Admin.Web.Models.Game.GameProviderModel>
+﻿@using Zeega.Admin.Web.Models
+@model Zeega.Admin.Web.Models.GameProvider.GameProviderIndexViewModel
 
 @{
-    ViewBag.Title = "Game Providers";
+    Model.Title = "Game Providers";
+    Model.TitleDescription = "List of game providers";
+    Model.SidebarViewModel.SetActiveSection(SidebarViewModel.Section.GameInstances);
+    Model.BreadcrumbsModel.Add("Home", Url.Action("index", "home"))
+        .AddActive("Game Providers");
 
     Func<bool, string> boolCssColoringClass = x => x ? "success" : "danger";
     Func<bool, string> boolCssIconClass = x => x ? "glyphicon glyphicon-ok" : "glyphicon glyphicon-remove";
@@ -36,7 +40,7 @@
                                 <th>XML feed</th>
                                 <th>JSON feed</th>
                             </tr>
-                            @foreach (var gameProvider in Model) {
+                            @foreach (var gameProvider in Model.GameProviders) {
                                 <tr>
                                     <td><a href="@Url.Action("edit", new { id = gameProvider.Id, slug = gameProvider.Slug })"><span class="glyphicon glyphicon-edit"></span></a></td>
                                     <td class="@boolCssColoringClass(gameProvider.IsActive)">

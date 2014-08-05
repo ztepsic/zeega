@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using Zeega.Domain.GameModel;
 
-namespace Zeega.Admin.Web.Models {
+namespace Zeega.Admin.Web.Models.Game {
     /// <summary>
     /// Game device type support view model
     /// </summary>

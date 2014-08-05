@@ -1,0 +1,12 @@
+﻿@model Zed.Web.Models.BreadcrumbsModel
+
+<ol class="breadcrumb">
+    @foreach (var breadcrumb in Model.Breadcrumbs) {
+        if (!breadcrumb.IsActive) {
+            <li><a href="@breadcrumb.Url" title="@breadcrumb.Title">@breadcrumb.Title</a></li>
+        } else {
+            <li class="active">@breadcrumb.Title</li>
+        }
+    }
+</ol>
+

@@ -194,9 +194,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
     </Reference>
-    <Reference Include="Zed.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Zed.Core, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Zed.Core.1.0.0.0\lib\net451\Zed.Core.dll</HintPath>
+      <HintPath>..\packages\Zed.Core.1.0.0.1\lib\net451\Zed.Core.dll</HintPath>
     </Reference>
     <Reference Include="Zed.NHibernate, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -206,9 +206,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Zed.NHibernate.Web.1.0.0.0\lib\net451\Zed.NHibernate.Web.dll</HintPath>
     </Reference>
-    <Reference Include="Zed.Web, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Zed.Web, Version=1.0.0.3, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Zed.Web.1.0.0.0\lib\net451\Zed.Web.dll</HintPath>
+      <HintPath>..\packages\Zed.Web.1.0.0.3\lib\net451\Zed.Web.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -231,11 +231,15 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\GameSrcViewModel.cs" />
-    <Compile Include="Models\GameViewModel.cs" />
-    <Compile Include="Models\Game\GameProviderModel.cs" />
+    <Compile Include="Models\GameProvider\GameProviderIndexViewModel.cs" />
+    <Compile Include="Models\GameProvider\GameProviderViewModel.cs" />
+    <Compile Include="Models\Game\GameSrcViewModel.cs" />
+    <Compile Include="Models\Game\GameViewModel.cs" />
+    <Compile Include="Models\GameProvider\GameProviderModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\MediaResViewModel.cs" />
+    <Compile Include="Models\Game\MediaResViewModel.cs" />
+    <Compile Include="Models\PageViewModel.cs" />
+    <Compile Include="Models\SidebarViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -414,17 +418,16 @@
     <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_MasterLayout_bak.cshtml" />
-    <Content Include="Views\Shared\Footer.cshtml" />
-    <Content Include="Views\Shared\Header.cshtml" />
+    <Content Include="Views\Shared\_HeaderPartial.cshtml" />
     <Content Include="Views\Game\Create.cshtml" />
     <Content Include="Views\Shared\_MasterLayout.cshtml" />
-    <Content Include="Views\Shared\Header_bak.cshtml" />
-    <Content Include="Views\Shared\Sidebar.cshtml" />
+    <Content Include="Views\Shared\_SidebarPartial.cshtml" />
     <Content Include="Views\GameProvider\Index.cshtml" />
     <Content Include="Views\GameProvider\Create.cshtml" />
     <Content Include="Views\GameProvider\Details.cshtml" />
     <Content Include="Views\GameProvider\Edit.cshtml" />
     <Content Include="assets\js\jquery-2.1.1.min.map" />
+    <Content Include="Views\Shared\DisplayTemplates\BreadcrumbsModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

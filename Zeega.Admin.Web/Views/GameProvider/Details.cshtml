@@ -1,9 +1,14 @@
-﻿@using Zed.Core.Utilities
-@model Zeega.Admin.Web.Models.Game.GameProviderModel
+﻿@using Zeega.Admin.Web.Models
+@model Zeega.Admin.Web.Models.GameProvider.GameProviderViewModel
 
 
 @{
-    ViewBag.Title = Model.Name + " Game provider";
+    Model.Title = Model.GameProviderModel.Name;
+    Model.TitleDescription = "Game provider details";
+    Model.SidebarViewModel.SetActiveSection(SidebarViewModel.Section.GameInstances);
+    Model.BreadcrumbsModel.Add("Home", Url.Action("index", "home"))
+        .Add("Game Providers", Url.Action("index", "GameProvider"))
+        .AddActive(Model.GameProviderModel.Name);
 }
 
 
@@ -15,43 +20,43 @@
             </div> <!-- .box-header -->
             <div class="box-body">
                 <dl class="dl-horizontal">
-                    <dt>@Html.DisplayNameFor(x => x.Id)</dt>
-                    <dd>@Html.DisplayFor(x => x.Id)</dd>
+                    <dt>@Html.DisplayNameFor(x => x.GameProviderModel.Id)</dt>
+                    <dd>@Html.DisplayFor(x => x.GameProviderModel.Id)</dd>
                     
-                    <dt>@Html.DisplayNameFor(x => x.CreatedOn)</dt>
-                    <dd>@Html.DisplayFor(x => x.CreatedOn)</dd>
+                    <dt>@Html.DisplayNameFor(x => x.GameProviderModel.CreatedOn)</dt>
+                    <dd>@Html.DisplayFor(x => x.GameProviderModel.CreatedOn)</dd>
                     
-                    <dt>@Html.DisplayNameFor(x => x.UpdatedOn)</dt>
-                    <dd>@Html.DisplayFor(x => x.UpdatedOn)</dd>
+                    <dt>@Html.DisplayNameFor(x => x.GameProviderModel.UpdatedOn)</dt>
+                    <dd>@Html.DisplayFor(x => x.GameProviderModel.UpdatedOn)</dd>
 
-                    <dt>@Html.DisplayNameFor(x => x.Name)</dt>
-                    <dd>@Html.DisplayFor(x => x.Name)</dd>
+                    <dt>@Html.DisplayNameFor(x => x.GameProviderModel.Name)</dt>
+                    <dd>@Html.DisplayFor(x => x.GameProviderModel.Name)</dd>
 
-                    <dt>@Html.DisplayNameFor(x => x.OfficialUrl)</dt>
-                    <dd>@Html.DisplayFor(x => x.OfficialUrl)</dd>
+                    <dt>@Html.DisplayNameFor(x => x.GameProviderModel.OfficialUrl)</dt>
+                    <dd>@Html.DisplayFor(x => x.GameProviderModel.OfficialUrl)</dd>
 
-                    <dt>@Html.DisplayNameFor(x => x.PublisherUrl)</dt>
-                    <dd>@Html.DisplayFor(x => x.PublisherUrl)</dd>
+                    <dt>@Html.DisplayNameFor(x => x.GameProviderModel.PublisherUrl)</dt>
+                    <dd>@Html.DisplayFor(x => x.GameProviderModel.PublisherUrl)</dd>
 
-                    <dt>@Html.DisplayNameFor(x => x.GamesCatalogUrl)</dt>
-                    <dd>@Html.DisplayFor(x => x.GamesCatalogUrl)</dd>
+                    <dt>@Html.DisplayNameFor(x => x.GameProviderModel.GamesCatalogUrl)</dt>
+                    <dd>@Html.DisplayFor(x => x.GameProviderModel.GamesCatalogUrl)</dd>
 
-                    <dt>@Html.DisplayNameFor(x => x.HasPublisherApi)</dt>
-                    <dd>@Model.HasPublisherApi</dd>
+                    <dt>@Html.DisplayNameFor(x => x.GameProviderModel.HasPublisherApi)</dt>
+                    <dd>@Model.GameProviderModel.HasPublisherApi</dd>
 
-                    <dt>@Html.DisplayNameFor(x => x.HasXmlFeed)</dt>
-                    <dd>@Model.HasXmlFeed</dd>
+                    <dt>@Html.DisplayNameFor(x => x.GameProviderModel.HasXmlFeed)</dt>
+                    <dd>@Model.GameProviderModel.HasXmlFeed</dd>
 
-                    <dt>@Html.DisplayNameFor(x => x.HasJsonFeed)</dt>
-                    <dd>@Model.HasJsonFeed</dd>
+                    <dt>@Html.DisplayNameFor(x => x.GameProviderModel.HasJsonFeed)</dt>
+                    <dd>@Model.GameProviderModel.HasJsonFeed</dd>
 
-                    <dt>@Html.DisplayNameFor(x => x.IsActive)</dt>
-                    <dd>@Model.IsActive</dd>
+                    <dt>@Html.DisplayNameFor(x => x.GameProviderModel.IsActive)</dt>
+                    <dd>@Model.GameProviderModel.IsActive</dd>
                 </dl>
             </div> <!-- box-body -->
                 
             <div class="box-footer">
-                <a href="@Url.Action("edit", "GameProvider", new { id = Model.Id, slug = Model.Slug })" class="btn btn-primary" role="button">
+                <a href="@Url.Action("edit", "GameProvider", new { id = Model.GameProviderModel.Id, slug = Model.GameProviderModel.Slug })" class="btn btn-primary" role="button">
                     <span class="glyphicon glyphicon-edit"></span> Edit
                 </a>
              </div> <!-- .box-footer -->

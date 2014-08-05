@@ -7,7 +7,7 @@ using Moq;
 using NUnit.Framework;
 using Zed.Core.Domain;
 using Zeega.Admin.Web.Controllers;
-using Zeega.Admin.Web.Models.Game;
+using Zeega.Admin.Web.Models.GameProvider;
 using Zeega.Domain.GameModel;
 
 namespace Zeega.Admin.Web.Tests.Controllers {

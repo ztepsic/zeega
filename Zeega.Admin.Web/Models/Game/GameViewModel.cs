@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
-namespace Zeega.Admin.Web.Models {
+namespace Zeega.Admin.Web.Models.Game {
     /// <summary>
     /// Game view model
     /// </summary>

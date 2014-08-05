@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using System.Web.Mvc.Routing.Constraints;
 using System.Web.Routing;
 
 namespace Zeega.Admin.Web {
@@ -15,21 +16,29 @@ namespace Zeega.Admin.Web {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "GameProviderIndex",
+                url: "game/providers",
+                defaults: new { controller = "GameProvider", action = "Index" }
+            );
+
+            routes.MapRoute(
                 name: "GameProviderEdit",
-                url: "game-provider/edit/{id}/{slug}",
-                defaults: new { controller = "GameProvider", action = "Edit", slug = UrlParameter.Optional }
+                url: "game/provider/edit/{id}/{slug}",
+                defaults: new { controller = "GameProvider", action = "Edit", slug = UrlParameter.Optional },
+                constraints: new { id = new IntRouteConstraint() }
             );
 
             routes.MapRoute(
                 name: "GameProvider",
-                url: "game-provider/{id}/{slug}",
-                defaults: new { controller = "GameProvider", action = "Details", slug = UrlParameter.Optional }
+                url: "game/provider/create",
+                defaults: new { controller = "GameProvider", action = "Create" }
             );
 
             routes.MapRoute(
-                name: "GameProviders",
-                url: "game-providers/{action}",
-                defaults: new { controller = "GameProvider", action = "Index" }
+                name: "GameProviderDetails",
+                url: "game/provider/{id}/{slug}",
+                defaults: new { controller = "GameProvider", action = "Details", slug = UrlParameter.Optional },
+                constraints: new { id = new IntRouteConstraint() }
             );
 
             routes.MapRoute(

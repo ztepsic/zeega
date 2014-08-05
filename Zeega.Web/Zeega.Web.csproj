@@ -194,9 +194,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
     </Reference>
-    <Reference Include="Zed.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Zed.Core, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Zed.Core.1.0.0.0\lib\net451\Zed.Core.dll</HintPath>
+      <HintPath>..\packages\Zed.Core.1.0.0.1\lib\net451\Zed.Core.dll</HintPath>
     </Reference>
     <Reference Include="Zed.NHibernate, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -206,9 +206,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Zed.NHibernate.Web.1.0.0.0\lib\net451\Zed.NHibernate.Web.dll</HintPath>
     </Reference>
-    <Reference Include="Zed.Web, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Zed.Web, Version=1.0.0.3, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Zed.Web.1.0.0.0\lib\net451\Zed.Web.dll</HintPath>
+      <HintPath>..\packages\Zed.Web.1.0.0.3\lib\net451\Zed.Web.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -324,8 +324,8 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_MasterLayout.cshtml" />
     <Content Include="Views\Game\GameInfo.cshtml" />
-    <Content Include="Views\Shared\Header.cshtml" />
-    <Content Include="Views\Shared\Footer.cshtml" />
+    <Content Include="Views\Shared\_HeaderPartial.cshtml" />
+    <Content Include="Views\Shared\_FooterPartial.cshtml" />
     <Content Include="Views\Game\Play.cshtml" />
     <Content Include="Views\Shared\AdUnits\MediumRectangle_300x250.cshtml" />
     <Content Include="Views\Shared\AdUnits\LargeRectangle_336x280.cshtml" />

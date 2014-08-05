@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 using AutoMapper;
-using Zeega.Admin.Web.Models;
+using Zeega.Admin.Web.Models.Game;
 using Zeega.Domain.GameModel;
 
 namespace Zeega.Admin.Web.Controllers {

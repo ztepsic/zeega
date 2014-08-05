@@ -1,5 +1,11 @@
-﻿@{
-    ViewBag.Title = "Dashboard";
+﻿@using Zeega.Admin.Web.Models
+@model Zeega.Admin.Web.Models.PageViewModel
+           
+@{
+    Model.Title = "Dashboard";
+    Model.TitleDescription = "Zeega dashboard";
+    Model.BreadcrumbsModel.AddActive("Home");
+    Model.SidebarViewModel.SetActiveSection(SidebarViewModel.Section.Dashboard);
 }
 
 <div class="row">

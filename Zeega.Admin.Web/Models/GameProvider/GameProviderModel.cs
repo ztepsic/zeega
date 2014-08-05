@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Zed.Core.Utilities;
 
-namespace Zeega.Admin.Web.Models.Game {
+namespace Zeega.Admin.Web.Models.GameProvider {
 
     public class GameProviderModel {
 

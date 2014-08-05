@@ -1,8 +1,15 @@
-﻿@using Zed.Web.Helpers;
-@model Zeega.Admin.Web.Models.Game.GameProviderModel
+﻿@using Zed.Web.Helpers
+@using Zeega.Admin.Web.Models
+@model Zeega.Admin.Web.Models.GameProvider.GameProviderViewModel
 
 @{
-    ViewBag.Title = Model.Name + " Game provider";
+    ViewBag.Title = Model.GameProviderModel.Name;
+    Model.Title = Model.GameProviderModel.Name;
+    Model.TitleDescription = "Edit game provider";
+    Model.SidebarViewModel.SetActiveSection(SidebarViewModel.Section.GameInstances);
+    Model.BreadcrumbsModel.Add("Home", Url.Action("index", "home"))
+        .Add("Game Providers", Url.Action("index", "GameProvider"))
+        .AddActive(Model.GameProviderModel.Name);
 }
 
 @section styles {
@@ -19,13 +26,13 @@
                 <div class="box-body">
                     <fieldset>
                         <legend class="sr-only">General</legend>
-                        <div class="form-group @Html.ValidationErrorCssClassFor(x => x.Name, "has-error")">
-                            @Html.LabelFor(x => x.Name, new { @class = "col-sm-2 control-label" })
+                        <div class="form-group @Html.ValidationErrorCssClassFor(x => x.GameProviderModel.Name, "has-error")">
+                            @Html.LabelFor(x => x.GameProviderModel.Name, new { @class = "col-sm-2 control-label" })
                             <div class="col-sm-10">
-                                @Html.TextBoxFor(x => x.Name, new { @class = "form-control", placeholder = Html.DisplayNameFor(x => x.Name) })
+                                @Html.TextBoxFor(x => x.GameProviderModel.Name, new { @class = "form-control", placeholder = Html.DisplayNameFor(x => x.GameProviderModel.Name) })
                                 <p class="help-block">
-                                    @if (Html.HasValidationErrorFor(x => x.Name)) {
-                                        @Html.ValidationMessageFor(x => x.Name)
+                                    @if (Html.HasValidationErrorFor(x => x.GameProviderModel.Name)) {
+                                        @Html.ValidationMessageFor(x => x.GameProviderModel.Name)
                                     } else {
                                         @:Game provider's name.
                                     }
@@ -33,13 +40,13 @@
                             </div>
                         </div>
 
-                        <div class="form-group @Html.ValidationErrorCssClassFor(x => x.OfficialUrl, "has-error")">
-                            @Html.LabelFor(x => x.OfficialUrl, new { @class = "col-sm-2 control-label" })
+                        <div class="form-group @Html.ValidationErrorCssClassFor(x => x.GameProviderModel.OfficialUrl, "has-error")">
+                            @Html.LabelFor(x => x.GameProviderModel.OfficialUrl, new { @class = "col-sm-2 control-label" })
                             <div class="col-sm-10">
-                                @Html.TextBoxFor(x => x.OfficialUrl, new { @class = "form-control", placeholder = Html.DisplayNameFor(x => x.OfficialUrl) })
+                                @Html.TextBoxFor(x => x.GameProviderModel.OfficialUrl, new { @class = "form-control", placeholder = Html.DisplayNameFor(x => x.GameProviderModel.OfficialUrl) })
                                 <p class="help-block">
-                                    @if (Html.HasValidationErrorFor(x => x.OfficialUrl)) {
-                                        @Html.ValidationMessageFor(x => x.OfficialUrl)
+                                    @if (Html.HasValidationErrorFor(x => x.GameProviderModel.OfficialUrl)) {
+                                        @Html.ValidationMessageFor(x => x.GameProviderModel.OfficialUrl)
                                     } else {
                                         @:Game provider's official URL
                                     }
@@ -47,39 +54,39 @@
                             </div>
                         </div>
 
-                        <div class="form-group @Html.ValidationErrorCssClassFor(x => x.PublisherUrl, "has-error")">
-                            @Html.LabelFor(x => x.PublisherUrl, new { @class = "col-sm-2 control-label" })
+                        <div class="form-group @Html.ValidationErrorCssClassFor(x => x.GameProviderModel.PublisherUrl, "has-error")">
+                            @Html.LabelFor(x => x.GameProviderModel.PublisherUrl, new { @class = "col-sm-2 control-label" })
                             <div class="col-sm-10">
-                                @Html.TextBoxFor(x => x.PublisherUrl, new { @class = "form-control", placeholder = Html.DisplayNameFor(x => x.PublisherUrl) })
+                                @Html.TextBoxFor(x => x.GameProviderModel.PublisherUrl, new { @class = "form-control", placeholder = Html.DisplayNameFor(x => x.GameProviderModel.PublisherUrl) })
                                 <p class="help-block">
-                                    @if (Html.HasValidationErrorFor(x => x.PublisherUrl)) {
-                                        @Html.ValidationMessageFor(x => x.PublisherUrl)
+                                    @if (Html.HasValidationErrorFor(x => x.GameProviderModel.PublisherUrl)) {
+                                        @Html.ValidationMessageFor(x => x.GameProviderModel.PublisherUrl)
                                     } else {
                                         @:Game provider's publisher URL
                                     }
                                 </p>
                                 <label class="checkbox-inline">
-                                    @Html.CheckBoxFor(x => x.HasPublisherApi)
-                                    @Html.DisplayNameFor(x => x.HasPublisherApi)
+                                    @Html.CheckBoxFor(x => x.GameProviderModel.HasPublisherApi)
+                                    @Html.DisplayNameFor(x => x.GameProviderModel.HasPublisherApi)
                                 </label>
                                 <label class="checkbox-inline">
-                                    @Html.CheckBoxFor(x => x.HasXmlFeed)
-                                    @Html.DisplayNameFor(x => x.HasXmlFeed)
+                                    @Html.CheckBoxFor(x => x.GameProviderModel.HasXmlFeed)
+                                    @Html.DisplayNameFor(x => x.GameProviderModel.HasXmlFeed)
                                 </label>
                                 <label class="checkbox-inline">
-                                    @Html.CheckBoxFor(x => x.HasJsonFeed)
-                                    @Html.DisplayNameFor(x => x.HasJsonFeed)
+                                    @Html.CheckBoxFor(x => x.GameProviderModel.HasJsonFeed)
+                                    @Html.DisplayNameFor(x => x.GameProviderModel.HasJsonFeed)
                                 </label>
                             </div>
                         </div>
 
-                        <div class="form-group @Html.ValidationErrorCssClassFor(x => x.GamesCatalogUrl, "has-error")">
-                            @Html.LabelFor(x => x.GamesCatalogUrl, new { @class = "col-sm-2 control-label" })
+                        <div class="form-group @Html.ValidationErrorCssClassFor(x => x.GameProviderModel.GamesCatalogUrl, "has-error")">
+                            @Html.LabelFor(x => x.GameProviderModel.GamesCatalogUrl, new { @class = "col-sm-2 control-label" })
                             <div class="col-sm-10">
-                                @Html.TextBoxFor(x => x.GamesCatalogUrl, new { @class = "form-control", placeholder = Html.DisplayNameFor(x => x.GamesCatalogUrl) })
+                                @Html.TextBoxFor(x => x.GameProviderModel.GamesCatalogUrl, new { @class = "form-control", placeholder = Html.DisplayNameFor(x => x.GameProviderModel.GamesCatalogUrl) })
                                 <p class="help-block">
-                                    @if (Html.HasValidationErrorFor(x => x.GamesCatalogUrl)) {
-                                        @Html.ValidationMessageFor(x => x.GamesCatalogUrl)
+                                    @if (Html.HasValidationErrorFor(x => x.GameProviderModel.GamesCatalogUrl)) {
+                                        @Html.ValidationMessageFor(x => x.GameProviderModel.GamesCatalogUrl)
                                     } else {
                                         @:Game provider's games catalog URL
                                     }
@@ -90,8 +97,8 @@
                         <div class="form-group">
                             <div class="checkbox col-sm-10 col-sm-offset-2">
                                 <label>
-                                    @Html.CheckBoxFor(x => x.IsActive)
-                                    @Html.DisplayNameFor(x => x.IsActive)
+                                    @Html.CheckBoxFor(x => x.GameProviderModel.IsActive)
+                                    @Html.DisplayNameFor(x => x.GameProviderModel.IsActive)
                                 </label>
                             </div>
                         </div>
@@ -101,7 +108,7 @@
                 <!-- .box-body -->
                 <div class="box-footer">
                     <button type="submit" class="btn btn-primary">Save</button>
-                    @Html.ActionLink("Cancel", "details", "GameProvider", new { id = Model.Id, slug = Model.Slug }, new { role = "button", @class = "btn btn-default" })
+                    @Html.ActionLink("Cancel", "details", "GameProvider", new { id = Model.GameProviderModel.Id, slug = Model.GameProviderModel.Slug }, new { role = "button", @class = "btn btn-default" })
                 </div>
                 <!-- .box-footer -->
             }

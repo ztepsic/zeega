@@ -1,12 +1,13 @@
-﻿<!DOCTYPE html>
+﻿@model Zeega.Admin.Web.Models.PageViewModel
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport"  content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-        <title>Dashboard | Zeega Admin</title>
-        <meta name="description" content="Dashboard - Zeega Admin" />
-        <meta name="keywords" content="admin, management,games, online, free, play" />
+        <title>@Model.PageInfoModel.Title</title>
+        <meta name="description" content="@Model.PageInfoModel.Description" />
+        <meta name="keywords" content="@Model.PageInfoModel.GetKeywords()" />
         @RenderSection("metas", required: false)
         <link href="" rel="Shortcut Icon" type="image/x-icon" media="all" />
 
@@ -23,24 +24,19 @@
         
 </head>
     <body class="skin-black">
-        @RenderPage("Header.cshtml")
+        @Html.Partial("_HeaderPartial")
 
         <div class="wrapper row-offcanvas row-offcanvas-left">
             <!-- Left side column. contains the logo and sidebar -->
-            @RenderPage("Sidebar.cshtml")
+            @Html.Partial("_SidebarPartial", Model.SidebarViewModel)
 
             <!-- Right side column. Contains the navbar and content of the page -->
             <div class="right-side">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                    <h1>
-                        @ViewBag.Title
-                        <small>Control panel</small>
-                    </h1>
-                    <ol class="breadcrumb">
-                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                        <li class="active">Blank page</li>
-                    </ol>
+                    @Html.DisplayFor(m => m.BreadcrumbsModel)
+
+                    <h1>@Model.Title <small>@Model.TitleDescription</small></h1>
                 </section>
 
                 <!-- Main content -->

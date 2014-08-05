@@ -90,14 +90,19 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Zed.Core">
-      <HintPath>..\packages\Zed.Core.1.0.0.0\lib\net451\Zed.Core.dll</HintPath>
+      <HintPath>..\packages\Zed.Core.1.0.0.1\lib\net451\Zed.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Zed.Web">
-      <HintPath>..\packages\Zed.Web.1.0.0.0\lib\net451\Zed.Web.dll</HintPath>
+    <Reference Include="Zed.Web, Version=1.0.0.3, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Zed.Web.1.0.0.3\lib\net451\Zed.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Zed.Web.Test">
+      <HintPath>..\packages\Zed.Web.Test.1.0.0.0\lib\net451\Zed.Web.Test.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\AutoMapperConfigTests.cs" />
+    <Compile Include="App_Start\RouteConfigTests.cs" />
     <Compile Include="Controllers\GameProviderControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

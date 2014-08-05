@@ -1,4 +1,6 @@
 ﻿using System.Web.Mvc;
+using Zed.Web.Models;
+using Zeega.Admin.Web.Models;
 
 namespace Zeega.Admin.Web.Controllers {
     /// <summary>
@@ -10,7 +12,7 @@ namespace Zeega.Admin.Web.Controllers {
         /// </summary>
         /// <returns></returns>
         public ActionResult Index() {
-            return View();
+            return View(new PageViewModel());
         }
 
         /// <summary>

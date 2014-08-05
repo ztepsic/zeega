@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Zeega.Admin.Web.Models.Game;
+using Zeega.Admin.Web.Models.GameProvider;
 using Zeega.Domain.GameModel;
 
 namespace Zeega.Admin.Web {

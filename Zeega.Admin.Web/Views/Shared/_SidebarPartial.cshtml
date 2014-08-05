@@ -1,4 +1,6 @@
-﻿@PageContext.Page.Request.RequestContext.RouteData.Route
+﻿@using Zed.Web.Helpers;
+@using Zeega.Admin.Web.Models
+@model Zeega.Admin.Web.Models.SidebarViewModel
 
 <aside class="left-side sidebar-offcanvas">
     <!-- sidebar: style can be found in sidebar.less -->
@@ -26,26 +28,25 @@
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
-            <li>
+            <li class="@Model.GetCssClassIfActiveSection("active", SidebarViewModel.Section.Dashboard)">
                 <a href="@Url.Action("index", "home")">
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                 </a>
             </li>
-            <li class="treeview active">
+            <li class="treeview @Model.GetCssClassIfActiveSection("active", SidebarViewModel.Section.GameInstances)">
                 <a href="pages/widgets.html">
                     <i class="fa fa-gamepad"></i>
-                    <span>Games</span>
+                    <span>Game</span>
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="active">
+                    <li><a href=""><i class="fa fa-angle-double-right"></i> Games</a></li>
+                    <li><a href=""><i class="fa fa-angle-double-right"></i> Game Categories</a></li>
+                    <li class="@Html.GetCssClassIfCurrentRouteIs("active", "GameProvider")">
                         <a href="@Url.Action("index", "GameProvider")">
                             <i class="fa fa-angle-double-right"></i> Game Providers
                         </a>
                     </li>
-                    <li><a href=""><i class="fa fa-angle-double-right"></i> Game Categories</a></li>
-                    <li><a href=""><i class="fa fa-angle-double-right"></i> Games</a></li>
-                    <li><a href=""><i class="fa fa-angle-double-right"></i> Game Instances</a></li>
                 </ul>
             </li>
             <li>
@@ -56,12 +57,12 @@
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-bar-chart-o"></i>
-                    <span>Charts</span>
+                    <span>Game Instance</span>
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="pages/charts/morris.html"><i class="fa fa-angle-double-right"></i> Morris</a></li>
-                    <li><a href="pages/charts/flot.html"><i class="fa fa-angle-double-right"></i> Flot</a></li>
+                    <li><a href="pages/charts/morris.html"><i class="fa fa-angle-double-right"></i> Game Instances</a></li>
+                    <li><a href="pages/charts/flot.html"><i class="fa fa-angle-double-right"></i> Game Instance Categories</a></li>
                     <li><a href="pages/charts/inline.html"><i class="fa fa-angle-double-right"></i> Inline charts</a></li>
                 </ul>
             </li>

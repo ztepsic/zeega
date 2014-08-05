@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using AutoMapper;
 using Zed.NHibernate.Web;
-using Zeega.Admin.Web.Models.Game;
+using Zed.Web.Models;
+using Zeega.Admin.Web.Models;
+using Zeega.Admin.Web.Models.GameProvider;
 using Zeega.Domain.GameModel;
 
 namespace Zeega.Admin.Web.Controllers {
@@ -43,7 +44,10 @@ namespace Zeega.Admin.Web.Controllers {
         public ViewResult Index() {
             var gameProviders = gameProvidersRepository.GetAll();
             IEnumerable<GameProviderModel> gameProviderModels = Mapper.Map<IEnumerable<GameProvider>, IEnumerable<GameProviderModel>>(gameProviders);
-            return View(gameProviderModels);
+            var gameProviderIndexViewModel = new GameProviderIndexViewModel {
+                GameProviders = gameProviderModels
+            };
+            return View(gameProviderIndexViewModel);
         }
 
         /// <summary>
@@ -60,8 +64,11 @@ namespace Zeega.Admin.Web.Controllers {
             if (gameProvider == null) { return HttpNotFound(); }
 
             GameProviderModel gameProviderModel = Mapper.Map<GameProviderModel>(gameProvider);
+            GameProviderViewModel gameProviderViewModel = new GameProviderViewModel {
+                GameProviderModel = gameProviderModel
+            };
 
-            return View(gameProviderModel);
+            return View(gameProviderViewModel);
 
         }
 
@@ -79,8 +86,11 @@ namespace Zeega.Admin.Web.Controllers {
             if (gameProvider == null) { return HttpNotFound(); }
 
             GameProviderModel gameProviderModel = Mapper.Map<GameProviderModel>(gameProvider);
+            GameProviderViewModel gameProviderViewModel = new GameProviderViewModel {
+                GameProviderModel = gameProviderModel
+            };
 
-            return View(gameProviderModel);
+            return View(gameProviderViewModel);
         }
 
         /// <summary>
@@ -102,9 +112,12 @@ namespace Zeega.Admin.Web.Controllers {
                 gameProvidersRepository.SaveOrUpdate(gameProvider);
 
                 TempData["message"] = string.Format("Game provider {0} has been edited.", gameProviderModel.Name);
-                return RedirectToAction("Details", new { id = gameProvider.Id });
+                return RedirectToAction("Details", new { id = gameProvider.Id, slug = gameProviderModel.Slug });
             } else {
-                return View(gameProviderModel);
+                GameProviderViewModel gameProviderViewModel = new GameProviderViewModel {
+                    GameProviderModel = gameProviderModel
+                };
+                return View(gameProviderViewModel);
             }
         }
 
@@ -115,7 +128,10 @@ namespace Zeega.Admin.Web.Controllers {
         /// </summary>
         /// <returns>Page for creating game provider</returns>
         public ViewResult Create() {
-            return View(new GameProviderModel() { IsActive = true });
+            GameProviderViewModel gameProviderViewModel = new GameProviderViewModel {
+                GameProviderModel = new GameProviderModel() { IsActive = true }
+            };
+            return View(gameProviderViewModel);
         }
 
         /// <summary>
@@ -130,9 +146,12 @@ namespace Zeega.Admin.Web.Controllers {
                 gameProvidersRepository.SaveOrUpdate(gameProvider);
 
                 TempData["message"] = string.Format("Game provider {0} has been created.", gameProviderModel.Name);
-                return RedirectToAction("Details", new { id = gameProvider.Id });
+                return RedirectToAction("Details", new { id = gameProvider.Id, slug = gameProviderModel.Slug });
             } else {
-                return View(gameProviderModel);
+                GameProviderViewModel gameProviderViewModel = new GameProviderViewModel {
+                    GameProviderModel = gameProviderModel
+                };
+                return View(gameProviderViewModel);
             }
         }
 
