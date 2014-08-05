@@ -56,7 +56,7 @@ namespace Zeega.Admin.Web.Tests.Controllers {
             ViewResult result = gameProviderController.Index();
 
             // Assert
-            GameProviderModel[] gameProviderModels = (result.Model as IEnumerable<GameProviderModel>).ToArray();
+            GameProviderModel[] gameProviderModels = (result.Model as GameProviderIndexViewModel).GameProviders.ToArray();
             Assert.IsTrue(gameProviderModels.Length == gameProviders.Length);
             Assert.AreEqual(gameProviders[0].Name, gameProviderModels[0].Name);
             Assert.AreEqual(gameProviders[1].Name, gameProviderModels[1].Name);
@@ -90,9 +90,9 @@ namespace Zeega.Admin.Web.Tests.Controllers {
             // Assert
             mockGameProvidersRepo.Verify(x => x.GetById(gameProvider.Id), Times.Once);
             Assert.IsNotNull(result.Model);
-            Assert.IsInstanceOf<GameProviderModel>(result.Model);
+            Assert.IsInstanceOf<GameProviderViewModel>(result.Model);
 
-            var gameProviderModel = result.Model as GameProviderModel;
+            var gameProviderModel = (result.Model as GameProviderViewModel).GameProviderModel;
             Assert.AreEqual(gameProvider.Id, gameProviderModel.Id);
             Assert.AreEqual(gameProvider.Name, gameProviderModel.Name);
         }
@@ -170,7 +170,7 @@ namespace Zeega.Admin.Web.Tests.Controllers {
             // check the result type
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<ViewResult>(result);
-            Assert.AreEqual(gameProviderModel, result.Model);
+            Assert.AreEqual(gameProviderModel, (result.Model as GameProviderViewModel).GameProviderModel);
         }
 
         [Test]
@@ -217,7 +217,7 @@ namespace Zeega.Admin.Web.Tests.Controllers {
             // check the result type
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<ViewResult>(result);
-            Assert.AreEqual(gameProviderModel, result.Model);
+            Assert.AreEqual(gameProviderModel, (result.Model as GameProviderViewModel).GameProviderModel);
 
         }
 
