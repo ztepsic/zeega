@@ -46,6 +46,11 @@ namespace Zeega.Domain.Tests {
 
         [Test]
         public void GetUpdatedOn_WithTimeZone_UpdatedOnInRequestedTimeZone() {
+            Console.WriteLine("Test console");
+            Debug.WriteLine("debug console");
+            Console.Error.WriteLine("Error console");
+            Trace.WriteLine("Trace console");
+
             // Arrange
             DateTime utcTime = DateTime.UtcNow;
             ChangeStamp changeStamp = new ChangeStamp(utcTime);
@@ -61,6 +66,7 @@ namespace Zeega.Domain.Tests {
             Assert.AreEqual(DateTimeKind.Unspecified, result.Kind);
             TimeSpan expectedTimeSpan = result.IsDaylightSavingTime() ? TimeSpan.FromHours(2) : TimeSpan.FromHours(1);
             Assert.AreEqual(expectedTimeSpan, result - utcTime);
+            Assert.Pass("test");
 
         }
 
