@@ -28,9 +28,12 @@ namespace Zeega.Domain.Tests {
             // Arrange
             DateTime utcTime = DateTime.UtcNow;
             ChangeStamp changeStamp = new ChangeStamp(utcTime);
+            Console.WriteLine("UTC time: {0}", utcTime);
 
             // Act
             DateTime result = changeStamp.GetCreatedOn(TimeZoneInfo.FindSystemTimeZoneById("Central European Standard Time"));
+            Console.WriteLine("Central European Standard Time: {0}", result);
+            Console.WriteLine("Daylight saving time: {0}", result.IsDaylightSavingTime());
             
 
             // Assert
@@ -45,9 +48,12 @@ namespace Zeega.Domain.Tests {
             // Arrange
             DateTime utcTime = DateTime.UtcNow;
             ChangeStamp changeStamp = new ChangeStamp(utcTime);
+            Console.WriteLine("UTC time: {0}", utcTime);
 
             // Act
             DateTime result = changeStamp.GetUpdatedOn(TimeZoneInfo.FindSystemTimeZoneById("Central European Standard Time"));
+            Console.WriteLine("Central European Standard Time: {0}", result);
+            Console.WriteLine("Daylight saving time: {0}", result.IsDaylightSavingTime());
 
 
             // Assert
