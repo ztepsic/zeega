@@ -29,17 +29,15 @@ namespace Zeega.Domain.Tests {
             // Arrange
             DateTime utcTime = DateTime.UtcNow;
             ChangeStamp changeStamp = new ChangeStamp(utcTime);
-            Console.WriteLine("UTC time: {0}", utcTime);
+            var timeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById("Central European Standard Time");
 
             // Act
-            DateTime result = changeStamp.GetCreatedOn(TimeZoneInfo.FindSystemTimeZoneById("Central European Standard Time"));
-            Console.WriteLine("Central European Standard Time: {0}", result);
-            Console.WriteLine("Daylight saving time: {0}", result.IsDaylightSavingTime());
+            DateTime result = changeStamp.GetCreatedOn(timeZoneInfo);
             
 
             // Assert
             Assert.AreEqual(DateTimeKind.Unspecified, result.Kind);
-            TimeSpan expectedTimeSpan = result.IsDaylightSavingTime() ? TimeSpan.FromHours(2) : TimeSpan.FromHours(1);
+            TimeSpan expectedTimeSpan = timeZoneInfo.IsDaylightSavingTime(result) ? TimeSpan.FromHours(2) : TimeSpan.FromHours(1);
             Assert.AreEqual(expectedTimeSpan, result-utcTime);
 
         }
@@ -50,17 +48,20 @@ namespace Zeega.Domain.Tests {
             DateTime utcTime = DateTime.UtcNow;
             ChangeStamp changeStamp = new ChangeStamp(utcTime);
             Console.WriteLine("UTC time: {0}", utcTime);
+            var timeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById("Central European Standard Time");
+            var adjusmentRuleOfTimeZone = timeZoneInfo.GetAdjustmentRules()[0];
 
             // Act
-            DateTime result = changeStamp.GetUpdatedOn(TimeZoneInfo.FindSystemTimeZoneById("Central European Standard Time"));
+            DateTime result = changeStamp.GetUpdatedOn(timeZoneInfo);
             Console.WriteLine("Result CEST: {0}", result);
             Console.WriteLine("Result CEST is DST: {0}", result.IsDaylightSavingTime());
+            Console.WriteLine("Result CEST is DST: {0}", timeZoneInfo.IsDaylightSavingTime(result));
             Console.WriteLine("Kind: {0}", result.Kind);
-            var cest = TimeZoneInfo.FindSystemTimeZoneById("Central European Standard Time");
-            var adjRules = cest.GetAdjustmentRules()[0];
-            Console.WriteLine("CEST support DST: {0}", cest.SupportsDaylightSavingTime);
-            Console.WriteLine("CEST DST delta: {0}", adjRules.DaylightDelta);
-            Console.WriteLine("CEST DST start-end: {0}.{1}-{2}.{3}", adjRules.DaylightTransitionStart.Day, adjRules.DaylightTransitionStart.Month, adjRules.DaylightTransitionEnd.Day, adjRules.DaylightTransitionEnd.Month);
+            
+            
+            Console.WriteLine("CEST support DST: {0}", timeZoneInfo.SupportsDaylightSavingTime);
+            Console.WriteLine("CEST DST delta: {0}", adjusmentRuleOfTimeZone.DaylightDelta);
+            Console.WriteLine("CEST DST start-end: {0}.{1}-{2}.{3}", adjusmentRuleOfTimeZone.DaylightTransitionStart.Day, adjusmentRuleOfTimeZone.DaylightTransitionStart.Month, adjusmentRuleOfTimeZone.DaylightTransitionEnd.Day, adjusmentRuleOfTimeZone.DaylightTransitionEnd.Month);
             Console.WriteLine("Local: {0}", TimeZoneInfo.Local);
             Console.WriteLine("Local support DST: {0}", TimeZoneInfo.Local.SupportsDaylightSavingTime);
             
@@ -68,7 +69,7 @@ namespace Zeega.Domain.Tests {
 
             // Assert
             Assert.AreEqual(DateTimeKind.Unspecified, result.Kind);
-            TimeSpan expectedTimeSpan = result.IsDaylightSavingTime() ? TimeSpan.FromHours(2) : TimeSpan.FromHours(1);
+            TimeSpan expectedTimeSpan = timeZoneInfo.IsDaylightSavingTime(result) ? TimeSpan.FromHours(2) : TimeSpan.FromHours(1);
             Assert.AreEqual(expectedTimeSpan, result - utcTime);
 
         }
