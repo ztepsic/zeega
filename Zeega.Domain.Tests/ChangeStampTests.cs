@@ -47,25 +47,10 @@ namespace Zeega.Domain.Tests {
             // Arrange
             DateTime utcTime = DateTime.UtcNow;
             ChangeStamp changeStamp = new ChangeStamp(utcTime);
-            Console.WriteLine("UTC time: {0}", utcTime);
             var timeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById("Central European Standard Time");
-            var adjusmentRuleOfTimeZone = timeZoneInfo.GetAdjustmentRules()[0];
 
             // Act
             DateTime result = changeStamp.GetUpdatedOn(timeZoneInfo);
-            Console.WriteLine("Result CEST: {0}", result);
-            Console.WriteLine("Result CEST is DST: {0}", result.IsDaylightSavingTime());
-            Console.WriteLine("Result CEST is DST: {0}", timeZoneInfo.IsDaylightSavingTime(result));
-            Console.WriteLine("Kind: {0}", result.Kind);
-            
-            
-            Console.WriteLine("CEST support DST: {0}", timeZoneInfo.SupportsDaylightSavingTime);
-            Console.WriteLine("CEST DST delta: {0}", adjusmentRuleOfTimeZone.DaylightDelta);
-            Console.WriteLine("CEST DST start-end: {0}.{1}-{2}.{3}", adjusmentRuleOfTimeZone.DaylightTransitionStart.Day, adjusmentRuleOfTimeZone.DaylightTransitionStart.Month, adjusmentRuleOfTimeZone.DaylightTransitionEnd.Day, adjusmentRuleOfTimeZone.DaylightTransitionEnd.Month);
-            Console.WriteLine("Local: {0}", TimeZoneInfo.Local);
-            Console.WriteLine("Local support DST: {0}", TimeZoneInfo.Local.SupportsDaylightSavingTime);
-            
-
 
             // Assert
             Assert.AreEqual(DateTimeKind.Unspecified, result.Kind);
