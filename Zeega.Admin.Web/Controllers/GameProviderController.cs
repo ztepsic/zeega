@@ -2,8 +2,6 @@
 using System.Web.Mvc;
 using AutoMapper;
 using Zed.NHibernate.Web;
-using Zed.Web.Models;
-using Zeega.Admin.Web.Models;
 using Zeega.Admin.Web.Models.GameProvider;
 using Zeega.Domain.GameModel;
 

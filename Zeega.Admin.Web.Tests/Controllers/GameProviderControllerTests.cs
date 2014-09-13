@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
 using Moq;
 using NUnit.Framework;
-using Zed.Core.Domain;
+using Zed.Domain;
 using Zeega.Admin.Web.Controllers;
 using Zeega.Admin.Web.Models.GameProvider;
 using Zeega.Domain.GameModel;

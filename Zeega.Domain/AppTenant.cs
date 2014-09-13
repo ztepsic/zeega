@@ -1,6 +1,6 @@
 ﻿using System;
-using Zed.Core.Domain;
-using Zed.Core.Utilities;
+using Zed.Domain;
+using Zed.Utilities;
 
 namespace Zeega.Domain {
     /// <summary>

@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 using Zeega.Domain.GameModel;
-using Zed.Core.Utilities;
+using Zed.Utilities;
 
 namespace Zeega.Domain.Tests.GameModel {
     [TestFixture]

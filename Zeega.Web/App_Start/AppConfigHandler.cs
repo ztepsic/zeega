@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using System.Xml;
-using Zed.Core.Domain;
+using Zed.Domain;
 using Zeega.Domain;
 
 namespace Zeega.Web {

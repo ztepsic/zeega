@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using Zed.Core.Domain;
+using Zed.Domain;
 
 namespace Zeega.Domain.GameModel {
     /// <summary>

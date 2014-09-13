@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Text.RegularExpressions;
-using Zed.Core.Domain;
+using Zed.Domain;
 
 namespace Zeega.Domain {
     /// <summary>

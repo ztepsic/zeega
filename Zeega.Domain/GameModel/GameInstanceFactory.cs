@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-namespace Zeega.Domain.GameModel {
+﻿namespace Zeega.Domain.GameModel {
     /// <summary>
     /// Game instance factory
     /// </summary>

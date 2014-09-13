@@ -1,6 +1,6 @@
 ﻿using System;
 using NUnit.Framework;
-using Zed.Core.Utilities;
+using Zed.Utilities;
 
 namespace Zeega.Domain.Tests {
     [TestFixture]

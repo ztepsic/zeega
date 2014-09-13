@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using Zed.Core.Utilities;
+using Zed.Utilities;
 
 namespace Zeega.Admin.Web.Models.GameProvider {
 
