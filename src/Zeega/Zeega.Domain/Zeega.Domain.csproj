@@ -1,0 +1,52 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="AppTenant.hbm.xml" />
+    <None Remove="GameModel\Game.hbm.xml" />
+    <None Remove="GameModel\GameCategoryMapping.hbm.xml" />
+    <None Remove="GameModel\GameInstance.hbm.xml" />
+    <None Remove="GameModel\GameInstanceCategory.hbm.xml" />
+    <None Remove="GameModel\MediaRes.hbm.xml" />
+    <None Remove="Tag.hbm.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="AppTenant.hbm.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GameModel\Game.hbm.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GameModel\GameCategoryMapping.hbm.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GameModel\GameInstance.hbm.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GameModel\GameInstanceCategory.hbm.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GameModel\MediaRes.hbm.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tag.hbm.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Zed" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Diagrams\" />
+  </ItemGroup>
+
+</Project>
