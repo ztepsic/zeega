@@ -15,7 +15,7 @@ namespace Zeega.Infrastructure.Tests.Dal.NHibernate {
 
         static SQLiteNHibernateTestFixture() {
             TestConnectionProvider.CreateConnectionFunc = connString => new SQLiteConnection(connString);
-            Configuration.Proxy(p => p.ProxyFactoryFactory<StaticProxyFactoryFactory>())
+            Configuration.Proxy(p => p.ProxyFactoryFactory<DefaultProxyFactoryFactory>())
                 .DataBaseIntegration(db => {
                     db.Dialect<SQLiteDialect>();
                     db.Driver<SQLite20Driver>();

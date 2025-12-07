@@ -9,24 +9,24 @@ namespace Zeega.Domain.GameModel {
         #region Fields and Properties
 
         /// <summary>
-        /// Indicates if a desktop device is enabled
+        /// Indicates if a desktop device is supported
         /// </summary>
-        private readonly bool isDesktopEnabled;
+        private readonly bool isDesktopSupported;
 
         /// <summary>
-        /// Gets an indicator which indicates if a desktop device is enbled
+        /// Gets an indicator which indicates if a desktop device is supported
         /// </summary>
-        public bool IsDesktopEnabled { get { return isDesktopEnabled; } }
+        public bool IsDesktopSupported { get { return isDesktopSupported; } }
 
         /// <summary>
-        /// Indicates if a mobile device is enabled
+        /// Indicates if a mobile device is supported
         /// </summary>
-        private readonly bool isMobileEnabled;
+        private readonly bool isMobileSupported;
 
         /// <summary>
-        /// Gets an indicator which indicates if a mobile device is enabled
+        /// Gets an indicator which indicates if a mobile device is supported
         /// </summary>
-        public bool IsMobileEnabled { get { return isMobileEnabled; } }
+        public bool IsMobileSupported { get { return isMobileSupported; } }
 
         #endregion
 
@@ -40,11 +40,11 @@ namespace Zeega.Domain.GameModel {
         /// <summary>
         /// Creates value object that represetns device type support
         /// </summary>
-        /// <param name="isDesktopEnabled">Indicates if a desktop device is enabled.</param>
-        /// <param name="isMobileEnabled">Indicates if a mobile device is enabled.</param>
-        public DeviceTypeSupport(bool isDesktopEnabled, bool isMobileEnabled) {
-            this.isDesktopEnabled = isDesktopEnabled;
-            this.isMobileEnabled = isMobileEnabled;
+        /// <param name="isDesktopSupported">Indicates if a desktop device is supported</param>
+        /// <param name="isMobileSupported">Indicates if a mobile device is supported</param>
+        public DeviceTypeSupport(bool isDesktopSupported, bool isMobileSupported) {
+            this.isDesktopSupported = isDesktopSupported;
+            this.isMobileSupported = isMobileSupported;
         }
 
         #endregion

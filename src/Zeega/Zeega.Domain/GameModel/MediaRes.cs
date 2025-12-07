@@ -11,7 +11,7 @@ namespace Zeega.Domain.GameModel {
         /// <summary>
         /// Default order sequence
         /// </summary>
-        public const short DEFAULT_ORDER_SEQUENCE = 1;
+        public const short DEFAULT_ORDER_SEQUENCE = 0;
 
         /// <summary>
         /// Min width in pixels
@@ -46,43 +46,55 @@ namespace Zeega.Domain.GameModel {
         /// Gets thubmnail of media resource URI
         /// </summary>
         public virtual string ThumbSrcUri {
-            get { return thumbSrcUri; }
+            get {
+                return Type == MediaResType.Thumbnail ? SrcUri : thumbSrcUri;
+            }
             set {
-                if (string.IsNullOrEmpty(value)) throw new ArgumentNullException("value", "Thumbnail of media resource URI can't be null or emtpy.");
-                if (srcUri.Equals(value) && type == MediaResType.Video) throw new ArgumentException("Thmubnail URI can't be equal to media resource URI in the case of Video type.");
-                thumbSrcUri = value;
+                if (Type != MediaResType.Thumbnail) {
+                    if (string.IsNullOrEmpty(value)) throw new ArgumentNullException("value", "Thumbnail of media resource URI can't be null or emtpy.");
+                    if (srcUri.Equals(value) && type == MediaResType.Video) throw new ArgumentException("Thmubnail URI can't be equal to media resource URI in the case of Video type.");
+                    thumbSrcUri = value;
+                }
             }
         }
 
         /// <summary>
         /// Thumbnail of media resource width in pixels
         /// </summary>
-        private int thumbSrcWidth;
+        private int? thumbSrcWidth;
 
         /// <summary>
         /// Gets thumbnail of media resource width in pixels
         /// </summary>
-        public virtual int ThumbSrcWidth {
-            get { return thumbSrcWidth; }
+        public virtual int? ThumbSrcWidth {
+            get {
+                return Type == MediaResType.Thumbnail ? SrcWidth : thumbSrcWidth;
+            }
             set {
-                if (value < MIN_WIDTH) throw new ArgumentException(String.Format("Thumbnail of media resource width must be greater or equal to {0} px.", MIN_WIDTH), "value");
-                thumbSrcWidth = value;
+                if (Type != MediaResType.Thumbnail) {
+                    if (value < MIN_WIDTH) throw new ArgumentException(String.Format("Thumbnail of media resource width must be greater or equal to {0} px.", MIN_WIDTH), "value");
+                    thumbSrcWidth = value;
+                }
             }
         }
 
         /// <summary>
         /// Thumbnail media resource height in pixels
         /// </summary>
-        private int thumbSrcHeight;
+        private int? thumbSrcHeight;
 
         /// <summary>
         /// Gets thumbnail media resource height in pixels
         /// </summary>
-        public virtual int ThumbSrcHeight {
-            get { return thumbSrcHeight; }
+        public virtual int? ThumbSrcHeight {
+            get {
+                return Type == MediaResType.Thumbnail ? SrcHeight : thumbSrcHeight;
+            }
             set {
-                if (value < MIN_HEIGHT) throw new ArgumentException(String.Format("Media resource height must be greater or equal to {0} px.", MIN_HEIGHT), "value");
-                thumbSrcHeight = value;
+                if (Type != MediaResType.Thumbnail) {
+                    if (value < MIN_HEIGHT) throw new ArgumentException(String.Format("Media resource height must be greater or equal to {0} px.", MIN_HEIGHT), "value");
+                    thumbSrcHeight = value;
+                }
             }
         }
 
@@ -119,7 +131,7 @@ namespace Zeega.Domain.GameModel {
         /// <summary>
         /// MediaRes order sequence
         /// </summary>
-        public virtual short OrderSequence { get; set; }
+        public virtual short Sequence { get; set; }
 
         /// <summary>
         /// Gets or Sets indicator which indicate is media resource active
@@ -155,7 +167,7 @@ namespace Zeega.Domain.GameModel {
 
             this.type = type;
 
-            OrderSequence = DEFAULT_ORDER_SEQUENCE;
+            Sequence = DEFAULT_ORDER_SEQUENCE;
         }
 
         #endregion

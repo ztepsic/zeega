@@ -1,10 +1,8 @@
-﻿using System;
-using NUnit.Framework;
-using Zeega.Domain;
+﻿using Zeega.Domain;
 using Zeega.Domain.GameModel;
 using Zeega.Infrastructure.Dal.NHibernate.Repositories.GameModel;
 
-namespace Zeega.Infrastructure.Tests.Dal.NHibernate.GameModel {
+namespace Zeega.Infrastructure.Tests.Dal.NHibernate.Repositories.GameModel {
     [TestFixture]
     class GameInstancesNhRepositoryTests : SQLiteNHibernateTestFixture {
 
@@ -21,7 +19,7 @@ namespace Zeega.Infrastructure.Tests.Dal.NHibernate.GameModel {
         private Game createGame() {
             var gameProvider = createGameProvider("Spil Games");
             var game = new Game("Angry Birds", gameProvider) {
-                GameSrc = new GameSrc(800, 600, "http://example.com/angry-birds", GameSrcType.Swf),
+                GameSrc = GameSrc.CreateGameSrcWithUrl(800, 600, GameSrcType.Swf, "http://example.com/angry-birds"),
                 ProviderGameUrl = "http://www.example.com/angry-birds",
                 ChangeStamp = new ChangeStamp(DateTime.Now)
             };

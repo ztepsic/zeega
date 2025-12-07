@@ -1,7 +1,7 @@
 ﻿using Zeega.Domain;
 using Zeega.Infrastructure.Dal.NHibernate.Repositories;
 
-namespace Zeega.Infrastructure.Tests.Dal.NHibernate {
+namespace Zeega.Infrastructure.Tests.Dal.NHibernate.Repositories {
     [TestFixture]
     public class TagsNhRepositoryTests : SQLiteNHibernateTestFixture {
 
@@ -40,10 +40,8 @@ namespace Zeega.Infrastructure.Tests.Dal.NHibernate {
             }
 
             // Assert
-            Assert.Multiple(() => {
-                Assert.That(fetchedBaseTag, Is.Not.Null);
-                Assert.That(fetchedBaseTag, Is.EqualTo(baseTag));
-            });
+            Assert.That(fetchedBaseTag, Is.Not.Null);
+            Assert.That(fetchedBaseTag, Is.EqualTo(baseTag));
         }
 
         [Test]
@@ -65,10 +63,8 @@ namespace Zeega.Infrastructure.Tests.Dal.NHibernate {
             var tagsResult = tagsRepo.GetTagsFor(new[] { baseTag }, langCodeHr).ToList();
 
             // Assert
-            Assert.Multiple(() => {
-                Assert.That(tagsResult, Is.Not.Empty);
-                Assert.That(tagsResult.ToArray()[0], Is.EqualTo(tag));
-            });
+            Assert.That(tagsResult, Is.Not.Empty);
+            Assert.That(tagsResult.ToArray()[0], Is.EqualTo(tag));
 
         }
 

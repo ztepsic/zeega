@@ -71,7 +71,7 @@
         /// <returns>A new game instance with some of the properties filled with game ones. </returns>
         public GameInstance CreateWithGamePropertyCopy(AppTenant appTenant, Game game) {
             return CreateWithGamePropertyCopy(appTenant, game, game.Name);
-        } 
+        }
 
         /// <summary>
         /// Creates a new game instance where some of game properties are copied to game instance properties

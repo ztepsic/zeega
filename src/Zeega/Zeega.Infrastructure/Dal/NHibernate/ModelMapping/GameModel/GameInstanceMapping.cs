@@ -36,10 +36,10 @@ namespace Zeega.Infrastructure.Dal.NHibernate.ModelMapping.GameModel {
                 });
 
             ManyToOne(x => x.PrimaryInstanceCategory, m => {
-                    m.Column("PrimaryGameCategoryId");
-                    m.Access(Accessor.NoSetter);
-                    m.NotNullable(true);
-                });
+                m.Column("PrimaryGameInstanceCategoryId");
+                m.Access(Accessor.NoSetter);
+                m.NotNullable(true);
+            });
 
             Bag(x => x.SecondaryCategories,
                 m => {
@@ -47,8 +47,7 @@ namespace Zeega.Infrastructure.Dal.NHibernate.ModelMapping.GameModel {
                     m.Table("SecondaryGameInstCategories");
                     m.Access(Accessor.NoSetter);
                     m.Key(k => {
-                        k.Column("GameInstanceId");
-                        k.NotNullable(true);
+                        k.Column("Parent");
                     });
                 },
                 r => r.ManyToMany(m => m.Column("GameCategoryId"))
@@ -74,7 +73,7 @@ namespace Zeega.Infrastructure.Dal.NHibernate.ModelMapping.GameModel {
 
             Property(x => x.IsPublished);
             Component(x => x.ChangeStamp);
-           
+
         }
     }
 }

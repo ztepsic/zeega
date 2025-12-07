@@ -1,23 +1,16 @@
-﻿using System;
-using NUnit.Framework;
-using Zeega.Domain;
+﻿using Zeega.Domain;
 using Zeega.Domain.GameModel;
 using Zeega.Infrastructure.Dal.NHibernate.Repositories.GameModel;
 
-namespace Zeega.Infrastructure.Tests.Dal.NHibernate.GameModel
-{
+namespace Zeega.Infrastructure.Tests.Dal.NHibernate.Repositories.GameModel {
     [TestFixture]
-    class GamesNhRepositoryTests : SQLiteNHibernateTestFixture
-    {
+    class GamesNhRepositoryTests : SQLiteNHibernateTestFixture {
 
-        private GameProvider createGameProvider(string providerName)
-        {
-            var gameProvider = new GameProvider(providerName)
-            {
+        private GameProvider createGameProvider(string providerName) {
+            var gameProvider = new GameProvider(providerName) {
                 OfficialUrl = "http://www.spilgames.com"
             };
-            using (var trx = Session.BeginTransaction())
-            {
+            using (var trx = Session.BeginTransaction()) {
                 Session.SaveOrUpdate(gameProvider);
                 trx.Commit();
             }
@@ -26,13 +19,11 @@ namespace Zeega.Infrastructure.Tests.Dal.NHibernate.GameModel
         }
 
         [Test]
-        public void SaveOrUpdate_Game_AddedToDb()
-        {
+        public void SaveOrUpdate_Game_AddedToDb() {
             // Arrange
             var gameProvider = createGameProvider("Spil Games");
-            var game = new Game("Angry Birds", gameProvider)
-            {
-                GameSrc = new GameSrc(800, 600, "http://example.com/angry-birds", GameSrcType.Swf),
+            var game = new Game("Angry Birds", gameProvider) {
+                GameSrc = GameSrc.CreateGameSrcWithUrl(800, 600, GameSrcType.Swf, "http://example.com/angry-birds"),
                 ProviderGameUrl = "http://www.example.com/angry-birds",
                 ChangeStamp = new ChangeStamp(DateTime.Now)
             };
@@ -40,8 +31,7 @@ namespace Zeega.Infrastructure.Tests.Dal.NHibernate.GameModel
             var gamesRepo = new GamesNhRepository(SessionFactory);
 
             // Act
-            using (var trx = Session.BeginTransaction())
-            {
+            using (var trx = Session.BeginTransaction()) {
                 gamesRepo.SaveOrUpdate(game);
                 trx.Commit();
             }
@@ -50,21 +40,18 @@ namespace Zeega.Infrastructure.Tests.Dal.NHibernate.GameModel
         }
 
         [Test]
-        public void Get_Game_FetchedGame()
-        {
+        public void Get_Game_FetchedGame() {
             // Arrange
             var gameProvider = createGameProvider("Spil Games");
-            var game = new Game("Angry Birds", gameProvider)
-            {
-                GameSrc = new GameSrc(800, 600, "http://example.com/angry-birds", GameSrcType.Swf),
+            var game = new Game("Angry Birds", gameProvider) {
+                GameSrc = GameSrc.CreateGameSrcWithUrl(800, 600, GameSrcType.Swf, "http://example.com/angry-birds"),
                 ProviderGameUrl = "http://www.example.com/angry-birds",
                 ChangeStamp = new ChangeStamp(DateTime.Now)
             };
 
             var gamesRepo = new GamesNhRepository(SessionFactory);
 
-            using (var trx = Session.BeginTransaction())
-            {
+            using (var trx = Session.BeginTransaction()) {
                 gamesRepo.SaveOrUpdate(game);
                 trx.Commit();
             }
@@ -72,8 +59,7 @@ namespace Zeega.Infrastructure.Tests.Dal.NHibernate.GameModel
 
             // Act
             Game fetchedGame = null;
-            using (var trx = Session.BeginTransaction())
-            {
+            using (var trx = Session.BeginTransaction()) {
                 fetchedGame = gamesRepo.GetById(game.Id);
                 trx.Commit();
             }

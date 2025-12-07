@@ -23,7 +23,7 @@ namespace Zeega.Domain.Tests.GameModel {
         public void SetGameSrc_GameSrc_GameSrcAssignedToGame() {
             // Arrange
             var game = new Game("Angry Birds", new GameProvider("Spil Games"));
-            var gameSrc = new GameSrc(640, 480, @"http://example.com/game/game.swf", GameSrcType.Swf);
+            var gameSrc = GameSrc.CreateGameSrcWithUrl(640, 480, GameSrcType.Swf, @"http://example.com/game/game.swf");
 
             // Act
             game.GameSrc = gameSrc;
@@ -57,7 +57,7 @@ namespace Zeega.Domain.Tests.GameModel {
                 Assert.That(mediaRes.ThumbSrcUri, Is.EqualTo(THUMB_MEDIA_RES_SRC_URI));
                 Assert.That(mediaRes.SrcWidth, Is.EqualTo(MediaRes.MIN_WIDTH));
                 Assert.That(mediaRes.SrcHeight, Is.EqualTo(MediaRes.MIN_HEIGHT));
-                Assert.That(mediaRes.OrderSequence, Is.EqualTo(1));
+                Assert.That(mediaRes.Sequence, Is.EqualTo(1));
             });
 
         }
@@ -84,8 +84,8 @@ namespace Zeega.Domain.Tests.GameModel {
                 Assert.That(game.MediaResources, Does.Contain(mediaRes1));
                 Assert.That(game.MediaResources, Does.Not.Contain(mediaRes2));
                 Assert.That(game.MediaResources, Does.Contain(mediaRes3));
-                Assert.That(mediaRes1.OrderSequence, Is.EqualTo(1));
-                Assert.That(mediaRes3.OrderSequence, Is.EqualTo(2));
+                Assert.That(mediaRes1.Sequence, Is.EqualTo(1));
+                Assert.That(mediaRes3.Sequence, Is.EqualTo(2));
             });
 
 

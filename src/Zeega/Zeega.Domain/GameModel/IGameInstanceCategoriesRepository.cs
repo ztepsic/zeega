@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Zed.Domain;
+﻿using Zed.Domain;
 
 namespace Zeega.Domain.GameModel {
     /// <summary>

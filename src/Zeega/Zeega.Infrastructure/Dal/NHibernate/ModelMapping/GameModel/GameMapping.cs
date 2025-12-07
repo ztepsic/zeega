@@ -20,24 +20,26 @@ namespace Zeega.Infrastructure.Dal.NHibernate.ModelMapping.GameModel {
                 m => {
                     m.Schema(MappingConstants.GAME_MODEL_SCHEMA);
                     m.Table("GamesGameCategories");
-                    m.Access(Accessor.NoSetter);
+                    m.Access(Accessor.Field);
                     m.Key(k => {
                         k.Column("GameId");
                         k.NotNullable(true);
                     });
+                    m.Cascade(Cascade.All);
                 },
                 r => r.ManyToMany(m => m.Column("GameCategoryId"))
             );
 
-            Bag(x => x.Tags,
+            Set(x => x.Tags,
                 m => {
                     m.Schema(MappingConstants.GAME_MODEL_SCHEMA);
-                    m.Table("GamesGameTags");
-                    m.Access(Accessor.NoSetter);
+                    m.Table("GamesTags");
+                    m.Access(Accessor.Field);
                     m.Key(k => {
                         k.Column("GameId");
                         k.NotNullable(true);
                     });
+                    m.Cascade(Cascade.Persist);
                 },
                 r => r.ManyToMany(m => m.Column("TagId"))
             );
@@ -45,14 +47,19 @@ namespace Zeega.Infrastructure.Dal.NHibernate.ModelMapping.GameModel {
 
             List(x => x.MediaResources,
                 m => {
+                    m.Schema(MappingConstants.GAME_MODEL_SCHEMA);
+                    m.Table("MediaResources");
                     m.Access(Accessor.Field);
                     m.Key(k => {
                         k.Column("GameId");
                         k.NotNullable(true);
                     });
                     m.Index(i => i.Column("Sequence"));
+                    m.Cascade(Cascade.All);
+                    m.Inverse(false);
                 },
-                r => r.OneToMany());
+                r => r.OneToMany()
+            );
 
             Component(x => x.GameSrc, c => {
                 c.Property(x => x.Width, m => {
@@ -65,17 +72,27 @@ namespace Zeega.Infrastructure.Dal.NHibernate.ModelMapping.GameModel {
                     m.NotNullable(true);
                 });
 
-                c.Property(x => x.SrcUri, m => {
-                    m.Access(Accessor.NoSetter);
-                    m.NotNullable(true);
-                });
-
                 c.Property(x => x.SrcType, m => {
                     m.Access(Accessor.NoSetter);
                     m.NotNullable(true);
                 });
 
+                c.Property(x => x.SrcUrl, m => {
+                    m.Access(Accessor.NoSetter);
+                });
+
+                c.Property(x => x.EmbedCode, m => {
+                    m.Access(Accessor.NoSetter);
+                });
+
                 c.Property(x => x.IsSrcOnline, m => m.NotNullable(true));
+
+                c.Property(x => x.SrcLocalFile);
+
+                c.Component(y => y.DeviceTypeSupport, yc => {
+                    yc.Property(x => x.IsDesktopSupported, m => { m.Access(Accessor.NoSetter); });
+                    yc.Property(x => x.IsMobileSupported, m => { m.Access(Accessor.NoSetter); });
+                });
 
             });
 
@@ -87,6 +104,8 @@ namespace Zeega.Infrastructure.Dal.NHibernate.ModelMapping.GameModel {
                 });
 
             Property(x => x.ProviderGameUrl, m => m.Column("GameProviderGameUrl"));
+            Property(x => x.ProviderPublishDate, m => m.Column("GameProviderPublishDate"));
+            Property(x => x.ProviderUpdateDate, m => m.Column("GameProviderUpdateDate"));
             Property(x => x.Author);
             Property(x => x.AuthorUrl);
             Property(x => x.ZipUrl);

@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using NHibernate.Mapping.ByCode;
+﻿using NHibernate.Mapping.ByCode;
 
 namespace Zeega.Infrastructure.Dal.NHibernate.ModelMapping {
     /// <summary>
@@ -7,17 +6,18 @@ namespace Zeega.Infrastructure.Dal.NHibernate.ModelMapping {
     /// </summary>
     public static class ModelMapperExension {
         /// <summary>
-        /// Adds Zeega Domain mappings
+        /// Adds Zeeg Domain mappings
         /// </summary>
         /// <returns>Mapping types</returns>
         public static void AddMappings(this ModelMapper modelMapper) {
             //modelMapper.AddMappings(typeof(AppTenantMapping).Assembly.GetExportedTypes());
 
-            var types = from t in typeof (AppTenantMapping).Assembly.GetTypes()
-                where t.Namespace.Contains(typeof (AppTenantMapping).Namespace)
-                select t;
+            var namespaceStr = typeof(AppTenantMapping).Namespace;
+            var types = from t in typeof(AppTenantMapping).Assembly.GetTypes()
+                        where t.Namespace != null && t.Namespace.Contains(namespaceStr)
+                        select t;
             modelMapper.AddMappings(types);
-            
+
         }
     }
 }

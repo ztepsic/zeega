@@ -1,5 +1,4 @@
-﻿using System;
-using Zed.Domain;
+﻿using Zed.Domain;
 using Zed.Utilities;
 
 namespace Zeega.Domain {
@@ -97,7 +96,7 @@ namespace Zeega.Domain {
         public AppTenant(string name, string code, LanguageCode languageCode, bool isPrimary) {
             Name = name;
 
-            if(String.IsNullOrEmpty(code)) throw new ArgumentNullException("code", "Code must have some value.");
+            if (String.IsNullOrEmpty(code)) throw new ArgumentNullException("code", "Code must have some value.");
             this.code = code;
 
             if (languageCode == null) throw new ArgumentNullException("languageCode", "LanguageCode must have some value");

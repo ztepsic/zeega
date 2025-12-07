@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using NHibernate;
-using NHibernate.Linq;
+﻿using NHibernate;
 using Zed.NHibernate;
 using Zeega.Domain;
 using Zeega.Domain.GameModel;
@@ -41,7 +38,7 @@ namespace Zeega.Infrastructure.Dal.NHibernate.Repositories.GameModel {
                        || gameInstance.SecondaryCategories.Contains(category)
                        select gameInstance
                           ).Any()
-                   orderby category.OrderSequence
+                   orderby category.Sequence
                    select category;
         }
 

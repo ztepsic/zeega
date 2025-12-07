@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="Zeega.Domain" namespace="Zeega.Domain.GameModel">
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="Zeeg.Domain" namespace="Zeeg.Domain.GameModel">
   <class name="GameInstance" table="GameInstances" schema="Game" >
     <id name="Id">
       <generator class="native" />
@@ -25,7 +25,7 @@
 
     <bag name="Tags" access="nosetter.camelcase">
       <key column="TagId" />
-      <many-to-many class="Zeega.Domain.Tag" />
+      <many-to-many class="Zeeg.Domain.Tag" />
     </bag>
 
     <property name="IsPublished" />

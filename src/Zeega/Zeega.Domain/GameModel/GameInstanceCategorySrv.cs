@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Zeega.Domain.GameModel {
+﻿namespace Zeega.Domain.GameModel {
     /// <summary>
     /// Game category service provides game category related actions
     /// </summary>
@@ -11,7 +9,7 @@ namespace Zeega.Domain.GameModel {
         /// <param name="gameCategories">collection of game categories</param>
         public static void OrderGameCategories(IList<GameInstanceCategory> gameCategories) {
             short sequece = 0;
-            foreach (var gameCategory in gameCategories) { gameCategory.OrderSequence = ++sequece; }
+            foreach (var gameCategory in gameCategories) { gameCategory.Sequence = ++sequece; }
         }
 
     }

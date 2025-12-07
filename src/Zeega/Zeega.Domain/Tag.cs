@@ -1,5 +1,4 @@
-﻿using System;
-using Zed.Domain;
+﻿using Zed.Domain;
 using Zed.Utilities;
 
 namespace Zeega.Domain {
@@ -21,7 +20,7 @@ namespace Zeega.Domain {
         public virtual string Name {
             get { return name; }
             set {
-                if (String.IsNullOrWhiteSpace(value)) throw new ArgumentNullException("value", "Tag name must contain some value.");
+                if (string.IsNullOrWhiteSpace(value)) throw new ArgumentNullException("value", "Tag name must contain some value.");
 
                 name = value;
             }
@@ -51,7 +50,7 @@ namespace Zeega.Domain {
         /// <summary>
         /// Gets base tag.
         /// </summary>
-        public virtual Tag BaseTag { get { return baseTag; }}
+        public virtual Tag BaseTag { get { return baseTag; } }
 
         #endregion
 
@@ -87,7 +86,7 @@ namespace Zeega.Domain {
         /// <param name="baseTag">Basetag</param>
         internal Tag(string name, string slug, LanguageCode languageCode, Tag baseTag) : this(name, slug, languageCode) {
             this.baseTag = baseTag;
-        } 
+        }
 
         /// <summary>
         /// Creates instance of Tag class with provided tag name and base tag
@@ -128,7 +127,7 @@ namespace Zeega.Domain {
         /// <param name="slug">Tag slug</param>
         public static Tag CreateBaseTag(string name, string slug) {
             return new Tag(name, slug, new LanguageCode(LanguageCode.ENGLISH_TWO_LETTER_CODE));
-        } 
+        }
 
         /// <summary>
         /// Creates tag with reference to base tag.
@@ -141,7 +140,7 @@ namespace Zeega.Domain {
         /// <param name="baseTag">Base tag</param>
         /// <returns>CreatedOn tag</returns>
         public static Tag CreateTag(string name, string slug, LanguageCode languageCode, Tag baseTag) {
-            if(baseTag.BaseTag != null) throw new ArgumentException("Provided Tag is not base tag, it must have null value setto BaseTag property.", "baseTag");
+            if (baseTag.BaseTag != null) throw new ArgumentException("Provided Tag is not base tag, it must have null value setto BaseTag property.", "baseTag");
             return baseTag.LanguageCode.Equals(languageCode) ? baseTag : new Tag(name, slug, languageCode, baseTag);
         }
 

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Zeega.Domain {
+﻿namespace Zeega.Domain {
     /// <summary>
     /// The value object that represents change stamp data.
     /// Data includes creation and change dates.
@@ -27,7 +25,7 @@ namespace Zeega.Domain {
         /// <summary>
         /// Gets update date and time in UTC
         /// </summary>
-        public DateTime UpdatedOn { get { return updatedOn; }}
+        public DateTime UpdatedOn { get { return updatedOn; } }
 
         #endregion
 

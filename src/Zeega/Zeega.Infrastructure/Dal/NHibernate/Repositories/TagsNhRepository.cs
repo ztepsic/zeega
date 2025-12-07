@@ -31,11 +31,35 @@ namespace Zeega.Infrastructure.Dal.NHibernate.Repositories {
         /// <returns>Tags in particular language if they exists, otherwise empty collection</returns>
         public IEnumerable<Tag> GetTagsFor(IList<Tag> tags, LanguageCode languageCode) {
             var baseTags = tags.Select(t => t.BaseTag ?? t).ToList();
-            var result = from tag in Session.Query<Tag>()
-                         where baseTags.Contains(tag.BaseTag) &&
-                               tag.LanguageCode == languageCode
-                         select tag;
-            return result.ToList();
+            return from tag in Session.Query<Tag>()
+                   where baseTags.Contains(tag.BaseTag) &&
+                         tag.LanguageCode == languageCode
+                   select tag;
+        }
+
+        /// <summary>
+        /// Gets tag for particular tag example
+        /// </summary>
+        /// <param name="exampleTag">Example to search for</param>
+        /// <returns>Tag that satisfies example</returns>
+        public Tag GetByExample(Tag exampleTag) {
+            //var criteria = Session.CreateCriteria<Tag>();
+            //criteria.Add(Example.Create(exampleTag));
+            //criteria.SetMaxResults(1);
+            //return criteria.UniqueResult<Tag>();
+
+            return (from tag in Session.Query<Tag>()
+                    where tag.Slug.Equals(exampleTag.Slug)
+                       && tag.LanguageCode == exampleTag.LanguageCode
+                    select tag)
+                    .Take(1)
+                    .FirstOrDefault();
+
+            //return Session.QueryOver<Tag>()
+            //    .Where(x => x.LanguageCode == exampleTag.LanguageCode)
+            //    .Select(x => x)
+            //    .Take(1)
+            //    .SingleOrDefault();
         }
 
         #endregion

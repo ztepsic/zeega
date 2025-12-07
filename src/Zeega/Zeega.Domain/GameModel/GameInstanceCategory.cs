@@ -51,7 +51,7 @@ namespace Zeega.Domain.GameModel {
         /// <summary>
         /// Game category order sequence
         /// </summary>
-        public virtual short OrderSequence { get; protected internal set; }
+        public virtual short Sequence { get; protected internal set; }
 
         /// <summary>
         /// Full text description of the game category
@@ -98,7 +98,7 @@ namespace Zeega.Domain.GameModel {
             Name = name;
             SetSlug(slug);
 
-            OrderSequence = 0;
+            Sequence = 0;
         }
 
         #endregion

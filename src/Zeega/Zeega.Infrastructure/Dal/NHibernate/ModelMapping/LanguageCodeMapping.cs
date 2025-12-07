@@ -8,8 +8,8 @@ namespace Zeega.Infrastructure.Dal.NHibernate.ModelMapping {
             Property(x => x.Value,
                    m => {
                        m.Column("LanguageCode");
-                        m.Access(Accessor.NoSetter);
-                        m.NotNullable(true);
+                       m.Access(Accessor.NoSetter);
+                       m.NotNullable(true);
                    });
         }
     }

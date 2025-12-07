@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using Zed.Domain;
 
 namespace Zeega.Domain.GameModel {
@@ -66,12 +64,12 @@ namespace Zeega.Domain.GameModel {
         /// <summary>
         /// List of game tags/keywords
         /// </summary>
-        private readonly IList<Tag> tags;
+        private readonly ISet<Tag> tags;
 
         /// <summary>
         /// Gets list of game  tags/keywords
         /// </summary>
-        public virtual IList<Tag> Tags { get { return new ReadOnlyCollection<Tag>(tags); } }
+        public virtual IList<Tag> Tags { get { return new ReadOnlyCollection<Tag>(tags.ToList()); } }
 
         /// <summary>
         /// List of media resources
@@ -105,6 +103,27 @@ namespace Zeega.Domain.GameModel {
         /// A URL where the game is located (the developer's or provider's site)
         /// </summary>
         public virtual string ProviderGameUrl { get; set; }
+
+        /// <summary>
+        /// Date when game provider published game
+        /// </summary>
+        private DateTime providerPublishDate;
+
+        /// <summary>
+        /// Gets or Sets date when game provider published game
+        /// </summary>
+        public virtual DateTime ProviderPublishDate {
+            get { return providerPublishDate; }
+            set {
+                providerPublishDate = value;
+                ProviderUpdateDate = providerPublishDate;
+            }
+        }
+
+        /// <summary>
+        /// Gets or Sets date when game provider updated game
+        /// </summary>
+        public virtual DateTime ProviderUpdateDate { get; set; }
 
         /// <summary>
         /// Game author
@@ -148,12 +167,12 @@ namespace Zeega.Domain.GameModel {
         public Game(string name, GameProvider provider) {
             Name = name;
 
-            if(provider == null) throw new ArgumentNullException("provider", "Game provider can't be undefined(null).");
+            //if(provider == null) throw new ArgumentNullException("provider", "Game provider can't be undefined(null).");
             this.provider = provider;
 
             mediaResources = new List<MediaRes>();
             categories = new List<GameCategory>();
-            tags = new List<Tag>();
+            tags = new HashSet<Tag>();
 
             ChangeStamp = new ChangeStamp(DateTime.Now);
         }
@@ -171,7 +190,8 @@ namespace Zeega.Domain.GameModel {
         /// <param name="type">Media resource type</param>
         public virtual MediaRes CreateMediaResource(string srcUri, int srcWidth, int srcHeight, MediaResType type) {
             var mediaRes = new MediaRes(srcUri, srcWidth, srcHeight, type) {
-                OrderSequence = (short)(mediaResources.Count + 1)
+                Sequence = (short)(mediaResources.Count + 1),
+                IsActive = true
             };
             mediaResources.Add(mediaRes);
 
@@ -190,7 +210,7 @@ namespace Zeega.Domain.GameModel {
                 // Reorder sequence ordering
                 short sequence = 0;
                 foreach (var mediaResource in mediaResources) {
-                    mediaResource.OrderSequence = ++sequence;
+                    mediaResource.Sequence = ++sequence;
                 }
             }
 
@@ -203,7 +223,7 @@ namespace Zeega.Domain.GameModel {
         /// <param name="category">Game category</param>
         /// <returns>Self instance - this</returns>
         public virtual Game AddCategory(GameCategory category) {
-            if(category == null) throw new ArgumentNullException("category");
+            if (category == null) throw new ArgumentNullException("category");
             categories.Add(category);
             return this;
         }

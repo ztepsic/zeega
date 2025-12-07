@@ -12,7 +12,7 @@ namespace Zeega.Infrastructure.Dal.NHibernate.Repositories {
         #endregion
 
         #region Constructors and Init
-        
+
         /// <summary>
         /// Creates an instance of NHibernate application tenants repository
         /// </summary>

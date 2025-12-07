@@ -21,15 +21,15 @@ namespace Zeega.Infrastructure.Dal.NHibernate.ModelMapping.GameModel {
                 m => {
                     m.Access(Accessor.NoSetter);
                     m.NotNullable(true);
-            });
+                });
 
             Property(x => x.Slug,
                 m => {
                     m.Access(Accessor.NoSetter);
                     m.NotNullable(true);
-            });
+                });
 
-            Property(x => x.OrderSequence, m => m.NotNullable(true));
+            Property(x => x.Sequence, m => m.NotNullable(true));
             Property(x => x.Description);
             Property(x => x.ShortDescription);
             Property(x => x.Keywords);

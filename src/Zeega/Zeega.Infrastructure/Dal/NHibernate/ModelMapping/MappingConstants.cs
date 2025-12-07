@@ -9,5 +9,10 @@
         /// App schema name
         /// </summary>
         public const string APP_SCHEMA = "App";
+
+        /// <summary>
+        /// Games provider schema name
+        /// </summary>
+        public const string GAME_PROVIDER_SCHEMA = "GameProvider";
     }
 }

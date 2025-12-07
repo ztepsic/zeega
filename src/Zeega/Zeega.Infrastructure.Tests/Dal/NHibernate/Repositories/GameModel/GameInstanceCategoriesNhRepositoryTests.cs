@@ -1,21 +1,14 @@
-﻿using System;
-using System.Linq;
-using NUnit.Framework;
-using Zeega.Domain;
+﻿using Zeega.Domain;
 using Zeega.Domain.GameModel;
 using Zeega.Infrastructure.Dal.NHibernate.Repositories.GameModel;
 
-namespace Zeega.Infrastructure.Tests.Dal.NHibernate.GameModel
-{
+namespace Zeega.Infrastructure.Tests.Dal.NHibernate.Repositories.GameModel {
     [TestFixture]
-    class GameInstanceCategoriesNhRepositoryTests : SQLiteNHibernateTestFixture
-    {
+    class GameInstanceCategoriesNhRepositoryTests : SQLiteNHibernateTestFixture {
 
-        private AppTenant createAppTenant(LanguageCode languageCode)
-        {
+        private AppTenant createAppTenant(LanguageCode languageCode) {
             var appTenant = new AppTenant(String.Format("AppTenant{0}", languageCode.Value), languageCode);
-            using (var trx = Session.BeginTransaction())
-            {
+            using (var trx = Session.BeginTransaction()) {
                 Session.SaveOrUpdate(appTenant);
                 trx.Commit();
             }
@@ -24,8 +17,7 @@ namespace Zeega.Infrastructure.Tests.Dal.NHibernate.GameModel
         }
 
         [Test]
-        public void SaveOrUpdate_GameCategory_AddedToDb()
-        {
+        public void SaveOrUpdate_GameCategory_AddedToDb() {
             // Arrange
             var appTenant = createAppTenant(new LanguageCode(LanguageCode.ENGLISH_TWO_LETTER_CODE));
             var gameCategory = new GameInstanceCategory(appTenant, "Sports");
@@ -33,8 +25,7 @@ namespace Zeega.Infrastructure.Tests.Dal.NHibernate.GameModel
             var gameCategoriesRepo = new GameInstanceCategoriesNhRepository(SessionFactory);
 
             // Act
-            using (var trx = Session.BeginTransaction())
-            {
+            using (var trx = Session.BeginTransaction()) {
                 gameCategoriesRepo.SaveOrUpdate(gameCategory);
                 trx.Commit();
             }
@@ -44,16 +35,14 @@ namespace Zeega.Infrastructure.Tests.Dal.NHibernate.GameModel
         }
 
         [Test]
-        public void Get_GameInstanceCategory_FetchedGameInstanceCategory()
-        {
+        public void Get_GameInstanceCategory_FetchedGameInstanceCategory() {
             // Arrange
             var appTenant = createAppTenant(new LanguageCode(LanguageCode.ENGLISH_TWO_LETTER_CODE));
             var gameInstanceCategory = new GameInstanceCategory(appTenant, "Sports");
 
             var gameInstanceCategoriesRepo = new GameInstanceCategoriesNhRepository(SessionFactory);
 
-            using (var trx = Session.BeginTransaction())
-            {
+            using (var trx = Session.BeginTransaction()) {
                 gameInstanceCategoriesRepo.SaveOrUpdate(gameInstanceCategory);
                 trx.Commit();
             }
@@ -62,23 +51,18 @@ namespace Zeega.Infrastructure.Tests.Dal.NHibernate.GameModel
 
             // Act
             GameInstanceCategory fetchedGameInstanceCategory = null;
-            using (var trx = Session.BeginTransaction())
-            {
+            using (var trx = Session.BeginTransaction()) {
                 fetchedGameInstanceCategory = gameInstanceCategoriesRepo.GetById(gameInstanceCategory.Id);
                 trx.Commit();
             }
 
             // Assert
-            Assert.Multiple(() =>
-            {
-                Assert.That(fetchedGameInstanceCategory, Is.Not.Null);
-                Assert.That(fetchedGameInstanceCategory, Is.EqualTo(gameInstanceCategory));
-            });
+            Assert.That(fetchedGameInstanceCategory, Is.Not.Null);
+            Assert.That(fetchedGameInstanceCategory, Is.EqualTo(gameInstanceCategory));
         }
 
         [Test]
-        public void GetCategoriesWithGames_AppTenant_FetchedCategoriesWithAssignedGames()
-        {
+        public void GetCategoriesWithGames_AppTenant_FetchedCategoriesWithAssignedGames() {
             // Arrange
             var appTenantEn = createAppTenant(new LanguageCode(LanguageCode.ENGLISH_TWO_LETTER_CODE));
             var appTenantHr = createAppTenant(new LanguageCode(LanguageCode.CROATIAN_TWO_LETTER_CODE));
@@ -88,8 +72,7 @@ namespace Zeega.Infrastructure.Tests.Dal.NHibernate.GameModel
 
             var gameCategoriesRepo = new GameInstanceCategoriesNhRepository(SessionFactory);
 
-            using (var trx = Session.BeginTransaction())
-            {
+            using (var trx = Session.BeginTransaction()) {
                 gameCategoriesRepo.SaveOrUpdate(gameCategoryWithGamesEn);
                 gameCategoriesRepo.SaveOrUpdate(gameCategoryWithoutGamesEn);
                 gameCategoriesRepo.SaveOrUpdate(gameCategoryWithGamesHr);
@@ -100,14 +83,13 @@ namespace Zeega.Infrastructure.Tests.Dal.NHibernate.GameModel
 
             // Act
             GameInstanceCategory[] instanceCategoriesWithGamesInstance = null;
-            using (var trx = Session.BeginTransaction())
-            {
+            using (var trx = Session.BeginTransaction()) {
                 instanceCategoriesWithGamesInstance = gameCategoriesRepo.GetCategoriesWithGames(appTenantEn).ToArray();
                 trx.Commit();
             }
 
             // Assert
-            Assert.That(instanceCategoriesWithGamesInstance.Length, Is.EqualTo(0));
+            Assert.That(instanceCategoriesWithGamesInstance, Is.Empty);
         }
 
     }

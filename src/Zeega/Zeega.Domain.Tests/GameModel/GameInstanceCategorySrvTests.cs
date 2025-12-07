@@ -1,16 +1,11 @@
-﻿using System.Collections.Generic;
-using NUnit.Framework;
-using Zeega.Domain.GameModel;
+﻿using Zeega.Domain.GameModel;
 
-namespace Zeega.Domain.Tests.GameModel
-{
+namespace Zeega.Domain.Tests.GameModel {
     [TestFixture]
-    public class GameInstanceCategorySrvTests
-    {
+    public class GameInstanceCategorySrvTests {
 
         [Test]
-        public void OrderGameCategories_ListOfGameCategories_SequencePropertySetInAccordanceToOrderingInList()
-        {
+        public void OrderGameCategories_ListOfGameCategories_SequencePropertySetInAccordanceToOrderingInList() {
             // Arrange
             var appTenant = new AppTenant("Zeega", new LanguageCode(LanguageCode.ENGLISH_TWO_LETTER_CODE));
             var gameCat1 = new GameInstanceCategory(appTenant, "Action");
@@ -23,12 +18,11 @@ namespace Zeega.Domain.Tests.GameModel
             GameInstanceCategorySrv.OrderGameCategories(gameCategories);
 
             // Assert
-            Assert.Multiple(() =>
-            {
-                Assert.That(gameCat1.OrderSequence, Is.EqualTo(1));
-                Assert.That(gameCat2.OrderSequence, Is.EqualTo(2));
-                Assert.That(gameCat3.OrderSequence, Is.EqualTo(3));
-                Assert.That(gameCat4.OrderSequence, Is.EqualTo(4));
+            Assert.Multiple(() => {
+                Assert.That(gameCat1.Sequence, Is.EqualTo(1));
+                Assert.That(gameCat2.Sequence, Is.EqualTo(2));
+                Assert.That(gameCat3.Sequence, Is.EqualTo(3));
+                Assert.That(gameCat4.Sequence, Is.EqualTo(4));
             });
         }
     }

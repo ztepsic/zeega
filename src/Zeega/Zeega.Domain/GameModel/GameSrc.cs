@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Zed.Domain;
 
 namespace Zeega.Domain.GameModel {
     /// <summary>
     /// GameSrc class that represents a game source
     /// </summary>
-    public class GameSrc {
+    public class GameSrc : ValueObject {
 
         #region Constants
 
@@ -30,7 +30,7 @@ namespace Zeega.Domain.GameModel {
         /// <summary>
         /// Gets game width in pixels
         /// </summary>
-        public int Width { get { return width; } }
+        public int Width => width;
 
         /// <summary>
         /// Game height in pixels
@@ -40,28 +40,7 @@ namespace Zeega.Domain.GameModel {
         /// <summary>
         /// Gets game height in pixels
         /// </summary>
-        public int Height { get { return height; } }
-
-
-        /// <summary>
-        /// A game source URI
-        /// </summary>
-        private readonly string srcUri;
-
-        /// <summary>
-        /// Gets a game source URI
-        /// </summary>
-        public string SrcUri { get { return srcUri; } }
-
-        /// <summary>
-        /// Gets or Sets the indicator if game source is online/live (true) or offline (false)
-        /// </summary>
-        public bool IsSrcOnline { get; set; }
-
-        /// <summary>
-        /// Gets or Sets device type support
-        /// </summary>
-        public DeviceTypeSupport DeviceTypeSupport { get; set; }
+        public int Height => height;
 
         /// <summary>
         /// Game source type
@@ -75,6 +54,48 @@ namespace Zeega.Domain.GameModel {
             get { return srcType; }
         }
 
+
+        /// <summary>
+        /// A game source URL
+        /// </summary>
+        private readonly string srcUrl;
+
+        /// <summary>
+        /// Gets a game source URL
+        /// </summary>
+        public string SrcUrl => srcUrl;
+
+        /// <summary>
+        /// An embed code of game source
+        /// </summary>
+        private readonly string embedCode;
+
+        /// <summary>
+        /// Gets an embed code of game source
+        /// </summary>
+        public string EmbedCode => embedCode;
+
+        /// <summary>
+        /// Information is game source embedded resource.
+        /// True if it is, false otherwise
+        /// </summary>
+        public bool IsEmbedded => !string.IsNullOrEmpty(EmbedCode);
+
+        /// <summary>
+        /// Gets or Sets the indicator if game source is online/live (true) or offline (false)
+        /// </summary>
+        public bool IsSrcOnline { get; set; }
+
+        /// <summary>
+        /// Gets or sets a game source local file name
+        /// </summary>
+        public string SrcLocalFile { get; set; }
+
+        /// <summary>
+        /// Gets or Sets device type support
+        /// </summary>
+        public DeviceTypeSupport DeviceTypeSupport { get; set; }
+
         #endregion
 
         #region Constructors and Init
@@ -85,26 +106,82 @@ namespace Zeega.Domain.GameModel {
         private GameSrc() { }
 
         /// <summary>
-        /// Creates swf resource based on provided parameters.
+        /// Creates resource based on provided parameters.
         /// </summary>
-        /// <param name="width">Width of the swf resource</param>
-        /// <param name="height">Height of the swf resource</param>
-        /// <param name="srcUri">Game resource uri</param>
+        /// <param name="width">Width of the game resource</param>
+        /// <param name="height">Height of the game resource</param>
         /// <param name="srcType">Game source type</param>
-        public GameSrc(int width, int height, string srcUri, GameSrcType srcType) {
-            if (width < MIN_WIDTH) { throw new ArgumentException(String.Format("Provided width is to small. Minimum allowed swf width is {0}", MIN_WIDTH)); }
-            if (height < MIN_HEIGHT) { throw new ArgumentException(String.Format("Provided height is to small. Minimum allowed swf height is {0}", MIN_HEIGHT)); }
+        /// <param name="srcUrl">Game resource url</param>
+        /// <param name="localFile">Game resource local file name</param>
+        /// <param name="embedCode">Game resource embed code</param>
+        protected GameSrc(int width, int height, GameSrcType srcType, string srcUrl = null, string localFile = null, string embedCode = null) {
+            //if (width < MIN_WIDTH) { throw new ArgumentException($"Provided width is to small. Minimum allowed swf width is {MIN_WIDTH}"); }
+            //if (height < MIN_HEIGHT) { throw new ArgumentException($"Provided height is to small. Minimum allowed swf height is {MIN_HEIGHT}"); }
             this.width = width;
             this.height = height;
-            this.srcUri = srcUri;
             this.srcType = srcType;
+            this.srcUrl = srcUrl;
+            SrcLocalFile = localFile;
+            this.embedCode = embedCode;
 
-            IsSrcOnline = true;
+            if (!string.IsNullOrEmpty(srcUrl) || !string.IsNullOrEmpty(embedCode) || !string.IsNullOrEmpty(localFile)) {
+                IsSrcOnline = true;
+            }
+
+        }
+
+        /// <summary>
+        /// Creates resource based on URL source
+        /// </summary>
+        /// <param name="width">Width of the game resource</param>
+        /// <param name="height">Height of the game resource</param>
+        /// <param name="srcType">Game source type</param>
+        /// <param name="srcUrl">Game resource url</param>
+        public static GameSrc CreateGameSrcWithUrl(int width, int height, GameSrcType srcType, string srcUrl) {
+            return new GameSrc(width, height, srcType, srcUrl);
+        }
+
+        /// <summary>
+        /// Creates resource based on local file source.
+        /// </summary>
+        /// <param name="width">Width of the game resource</param>
+        /// <param name="height">Height of the game resource</param>
+        /// <param name="srcType">Game source type</param>
+        /// <param name="localFile">Game resource local file name</param>
+        /// <param name="srcUrl">Game resource url</param>
+        public static GameSrc CreateGameSrcWithLocalFile(int width, int height, GameSrcType srcType, string localFile, string srcUrl = null) {
+            return new GameSrc(width, height, srcType, srcUrl, localFile);
+        }
+
+        /// <summary>
+        /// Creates resource based on embed code
+        /// </summary>
+        /// <param name="width">Width of the game resource</param>
+        /// <param name="height">Height of the game resource</param>
+        /// <param name="srcType">Game source type</param>
+        /// <param name="embedCode">Game resource embed code</param>
+        public static GameSrc CreateGameSrcWithEmbedCode(int width, int height, GameSrcType srcType, string embedCode) {
+            return new GameSrc(width, height, srcType, embedCode: embedCode);
         }
 
         #endregion
 
         #region Methods
+
+        /// <summary>
+        /// Gets game source URI based on online status
+        /// </summary>
+        /// <returns>Game source URI</returns>
+        public string GetSrcUri() {
+            string srcUri;
+            if (IsSrcOnline) {
+                srcUri = !string.IsNullOrEmpty(EmbedCode) ? EmbedCode : SrcUrl;
+            } else {
+                srcUri = SrcLocalFile;
+            }
+
+            return srcUri;
+        }
 
         #endregion
 

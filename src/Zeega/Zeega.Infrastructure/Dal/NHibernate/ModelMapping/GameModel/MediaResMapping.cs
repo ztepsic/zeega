@@ -18,20 +18,20 @@ namespace Zeega.Infrastructure.Dal.NHibernate.ModelMapping.GameModel {
 
             Property(x => x.ThumbSrcUri,
                 m => {
-                    m.Access(Accessor.NoSetter);
-                    m.NotNullable(true);
+                    m.Access(Accessor.Field);
+                    m.NotNullable(false);
                 });
 
             Property(x => x.ThumbSrcWidth,
                 m => {
-                    m.Access(Accessor.NoSetter);
-                    m.NotNullable(true);
+                    m.Access(Accessor.Field);
+                    m.NotNullable(false);
                 });
 
             Property(x => x.ThumbSrcHeight,
                 m => {
-                    m.Access(Accessor.NoSetter);
-                    m.NotNullable(true);
+                    m.Access(Accessor.Field);
+                    m.NotNullable(false);
                 });
 
             Property(x => x.SrcUri,
@@ -52,7 +52,7 @@ namespace Zeega.Infrastructure.Dal.NHibernate.ModelMapping.GameModel {
                     m.NotNullable(true);
                 });
 
-            Property(x => x.OrderSequence, m => m.NotNullable(true));
+            //Property(x => x.Sequence, m => m.NotNullable(true));
             Property(x => x.IsActive, m => m.NotNullable(true));
             
         }

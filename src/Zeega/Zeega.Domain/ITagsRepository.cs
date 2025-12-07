@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Zed.Domain;
+﻿using Zed.Domain;
 
 namespace Zeega.Domain {
     /// <summary>
@@ -13,5 +12,12 @@ namespace Zeega.Domain {
         /// <param name="languageCode">Language for which we want tags</param>
         /// <returns>Tags in particular language if they exists, otherwise empty collection</returns>
         IEnumerable<Tag> GetTagsFor(IList<Tag> tags, LanguageCode languageCode);
+
+        /// <summary>
+        /// Gets tag for particular tag example
+        /// </summary>
+        /// <param name="tag">Example to search for</param>
+        /// <returns>Tag that satisfies example</returns>
+        Tag GetByExample(Tag tag);
     }
 }

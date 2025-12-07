@@ -1,5 +1,4 @@
-﻿using System;
-using Zed.Domain;
+﻿using Zed.Domain;
 
 namespace Zeega.Domain.GameModel {
     /// <summary>
@@ -44,7 +43,7 @@ namespace Zeega.Domain.GameModel {
         /// <param name="gameCategory">Game category</param>
         /// <param name="gameInstanceCategory">Game instance category</param>
         public GameCategoryToGameInstanceCategoryMapping(GameCategory gameCategory, GameInstanceCategory gameInstanceCategory) {
-            if(gameCategory == null) throw new ArgumentNullException("gameCategory", "Game category can't be null.");
+            if (gameCategory == null) throw new ArgumentNullException("gameCategory", "Game category can't be null.");
             this.gameCategory = gameCategory;
 
             if (gameInstanceCategory == null) throw new ArgumentNullException("gameInstanceCategory", "Game instance category can't be null.");

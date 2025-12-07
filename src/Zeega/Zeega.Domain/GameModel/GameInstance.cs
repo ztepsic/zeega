@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using Zed.Domain;
 using Zed.Utilities;
 
@@ -79,8 +77,8 @@ namespace Zeega.Domain.GameModel {
         public virtual GameInstanceCategory PrimaryInstanceCategory {
             get { return primaryInstanceCategory; }
             set {
-                if(value == null) throw new ArgumentNullException("value", "Primary category can't be null.");
-                if(!AppTenant.Equals(value.AppTenant)) throw new ArgumentException("Game category application tenant must be equal as Game instance application tenant.");
+                if (value == null) throw new ArgumentNullException("value", "Primary category can't be null.");
+                if (!AppTenant.Equals(value.AppTenant)) throw new ArgumentException("Game category application tenant must be equal as Game instance application tenant.");
 
                 primaryInstanceCategory = value;
             }
@@ -194,7 +192,7 @@ namespace Zeega.Domain.GameModel {
             if (appTenant == null) throw new ArgumentNullException("appTenant", "Application tenant can't be null.");
             this.appTenant = appTenant;
 
-            if(game == null) throw new ArgumentNullException("game", "Game can't be null.");
+            if (game == null) throw new ArgumentNullException("game", "Game can't be null.");
             this.game = game;
 
             Name = name;
@@ -204,7 +202,7 @@ namespace Zeega.Domain.GameModel {
             tags = new List<Tag>();
 
             ChangeStamp = new ChangeStamp(DateTime.Now);
-            
+
         }
 
         #endregion
@@ -245,11 +243,11 @@ namespace Zeega.Domain.GameModel {
         /// <param name="secondaryInstanceCategory">Secondary game instance category</param>
         /// <returns>Self instance - this</returns>
         public virtual GameInstance AddSecondaryCategory(GameInstanceCategory secondaryInstanceCategory) {
-            if(PrimaryInstanceCategory == null) throw new InvalidOperationException("Primary category must be set in order to add a secondary game category.");
-            if(secondaryInstanceCategory == null) throw new ArgumentNullException("secondaryInstanceCategory", "Secondary game secondaryInstanceCategory can't be null.");
+            if (PrimaryInstanceCategory == null) throw new InvalidOperationException("Primary category must be set in order to add a secondary game category.");
+            if (secondaryInstanceCategory == null) throw new ArgumentNullException("secondaryInstanceCategory", "Secondary game secondaryInstanceCategory can't be null.");
             if (!AppTenant.Equals(secondaryInstanceCategory.AppTenant)) throw new ArgumentException("Game category application tenant must be equal as Game instance application tenant.");
-            if(PrimaryInstanceCategory.Equals(secondaryInstanceCategory)) throw new ArgumentException("Secondary game secondaryInstanceCategory already exists as primapry game secondaryInstanceCategory. You can change the sescondary secondaryInstanceCategory or remove/replace primary game secondaryInstanceCategory.");
-            if(secondaryCategories.Contains(secondaryInstanceCategory)) throw new ArgumentException("Secondary game secondaryInstanceCategory is already added.", "secondaryInstanceCategory");
+            if (PrimaryInstanceCategory.Equals(secondaryInstanceCategory)) throw new ArgumentException("Secondary game secondaryInstanceCategory already exists as primapry game secondaryInstanceCategory. You can change the sescondary secondaryInstanceCategory or remove/replace primary game secondaryInstanceCategory.");
+            if (secondaryCategories.Contains(secondaryInstanceCategory)) throw new ArgumentException("Secondary game secondaryInstanceCategory is already added.", "secondaryInstanceCategory");
 
             secondaryCategories.Add(secondaryInstanceCategory);
 

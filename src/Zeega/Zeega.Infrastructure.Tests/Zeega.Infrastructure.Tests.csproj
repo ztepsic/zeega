@@ -9,6 +9,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="GameProviders\GameDistribution\data_examples\gamedistribution_games_feed_01.json" />
+    <None Remove="GameProviders\GameDistribution\data_examples\gamedistribution_games_feed_01.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="GameProviders\GameDistribution\data_examples\gamedistribution_games_feed_01.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GameProviders\GameDistribution\data_examples\gamedistribution_games_feed_01.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="coverlet.collector">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -23,6 +37,7 @@
     <PackageReference Include="NUnit" />
     <PackageReference Include="NUnit.Analyzers" />
     <PackageReference Include="NUnit3TestAdapter" />
+    <PackageReference Include="RichardSzalay.MockHttp" />
     <PackageReference Include="System.Data.SQLite.Core" />
   </ItemGroup>
 

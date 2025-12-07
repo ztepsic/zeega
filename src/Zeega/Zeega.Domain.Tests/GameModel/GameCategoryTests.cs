@@ -1,15 +1,11 @@
-﻿using NUnit.Framework;
+﻿using Zed.Utilities;
 using Zeega.Domain.GameModel;
-using Zed.Utilities;
 
-namespace Zeega.Domain.Tests.GameModel
-{
+namespace Zeega.Domain.Tests.GameModel {
     [TestFixture]
-    public class GameCategoryTests
-    {
+    public class GameCategoryTests {
         [Test]
-        public void Ctor_Params_CreatedGameCategory()
-        {
+        public void Ctor_Params_CreatedGameCategory() {
             // Arrange
             const string gameCategoryName = "Card games";
 
@@ -17,8 +13,7 @@ namespace Zeega.Domain.Tests.GameModel
             var gameCategory = new GameCategory(gameCategoryName);
 
             // Assert
-            Assert.Multiple(() =>
-            {
+            Assert.Multiple(() => {
                 Assert.That(gameCategory, Is.Not.Null);
                 Assert.That(gameCategory.Name, Is.EqualTo(gameCategoryName));
                 Assert.That(gameCategory.Slug, Is.EqualTo(gameCategoryName.ToSlug()));

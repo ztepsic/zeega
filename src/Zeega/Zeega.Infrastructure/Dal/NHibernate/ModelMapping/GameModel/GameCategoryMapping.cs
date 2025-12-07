@@ -22,7 +22,7 @@ namespace Zeega.Infrastructure.Dal.NHibernate.ModelMapping.GameModel {
                    m.Access(Accessor.NoSetter);
                    m.NotNullable(true);
                });
-            
+
         }
 
     }

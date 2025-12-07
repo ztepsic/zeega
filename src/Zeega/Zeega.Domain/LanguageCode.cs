@@ -1,5 +1,4 @@
-﻿using System;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 using Zed.Domain;
 
 namespace Zeega.Domain {
@@ -38,7 +37,7 @@ namespace Zeega.Domain {
         /// <summary>
         /// Gets two letter language code (ISO 639-1) of the application tenant
         /// </summary>
-        public string Value { get { return value; } }
+        public string Value => value;
 
         #endregion
 

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Zeega.Domain.GameModel {
+﻿namespace Zeega.Domain.GameModel {
     /// <summary>
     /// Game category mapping repository interface
     /// </summary>

@@ -1,6 +1,4 @@
-﻿using NUnit.Framework;
-
-namespace Zeega.Infrastructure.Tests.Dal.NHibernate.GameModel {
+﻿namespace Zeega.Infrastructure.Tests.Dal.NHibernate.Repositories.GameModel {
     [TestFixture]
     class GameCategoriesNhRepositoryTests : SQLiteNHibernateTestFixture {
     }
