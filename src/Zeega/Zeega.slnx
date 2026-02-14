@@ -1,7 +1,0 @@
-<Solution>
-  <Project Path="Zeega.Domain.Tests/Zeega.Domain.Tests.csproj" />
-  <Project Path="Zeega.Domain/Zeega.Domain.csproj" />
-  <Project Path="Zeega.Infrastructure.Tests/Zeega.Infrastructure.Tests.csproj" />
-  <Project Path="Zeega.Infrastructure/Zeega.Infrastructure.csproj" />
-  <Project Path="Zeega.Web/Zeega.Web.csproj" />
-</Solution>
