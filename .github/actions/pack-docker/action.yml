@@ -1,0 +1,60 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-action.json
+
+name: Pack Docker Image
+description: Build Docker image and save as artifact
+
+inputs:
+  dockerfile-path:
+    description: "Path to Dockerfile"
+    required: true
+  build-context:
+    description: "Docker build context path"
+    required: true
+  image-name:
+    description: "Docker image name (without registry/owner)"
+    required: true
+  full-sem-ver:
+    description: "The full semantic version for tagging"
+    required: true
+  tag-latest:
+    description: "Whether to tag as latest"
+    default: "true"
+  artifact-name:
+    description: "Name for the artifact"
+    default: "docker-image"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Sanitize version for Docker tag
+      id: sanitize
+      run: |
+        # Docker tags don't support '+' character, replace with '-'
+        DOCKER_TAG=$(echo "${{ inputs.full-sem-ver }}" | sed 's/+/-/g')
+        echo "docker-tag=${DOCKER_TAG}" >> $GITHUB_OUTPUT
+      shell: bash
+
+    - name: Build Docker image
+      uses: docker/build-push-action@v6
+      with:
+        context: ${{ inputs.build-context }}
+        file: ${{ inputs.dockerfile-path }}
+        push: false
+        load: true
+        tags: |
+          ${{ inputs.image-name }}:${{ steps.sanitize.outputs.docker-tag }}
+          ${{ inputs.tag-latest == 'true' && format('{0}:latest', inputs.image-name) || '' }}
+        build-args: |
+          VERSION=${{ inputs.full-sem-ver }}
+        outputs: type=docker,dest=/tmp/${{ inputs.image-name }}.tar
+
+    - name: Upload Docker image artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ inputs.artifact-name }}
+        if-no-files-found: error
+        retention-days: 7
+        path: /tmp/${{ inputs.image-name }}.tar

@@ -1,0 +1,76 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-action.json
+
+name: Release Docker Image
+description: Create GitHub release for Docker image
+
+inputs:
+  image-name:
+    description: "Docker image name (without registry/owner)"
+    required: true
+  full-sem-ver:
+    description: "The full semantic version"
+    required: true
+  registry:
+    description: "Container registry URL"
+    default: "ghcr.io"
+  github-token:
+    description: "GitHub token"
+    required: true
+  draft:
+    description: "Create a draft release"
+    required: false
+    default: false
+
+runs:
+  using: "composite"
+  steps:
+    - name: Install conventional-changelog
+      run: npm install -g conventional-changelog-cli
+      shell: bash
+
+    - name: Generate Changelog
+      run: conventional-changelog -p conventionalcommits -o CHANGELOG.md
+      shell: bash
+
+    - name: Create Tag
+      run: |
+        git tag v${{inputs.full-sem-ver}}
+        git push origin v${{inputs.full-sem-ver}}
+      shell: bash
+
+    - name: Create release body with Docker pull instructions
+      run: |
+        OWNER_LC=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
+        REGISTRY_IMAGE="${{ inputs.registry }}/${OWNER_LC}/${{ inputs.image-name }}"
+
+        # Sanitize version for Docker tag (replace + with -)
+        DOCKER_TAG=$(echo "${{ inputs.full-sem-ver }}" | sed 's/+/-/g')
+
+        echo "" >> CHANGELOG.md
+        echo "## 🐳 Docker Image" >> CHANGELOG.md
+        echo "" >> CHANGELOG.md
+        echo "Pull this release:" >> CHANGELOG.md
+        echo '```bash' >> CHANGELOG.md
+        echo "docker pull ${REGISTRY_IMAGE}:${DOCKER_TAG}" >> CHANGELOG.md
+        echo '```' >> CHANGELOG.md
+        echo "" >> CHANGELOG.md
+        echo "Or use the latest tag:" >> CHANGELOG.md
+        echo '```bash' >> CHANGELOG.md
+        echo "docker pull ${REGISTRY_IMAGE}:latest" >> CHANGELOG.md
+        echo '```' >> CHANGELOG.md
+        echo "" >> CHANGELOG.md
+        echo "Run the container:" >> CHANGELOG.md
+        echo '```bash' >> CHANGELOG.md
+        echo "docker run -p 8080:8080 ${REGISTRY_IMAGE}:${DOCKER_TAG}" >> CHANGELOG.md
+        echo '```' >> CHANGELOG.md
+      shell: bash
+
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v2
+      with:
+        token: ${{inputs.github-token}}
+        tag_name: v${{inputs.full-sem-ver}}
+        name: v${{inputs.full-sem-ver}}
+        body_path: CHANGELOG.md
+        draft: ${{inputs.draft}}
+        prerelease: false
